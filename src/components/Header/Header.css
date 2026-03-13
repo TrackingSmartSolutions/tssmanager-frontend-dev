@@ -33,8 +33,10 @@
 
 /* Tamaño de la imagen del logo */
 .ts-header-logo img {
-  height: 120px;
+  height: 68px;
   width: auto;
+  max-width: 260px;
+  object-fit: contain;
 }
 
 /* Estilo del texto del logo */
@@ -792,7 +794,7 @@
   }
 
   .ts-header-logo img {
-    height: 55px;
+    height: 45px;
   }
 
   .ts-header-navbar-menu ul {
@@ -845,7 +847,7 @@
   }
 
   .ts-header-logo img {
-    height: 50px;
+    height: 40px;
   }
 
   .ts-header-desktop-menu {
@@ -958,7 +960,7 @@
   }
 
   .ts-header-logo img {
-    height: 45px;
+    height: 35px;
   }
 
   .ts-header-icon-button {
