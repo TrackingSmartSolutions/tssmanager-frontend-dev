@@ -1,44 +1,3 @@
-/* Variables específicas para Configuracion_Empresa */
-:root {
-  --config-empresa-color-dark-blue-1: #00133b;
-  --config-empresa-color-dark-blue-2: #001959;
-  --config-empresa-color-dark-blue-3: #0f1575;
-  --config-empresa-color-blue-1: #00347f;
-  --config-empresa-color-blue-2: #0057c9;
-  --config-empresa-color-blue-3: #037ce0;
-  --config-empresa-color-light-blue: #38b6ff;
-  --config-empresa-color-orange: #f27100;
-  --config-empresa-color-light-purple: #af86ff;
-  --config-empresa-color-dark-purple: #3000b3;
-  --config-empresa-color-blue-4: #2a5cf8;
-  --config-empresa-color-purple: #9c16f7;
-  --config-empresa-primary-color: var(--config-empresa-color-dark-blue-1);
-  --config-empresa-secondary-color: var(--config-empresa-color-blue-3);
-  --config-empresa-accent-color: var(--config-empresa-color-orange);
-  --config-empresa-background-color: #f0f4ff;
-  --config-empresa-panel-background: #ffffff;
-  --config-empresa-text-color: #333333;
-  --config-empresa-text-color-2: #ffffff;
-  --config-empresa-text-light: #666666;
-  --config-empresa-border-color: #e0e0e0;
-  --config-empresa-spacing-xs: 0.25rem;
-  --config-empresa-spacing-sm: 0.5rem;
-  --config-empresa-spacing-md: 0.75rem;
-  --config-empresa-spacing-lg: 1rem;
-  --config-empresa-spacing-xl: 1.5rem;
-  --config-empresa-border-radius-sm: 4px;
-  --config-empresa-border-radius-md: 8px;
-  --config-empresa-border-radius-lg: 12px;
-  --config-empresa-box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  --config-empresa-font-family: "Arial", sans-serif;
-  --config-empresa-font-size-xs: 0.65rem;
-  --config-empresa-font-size-sm: 0.8rem;
-  --config-empresa-font-size-md: 0.9rem;
-  --config-empresa-font-size-lg: 1.1rem;
-  --config-empresa-font-size-xl: 1.3rem;
-  --config-empresa-font-size-xxl: 1.8rem;
-}
-
 /* Configuration Header and Navigation */
 .config-empresa-config-header {
   background-color: var(--config-empresa-panel-background);
@@ -487,23 +446,4 @@
   z-index: 1000;
   font-size: 16px;
   color: #037ce0;
-}
-
-.spinner {
-  border: 4px solid rgba(0, 0, 0, 0.1);
-  border-left-color: #9c16f7;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  animation: spin 1s linear infinite;
-  margin-bottom: 16px;
-}
-
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
 }

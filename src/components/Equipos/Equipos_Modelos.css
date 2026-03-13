@@ -1,42 +1,3 @@
-/* Estilos específicos para Equipos Modelos */
-
-:root {
-  --modelos-primary-color: #00133b;
-  --modelos-secondary-color: #037ce0;
-  --modelos-accent-color: #f27100;
-  --modelos-danger-color: #dc3545;
-  --modelos-success-color: #28a745;
-  --modelos-warning-color: #ffc107;
-  --modelos-background-color: #f0f4ff;
-  --modelos-panel-background: #ffffff;
-  --modelos-text-color: #333333;
-  --modelos-text-light: #666666;
-  --modelos-text-muted: #999999;
-  --modelos-border-color: #e0e0e0;
-  --modelos-border-light: #f0f0f0;
-
-  /* Espaciados Compactos (Estandarizados) */
-  --modelos-spacing-xs: 0.25rem;
-  --modelos-spacing-sm: 0.5rem;
-  --modelos-spacing-md: 0.75rem;
-  --modelos-spacing-lg: 1rem;
-  --modelos-spacing-xl: 1.5rem;
-  --modelos-spacing-xxl: 2rem;
-
-  --modelos-border-radius-sm: 4px;
-  --modelos-border-radius-md: 8px;
-  --modelos-border-radius-lg: 12px;
-  --modelos-box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  --modelos-box-shadow-hover: 0 4px 20px rgba(0, 0, 0, 0.15);
-
-  /* Fuentes Compactas */
-  --modelos-font-size-xs: 0.65rem;
-  --modelos-font-size-sm: 0.8rem;
-  --modelos-font-size-md: 0.9rem;
-  --modelos-font-size-lg: 1.1rem;
-  --modelos-font-size-xl: 1.3rem;
-}
-
 /* Layout Principal */
 .modelos-main-content {
   padding: var(--modelos-spacing-lg) var(--modelos-spacing-xl);
@@ -905,24 +866,4 @@
   z-index: 1000;
   font-size: 16px;
   color: #037ce0;
-}
-
-.spinner {
-  border: 4px solid rgba(0, 0, 0, 0.1);
-  border-left-color: #9c16f7;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  animation: spin 1s linear infinite;
-  margin-bottom: 16px;
-}
-
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
 }

@@ -173,21 +173,18 @@
   color: #6b7280;
 }
 
-/* =========================================
-   MEDIA QUERY MÓVIL (CORREGIDA Y COMPACTA)
-   ========================================= */
+
 @media (max-width: 640px) {
   .recordatorio-popup {
-    /* Centrado horizontal garantizado */
     left: 0;
     right: 0;
     margin: 0 auto;
-    width: 94%; 
+    width: 94%;
     max-width: 360px;
-    
+
     /* Posición inferior */
     bottom: calc(10px + env(safe-area-inset-bottom));
-    
+
     border-radius: 12px;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
   }
@@ -203,7 +200,7 @@
     height: 24px;
     border-radius: 6px;
   }
-  
+
   .recordatorio-icono svg {
     width: 14px;
     height: 14px;
@@ -235,7 +232,7 @@
   }
 
   .recordatorio-empresa {
-    display: none; 
+    display: none;
   }
 
   .recordatorio-detalles {
@@ -243,7 +240,7 @@
     gap: 6px;
   }
 
-  .recordatorio-hora, 
+  .recordatorio-hora,
   .recordatorio-duracion {
     background: transparent;
     border: 1px solid #e5e7eb;
@@ -254,7 +251,7 @@
 
   /* Botón delgado y ancho */
   .recordatorio-link {
-    padding: 6px; 
+    padding: 6px;
     font-size: 12px;
     height: 32px;
     width: 100%;

@@ -1,36 +1,3 @@
-/* Estilos específicos para Créditos Plataforma */
-
-:root {
-  --creditosplataforma-primary-color: #00133b;
-  --creditosplataforma-secondary-color: #037ce0;
-  --creditosplataforma-accent-color: #f27100;
-  --creditosplataforma-background-color: #f0f4ff;
-  --creditosplataforma-panel-background: #ffffff;
-  --creditosplataforma-text-color: #333333;
-  --creditosplataforma-text-light: #666666;
-  --creditosplataforma-border-color: #e0e0e0;
-  
-  /* Espaciados Compactos (Estandarizados) */
-  --creditosplataforma-spacing-xs: 0.25rem;
-  --creditosplataforma-spacing-sm: 0.5rem;
-  --creditosplataforma-spacing-md: 0.75rem;
-  --creditosplataforma-spacing-lg: 1rem;
-  --creditosplataforma-spacing-xl: 1.5rem;
-  --creditosplataforma-spacing-xxl: 2rem;
-  
-  --creditosplataforma-border-radius-sm: 4px;
-  --creditosplataforma-border-radius-md: 8px;
-  --creditosplataforma-border-radius-lg: 12px;
-  --creditosplataforma-box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  
-  /* Fuentes Compactas */
-  --creditosplataforma-font-size-xs: 0.65rem;
-  --creditosplataforma-font-size-sm: 0.8rem;
-  --creditosplataforma-font-size-md: 0.9rem;
-  --creditosplataforma-font-size-lg: 1.1rem;
-  --creditosplataforma-font-size-xl: 1.3rem;
-}
-
 /* Layout Principal */
 .creditosplataforma-main-content {
   padding: var(--creditosplataforma-spacing-lg) var(--creditosplataforma-spacing-xl);
@@ -195,9 +162,14 @@
 .creditosplataforma-btn-pdf {
   background-color: #c73232;
   color: white;
-  height: 35px; /* Alineación con inputs */
+  height: 35px;
+  /* Alineación con inputs */
 }
-.creditosplataforma-btn-pdf:hover { background-color: #a82828; transform: translateY(-1px); }
+
+.creditosplataforma-btn-pdf:hover {
+  background-color: #a82828;
+  transform: translateY(-1px);
+}
 
 .creditosplataforma-btn-orden {
   background-color: #6c757d;
@@ -206,7 +178,10 @@
   min-width: auto;
   white-space: nowrap;
 }
-.creditosplataforma-btn-orden:hover { background-color: #5a6268; }
+
+.creditosplataforma-btn-orden:hover {
+  background-color: #5a6268;
+}
 
 /* Cards de saldo */
 .creditosplataforma-saldos-grid {
@@ -226,18 +201,29 @@
   min-height: 140px;
 }
 
-.creditosplataforma-saldo-track-solid { background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); }
-.creditosplataforma-saldo-whats-gps { background: linear-gradient(135deg, #10b981 0%, #059669 100%); }
-.creditosplataforma-saldo-licencias { background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); }
+.creditosplataforma-saldo-track-solid {
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+}
 
-.creditosplataforma-saldo-content { position: relative; z-index: 2; }
+.creditosplataforma-saldo-whats-gps {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+}
+
+.creditosplataforma-saldo-licencias {
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+}
+
+.creditosplataforma-saldo-content {
+  position: relative;
+  z-index: 2;
+}
 
 .creditosplataforma-saldo-title {
   font-size: var(--creditosplataforma-font-size-lg);
   font-weight: 600;
   margin: 0 0 var(--creditosplataforma-spacing-md) 0;
   text-align: center;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .creditosplataforma-saldo-amount {
@@ -252,7 +238,9 @@
   font-weight: 700;
 }
 
-.creditosplataforma-saldo-icon { font-size: 1.2rem; }
+.creditosplataforma-saldo-icon {
+  font-size: 1.2rem;
+}
 
 .creditosplataforma-subtipos {
   margin-top: 8px;
@@ -274,7 +262,9 @@
 }
 
 /* Gráfica */
-.creditosplataforma-chart-section { margin-bottom: var(--creditosplataforma-spacing-xl); }
+.creditosplataforma-chart-section {
+  margin-bottom: var(--creditosplataforma-spacing-xl);
+}
 
 .creditosplataforma-chart-card {
   background-color: white;
@@ -300,7 +290,9 @@
 }
 
 /* Tabla */
-.creditosplataforma-table-section { margin-bottom: var(--creditosplataforma-spacing-xl); }
+.creditosplataforma-table-section {
+  margin-bottom: var(--creditosplataforma-spacing-xl);
+}
 
 .creditosplataforma-table-header {
   display: flex;
@@ -335,6 +327,7 @@
   cursor: pointer;
   min-width: 150px;
 }
+
 .creditosplataforma-filter-select:focus {
   outline: none;
   border-color: var(--creditosplataforma-secondary-color);
@@ -363,7 +356,8 @@
   width: 100%;
   border-collapse: collapse;
   background-color: white;
-  min-width: 800px; /* Scroll horizontal asegurado */
+  min-width: 800px;
+  /* Scroll horizontal asegurado */
 }
 
 .creditosplataforma-table th,
@@ -384,11 +378,23 @@
   z-index: 1;
 }
 
-.creditosplataforma-table tbody tr:hover { background-color: rgba(3, 124, 224, 0.05); }
-.creditosplataforma-table tbody tr:last-child td { border-bottom: none; }
+.creditosplataforma-table tbody tr:hover {
+  background-color: rgba(3, 124, 224, 0.05);
+}
 
-.creditosplataforma-cargo { color: #dc2626; font-weight: 600; }
-.creditosplataforma-abono { color: #16a34a; font-weight: 600; }
+.creditosplataforma-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.creditosplataforma-cargo {
+  color: #dc2626;
+  font-weight: 600;
+}
+
+.creditosplataforma-abono {
+  color: #16a34a;
+  font-weight: 600;
+}
 
 /* Loading */
 .creditosplataforma-loading {
@@ -405,21 +411,6 @@
   z-index: 1000;
   font-size: 16px;
   color: #037ce0;
-}
-
-.spinner {
-  border: 4px solid rgba(0, 0, 0, 0.1);
-  border-left-color: #9c16f7;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  animation: spin 1s linear infinite;
-  margin-bottom: 16px;
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
 }
 
 .creditosplataforma-date-picker-wrapper {
@@ -465,19 +456,6 @@
   align-items: center;
 }
 
-.react-datepicker__close-icon {
-  right: 35px !important;
-  pointer-events: all;
-}
-
-.react-datepicker__close-icon::after {
-  background-color: #dc3545 !important;
-  font-size: 14px !important;
-  line-height: 16px !important;
-  width: 18px !important;
-  height: 18px !important;
-}
-
 .creditosplataforma-btn-limpiar {
   background-color: #6c757d;
   color: white;
@@ -488,164 +466,242 @@
   background-color: #5a6268;
 }
 
-.react-datepicker {
-  font-family: inherit;
-  border: 1px solid var(--creditosplataforma-border-color);
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-  z-index: 9999;
-}
-
-.react-datepicker__header {
-  background-color: var(--creditosplataforma-primary-color);
-  border-bottom: 1px solid var(--creditosplataforma-border-color);
-}
-
-.react-datepicker__current-month,
-.react-datepicker__day-name {
-  color: white;
-}
-
-.react-datepicker__day--selected,
-.react-datepicker__day--in-selecting-range,
-.creditosplataforma__day--in-range {
-  background-color: var(--creditosplataforma-secondary-color);
-  color: white;
-}
-
-.react-datepicker__day--keyboard-selected {
-  background-color: var(--creditosplataforma-accent-color);
-}
-
-.react-datepicker-popper {
-  z-index: 9999 !important;
-}
-
 @media (max-width: 768px) {
   .creditosplataforma-date-picker-wrapper {
     width: 100%;
     min-width: auto;
   }
-  
+
   .creditosplataforma-date-picker {
     min-width: auto;
   }
-  
+
   .creditosplataforma-filtros-container {
     width: 100%;
   }
-  
+
   .creditosplataforma-btn-limpiar {
     width: 100%;
   }
 }
 
 @media (max-width: 1200px) {
-  .creditosplataforma-container { gap: var(--creditosplataforma-spacing-md); }
-  .creditosplataforma-sidebar { flex: 0 0 260px; min-width: 240px; }
-  
+  .creditosplataforma-container {
+    gap: var(--creditosplataforma-spacing-md);
+  }
+
+  .creditosplataforma-sidebar {
+    flex: 0 0 260px;
+    min-width: 240px;
+  }
+
   .creditosplataforma-saldos-grid {
-    grid-template-columns: repeat(2, 1fr); /* 2 columnas en pantallas medianas */
+    grid-template-columns: repeat(2, 1fr);
+    /* 2 columnas en pantallas medianas */
   }
 }
 
 @media (max-width: 992px) {
-  .creditosplataforma-main-content { padding: var(--creditosplataforma-spacing-md); }
-  .creditosplataforma-container { flex-direction: column; gap: var(--creditosplataforma-spacing-lg); }
-  .creditosplataforma-sidebar { flex: none; width: 100%; max-height: none; height: auto; }
-  
+  .creditosplataforma-main-content {
+    padding: var(--creditosplataforma-spacing-md);
+  }
+
+  .creditosplataforma-container {
+    flex-direction: column;
+    gap: var(--creditosplataforma-spacing-lg);
+  }
+
+  .creditosplataforma-sidebar {
+    flex: none;
+    width: 100%;
+    max-height: none;
+    height: auto;
+  }
+
   /* Menú Horizontal en Tablet */
-  .creditosplataforma-sidebar-menu { display: flex; flex-direction: row; overflow-x: auto; gap: var(--creditosplataforma-spacing-sm); padding: var(--creditosplataforma-spacing-sm) 0; }
-  .creditosplataforma-menu-item { white-space: nowrap; flex: 0 0 auto; min-width: fit-content; }
-  
-  .creditosplataforma-content-panel { min-height: auto; width: 100%; }
-  .creditosplataforma-saldos-grid { grid-template-columns: 1fr; } /* 1 columna en tablet vertical */
-  
-  .creditosplataforma-header { flex-direction: column; align-items: stretch; gap: 15px; }
-  .creditosplataforma-header-actions { justify-content: flex-start; }
-  
-  .creditosplataforma-table { min-width: 700px; }
+  .creditosplataforma-sidebar-menu {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    gap: var(--creditosplataforma-spacing-sm);
+    padding: var(--creditosplataforma-spacing-sm) 0;
+  }
+
+  .creditosplataforma-menu-item {
+    white-space: nowrap;
+    flex: 0 0 auto;
+    min-width: fit-content;
+  }
+
+  .creditosplataforma-content-panel {
+    min-height: auto;
+    width: 100%;
+  }
+
+  .creditosplataforma-saldos-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* 1 columna en tablet vertical */
+
+  .creditosplataforma-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 15px;
+  }
+
+  .creditosplataforma-header-actions {
+    justify-content: flex-start;
+  }
+
+  .creditosplataforma-table {
+    min-width: 700px;
+  }
 }
 
 @media (max-width: 768px) {
+
   /* Ajustes Generales Móvil */
-  .creditosplataforma-main-content { padding: var(--creditosplataforma-spacing-sm); }
-  .creditosplataforma-sidebar { padding: var(--creditosplataforma-spacing-sm); }
-  .creditosplataforma-sidebar-header { padding-bottom: var(--creditosplataforma-spacing-sm); }
-  .creditosplataforma-sidebar-title { font-size: var(--creditosplataforma-font-size-lg); }
-  .creditosplataforma-menu-item { padding: var(--creditosplataforma-spacing-sm); font-size: var(--creditosplataforma-font-size-xs); }
-  .creditosplataforma-content-panel { padding: var(--creditosplataforma-spacing-sm); }
-  .creditosplataforma-page-title { font-size: var(--creditosplataforma-font-size-lg); }
-  
+  .creditosplataforma-main-content {
+    padding: var(--creditosplataforma-spacing-sm);
+  }
+
+  .creditosplataforma-sidebar {
+    padding: var(--creditosplataforma-spacing-sm);
+  }
+
+  .creditosplataforma-sidebar-header {
+    padding-bottom: var(--creditosplataforma-spacing-sm);
+  }
+
+  .creditosplataforma-sidebar-title {
+    font-size: var(--creditosplataforma-font-size-lg);
+  }
+
+  .creditosplataforma-menu-item {
+    padding: var(--creditosplataforma-spacing-sm);
+    font-size: var(--creditosplataforma-font-size-xs);
+  }
+
+  .creditosplataforma-content-panel {
+    padding: var(--creditosplataforma-spacing-sm);
+  }
+
+  .creditosplataforma-page-title {
+    font-size: var(--creditosplataforma-font-size-lg);
+  }
+
   /* Filtros de Fecha Verticales */
-   .creditosplataforma-header-actions {
+  .creditosplataforma-header-actions {
     flex-direction: column;
     align-items: stretch;
     width: 100%;
   }
-  
+
   .creditosplataforma-filtros-container {
     width: 100%;
     display: flex;
     flex-direction: column;
     gap: 10px;
   }
-  
+
   .creditosplataforma-date-input,
   .creditosplataforma-btn-pdf,
   .creditosplataforma-btn-limpiar {
     width: 100%;
     box-sizing: border-box;
   }
-  
+
   .creditosplataforma-date-input,
   .creditosplataforma-btn-pdf {
     width: 100%;
     box-sizing: border-box;
   }
-  
+
   /* Tabla Header & Filtros */
   .creditosplataforma-table-header {
     flex-direction: column;
     align-items: stretch;
     gap: 15px;
   }
-  
+
   .creditosplataforma-table-filters {
     flex-direction: column;
     align-items: stretch;
     width: 100%;
     gap: 10px;
   }
-  
+
   .creditosplataforma-filter-select,
   .creditosplataforma-btn-orden {
     width: 100%;
     box-sizing: border-box;
   }
-  
-  .creditosplataforma-table-card { padding: var(--creditosplataforma-spacing-sm); }
-  .creditosplataforma-table { min-width: 600px; font-size: var(--creditosplataforma-font-size-xs); }
-  .creditosplataforma-table th, .creditosplataforma-table td { padding: var(--creditosplataforma-spacing-xs); }
-  
+
+  .creditosplataforma-table-card {
+    padding: var(--creditosplataforma-spacing-sm);
+  }
+
+  .creditosplataforma-table {
+    min-width: 600px;
+    font-size: var(--creditosplataforma-font-size-xs);
+  }
+
+  .creditosplataforma-table th,
+  .creditosplataforma-table td {
+    padding: var(--creditosplataforma-spacing-xs);
+  }
+
   /* Cards de Saldo */
-  .creditosplataforma-saldo-card { min-height: auto; padding: var(--creditosplataforma-spacing-md); }
-  .creditosplataforma-saldo-number { font-size: 1.8rem; }
-  .creditosplataforma-subtipos { flex-direction: column; align-items: center; gap: 10px; }
-  
-  .creditosplataforma-chart-container { height: 250px; }
+  .creditosplataforma-saldo-card {
+    min-height: auto;
+    padding: var(--creditosplataforma-spacing-md);
+  }
+
+  .creditosplataforma-saldo-number {
+    font-size: 1.8rem;
+  }
+
+  .creditosplataforma-subtipos {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .creditosplataforma-chart-container {
+    height: 250px;
+  }
 }
 
 @media (max-width: 576px) {
-  .creditosplataforma-main-content { padding: var(--creditosplataforma-spacing-xs); }
-  
+  .creditosplataforma-main-content {
+    padding: var(--creditosplataforma-spacing-xs);
+  }
+
   /* Menú Vertical en Móvil Pequeño */
-  .creditosplataforma-sidebar-menu { flex-direction: column; overflow-x: visible; }
-  .creditosplataforma-menu-item { width: 100%; text-align: left; }
-  
-  .creditosplataforma-table { min-width: 500px; font-size: 0.7rem; }
-  .creditosplataforma-table th, .creditosplataforma-table td { padding: 4px 6px; }
-  
-  .creditosplataforma-chart-container { height: 200px; }
+  .creditosplataforma-sidebar-menu {
+    flex-direction: column;
+    overflow-x: visible;
+  }
+
+  .creditosplataforma-menu-item {
+    width: 100%;
+    text-align: left;
+  }
+
+  .creditosplataforma-table {
+    min-width: 500px;
+    font-size: 0.7rem;
+  }
+
+  .creditosplataforma-table th,
+  .creditosplataforma-table td {
+    padding: 4px 6px;
+  }
+
+  .creditosplataforma-chart-container {
+    height: 200px;
+  }
 }
 
 /* Ajustes para generación de PDF */
@@ -684,23 +740,24 @@
 
 /* Ajustes para impresión */
 @media print {
+
   .creditosplataforma-sidebar,
   .creditosplataforma-table-filters,
   .creditosplataforma-header-actions {
     display: none;
   }
-  
+
   .creditosplataforma-content-panel {
     width: 100%;
     box-shadow: none;
     border: 1px solid var(--creditosplataforma-border-color);
   }
-  
+
   .creditosplataforma-table {
     min-width: auto;
     font-size: 0.8rem;
   }
-  
+
   .creditosplataforma-table th,
   .creditosplataforma-table td {
     padding: var(--creditosplataforma-spacing-xs);

@@ -1,47 +1,3 @@
-/* Variables específicas para Configuracion_Copias */
-:root {
-  --config-copias-color-dark-blue-1: #00133b;
-  --config-copias-color-dark-blue-2: #001959;
-  --config-copias-color-dark-blue-3: #0f1575;
-  --config-copias-color-blue-1: #00347f;
-  --config-copias-color-blue-2: #0057c9;
-  --config-copias-color-blue-3: #037ce0;
-  --config-copias-color-light-blue: #38b6ff;
-  --config-copias-color-orange: #f27100;
-  --config-copias-color-light-purple: #af86ff;
-  --config-copias-color-dark-purple: #3000b3;
-  --config-copias-color-blue-4: #2a5cf8;
-  --config-copias-color-purple: #9c16f7;
-  --config-copias-primary-color: var(--config-copias-color-dark-blue-1);
-  --config-copias-secondary-color: var(--config-copias-color-blue-3);
-  --config-copias-accent-color: var(--config-copias-color-orange);
-  --config-copias-success-color: #4caf50;
-  --config-copias-danger-color: #f44336;
-  --config-copias-warning-color: #ff9800;
-  --config-copias-background-color: #f0f4ff;
-  --config-copias-panel-background: #ffffff;
-  --config-copias-text-color: #333333;
-  --config-copias-text-color-2: #ffffff;
-  --config-copias-text-light: #666666;
-  --config-copias-border-color: #e0e0e0;
-  --config-copias-spacing-xs: 0.25rem;
-  --config-copias-spacing-sm: 0.5rem;
-  --config-copias-spacing-md: 0.75rem;
-  --config-copias-spacing-lg: 1rem;
-  --config-copias-spacing-xl: 1.5rem;
-  --config-copias-border-radius-sm: 4px;
-  --config-copias-border-radius-md: 8px;
-  --config-copias-border-radius-lg: 12px;
-  --config-copias-box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  --config-copias-font-family: "Arial", sans-serif;
-  --config-copias-font-size-xs: 0.65rem;
-  --config-copias-font-size-sm: 0.8rem;
-  --config-copias-font-size-md: 0.9rem;
-  --config-copias-font-size-lg: 1.1rem;
-  --config-copias-font-size-xl: 1.3rem;
-  --config-copias-font-size-xxl: 1.8rem;
-}
-
 .config-copias-config-header {
   background-color: var(--config-copias-panel-background);
   padding: var(--config-copias-spacing-lg) var(--config-copias-spacing-xl);
@@ -130,8 +86,7 @@
 .config-copias-info-icon img {
   width: 20px;
   height: 20px;
-  filter: brightness(0) saturate(100%) invert(27%) sepia(51%) saturate(2878%) hue-rotate(200deg) brightness(104%)
-    contrast(97%);
+  filter: brightness(0) saturate(100%) invert(27%) sepia(51%) saturate(2878%) hue-rotate(200deg) brightness(104%) contrast(97%);
 }
 
 .config-copias-info-content {
@@ -245,8 +200,7 @@
 .config-copias-status-icon img {
   width: 20px;
   height: 20px;
-  filter: brightness(0) saturate(100%) invert(27%) sepia(98%) saturate(7462%) hue-rotate(120deg) brightness(103%)
-    contrast(97%);
+  filter: brightness(0) saturate(100%) invert(27%) sepia(98%) saturate(7462%) hue-rotate(120deg) brightness(103%) contrast(97%);
 }
 
 .config-copias-status-content {
@@ -565,7 +519,7 @@
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.config-copias-checkbox:focus + .config-copias-checkbox-label {
+.config-copias-checkbox:focus+.config-copias-checkbox-label {
   outline: 2px solid #3b82f6;
   outline-offset: 2px;
   border-radius: 4px;
@@ -656,7 +610,7 @@
     gap: 12px;
     padding: 16px;
   }
-  
+
   .config-copias-checkbox-item {
     padding: 10px 14px;
   }
@@ -705,23 +659,4 @@
   z-index: 1000;
   font-size: 16px;
   color: #037ce0;
-}
-
-.spinner {
-  border: 4px solid rgba(0, 0, 0, 0.1);
-  border-left-color: #9c16f7;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  animation: spin 1s linear infinite;
-  margin-bottom: 16px;
-}
-
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
 }

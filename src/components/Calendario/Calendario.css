@@ -2,7 +2,7 @@
 .ts-calendar-container {
   padding: 20px;
   background-color: #f8fafc;
-  height: calc(100vh - 70px); 
+  height: calc(100vh - 70px);
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -151,7 +151,7 @@
   border-radius: 12px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  flex: 1; 
+  flex: 1;
   height: 100%;
   position: relative;
 }
@@ -520,7 +520,7 @@
 }
 
 .fc-timegrid-event-harness-inset .fc-timegrid-event {
-    box-shadow: none !important;
+  box-shadow: none !important;
 }
 
 .fc-daygrid-event .fc-event-time {
@@ -543,12 +543,12 @@
 }
 
 .ts-fecha-seleccionada {
-  background-color: rgba(59, 130, 246, 0.15) !important; 
+  background-color: rgba(59, 130, 246, 0.15) !important;
   transition: background-color 0.3s ease;
 }
 
 .ts-fecha-seleccionada .fc-daygrid-day-number {
-  color: #2563eb !important; 
+  color: #2563eb !important;
   font-weight: bold;
 }
 
@@ -745,27 +745,6 @@
   color: #037ce0;
 }
 
-.spinner {
-  border: 4px solid rgba(0, 0, 0, 0.1);
-  border-left-color: #9c16f7;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  animation: spin 1s linear infinite;
-  margin-bottom: 16px;
-}
-
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-/* Estilos mejorados para el popover de eventos múltiples */
 .fc-popover {
   max-height: 400px !important;
   overflow-y: auto !important;

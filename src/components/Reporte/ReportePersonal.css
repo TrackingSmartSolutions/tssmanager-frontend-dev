@@ -1,35 +1,3 @@
-/* Variables CSS para Reporte Personal */
-:root {
-  --reporte-primary-color: #00133b;
-  --reporte-secondary-color: #037ce0;
-  --reporte-accent-color: #f27100;
-  --reporte-background-color: #f0f4ff;
-  --reporte-panel-background: #ffffff;
-  --reporte-text-color: #333333;
-  --reporte-text-light: #666666;
-  --reporte-border-color: #e0e0e0;
-  --reporte-success-color: #4caf50;
-  --reporte-danger-color: #f44336;
-  --reporte-warning-color: #ff9800;
-  --reporte-info-color: #2196f3;
-  --reporte-spacing-xs: 0.25rem;
-  --reporte-spacing-sm: 0.5rem;
-  --reporte-spacing-md: 0.75rem;
-  --reporte-spacing-lg: 1rem;
-  --reporte-spacing-xl: 1.5rem;
-  --reporte-spacing-xxl: 2rem;
-  --reporte-border-radius-sm: 4px;
-  --reporte-border-radius-md: 8px;
-  --reporte-border-radius-lg: 12px;
-  --reporte-box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  --reporte-font-size-xs: 0.65rem;
-  --reporte-font-size-sm: 0.8rem;
-  --reporte-font-size-md: 0.9rem;
-  --reporte-font-size-lg: 1.1rem;
-  --reporte-font-size-xl: 1.3rem;
-  --reporte-font-size-xxl: 1.5rem;
-}
-
 /* Layout Principal */
 .reporte-main-content {
   padding: var(--reporte-spacing-lg) var(--reporte-spacing-xl);
@@ -188,16 +156,6 @@
   border-top: 2px solid var(--reporte-secondary-color);
   border-radius: 50%;
   animation: reporte-spin 1s linear infinite;
-}
-
-@keyframes reporte-spin {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
 }
 
 /* Sección de Gráficas */
@@ -606,51 +564,6 @@
   align-items: center;
 }
 
-.react-datepicker__close-icon {
-  right: 35px !important;
-  pointer-events: all;
-}
-
-.react-datepicker__close-icon::after {
-  background-color: #dc3545 !important;
-  font-size: 14px !important;
-  line-height: 16px !important;
-  width: 18px !important;
-  height: 18px !important;
-}
-
-.react-datepicker-popper {
-  z-index: 9999 !important;
-}
-
-.react-datepicker {
-  font-family: inherit;
-  border: 1px solid var(--reporte-border-color);
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-  z-index: 9999;
-}
-
-.react-datepicker__header {
-  background-color: var(--reporte-primary-color);
-  border-bottom: 1px solid var(--reporte-border-color);
-}
-
-.react-datepicker__current-month,
-.react-datepicker__day-name {
-  color: white;
-}
-
-.react-datepicker__day--selected,
-.react-datepicker__day--in-selecting-range,
-.react-datepicker__day--in-range {
-  background-color: var(--reporte-secondary-color);
-  color: white;
-}
-
-.react-datepicker__day--keyboard-selected {
-  background-color: var(--reporte-accent-color);
-}
-
 @media (max-width: 768px) {
   .reporte-date-picker-wrapper {
     width: 100%;
@@ -658,244 +571,244 @@
   }
 }
 
-  .reporte-date-picker {
+.reporte-date-picker {
+  min-width: auto;
+}
+
+@media (max-width: 768px) {
+  .reporte-header-controls {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+  }
+
+  .reporte-user-filter {
     min-width: auto;
   }
+}
 
-  @media (max-width: 768px) {
-    .reporte-header-controls {
-      flex-direction: column;
-      align-items: stretch;
-      gap: 16px;
-    }
+@media (max-width: 1200px) {
+  .reporte-charts-section {
+    grid-template-columns: 1fr;
+    gap: var(--reporte-spacing-lg);
+  }
+}
 
-    .reporte-user-filter {
-      min-width: auto;
-    }
+@media (max-width: 768px) {
+  .reporte-main-content {
+    padding: var(--reporte-spacing-md);
   }
 
-  @media (max-width: 1200px) {
-    .reporte-charts-section {
-      grid-template-columns: 1fr;
-      gap: var(--reporte-spacing-lg);
-    }
+  .reporte-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--reporte-spacing-md);
   }
 
-  @media (max-width: 768px) {
-    .reporte-main-content {
-      padding: var(--reporte-spacing-md);
-    }
-
-    .reporte-header {
-      flex-direction: column;
-      align-items: stretch;
-      gap: var(--reporte-spacing-md);
-    }
-
-    .reporte-header-controls {
-      flex-direction: column;
-      align-items: stretch;
-      gap: var(--reporte-spacing-sm);
-    }
-
-    .reporte-date-range-container {
-      justify-content: center;
-    }
-
-    .reporte-page-title {
-      font-size: var(--reporte-font-size-xl);
-    }
-
-    .reporte-chart-card {
-      padding: var(--reporte-spacing-lg);
-    }
-
-    .reporte-vertical-chart {
-      height: 250px;
-    }
-
-    .reporte-company-label {
-      min-width: 80px;
-      font-size: var(--reporte-font-size-xs);
-    }
-
-    .reporte-notes-header {
-      flex-direction: column;
-      align-items: stretch;
-    }
-
-    .reporte-table {
-      min-width: 600px;
-      font-size: var(--reporte-font-size-xs);
-    }
-
-    .reporte-table th,
-    .reporte-table td {
-      padding: var(--reporte-spacing-sm);
-    }
-
-    .reporte-chart-card:nth-child(2) {
-      min-height: 350px;
-    }
-
-    .reporte-chart-companies-container {
-      height: 300px;
-    }
-
-    .reporte-chart-companies-scroll {
-      height: 300px;
-    }
-
-    .reporte-companies-chart-canvas {
-      min-height: 300px;
-    }
+  .reporte-header-controls {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--reporte-spacing-sm);
   }
 
-  @media (max-width: 480px) {
-    .reporte-main-content {
-      padding: var(--reporte-spacing-sm);
-    }
-
-    .reporte-header,
-    .reporte-chart-card,
-    .reporte-notes-section {
-      padding: var(--reporte-spacing-md);
-    }
-
-    .reporte-date-inputs {
-      flex-direction: column;
-      gap: var(--reporte-spacing-xs);
-    }
-
-    .reporte-vertical-chart {
-      height: 200px;
-    }
-
-    .reporte-bars-container {
-      padding-left: 20px;
-    }
-
-    .reporte-company-label {
-      min-width: 60px;
-      font-size: 0.7rem;
-    }
-
-    .reporte-table {
-      min-width: 500px;
-      font-size: 0.7rem;
-    }
-
-    .reporte-table th,
-    .reporte-table td {
-      padding: var(--reporte-spacing-xs);
-    }
-
-    .reporte-chart-card:nth-child(2) {
-      min-height: 300px;
-    }
-
-    .reporte-chart-companies-container,
-    .reporte-chart-companies-scroll {
-      height: 250px;
-    }
-
-    .reporte-companies-chart-canvas {
-      min-height: 250px;
-    }
-
-    .reporte-chart-companies-scroll {
-      padding-right: 4px;
-    }
+  .reporte-date-range-container {
+    justify-content: center;
   }
 
-  /* Animaciones */
-  @keyframes reporte-fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
+  .reporte-page-title {
+    font-size: var(--reporte-font-size-xl);
+  }
 
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  .reporte-chart-card {
+    padding: var(--reporte-spacing-lg);
+  }
+
+  .reporte-vertical-chart {
+    height: 250px;
+  }
+
+  .reporte-company-label {
+    min-width: 80px;
+    font-size: var(--reporte-font-size-xs);
+  }
+
+  .reporte-notes-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .reporte-table {
+    min-width: 600px;
+    font-size: var(--reporte-font-size-xs);
+  }
+
+  .reporte-table th,
+  .reporte-table td {
+    padding: var(--reporte-spacing-sm);
+  }
+
+  .reporte-chart-card:nth-child(2) {
+    min-height: 350px;
+  }
+
+  .reporte-chart-companies-container {
+    height: 300px;
+  }
+
+  .reporte-chart-companies-scroll {
+    height: 300px;
+  }
+
+  .reporte-companies-chart-canvas {
+    min-height: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .reporte-main-content {
+    padding: var(--reporte-spacing-sm);
+  }
+
+  .reporte-header,
+  .reporte-chart-card,
+  .reporte-notes-section {
+    padding: var(--reporte-spacing-md);
+  }
+
+  .reporte-date-inputs {
+    flex-direction: column;
+    gap: var(--reporte-spacing-xs);
+  }
+
+  .reporte-vertical-chart {
+    height: 200px;
+  }
+
+  .reporte-bars-container {
+    padding-left: 20px;
+  }
+
+  .reporte-company-label {
+    min-width: 60px;
+    font-size: 0.7rem;
+  }
+
+  .reporte-table {
+    min-width: 500px;
+    font-size: 0.7rem;
+  }
+
+  .reporte-table th,
+  .reporte-table td {
+    padding: var(--reporte-spacing-xs);
+  }
+
+  .reporte-chart-card:nth-child(2) {
+    min-height: 300px;
+  }
+
+  .reporte-chart-companies-container,
+  .reporte-chart-companies-scroll {
+    height: 250px;
+  }
+
+  .reporte-companies-chart-canvas {
+    min-height: 250px;
+  }
+
+  .reporte-chart-companies-scroll {
+    padding-right: 4px;
+  }
+}
+
+/* Animaciones */
+@keyframes reporte-fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reporte-chart-card,
+.reporte-notes-section {
+  animation: reporte-fadeIn 0.5s ease-out;
+}
+
+.reporte-vertical-bar {
+  animation: reporte-growUp 0.8s ease-out;
+}
+
+.reporte-horizontal-bar {
+  animation: reporte-growRight 0.8s ease-out;
+}
+
+@keyframes reporte-growUp {
+  from {
+    height: 0;
+  }
+
+  to {
+    height: var(--final-height, 100%);
+  }
+}
+
+@keyframes reporte-growRight {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: var(--final-width, 100%);
+  }
+}
+
+/* Ajustes para impresión */
+@media print {
+
+  .reporte-header-controls,
+  .reporte-notes-header .reporte-btn {
+    display: none;
+  }
+
+  .reporte-main-content {
+    padding: 0;
+    background-color: white;
   }
 
   .reporte-chart-card,
   .reporte-notes-section {
-    animation: reporte-fadeIn 0.5s ease-out;
+    box-shadow: none;
+    border: 1px solid var(--reporte-border-color);
+    page-break-inside: avoid;
   }
 
-  .reporte-vertical-bar {
-    animation: reporte-growUp 0.8s ease-out;
+  .reporte-charts-section {
+    page-break-inside: avoid;
   }
 
-  .reporte-horizontal-bar {
-    animation: reporte-growRight 0.8s ease-out;
+  .reporte-table {
+    min-width: auto;
+    font-size: 0.8rem;
   }
 
-  @keyframes reporte-growUp {
-    from {
-      height: 0;
-    }
-
-    to {
-      height: var(--final-height, 100%);
-    }
+  .reporte-table th,
+  .reporte-table td {
+    padding: var(--reporte-spacing-xs);
   }
 
-  @keyframes reporte-growRight {
-    from {
-      width: 0;
-    }
-
-    to {
-      width: var(--final-width, 100%);
-    }
+  .reporte-chart-companies-container,
+  .reporte-chart-companies-scroll {
+    height: auto !important;
+    overflow: visible !important;
   }
 
-  /* Ajustes para impresión */
-  @media print {
-
-    .reporte-header-controls,
-    .reporte-notes-header .reporte-btn {
-      display: none;
-    }
-
-    .reporte-main-content {
-      padding: 0;
-      background-color: white;
-    }
-
-    .reporte-chart-card,
-    .reporte-notes-section {
-      box-shadow: none;
-      border: 1px solid var(--reporte-border-color);
-      page-break-inside: avoid;
-    }
-
-    .reporte-charts-section {
-      page-break-inside: avoid;
-    }
-
-    .reporte-table {
-      min-width: auto;
-      font-size: 0.8rem;
-    }
-
-    .reporte-table th,
-    .reporte-table td {
-      padding: var(--reporte-spacing-xs);
-    }
-
-    .reporte-chart-companies-container,
-    .reporte-chart-companies-scroll {
-      height: auto !important;
-      overflow: visible !important;
-    }
-
-    .reporte-companies-chart-canvas {
-      min-height: auto !important;
-      height: auto !important;
-    }
+  .reporte-companies-chart-canvas {
+    min-height: auto !important;
+    height: auto !important;
   }
+}

@@ -746,8 +746,7 @@
 .ts-header-modal-icon {
   width: 20px;
   height: 20px;
-  filter: brightness(0) saturate(100%) invert(79%) sepia(79%) saturate(2476%) hue-rotate(357deg) brightness(108%)
-    contrast(101%);
+  filter: brightness(0) saturate(100%) invert(79%) sepia(79%) saturate(2476%) hue-rotate(357deg) brightness(108%) contrast(101%);
 }
 
 /* Título del modal */
@@ -1085,28 +1084,5 @@
 
   .ts-header-notification-footer {
     padding: 7px 10px;
-  }
-}
-
-.page-with-header {
-  padding-top: 70px;
-}
-
-/* Ajustes responsivos para la clase */
-@media (max-width: 992px) {
-  .page-with-header {
-    padding-top: 65px;
-  }
-}
-
-@media (max-width: 768px) {
-  .page-with-header {
-    padding-top: 60px;
-  }
-}
-
-@media (max-width: 576px) {
-  .page-with-header {
-    padding-top: 55px;
   }
 }

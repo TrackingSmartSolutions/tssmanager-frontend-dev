@@ -1,33 +1,3 @@
-/* Estilos específicos para Admin Balance */
-
-:root {
-  --adminbalance-primary-color: #00133b;
-  --adminbalance-secondary-color: #037ce0;
-  --adminbalance-accent-color: #f27100;
-  --adminbalance-background-color: #f0f4ff;
-  --adminbalance-panel-background: #ffffff;
-  --adminbalance-text-color: #333333;
-  --adminbalance-text-light: #666666;
-  --adminbalance-border-color: #e0e0e0;
-  --adminbalance-success-color: #4caf50;
-  --adminbalance-danger-color: #f44336;
-  --adminbalance-info-color: #2196f3;
-  --adminbalance-spacing-xs: 0.25rem;
-  --adminbalance-spacing-sm: 0.5rem;
-  --adminbalance-spacing-md: 0.75rem;
-  --adminbalance-spacing-lg: 1rem;
-  --adminbalance-spacing-xl: 1.5rem;
-  --adminbalance-border-radius-sm: 4px;
-  --adminbalance-border-radius-md: 8px;
-  --adminbalance-border-radius-lg: 12px;
-  --adminbalance-box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  --adminbalance-font-size-xs: 0.65rem;
-  --adminbalance-font-size-sm: 0.8rem;
-  --adminbalance-font-size-md: 0.9rem;
-  --adminbalance-font-size-lg: 1.1rem;
-  --adminbalance-font-size-xl: 1.3rem;
-}
-
 /* Layout Principal */
 .adminbalance-main-content {
   padding: var(--adminbalance-spacing-lg) var(--adminbalance-spacing-xl);
@@ -715,24 +685,4 @@
   z-index: 1000;
   font-size: 16px;
   color: #037ce0;
-}
-
-.spinner {
-  border: 4px solid rgba(0, 0, 0, 0.1);
-  border-left-color: #9c16f7;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  animation: spin 1s linear infinite;
-  margin-bottom: 16px;
-}
-
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
 }

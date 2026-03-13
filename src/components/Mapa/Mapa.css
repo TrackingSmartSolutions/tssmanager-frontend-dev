@@ -522,21 +522,3 @@
         max-height: 45vh;
     }
 }
-
-@media (max-width: 992px) {
-    .mapa-screen {
-        padding-top: 65px;
-    }
-}
-
-@media (max-width: 768px) {
-    .mapa-screen {
-        padding-top: 60px;
-    }
-}
-
-@media (max-width: 576px) {
-    .mapa-screen {
-        padding-top: 55px;
-    }
-}

@@ -1,25 +1,3 @@
-/* Variables de colores basadas en la paleta proporcionada */
-/* Define colores personalizados para usar en todo el proyecto */
-:root {
-  --dark-blue-1: #00133b;
-  --dark-blue-2: #001959;
-  --dark-blue-3: #0f1575;
-  --medium-blue-1: #00347f;
-  --medium-blue-2: #0057c9;
-  --light-blue-1: #037ce0;
-  --light-blue-2: #38b6ff;
-  --orange: #f27100;
-  --lavender: #af86ff;
-  --deep-purple: #3000b3;
-  --sky-blue: #2a5cf8;
-  --bright-purple: #9c16f7;
-  --card-bg: rgba(175, 134, 255, 0.15);
-  --card-border: rgba(175, 134, 255, 0.3);
-  --white: #ffffff;
-  --input-bg: rgba(255, 255, 255, 0.9);
-}
-
-/* Estilos globales */
 /* Resetea márgenes, padding y aplica box-sizing y fuente por defecto */
 * {
   margin: 0;
@@ -330,7 +308,7 @@
 }
 
 /* Ícono cuando la contraseña está oculta */
-.toggle-password input:checked + label {
+.toggle-password input:checked+label {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2300347f'%3E%3Cpath d='M12 7c2.76 0 5 2.24 5 5 0 .65-.13 1.26-.36 1.83l2.92 2.92c1.51-1.26 2.7-2.89 3.43-4.75-1.73-4.39-6-7.5-11-7.5-1.4 0-2.74.25-3.98.7l2.16 2.16C10.74 7.13 11.35 7 12 7zM2 4.27l2.28 2.28.46.46C3.08 8.3 1.78 10.02 1 12c1.73 4.39 6 7.5 11 7.5 1.55 0 3.03-.3 4.38-.84l.42.42L19.73 22 21 20.73 3.27 3 2 4.27zM7.53 9.8l1.55 1.55c-.05.21-.08.43-.08.65 0 1.66 1.34 3 3 3 .22 0 .44-.03.65-.08l1.55 1.55c-.67.33-1.41.53-2.2.53-2.76 0-5-2.24-5-5 0-.79.2-1.53.53-2.2zm4.31-.78l3.15 3.15.02-.16c0-1.66-1.34-3-3-3l-.17.01z'/%3E%3C/svg%3E");
 }
 
@@ -398,35 +376,17 @@
   z-index: 100;
 }
 
-/* Animación del spinner de carga */
-.spinner {
-  width: 40px;
-  height: 40px;
-  border: 4px solid var(--light-blue-2);
-  border-top: 4px solid var(--orange);
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-}
-
-/* Animaciones */
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
 @keyframes pulse {
   0% {
     transform: scale(1);
     opacity: 0.7;
   }
+
   50% {
     transform: scale(1.2);
     opacity: 1;
   }
+
   100% {
     transform: scale(1);
     opacity: 0.7;
@@ -434,20 +394,24 @@
 }
 
 @keyframes fadeInOut {
+
   0%,
   100% {
     opacity: 0.2;
   }
+
   50% {
     opacity: 0.8;
   }
 }
 
 @keyframes wave {
+
   0%,
   100% {
     transform: scaleY(0.5);
   }
+
   50% {
     transform: scaleY(1);
   }
@@ -458,50 +422,50 @@
 /* Pantallas extra pequeñas (móviles en vertical) */
 @media (max-width: 320px) {
   .login-card {
-    width: 80%; 
-    padding: 15px; 
+    width: 80%;
+    padding: 15px;
     max-height: 90vh;
     overflow-y: auto;
-    transform: translate(-50%, -50%) scale(0.9); 
+    transform: translate(-50%, -50%) scale(0.9);
   }
 
   .logo img.company-logo {
-    width: 150px; 
-    height: 150px; 
+    width: 150px;
+    height: 150px;
   }
 
   .user-icon {
-    width: 45px; 
-    height: 45px; 
-    margin: 5px 0; 
+    width: 45px;
+    height: 45px;
+    margin: 5px 0;
   }
 
   .form-group-login label {
     font-size: 11px;
-    margin-bottom: 3px; 
+    margin-bottom: 3px;
   }
 
   .form-control-login {
-    height: 30px; 
-    font-size: 11px; 
-    border-radius: 15px; 
-    padding: 0 8px; 
+    height: 30px;
+    font-size: 11px;
+    border-radius: 15px;
+    padding: 0 8px;
   }
 
   .toggle-password {
-    top: 28px; 
+    top: 28px;
     right: 8px;
   }
 
   .toggle-password label {
     width: 15px;
-    height: 15px; 
+    height: 15px;
   }
 
   .login-btn {
     height: 34px;
-    font-size: 12px; 
-    border-radius: 17px; 
+    font-size: 12px;
+    border-radius: 17px;
   }
 
   .forgot-password a {
@@ -530,38 +494,38 @@
 /* Pantallas pequeñas (móviles en vertical) */
 @media (min-width: 321px) and (max-width: 480px) {
   .login-card {
-    width: 80%; 
-    padding: 16px; 
-    transform: translate(-50%, -50%) scale(0.92); 
+    width: 80%;
+    padding: 16px;
+    transform: translate(-50%, -50%) scale(0.92);
   }
 
   .logo img.company-logo {
-    width: 160px; 
-    height: 160px; 
+    width: 160px;
+    height: 160px;
   }
 
   .user-icon {
-    width: 50px; 
-    height: 50px; 
+    width: 50px;
+    height: 50px;
   }
 
   .form-group-login label {
-    font-size: 11px; 
+    font-size: 11px;
     margin-bottom: 4px;
   }
 
   .form-control-login {
-    height: 32px; 
+    height: 32px;
     font-size: 12px;
   }
 
   .toggle-password {
-    top: 30px; 
+    top: 30px;
     right: 8px;
   }
 
   .login-btn {
-    height: 36px; 
+    height: 36px;
     font-size: 13px;
   }
 
@@ -661,7 +625,7 @@
     }
 
     .forgot-password {
-      margin-top: 6px; 
+      margin-top: 6px;
     }
 
     .company-logo {
@@ -672,6 +636,7 @@
 
 /* Soporte para preferencias de reducción de movimiento */
 @media (prefers-reduced-motion: reduce) {
+
   .marker,
   .dotted-line,
   .wave {

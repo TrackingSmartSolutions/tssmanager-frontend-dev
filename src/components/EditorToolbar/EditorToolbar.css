@@ -1,55 +1,3 @@
-.editor-toolbar {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 12px;
-  background: #f8f9fa;
-  border: 1px solid #dee2e6;
-  border-bottom: none;
-  border-radius: 4px 4px 0 0;
-  flex-wrap: wrap;
-}
-
-.toolbar-group {
-  display: flex;
-  gap: 4px;
-}
-
-.toolbar-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 32px;
-  height: 28px;
-  padding: 4px 8px;
-  border: 1px solid #dee2e6;
-  background: white;
-  border-radius: 3px;
-  cursor: pointer;
-  font-size: 12px;
-  font-weight: 500;
-  color: #495057;
-  transition: all 0.15s ease;
-}
-
-.toolbar-btn:hover {
-  background: #e9ecef;
-  border-color: #adb5bd;
-  color: #212529;
-}
-
-.toolbar-btn:active {
-  background: #dee2e6;
-  transform: translateY(1px);
-}
-
-.toolbar-separator {
-  width: 1px;
-  height: 20px;
-  background: #dee2e6;
-  margin: 0 4px;
-}
-
 /* Estilos para las listas en el editor */
 .gmail-message-editor ul,
 .correo-plantillas-textarea ul {
@@ -95,71 +43,19 @@
   font-size: inherit !important;
 }
 
-.gmail-message-editor br + br,
-.correo-plantillas-textarea br + br {
+.gmail-message-editor br+br,
+.correo-plantillas-textarea br+br {
   display: none;
-}
-
-.dropdown-container {
-  position: relative;
-}
-
-.dropdown-btn {
-  display: flex;
-  align-items: center;
-  gap: 2px;
-}
-
-.dropdown-menu {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background: white;
-  border: 1px solid #dee2e6;
-  border-radius: 3px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-  z-index: 1000;
-  min-width: 40px;
-}
-
-.dropdown-item {
-  display: block;
-  width: 100%;
-  padding: 6px 12px;
-  border: none;
-  background: none;
-  text-align: left;
-  cursor: pointer;
-  font-size: 14px;
-  color: #495057;
-}
-
-.dropdown-item:hover {
-  background: #f8f9fa;
 }
 
 /* Estilos para enlaces dentro del editor */
 .gmail-message-editor a {
-    color: #1a73e8;
-    text-decoration: underline;
-    cursor: pointer;
+  color: #1a73e8;
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 .gmail-message-editor a:hover {
-    color: #174ea6;
-    text-decoration: underline;
-}
-
-/* Responsivo */
-@media (max-width: 768px) {
-  .editor-toolbar {
-    padding: 6px 8px;
-    gap: 6px;
-  }
-  
-  .toolbar-btn {
-    min-width: 28px;
-    height: 26px;
-    font-size: 11px;
-  }
+  color: #174ea6;
+  text-decoration: underline;
 }

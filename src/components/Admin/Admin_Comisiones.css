@@ -1,32 +1,3 @@
-:root {
-    --comisiones-primary-color: #00133b;
-    --comisiones-secondary-color: #037ce0;
-    --comisiones-accent-color: #f27100;
-    --comisiones-background-color: #f0f4ff;
-    --comisiones-panel-background: #ffffff;
-    --comisiones-text-color: #333333;
-    --comisiones-text-light: #666666;
-    --comisiones-border-color: #e0e0e0;
-    --comisiones-success-color: #4caf50;
-    --comisiones-danger-color: #f44336;
-    --comisiones-warning-color: #ff9800;
-    --comisiones-info-color: #2196f3;
-    --comisiones-spacing-xs: 0.25rem;
-    --comisiones-spacing-sm: 0.5rem;
-    --comisiones-spacing-md: 0.75rem;
-    --comisiones-spacing-lg: 1rem;
-    --comisiones-spacing-xl: 1.5rem;
-    --comisiones-border-radius-sm: 4px;
-    --comisiones-border-radius-md: 8px;
-    --comisiones-border-radius-lg: 12px;
-    --comisiones-box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    --comisiones-font-size-xs: 0.65rem;
-    --comisiones-font-size-sm: 0.8rem;
-    --comisiones-font-size-md: 0.9rem;
-    --comisiones-font-size-lg: 1.1rem;
-    --comisiones-font-size-xl: 1.3rem;
-}
-
 /* Layout Principal */
 .comisiones-main-content {
     padding: var(--comisiones-spacing-lg) var(--comisiones-spacing-xl);
@@ -782,51 +753,6 @@
     align-items: center;
 }
 
-.react-datepicker__close-icon {
-    right: 35px !important;
-    pointer-events: all;
-}
-
-.react-datepicker__close-icon::after {
-    background-color: #dc3545 !important;
-    font-size: 14px !important;
-    line-height: 16px !important;
-    width: 18px !important;
-    height: 18px !important;
-}
-
-.react-datepicker {
-    font-family: inherit;
-    border: 1px solid var(--comisiones-border-color);
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-    z-index: 9999;
-}
-
-.react-datepicker__header {
-    background-color: var(--comisiones-primary-color);
-    border-bottom: 1px solid var(--comisiones-border-color);
-}
-
-.react-datepicker__current-month,
-.react-datepicker__day-name {
-    color: white;
-}
-
-.react-datepicker__day--selected,
-.react-datepicker__day--in-selecting-range,
-.react-datepicker__day--in-range {
-    background-color: var(--comisiones-secondary-color);
-    color: white;
-}
-
-.react-datepicker__day--keyboard-selected {
-    background-color: var(--comisiones-accent-color);
-}
-
-.react-datepicker-popper {
-    z-index: 9999 !important;
-}
-
 .comisiones-edit-btn:hover {
     background-color: rgba(33, 150, 243, 0.1);
     border-color: #2196f3;
@@ -1179,26 +1105,6 @@
     z-index: 1000;
     font-size: 16px;
     color: #037ce0;
-}
-
-.spinner {
-    border: 4px solid rgba(0, 0, 0, 0.1);
-    border-left-color: #9c16f7;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    animation: spin 1s linear infinite;
-    margin-bottom: 16px;
-}
-
-@keyframes spin {
-    0% {
-        transform: rotate(0deg);
-    }
-
-    100% {
-        transform: rotate(360deg);
-    }
 }
 
 .required {

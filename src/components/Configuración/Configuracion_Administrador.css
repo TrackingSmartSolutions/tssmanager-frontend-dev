@@ -1,44 +1,3 @@
-/* Variables específicas para Configuracion_Administrador */
-:root {
-  --config-admin-color-dark-blue-1: #00133b;
-  --config-admin-color-dark-blue-2: #001959;
-  --config-admin-color-dark-blue-3: #0f1575;
-  --config-admin-color-blue-1: #00347f;
-  --config-admin-color-blue-2: #0057c9;
-  --config-admin-color-blue-3: #037ce0;
-  --config-admin-color-light-blue: #38b6ff;
-  --config-admin-color-orange: #f27100;
-  --config-admin-color-light-purple: #af86ff;
-  --config-admin-color-dark-purple: #3000b3;
-  --config-admin-color-blue-4: #2a5cf8;
-  --config-admin-color-purple: #9c16f7;
-  --config-admin-primary-color: var(--config-admin-color-dark-blue-1);
-  --config-admin-secondary-color: var(--config-admin-color-blue-3);
-  --config-admin-accent-color: var(--config-admin-color-orange);
-  --config-admin-background-color: #f0f4ff;
-  --config-admin-panel-background: #ffffff;
-  --config-admin-text-color: #333333;
-  --config-admin-text-color-2: #ffffff;
-  --config-admin-text-light: #666666;
-  --config-admin-border-color: #e0e0e0;
-  --config-admin-spacing-xs: 0.25rem;
-  --config-admin-spacing-sm: 0.5rem;
-  --config-admin-spacing-md: 0.75rem;
-  --config-admin-spacing-lg: 1rem;
-  --config-admin-spacing-xl: 1.5rem;
-  --config-admin-border-radius-sm: 4px;
-  --config-admin-border-radius-md: 8px;
-  --config-admin-border-radius-lg: 12px;
-  --config-admin-box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  --config-admin-font-family: "Arial", sans-serif;
-  --config-admin-font-size-xs: 0.65rem;
-  --config-admin-font-size-sm: 0.8rem;
-  --config-admin-font-size-md: 0.9rem;
-  --config-admin-font-size-lg: 1.1rem;
-  --config-admin-font-size-xl: 1.3rem;
-  --config-admin-font-size-xxl: 1.8rem;
-}
-
 /* Configuration Header and Navigation */
 .config-admin-config-header {
   background-color: var(--config-admin-panel-background);
@@ -504,55 +463,6 @@
   width: 100%;
 }
 
-.react-datepicker__close-icon {
-  right: 35px !important;
-  pointer-events: all;
-}
-
-.react-datepicker__close-icon::after {
-  background-color: #dc3545 !important;
-  font-size: 14px !important;
-  line-height: 16px !important;
-  width: 18px !important;
-  height: 18px !important;
-}
-
-.react-datepicker-popper {
-  z-index: 9999 !important;
-}
-
-.react-datepicker {
-  font-family: var(--config-admin-font-family);
-  border: 1px solid var(--config-admin-border-color);
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-  z-index: 9999;
-}
-
-.react-datepicker__header {
-  background-color: var(--config-admin-primary-color);
-  border-bottom: 1px solid var(--config-admin-border-color);
-}
-
-.react-datepicker__current-month,
-.react-datepicker__day-name {
-  color: white;
-}
-
-.react-datepicker__day--selected,
-.react-datepicker__day--in-selecting-range,
-.react-datepicker__day--in-range {
-  background-color: var(--config-admin-secondary-color);
-  color: white;
-}
-
-.react-datepicker__day--keyboard-selected {
-  background-color: var(--config-admin-accent-color);
-}
-
-.react-datepicker__day:hover {
-  background-color: rgba(3, 124, 224, 0.1);
-}
-
 @media (max-width: 768px) {
   .config-admin-date-picker-wrapper {
     width: 100%;
@@ -686,24 +596,4 @@
   z-index: 1000;
   font-size: 16px;
   color: #037ce0;
-}
-
-.spinner {
-  border: 4px solid rgba(0, 0, 0, 0.1);
-  border-left-color: #9c16f7;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  animation: spin 1s linear infinite;
-  margin-bottom: 16px;
-}
-
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
 }
