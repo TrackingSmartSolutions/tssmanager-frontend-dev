@@ -37,36 +37,36 @@ const ConfiguracionEmpresa = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-  const cargarConfiguracion = async () => {
-    setIsLoading(true)
-    try {
-      const response = await fetchWithToken(`${API_BASE_URL}/configuracion/empresa`);
-      const data = await response.json();
-      setCompanyData({
-        id: data.id,
-        nombre: data.nombre || "",
-        eslogan: data.eslogan || "",
-        correoContacto: data.correoContacto || "",
-        telefonoMovil: data.telefonoMovil || "",
-        telefonoFijo: data.telefonoFijo || "",
-        direccionPrincipal: data.direccionPrincipal || "",
-        logo: null,
-        logoPreview: data.logoUrl || null,
-      });
-    } catch (error) {
-      console.error('Error al cargar configuración:', error);
-      Swal.fire({
-        icon: "error",
-        title: "Error",
-        text: "No se pudo cargar la configuración de la empresa.",
-      });
-    } finally {
-      setIsLoading(false)
-    }
-  };
-  
-  cargarConfiguracion();
-}, []);
+    const cargarConfiguracion = async () => {
+      setIsLoading(true)
+      try {
+        const response = await fetchWithToken(`${API_BASE_URL}/configuracion/empresa`);
+        const data = await response.json();
+        setCompanyData({
+          id: data.id,
+          nombre: data.nombre || "",
+          eslogan: data.eslogan || "",
+          correoContacto: data.correoContacto || "",
+          telefonoMovil: data.telefonoMovil || "",
+          telefonoFijo: data.telefonoFijo || "",
+          direccionPrincipal: data.direccionPrincipal || "",
+          logo: null,
+          logoPreview: data.logoUrl || null,
+        });
+      } catch (error) {
+        console.error('Error al cargar configuración:', error);
+        Swal.fire({
+          icon: "error",
+          title: "Error",
+          text: "No se pudo cargar la configuración de la empresa.",
+        });
+      } finally {
+        setIsLoading(false)
+      }
+    };
+
+    cargarConfiguracion();
+  }, []);
 
   const handleInputChange = (field, value) => {
     setCompanyData((prev) => ({
@@ -266,212 +266,212 @@ const ConfiguracionEmpresa = () => {
 
   return (
     <>
-     <div className="page-with-header">
-      <Header logoUrl={companyData.logoPreview} />
-      {isLoading && (
-        <div className="config-empresa-loading">
-          <div className="spinner"></div>
-          <p>Cargando configuración de la empresa...</p>
+      <div className="page-with-header">
+        <Header logoUrl={companyData.logoPreview} />
+        {isLoading && (
+          <div className="config-empresa-loading">
+            <div className="spinner"></div>
+            <p>Cargando configuración de la empresa...</p>
+          </div>
+        )}
+        <div className="config-empresa-config-header">
+          <h2 className="config-empresa-config-title">Configuración</h2>
+          <nav className="config-empresa-config-nav">
+            <div className="config-empresa-nav-item" onClick={() => navigate("/configuracion_plantillas")}>
+              Plantillas de correo
+            </div>
+            <div className="config-empresa-nav-item" onClick={() => navigate("/configuracion_admin_datos")}>
+              Administrador de datos
+            </div>
+            <div className="config-empresa-nav-item config-empresa-nav-item-active">Configuración de la empresa</div>
+            <div className="config-empresa-nav-item" onClick={() => navigate("/configuracion_almacenamiento")}>
+              Almacenamiento
+            </div>
+            <div className="config-empresa-nav-item" onClick={() => navigate("/configuracion_copias_seguridad")}>
+              Copias de Seguridad
+            </div>
+            <div className="config-empresa-nav-item" onClick={() => navigate("/configuracion_usuarios")}>
+              Usuarios y roles
+            </div>
+            <div
+              className="config-empresa-nav-item"
+              onClick={() => navigate("/configuracion_gestion_sectores_plataformas")}
+            >
+              Sectores y plataformas
+            </div>
+            <div
+              className="config-empresa-nav-item"
+              onClick={() => navigate("/configuracion_correos")}
+            >
+              Historial de Correos
+            </div>
+          </nav>
         </div>
-      )}
-      <div className="config-empresa-config-header">
-        <h2 className="config-empresa-config-title">Configuración</h2>
-        <nav className="config-empresa-config-nav">
-          <div className="config-empresa-nav-item" onClick={() => navigate("/configuracion_plantillas")}>
-            Plantillas de correo
-          </div>
-          <div className="config-empresa-nav-item" onClick={() => navigate("/configuracion_admin_datos")}>
-            Administrador de datos
-          </div>
-          <div className="config-empresa-nav-item config-empresa-nav-item-active">Configuración de la empresa</div>
-          <div className="config-empresa-nav-item" onClick={() => navigate("/configuracion_almacenamiento")}>
-            Almacenamiento
-          </div>
-          <div className="config-empresa-nav-item" onClick={() => navigate("/configuracion_copias_seguridad")}>
-            Copias de Seguridad
-          </div>
-          <div className="config-empresa-nav-item" onClick={() => navigate("/configuracion_usuarios")}>
-            Usuarios y roles
-          </div>
-          <div
-            className="config-empresa-nav-item"
-            onClick={() => navigate("/configuracion_gestion_sectores_plataformas")}
-          >
-            Sectores y plataformas
-          </div>
-          <div 
-    className="config-empresa-nav-item"
-    onClick={() => navigate("/configuracion_correos")}
->
-    Historial de Correos
-</div>
-        </nav>
-      </div>
 
-      <main className="config-empresa-main-content">
-        <div className="config-empresa-container">
-          <section className="config-empresa-section">
-            <h3 className="config-empresa-section-title">Información de la Empresa</h3>
+        <main className="config-empresa-main-content">
+          <div className="config-empresa-container">
+            <section className="config-empresa-section">
+              <h3 className="config-empresa-section-title">Información de la Empresa</h3>
 
-            <div className="config-empresa-form">
-              <div className="config-empresa-form-row">
-                <div className="config-empresa-form-group">
-                  <label htmlFor="nombre">
-                    Nombre de la empresa <span className="config-empresa-required">*</span>
-                  </label>
-                  <input
-                    type="text"
-                    id="nombre"
-                    value={companyData.nombre}
-                    onChange={(e) => handleInputChange("nombre", e.target.value)}
-                    className="config-empresa-form-control"
-                    placeholder="Ingrese el nombre de la empresa"
-                  />
-                </div>
+              <div className="config-empresa-form">
+                <div className="config-empresa-form-row">
+                  <div className="config-empresa-form-group">
+                    <label htmlFor="nombre">
+                      Nombre de la empresa <span className="config-empresa-required">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      id="nombre"
+                      value={companyData.nombre}
+                      onChange={(e) => handleInputChange("nombre", e.target.value)}
+                      className="config-empresa-form-control"
+                      placeholder="Ingrese el nombre de la empresa"
+                    />
+                  </div>
 
-                <div className="config-empresa-form-group">
-                  <label htmlFor="direccion">Dirección principal</label>
-                  <input
-                    type="text"
-                    id="direccion"
-                    value={companyData.direccionPrincipal}
-                    onChange={(e) => handleInputChange("direccionPrincipal", e.target.value)}
-                    className="config-empresa-form-control"
-                    placeholder="Ingrese la dirección principal"
-                  />
-                </div>
-              </div>
-
-              <div className="config-empresa-form-row">
-                <div className="config-empresa-form-group config-empresa-full-width">
-                  <label htmlFor="eslogan">Eslogan</label>
-                  <input
-                    type="text"
-                    id="eslogan"
-                    value={companyData.eslogan}
-                    onChange={(e) => handleInputChange("eslogan", e.target.value)}
-                    className="config-empresa-form-control"
-                    placeholder="Ingrese el eslogan de la empresa"
-                  />
-                </div>
-              </div>
-
-              <div className="config-empresa-form-row">
-                <div className="config-empresa-form-group">
-                  <label htmlFor="correo">
-                    Correo de contacto <span className="config-empresa-required">*</span>
-                  </label>
-                  <input
-                    type="email"
-                    id="correo"
-                    value={companyData.correoContacto}
-                    onChange={(e) => handleInputChange("correoContacto", e.target.value)}
-                    className="config-empresa-form-control"
-                    placeholder="correo@empresa.com"
-                  />
-                </div>
-
-                <div className="config-empresa-logo-section">
-                  <label>Logo de la empresa</label>
-                  <div className="config-empresa-logo-upload-area">
-                    <div className="config-empresa-logo-drop-zone">
-                      <div className="config-empresa-upload-icon">
-                        <img src={uploadIcon || "/placeholder.svg"} alt="Upload" />
-                      </div>
-                      <p>Arrastra y suelta tu logo aquí</p>
-                      <p className="config-empresa-file-formats">PNG, JPG o SVG (máx. 2mb)</p>
-                      <input
-                        type="file"
-                        accept=".png,.jpg,.jpeg,.svg"
-                        onChange={handleLogoUpload}
-                        className="config-empresa-file-input"
-                      />
-                      <button
-                        type="button"
-                        className="config-empresa-btn config-empresa-btn-secondary"
-                        onClick={() => document.querySelector(".config-empresa-file-input").click()}
-                      >
-                        Seleccionar archivo
-                      </button>
-                    </div>
+                  <div className="config-empresa-form-group">
+                    <label htmlFor="direccion">Dirección principal</label>
+                    <input
+                      type="text"
+                      id="direccion"
+                      value={companyData.direccionPrincipal}
+                      onChange={(e) => handleInputChange("direccionPrincipal", e.target.value)}
+                      className="config-empresa-form-control"
+                      placeholder="Ingrese la dirección principal"
+                    />
                   </div>
                 </div>
-              </div>
 
-              <div className="config-empresa-form-row">
-                <div className="config-empresa-form-group">
-                  <label htmlFor="telefono-movil">Teléfono de contacto móvil</label>
-                  <input
-                    type="tel"
-                    id="telefono-movil"
-                    value={companyData.telefonoMovil}
-                    onChange={(e) => handleInputChange("telefonoMovil", e.target.value)}
-                    className="config-empresa-form-control"
-                    placeholder="+52 1 477 123 4567"
-                  />
+                <div className="config-empresa-form-row">
+                  <div className="config-empresa-form-group config-empresa-full-width">
+                    <label htmlFor="eslogan">Eslogan</label>
+                    <input
+                      type="text"
+                      id="eslogan"
+                      value={companyData.eslogan}
+                      onChange={(e) => handleInputChange("eslogan", e.target.value)}
+                      className="config-empresa-form-control"
+                      placeholder="Ingrese el eslogan de la empresa"
+                    />
+                  </div>
                 </div>
 
-                <div className="config-empresa-logo-preview-section">
-                  <label>Vista previa</label>
-                  <div className="config-empresa-logo-preview">
-                    {companyData.logoPreview ? (
-                      <div className="config-empresa-preview-container">
-                        <img
-                          src={companyData.logoPreview || "/placeholder.svg"}
-                          alt="Logo preview"
-                          className="config-empresa-logo-image"
+                <div className="config-empresa-form-row">
+                  <div className="config-empresa-form-group">
+                    <label htmlFor="correo">
+                      Correo de contacto <span className="config-empresa-required">*</span>
+                    </label>
+                    <input
+                      type="email"
+                      id="correo"
+                      value={companyData.correoContacto}
+                      onChange={(e) => handleInputChange("correoContacto", e.target.value)}
+                      className="config-empresa-form-control"
+                      placeholder="correo@empresa.com"
+                    />
+                  </div>
+
+                  <div className="config-empresa-logo-section">
+                    <label>Logo de la empresa</label>
+                    <div className="config-empresa-logo-upload-area">
+                      <div className="config-empresa-logo-drop-zone">
+                        <div className="config-empresa-upload-icon">
+                          <img src={uploadIcon || "/placeholder.svg"} alt="Upload" />
+                        </div>
+                        <p>Arrastra y suelta tu logo aquí</p>
+                        <p className="config-empresa-file-formats">PNG, JPG o SVG (máx. 2mb)</p>
+                        <input
+                          type="file"
+                          accept=".png,.jpg,.jpeg,.svg"
+                          onChange={handleLogoUpload}
+                          className="config-empresa-file-input"
                         />
                         <button
                           type="button"
-                          className="config-empresa-remove-logo"
-                          onClick={handleRemoveLogo}
-                          title="Eliminar logo"
+                          className="config-empresa-btn config-empresa-btn-secondary"
+                          onClick={() => document.querySelector(".config-empresa-file-input").click()}
                         >
-                          ✕
+                          Seleccionar archivo
                         </button>
                       </div>
-                    ) : (
-                      <div className="config-empresa-no-preview">
-                        <p>No hay logo seleccionado</p>
-                      </div>
-                    )}
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              <div className="config-empresa-form-row">
-                <div className="config-empresa-form-group">
-                  <label htmlFor="telefono-fijo">Teléfono de contacto fijo</label>
-                  <input
-                    type="tel"
-                    id="telefono-fijo"
-                    value={companyData.telefonoFijo}
-                    onChange={(e) => handleInputChange("telefonoFijo", e.target.value)}
-                    className="config-empresa-form-control"
-                    placeholder="+52 1 477 123 4567"
-                  />
+                <div className="config-empresa-form-row">
+                  <div className="config-empresa-form-group">
+                    <label htmlFor="telefono-movil">Teléfono de contacto móvil</label>
+                    <input
+                      type="tel"
+                      id="telefono-movil"
+                      value={companyData.telefonoMovil}
+                      onChange={(e) => handleInputChange("telefonoMovil", e.target.value)}
+                      className="config-empresa-form-control"
+                      placeholder="+52 1 477 123 4567"
+                    />
+                  </div>
+
+                  <div className="config-empresa-logo-preview-section">
+                    <label>Vista previa</label>
+                    <div className="config-empresa-logo-preview">
+                      {companyData.logoPreview ? (
+                        <div className="config-empresa-preview-container">
+                          <img
+                            src={companyData.logoPreview || "/placeholder.svg"}
+                            alt="Logo preview"
+                            className="config-empresa-logo-image"
+                          />
+                          <button
+                            type="button"
+                            className="config-empresa-remove-logo"
+                            onClick={handleRemoveLogo}
+                            title="Eliminar logo"
+                          >
+                            ✕
+                          </button>
+                        </div>
+                      ) : (
+                        <div className="config-empresa-no-preview">
+                          <p>No hay logo seleccionado</p>
+                        </div>
+                      )}
+                    </div>
+                  </div>
                 </div>
-                <div className="config-empresa-form-group"></div>
-              </div>
 
-              <div className="config-empresa-form-actions">
-                {hasChanges && (
-                  <button className="config-empresa-btn config-empresa-btn-secondary" onClick={handleDiscardChanges}>
-                    Descartar cambios
+                <div className="config-empresa-form-row">
+                  <div className="config-empresa-form-group">
+                    <label htmlFor="telefono-fijo">Teléfono de contacto fijo</label>
+                    <input
+                      type="tel"
+                      id="telefono-fijo"
+                      value={companyData.telefonoFijo}
+                      onChange={(e) => handleInputChange("telefonoFijo", e.target.value)}
+                      className="config-empresa-form-control"
+                      placeholder="+52 1 477 123 4567"
+                    />
+                  </div>
+                  <div className="config-empresa-form-group"></div>
+                </div>
+
+                <div className="config-empresa-form-actions">
+                  {hasChanges && (
+                    <button className="config-empresa-btn config-empresa-btn-secondary" onClick={handleDiscardChanges}>
+                      Descartar cambios
+                    </button>
+                  )}
+                  <button
+                    className="config-empresa-btn config-empresa-btn-primary"
+                    onClick={handleSaveChanges}
+                    disabled={!hasChanges}
+                  >
+                    Guardar cambios
                   </button>
-                )}
-                <button
-                  className="config-empresa-btn config-empresa-btn-primary"
-                  onClick={handleSaveChanges}
-                  disabled={!hasChanges}
-                >
-                  Guardar cambios
-                </button>
+                </div>
               </div>
-            </div>
-          </section>
-        </div>
-      </main>
+            </section>
+          </div>
+        </main>
       </div>
     </>
   );
