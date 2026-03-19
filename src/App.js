@@ -5,11 +5,6 @@ import Empresas from './components/Empresas/Empresas';
 import Mapa from './components/Mapa/Mapa';
 import Tratos from './components/Tratos/Tratos';
 import DetallesTrato from './components/Tratos/DetallesTrato'
-import EquiposEstatusPlataforma from './components/Equipos/Equipos_EstatusPlataforma'
-import EquiposModelos from './components/Equipos/Equipos_Modelos';
-import EquiposProveedores from './components/Equipos/Equipos_Proveedores';
-import EquiposInventario from './components/Equipos/Equipos_Inventario';
-import EquiposSim from './components/Equipos/Equipos_Sim';
 import AdminBalance from './components/Admin/Admin_Balance';
 import AdminTransacciones from './components/Admin/Admin_Transacciones';
 import AdminCotizaciones from './components/Admin/Admin_Cotizaciones';
@@ -24,10 +19,8 @@ import ConfiguracionEmpresa from './components/Configuración/Configuracion_Empr
 import ConfiguracionAlmacenamiento from './components/Configuración/Configuracion_Almacenamiento';
 import ConfiguracionCopias from './components/Configuración/Configuracion_Copias';
 import ConfiguracionUsuarios from './components/Configuración/Configuracion_Usuarios';
-import Calendario from './components/Calendario/Calendario';
 import GoogleDriveCallback from './components/Configuración/GoogleDriveCallback';
 import DashboardMetricas from './components/Dashboard Metricas/DashboardMetricas';
-import EquiposCreditosPlataforma from './components/Equipos/Equipos_CreditosPlataforma';
 import ConfiguracionGestionSectoresPlataformas from './components/Configuración/Configuracion_GestionSectoresPlataformas';
 import ConfiguracionCorreos from './components/Configuración/Configuracion_Correos';
 import AdminComisiones from './components/Admin/Admin_Comisiones';
@@ -42,12 +35,6 @@ function App() {
         <Route path="/mapa" element={<Mapa />} />
         <Route path="/tratos" element={<Tratos />} />
         <Route path="/detallestrato/:id" element={<DetallesTrato />} />
-        <Route path="/equipos_estatusplataforma" element={<EquiposEstatusPlataforma />} />
-        <Route path="/equipos_modelos" element={<EquiposModelos />} />
-        <Route path="/equipos_proveedores" element={<EquiposProveedores />} />
-        <Route path="/equipos_inventario" element={<EquiposInventario />} />
-        <Route path="/equipos_sim" element={<EquiposSim />} />
-        <Route path="/equipos_creditosplataforma" element={<EquiposCreditosPlataforma />} />
         <Route path="/admin_balance" element={<AdminBalance />} />
         <Route path="/admin_transacciones" element={<AdminTransacciones />} />
         <Route path="/admin_cotizaciones" element={<AdminCotizaciones />} />
@@ -62,7 +49,6 @@ function App() {
         <Route path="/configuracion_almacenamiento" element={<ConfiguracionAlmacenamiento />} />
         <Route path="/configuracion_copias_seguridad" element={<ConfiguracionCopias />} />
         <Route path="/configuracion_usuarios" element={<ConfiguracionUsuarios />} />
-        <Route path="/calendario" element={<Calendario />} />
         <Route path="/google-drive-callback" element={<GoogleDriveCallback />} />
         <Route path="/metricas_generales" element={<DashboardMetricas />} />
         <Route path='/configuracion_gestion_sectores_plataformas' element={<ConfiguracionGestionSectoresPlataformas />} />

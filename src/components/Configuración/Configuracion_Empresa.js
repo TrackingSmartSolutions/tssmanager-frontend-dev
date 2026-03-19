@@ -297,7 +297,7 @@ const ConfiguracionEmpresa = () => {
               className="config-empresa-nav-item"
               onClick={() => navigate("/configuracion_gestion_sectores_plataformas")}
             >
-              Sectores y plataformas
+              Sectores
             </div>
             <div
               className="config-empresa-nav-item"

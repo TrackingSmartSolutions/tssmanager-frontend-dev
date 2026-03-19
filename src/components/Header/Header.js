@@ -3,7 +3,6 @@ import { Link, useNavigate, useLocation } from "react-router-dom"
 import Swal from "sweetalert2"
 import "./Header.css"
 import { API_BASE_URL } from "../Config/Config";
-import calendarIcon from "../../assets/icons/calendario.png"
 import notificationIcon from "../../assets/icons/notificaciones.png"
 import profilePlaceholder from "../../assets/icons/profile-placeholder.png"
 import dropdownIcon from "../../assets/icons/desplegable.png"
@@ -657,11 +656,6 @@ const Header = ({ logoUrl }) => {
     return `${minutes}:${remainingSeconds < 10 ? "0" : ""}${remainingSeconds}`
   }
 
-  // Navega al calendario
-  const handleCalendarClick = () => {
-    navigate("/calendario")
-  }
-
   // Alterna modal de notificaciones
   const handleNotificationClick = (e) => {
     e.stopPropagation()
@@ -770,7 +764,7 @@ const Header = ({ logoUrl }) => {
             <div className="ts-header-logo">
               <img
                 src={currentLogoUrl}
-                alt="Logo de Tracking Solutions"
+                alt="Logo de la empresa"
                 style={{
                   transition: 'opacity 0.2s ease-in-out',
                   opacity: isLogoLoading ? 0.7 : 1
@@ -835,16 +829,10 @@ const Header = ({ logoUrl }) => {
                 <Link to={userRol === "ADMINISTRADOR" ? "/admin_balance" : "/admin_transacciones"}>Admin</Link>
               </li>
             )}
-            <li>
-              <Link to="/equipos_estatusplataforma">Equipos</Link>
-            </li>
           </ul>
         </nav>
 
         <div className="ts-header-navbar-end">
-          <button className="ts-header-icon-button" onClick={handleCalendarClick}>
-            <img src={calendarIcon || "/placeholder.svg"} alt="Icono de Calendario" />
-          </button>
 
           <div className="header-notification-container">
             <button className="ts-header-icon-button ts-header-notification" onClick={handleNotificationClick}>
@@ -1023,11 +1011,6 @@ const Header = ({ logoUrl }) => {
               </Link>
             </div>
           )}
-          <div className="ts-header-sidebar-section">
-            <Link to="/equipos_estatusplataforma" onClick={toggleSidebar} className="ts-header-sidebar-link">
-              Equipos
-            </Link>
-          </div>
         </nav>
         <div className="ts-header-sidebar-footer">
           <a

@@ -121,7 +121,7 @@ const ConfiguracionAlmacenamiento = () => {
 
       const espacioTotalMB = parseFloat(data.espacioTotalMb) || 0
       const espacioRecuperableMB = parseFloat(data.espacioRecuperableMb) || 0
-      const capacidadMaxima = 1024 
+      const capacidadMaxima = 1024
 
 
       const porcentajeUsado = capacidadMaxima > 0 ? Math.min((espacioTotalMB / capacidadMaxima) * 100, 100) : 0
@@ -193,8 +193,8 @@ const ConfiguracionAlmacenamiento = () => {
 
   const calcularEstadisticasLimpieza = async () => {
     try {
-      const tablaNombre = cleanupSettings.tipoRegistros; 
-      
+      const tablaNombre = cleanupSettings.tipoRegistros;
+
       const diasMap = {
         "3meses": 90,
         "6meses": 180,
@@ -302,7 +302,7 @@ const ConfiguracionAlmacenamiento = () => {
             <p>Espacio recuperado: <strong>${resultado.espacioLiberadoMb} MB</strong></p>
           `,
           })
-          
+
           // Recalcular estadísticas de limpieza
           await calcularEstadisticasLimpieza()
         } else {
@@ -340,218 +340,218 @@ const ConfiguracionAlmacenamiento = () => {
 
   return (
     <>
-     <div className="page-with-header">
-      <Header />
-      {isLoading && (
-        <div className="config-almacenamiento-loading">
-          <div className="spinner"></div>
-          <p>Cargando datos de almacenamiento...</p>
+      <div className="page-with-header">
+        <Header />
+        {isLoading && (
+          <div className="config-almacenamiento-loading">
+            <div className="spinner"></div>
+            <p>Cargando datos de almacenamiento...</p>
+          </div>
+        )}
+
+        {/* Navegación de configuración */}
+        <div className="config-almacenamiento-config-header">
+          <h2 className="config-almacenamiento-config-title">Configuración</h2>
+          <nav className="config-almacenamiento-config-nav">
+            <div className="config-almacenamiento-nav-item" onClick={() => navigate("/configuracion_plantillas")}>
+              Plantillas de correo
+            </div>
+            <div className="config-almacenamiento-nav-item" onClick={() => navigate("/configuracion_admin_datos")}>
+              Administrador de datos
+            </div>
+            <div className="config-almacenamiento-nav-item" onClick={() => navigate("/configuracion_empresa")}>
+              Configuración de la empresa
+            </div>
+            <div className="config-almacenamiento-nav-item config-almacenamiento-nav-item-active">Almacenamiento</div>
+            <div className="config-almacenamiento-nav-item" onClick={() => navigate("/configuracion_copias_seguridad")}>
+              Copias de Seguridad
+            </div>
+            <div className="config-almacenamiento-nav-item" onClick={() => navigate("/configuracion_usuarios")}>
+              Usuarios y roles
+            </div>
+            <div
+              className="config-almacenamiento-nav-item"
+              onClick={() => navigate("/configuracion_gestion_sectores_plataformas")}
+            >
+              Sectores
+            </div>
+            <div
+              className="config-almacenamiento-nav-item"
+              onClick={() => navigate("/configuracion_correos")}
+            >
+              Historial de Correos
+            </div>
+          </nav>
         </div>
-      )}
-      
-      {/* Navegación de configuración */}
-      <div className="config-almacenamiento-config-header">
-        <h2 className="config-almacenamiento-config-title">Configuración</h2>
-        <nav className="config-almacenamiento-config-nav">
-          <div className="config-almacenamiento-nav-item" onClick={() => navigate("/configuracion_plantillas")}>
-            Plantillas de correo
-          </div>
-          <div className="config-almacenamiento-nav-item" onClick={() => navigate("/configuracion_admin_datos")}>
-            Administrador de datos
-          </div>
-          <div className="config-almacenamiento-nav-item" onClick={() => navigate("/configuracion_empresa")}>
-            Configuración de la empresa
-          </div>
-          <div className="config-almacenamiento-nav-item config-almacenamiento-nav-item-active">Almacenamiento</div>
-          <div className="config-almacenamiento-nav-item" onClick={() => navigate("/configuracion_copias_seguridad")}>
-            Copias de Seguridad
-          </div>
-          <div className="config-almacenamiento-nav-item" onClick={() => navigate("/configuracion_usuarios")}>
-            Usuarios y roles
-          </div>
-          <div
-            className="config-almacenamiento-nav-item"
-            onClick={() => navigate("/configuracion_gestion_sectores_plataformas")}
-          >
-            Sectores y plataformas
-          </div>
-          <div 
-    className="config-almacenamiento-nav-item"
-    onClick={() => navigate("/configuracion_correos")}
->
-    Historial de Correos
-</div>
-        </nav>
-      </div>
 
-      <main className="config-almacenamiento-main-content">
-        <div className="config-almacenamiento-container">
-          {/* Sección de uso de almacenamiento */}
-          <section className="config-almacenamiento-section">
-            <h3 className="config-almacenamiento-section-title">Uso de almacenamiento</h3>
+        <main className="config-almacenamiento-main-content">
+          <div className="config-almacenamiento-container">
+            {/* Sección de uso de almacenamiento */}
+            <section className="config-almacenamiento-section">
+              <h3 className="config-almacenamiento-section-title">Uso de almacenamiento</h3>
 
-            {/* Información de resumen */}
-            <div className="config-almacenamiento-summary-info">
-              <div className="config-almacenamiento-summary-item">
-                <span className="config-almacenamiento-summary-label">Espacio total utilizado:</span>
-                <span className="config-almacenamiento-summary-value">{formatStorage(totalUsage.totalSpaceMB)}</span>
+              {/* Información de resumen */}
+              <div className="config-almacenamiento-summary-info">
+                <div className="config-almacenamiento-summary-item">
+                  <span className="config-almacenamiento-summary-label">Espacio total utilizado:</span>
+                  <span className="config-almacenamiento-summary-value">{formatStorage(totalUsage.totalSpaceMB)}</span>
+                </div>
+                <div className="config-almacenamiento-summary-item">
+                  <span className="config-almacenamiento-summary-label">Espacio recuperable:</span>
+                  <span className="config-almacenamiento-summary-value">{formatStorage(totalUsage.espacioRecuperable)}</span>
+                </div>
+                <div className="config-almacenamiento-summary-item">
+                  <span className="config-almacenamiento-summary-label">Total de registros:</span>
+                  <span className="config-almacenamiento-summary-value">{totalUsage.totalRegistros?.toLocaleString() || 0}</span>
+                </div>
+                <div className="config-almacenamiento-summary-item">
+                  <span className="config-almacenamiento-summary-label">Capacidad máxima:</span>
+                  <span className="config-almacenamiento-summary-value">{formatStorage(totalUsage.maxCapacity)}</span>
+                </div>
               </div>
-              <div className="config-almacenamiento-summary-item">
-                <span className="config-almacenamiento-summary-label">Espacio recuperable:</span>
-                <span className="config-almacenamiento-summary-value">{formatStorage(totalUsage.espacioRecuperable)}</span>
-              </div>
-              <div className="config-almacenamiento-summary-item">
-                <span className="config-almacenamiento-summary-label">Total de registros:</span>
-                <span className="config-almacenamiento-summary-value">{totalUsage.totalRegistros?.toLocaleString() || 0}</span>
-              </div>
-              <div className="config-almacenamiento-summary-item">
-                <span className="config-almacenamiento-summary-label">Capacidad máxima:</span>
-                <span className="config-almacenamiento-summary-value">{formatStorage(totalUsage.maxCapacity)}</span>
-              </div>
-            </div>
 
-            <div className="config-almacenamiento-usage-bar">
-              <div className="config-almacenamiento-usage-labels">
-                <span className="config-almacenamiento-used-label">
-                  Espacio utilizado ({totalUsage.used}%) - {formatStorage(totalUsage.totalSpaceMB)}
-                </span>
-                <span className="config-almacenamiento-available-label">
-                  Espacio disponible ({totalUsage.available}%) - {formatStorage(totalUsage.maxCapacity - totalUsage.totalSpaceMB)}
-                </span>
+              <div className="config-almacenamiento-usage-bar">
+                <div className="config-almacenamiento-usage-labels">
+                  <span className="config-almacenamiento-used-label">
+                    Espacio utilizado ({totalUsage.used}%) - {formatStorage(totalUsage.totalSpaceMB)}
+                  </span>
+                  <span className="config-almacenamiento-available-label">
+                    Espacio disponible ({totalUsage.available}%) - {formatStorage(totalUsage.maxCapacity - totalUsage.totalSpaceMB)}
+                  </span>
+                </div>
+                <div className="config-almacenamiento-progress-bar">
+                  <div
+                    className={`config-almacenamiento-progress-fill ${getProgressBarClass()}`}
+                    style={{ width: `${Math.min(totalUsage.used, 100)}%` }}
+                  ></div>
+                </div>
               </div>
-              <div className="config-almacenamiento-progress-bar">
-                <div
-                  className={`config-almacenamiento-progress-fill ${getProgressBarClass()}`}
-                  style={{ width: `${Math.min(totalUsage.used, 100)}%` }}
-                ></div>
-              </div>
-            </div>
 
-            <div className="config-almacenamiento-content-row">
-              {/* Detalles de almacenamiento */}
-              <div className="config-almacenamiento-details-section">
-                <h4 className="config-almacenamiento-subsection-title">Detalles de uso</h4>
-                <div className="config-almacenamiento-details-table">
-                  <div className="config-almacenamiento-table-header">
-                    <div className="config-almacenamiento-header-cell">Nombre del módulo</div>
-                    <div className="config-almacenamiento-header-cell">Cantidad de registros</div>
-                    <div className="config-almacenamiento-header-cell">Almacenaje</div>
-                    <div className="config-almacenamiento-header-cell">Registros antiguos</div>
-                    <div className="config-almacenamiento-header-cell">Espacio recuperable</div>
-                  </div>
-                  <div className="config-almacenamiento-table-body">
-                    {storageData.length > 0 ? storageData.map((item) => (
-                      <div key={item.id} className="config-almacenamiento-table-row">
-                        <div className="config-almacenamiento-cell config-almacenamiento-module-cell">
-                          <div
-                            className="config-almacenamiento-module-indicator"
-                            style={{ backgroundColor: item.color }}
-                          ></div>
-                          {item.modulo}
+              <div className="config-almacenamiento-content-row">
+                {/* Detalles de almacenamiento */}
+                <div className="config-almacenamiento-details-section">
+                  <h4 className="config-almacenamiento-subsection-title">Detalles de uso</h4>
+                  <div className="config-almacenamiento-details-table">
+                    <div className="config-almacenamiento-table-header">
+                      <div className="config-almacenamiento-header-cell">Nombre del módulo</div>
+                      <div className="config-almacenamiento-header-cell">Cantidad de registros</div>
+                      <div className="config-almacenamiento-header-cell">Almacenaje</div>
+                      <div className="config-almacenamiento-header-cell">Registros antiguos</div>
+                      <div className="config-almacenamiento-header-cell">Espacio recuperable</div>
+                    </div>
+                    <div className="config-almacenamiento-table-body">
+                      {storageData.length > 0 ? storageData.map((item) => (
+                        <div key={item.id} className="config-almacenamiento-table-row">
+                          <div className="config-almacenamiento-cell config-almacenamiento-module-cell">
+                            <div
+                              className="config-almacenamiento-module-indicator"
+                              style={{ backgroundColor: item.color }}
+                            ></div>
+                            {item.modulo}
+                          </div>
+                          <div className="config-almacenamiento-cell">{item.cantidad.toLocaleString()}</div>
+                          <div className="config-almacenamiento-cell">{formatStorage(item.almacenaje)}</div>
+                          <div className="config-almacenamiento-cell">{item.registrosAntiguos.toLocaleString()}</div>
+                          <div className="config-almacenamiento-cell">{formatStorage(item.espacioRecuperable)}</div>
                         </div>
-                        <div className="config-almacenamiento-cell">{item.cantidad.toLocaleString()}</div>
-                        <div className="config-almacenamiento-cell">{formatStorage(item.almacenaje)}</div>
-                        <div className="config-almacenamiento-cell">{item.registrosAntiguos.toLocaleString()}</div>
-                        <div className="config-almacenamiento-cell">{formatStorage(item.espacioRecuperable)}</div>
-                      </div>
-                    )) : (
-                      <div className="config-almacenamiento-table-row">
-                        <div className="config-almacenamiento-cell" style={{ textAlign: 'center', padding: '20px', gridColumn: '1 / -1' }}>
-                          {isLoading ? 'Cargando datos...' : 'No hay datos disponibles'}
+                      )) : (
+                        <div className="config-almacenamiento-table-row">
+                          <div className="config-almacenamiento-cell" style={{ textAlign: 'center', padding: '20px', gridColumn: '1 / -1' }}>
+                            {isLoading ? 'Cargando datos...' : 'No hay datos disponibles'}
+                          </div>
                         </div>
+                      )}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Limpieza de almacenamiento */}
+                <div className="config-almacenamiento-cleanup-section">
+                  <h4 className="config-almacenamiento-subsection-title">Limpiar almacenamiento</h4>
+
+                  <div className="config-almacenamiento-warning-box">
+                    <div className="config-almacenamiento-warning-icon">
+                      <img src={warningIcon || "/placeholder.svg"} alt="Advertencia" />
+                    </div>
+                    <div className="config-almacenamiento-warning-content">
+                      <strong>Advertencia</strong>
+                      <p>
+                        La eliminación de registros es permanente y no se puede deshacer. Los tratos en fase "CERRADO_PERDIDO" se
+                        eliminan automáticamente después de 3 meses, pero antes se guardan en una copia de seguridad.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="config-almacenamiento-cleanup-form">
+                    <div className="config-almacenamiento-form-group">
+                      <label htmlFor="tipo-registros">Tipo de registros</label>
+                      <select
+                        id="tipo-registros"
+                        value={cleanupSettings.tipoRegistros}
+                        onChange={(e) => handleCleanupSettingChange("tipoRegistros", e.target.value)}
+                        className="config-almacenamiento-form-control"
+                      >
+                        {tiposRegistrosOptions.map((option) => (
+                          <option key={option.value} value={option.value}>
+                            {option.label}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+
+                    <div className="config-almacenamiento-form-group">
+                      <label htmlFor="antiguedad-minima">Antigüedad mínima</label>
+                      <select
+                        id="antiguedad-minima"
+                        value={cleanupSettings.antiguedadMinima}
+                        onChange={(e) => handleCleanupSettingChange("antiguedadMinima", e.target.value)}
+                        className="config-almacenamiento-form-control"
+                      >
+                        {antiguedadOptions.map((option) => (
+                          <option key={option.value} value={option.value}>
+                            {option.label}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+
+                    <div className="config-almacenamiento-cleanup-stats">
+                      <div className="config-almacenamiento-stat-item">
+                        <span className="config-almacenamiento-stat-label">Cantidad de registros</span>
+                        <span className="config-almacenamiento-stat-value">
+                          {cleanupStats.cantidadRegistros.toLocaleString()}
+                        </span>
                       </div>
-                    )}
+                      <div className="config-almacenamiento-stat-item">
+                        <span className="config-almacenamiento-stat-label">Almacenaje total</span>
+                        <span className="config-almacenamiento-stat-value">{formatStorage(cleanupStats.almacenajeTotal)}</span>
+                      </div>
+                      <div className="config-almacenamiento-stat-item">
+                        <span className="config-almacenamiento-stat-label">Porcentaje recuperado</span>
+                        <span className="config-almacenamiento-stat-value">{cleanupStats.porcentajeRecuperado}%</span>
+                      </div>
+                    </div>
+
+                    <div className="config-almacenamiento-cleanup-actions">
+                      <button
+                        className="config-almacenamiento-btn config-almacenamiento-btn-danger"
+                        onClick={handleDeleteSelected}
+                        disabled={cleanupStats.cantidadRegistros === 0 || isLoading}
+                      >
+                        <img
+                          src={deleteIcon || "/placeholder.svg"}
+                          alt="Eliminar"
+                          className="config-almacenamiento-delete-icon"
+                        />
+                        Eliminar seleccionados
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
-
-              {/* Limpieza de almacenamiento */}
-              <div className="config-almacenamiento-cleanup-section">
-                <h4 className="config-almacenamiento-subsection-title">Limpiar almacenamiento</h4>
-
-                <div className="config-almacenamiento-warning-box">
-                  <div className="config-almacenamiento-warning-icon">
-                    <img src={warningIcon || "/placeholder.svg"} alt="Advertencia" />
-                  </div>
-                  <div className="config-almacenamiento-warning-content">
-                    <strong>Advertencia</strong>
-                    <p>
-                      La eliminación de registros es permanente y no se puede deshacer. Los tratos en fase "CERRADO_PERDIDO" se
-                      eliminan automáticamente después de 3 meses, pero antes se guardan en una copia de seguridad.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="config-almacenamiento-cleanup-form">
-                  <div className="config-almacenamiento-form-group">
-                    <label htmlFor="tipo-registros">Tipo de registros</label>
-                    <select
-                      id="tipo-registros"
-                      value={cleanupSettings.tipoRegistros}
-                      onChange={(e) => handleCleanupSettingChange("tipoRegistros", e.target.value)}
-                      className="config-almacenamiento-form-control"
-                    >
-                      {tiposRegistrosOptions.map((option) => (
-                        <option key={option.value} value={option.value}>
-                          {option.label}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-
-                  <div className="config-almacenamiento-form-group">
-                    <label htmlFor="antiguedad-minima">Antigüedad mínima</label>
-                    <select
-                      id="antiguedad-minima"
-                      value={cleanupSettings.antiguedadMinima}
-                      onChange={(e) => handleCleanupSettingChange("antiguedadMinima", e.target.value)}
-                      className="config-almacenamiento-form-control"
-                    >
-                      {antiguedadOptions.map((option) => (
-                        <option key={option.value} value={option.value}>
-                          {option.label}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-
-                  <div className="config-almacenamiento-cleanup-stats">
-                    <div className="config-almacenamiento-stat-item">
-                      <span className="config-almacenamiento-stat-label">Cantidad de registros</span>
-                      <span className="config-almacenamiento-stat-value">
-                        {cleanupStats.cantidadRegistros.toLocaleString()}
-                      </span>
-                    </div>
-                    <div className="config-almacenamiento-stat-item">
-                      <span className="config-almacenamiento-stat-label">Almacenaje total</span>
-                      <span className="config-almacenamiento-stat-value">{formatStorage(cleanupStats.almacenajeTotal)}</span>
-                    </div>
-                    <div className="config-almacenamiento-stat-item">
-                      <span className="config-almacenamiento-stat-label">Porcentaje recuperado</span>
-                      <span className="config-almacenamiento-stat-value">{cleanupStats.porcentajeRecuperado}%</span>
-                    </div>
-                  </div>
-
-                  <div className="config-almacenamiento-cleanup-actions">
-                    <button
-                      className="config-almacenamiento-btn config-almacenamiento-btn-danger"
-                      onClick={handleDeleteSelected}
-                      disabled={cleanupStats.cantidadRegistros === 0 || isLoading}
-                    >
-                      <img
-                        src={deleteIcon || "/placeholder.svg"}
-                        alt="Eliminar"
-                        className="config-almacenamiento-delete-icon"
-                      />
-                      Eliminar seleccionados
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-        </div>
-      </main>
+            </section>
+          </div>
+        </main>
       </div>
     </>
   )

@@ -186,7 +186,7 @@
 .config-almacenamiento-details-table {
   border: 1px solid var(--config-almacenamiento-border-color);
   border-radius: var(--config-almacenamiento-border-radius-sm);
-  overflow: hidden;
+  overflow: auto;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -208,9 +208,6 @@
   background-color: #f8f9fa;
   border-bottom: 1px solid var(--config-almacenamiento-border-color);
   flex-shrink: 0;
-  position: sticky;
-  top: 0;
-  z-index: 1;
 }
 
 .config-almacenamiento-header-cell {
@@ -228,8 +225,6 @@
 
 .config-almacenamiento-table-body {
   background-color: white;
-  overflow-y: auto;
-  overflow-x: auto;
   flex: 1;
 }
 

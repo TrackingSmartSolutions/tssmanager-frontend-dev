@@ -1260,7 +1260,6 @@ const AdminCuentasPagar = () => {
                         <th>Renovación (días)</th>
                         <th>Estatus</th>
                         <th>Nota</th>
-                        <th>Número de SIM</th>
                         <th>Acciones</th>
                       </tr>
                     </thead>
@@ -1299,7 +1298,6 @@ const AdminCuentasPagar = () => {
                                 </span>
                               </td>
                               <td>{cuenta.nota || "-"}</td>
-                              <td>{cuenta.sim?.numero || "-"}</td>
                               <td>
                                 <div className="cuentaspagar-actions">
                                   {cuenta.estatus !== "Pagado" && !cuenta.sim && (
@@ -1336,7 +1334,7 @@ const AdminCuentasPagar = () => {
                         })
                       ) : (
                         <tr>
-                          <td colSpan="11" className="cuentaspagar-no-data">
+                          <td colSpan="10" className="cuentaspagar-no-data">
                             {(() => {
                               if (filtroEstatus === "Todas" && !fechaInicio && !fechaFin) {
                                 return "No hay cuentas por pagar registradas";

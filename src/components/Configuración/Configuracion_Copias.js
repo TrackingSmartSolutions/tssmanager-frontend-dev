@@ -108,8 +108,6 @@ const ConfiguracionCopias = () => {
     { value: "TRATOS", label: "Tratos" },
     { value: "EMPRESAS", label: "Empresas" },
     { value: "CONTACTOS", label: "Contactos" },
-    { value: "EQUIPOS", label: "Equipos" },
-    { value: "SIMS", label: "SIMs" },
   ]
 
   const frecuenciaOptions = [
@@ -472,7 +470,7 @@ const ConfiguracionCopias = () => {
               className="config-copias-nav-item"
               onClick={() => navigate("/configuracion_gestion_sectores_plataformas")}
             >
-              Sectores y plataformas
+              Sectores
             </div>
             <div
               className="config-copias-nav-item"

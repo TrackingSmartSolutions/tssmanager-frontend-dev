@@ -152,99 +152,6 @@ const SectorModal = ({ isOpen, onClose, onSave, sector, mode }) => {
   )
 }
 
-// Modal para Agregar/Editar Plataforma
-const PlataformaModal = ({ isOpen, onClose, onSave, plataforma, mode }) => {
-  const [formData, setFormData] = useState({
-    nombrePlataforma: "",
-  })
-
-  const [errors, setErrors] = useState({})
-
-  useEffect(() => {
-    if (plataforma && mode === "edit") {
-      setFormData({
-        nombrePlataforma: plataforma.nombrePlataforma || "",
-      })
-    } else {
-      setFormData({
-        nombrePlataforma: "",
-      })
-    }
-    setErrors({})
-  }, [plataforma, mode, isOpen])
-
-  const handleInputChange = (field, value) => {
-    setFormData((prev) => ({ ...prev, [field]: value }))
-    if (errors[field]) {
-      setErrors((prev) => ({ ...prev, [field]: "" }))
-    }
-  }
-
-  const validateForm = () => {
-    const newErrors = {}
-
-    if (!formData.nombrePlataforma.trim()) {
-      newErrors.nombrePlataforma = "Este campo es obligatorio"
-    }
-
-    setErrors(newErrors)
-    return Object.keys(newErrors).length === 0
-  }
-
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-
-    if (!validateForm()) {
-      return
-    }
-
-    const plataformaData = {
-      id: mode === "edit" ? plataforma.id : undefined,
-      nombrePlataforma: formData.nombrePlataforma.trim(),
-    }
-
-    onSave(plataformaData, mode)
-  }
-
-  return (
-    <Modal
-      isOpen={isOpen}
-      onClose={onClose}
-      title={mode === "add" ? "Nueva plataforma" : "Editar plataforma"}
-      size="md"
-      closeOnOverlayClick={false}
-    >
-      <form onSubmit={handleSubmit} className="modal-form">
-        <div className="modal-form-row">
-          <div className="modal-form-group">
-            <label htmlFor="nombrePlataforma">
-              Nombre Plataforma <span className="required">*</span>
-            </label>
-            <input
-              type="text"
-              id="nombrePlataforma"
-              value={formData.nombrePlataforma}
-              onChange={(e) => handleInputChange("nombrePlataforma", e.target.value)}
-              className={`modal-form-control ${errors.nombrePlataforma ? "error" : ""}`}
-              placeholder="Ej. Track Solid"
-            />
-            {errors.nombrePlataforma && <span className="error-message">{errors.nombrePlataforma}</span>}
-          </div>
-        </div>
-
-        <div className="modal-form-actions">
-          <button type="button" onClick={onClose} className="btn btn-secondary">
-            Cancelar
-          </button>
-          <button type="submit" className="btn btn-primary">
-            {mode === "add" ? "Agregar" : "Guardar cambios"}
-          </button>
-        </div>
-      </form>
-    </Modal>
-  )
-}
-
 // Modal de Confirmación de Eliminación
 const ConfirmarEliminacionModal = ({ isOpen, onClose, onConfirm, item, type }) => {
   const handleConfirm = () => {
@@ -284,12 +191,10 @@ const ConfirmarEliminacionModal = ({ isOpen, onClose, onConfirm, item, type }) =
 // Componente Principal
 const ConfiguracionGestionSectoresPlataformas = () => {
   const [sectores, setSectores] = useState([])
-  const [plataformas, setPlataformas] = useState([])
   const [isLoading, setIsLoading] = useState(true)
   const [activeTab, setActiveTab] = useState("sectores")
   const [modals, setModals] = useState({
     sector: { isOpen: false, mode: "add", data: null },
-    plataforma: { isOpen: false, mode: "add", data: null },
     confirmarEliminacion: { isOpen: false, data: null, type: null },
   })
 
@@ -307,10 +212,6 @@ const ConfiguracionGestionSectoresPlataformas = () => {
       const sectoresData = await sectoresResponse.json()
       setSectores(sectoresData)
 
-      // Fetch plataformas
-      const plataformasResponse = await fetchWithToken(`${API_BASE_URL}/plataformas`)
-      const plataformasData = await plataformasResponse.json()
-      setPlataformas(plataformasData)
     } catch (error) {
       Swal.fire({ icon: "error", title: "Error", text: "No se pudieron cargar los datos" })
     } finally {
@@ -392,113 +293,29 @@ const ConfiguracionGestionSectoresPlataformas = () => {
     }
   }
 
-  // Handlers para Plataformas
-  const handleAddPlataforma = () => {
-    openModal("plataforma", "add")
-  }
-
-  const handleEditPlataforma = (plataformaId) => {
-    const plataforma = plataformas.find((p) => p.id === plataformaId)
-    if (plataforma) {
-      openModal("plataforma", "edit", plataforma)
-    }
-  }
-
-  const handleDeletePlataforma = (plataformaId) => {
-    const plataforma = plataformas.find((p) => p.id === plataformaId)
-    if (plataforma) {
-      openModal("confirmarEliminacion", "delete", plataforma, "plataforma")
-    }
-  }
-
-  const handleSavePlataforma = async (plataformaData, mode) => {
-    try {
-      // Verificar si el nombre ya existe
-      const existingPlataforma = plataformas.find(
-        (p) =>
-          p.nombrePlataforma.toLowerCase() === plataformaData.nombrePlataforma.toLowerCase() &&
-          (mode !== "edit" || p.id !== plataformaData.id),
-      )
-      if (existingPlataforma) {
-        Swal.fire({
-          icon: "error",
-          title: "Error",
-          text: "El Nombre Plataforma ya está registrado. Por favor, ingrese un nombre diferente.",
-        })
-        return
-      }
-
-      const url = `${API_BASE_URL}/plataformas${plataformaData.id ? `/${plataformaData.id}` : ""}`
-      const method = plataformaData.id ? "PUT" : "POST"
-      const response = await fetchWithToken(url, {
-        method,
-        body: JSON.stringify(plataformaData),
-        headers: { "Content-Type": "application/json" },
-      })
-
-      fetchData()
-      Swal.fire({
-        icon: "success",
-        title: plataformaData.id ? "Plataforma actualizada" : "Plataforma creada",
-        text: `La plataforma se ha ${plataformaData.id ? "actualizado" : "creado"} correctamente.`,
-      })
-      closeModal("plataforma")
-    } catch (error) {
-      Swal.fire({
-        icon: "error",
-        title: "Error",
-        text: "Ocurrió un error al guardar la plataforma.",
-      })
-    }
-  }
-
   const handleConfirmDelete = async () => {
     const { data, type } = modals.confirmarEliminacion
 
     try {
-      if (type === "sector") {
-        // Verificar si el sector está asociado a empresas
-        const checkResponse = await fetchWithToken(`${API_BASE_URL}/sectores/${data.id}/check-associations`)
-        const checkData = await checkResponse.json()
+      const checkResponse = await fetchWithToken(`${API_BASE_URL}/sectores/${data.id}/check-associations`)
+      const checkData = await checkResponse.json()
 
-        if (checkData.hasAssociations) {
-          Swal.fire({
-            icon: "error",
-            title: "Error",
-            text: "No se puede eliminar el sector porque está vinculado a una o más empresas.",
-          })
-          closeModal("confirmarEliminacion")
-          return
-        }
-
-        await fetchWithToken(`${API_BASE_URL}/sectores/${data.id}`, { method: "DELETE" })
+      if (checkData.hasAssociations) {
         Swal.fire({
-          icon: "success",
-          title: "Sector eliminado",
-          text: "El sector se ha eliminado correctamente.",
+          icon: "error",
+          title: "Error",
+          text: "No se puede eliminar el sector porque está vinculado a una o más empresas.",
         })
-      } else {
-        // Verificar si la plataforma está asociada a equipos
-        const checkResponse = await fetchWithToken(`${API_BASE_URL}/plataformas/${data.id}/check-associations`)
-        const checkData = await checkResponse.json()
-
-        if (checkData.hasAssociations) {
-          Swal.fire({
-            icon: "error",
-            title: "Error",
-            text: "No se puede eliminar la plataforma porque está vinculada a uno o más equipos.",
-          })
-          closeModal("confirmarEliminacion")
-          return
-        }
-
-        await fetchWithToken(`${API_BASE_URL}/plataformas/${data.id}`, { method: "DELETE" })
-        Swal.fire({
-          icon: "success",
-          title: "Plataforma eliminada",
-          text: "La plataforma se ha eliminado correctamente.",
-        })
+        closeModal("confirmarEliminacion")
+        return
       }
+
+      await fetchWithToken(`${API_BASE_URL}/sectores/${data.id}`, { method: "DELETE" })
+      Swal.fire({
+        icon: "success",
+        title: "Sector eliminado",
+        text: "El sector se ha eliminado correctamente.",
+      })
 
       fetchData()
       closeModal("confirmarEliminacion")
@@ -506,7 +323,7 @@ const ConfiguracionGestionSectoresPlataformas = () => {
       Swal.fire({
         icon: "error",
         title: "Error",
-        text: `Ocurrió un error al eliminar ${type === "sector" ? "el sector" : "la plataforma"}.`,
+        text: "Ocurrió un error al eliminar el sector.",
       })
     }
   }
@@ -543,7 +360,7 @@ const ConfiguracionGestionSectoresPlataformas = () => {
               Usuarios y roles
             </div>
             <div className="sectores-plataformas-nav-item sectores-plataformas-nav-item-active">
-              Sectores y Plataformas
+              Sectores
             </div>
             <div
               className="sectores-plataformas-nav-item"
@@ -563,12 +380,6 @@ const ConfiguracionGestionSectoresPlataformas = () => {
                 onClick={() => setActiveTab("sectores")}
               >
                 Gestión de Sectores
-              </div>
-              <div
-                className={`sectores-plataformas-sub-nav-item ${activeTab === "plataformas" ? "sectores-plataformas-sub-nav-item-active" : ""}`}
-                onClick={() => setActiveTab("plataformas")}
-              >
-                Gestión de Plataformas
               </div>
             </div>
 
@@ -622,58 +433,6 @@ const ConfiguracionGestionSectoresPlataformas = () => {
               </section>
             )}
 
-            {/* Contenido de Plataformas */}
-            {activeTab === "plataformas" && (
-              <section className="sectores-plataformas-section">
-                <div className="sectores-plataformas-section-header">
-                  <h3 className="sectores-plataformas-section-title">Gestión de Plataformas</h3>
-                  <button
-                    className="sectores-plataformas-btn sectores-plataformas-btn-add"
-                    onClick={handleAddPlataforma}
-                  >
-                    Agregar nueva plataforma
-                  </button>
-                </div>
-
-                <div className="sectores-plataformas-table-container">
-                  <table className="sectores-plataformas-table">
-                    <thead>
-                      <tr>
-                        <th>ID</th>
-                        <th>Nombre Plataforma</th>
-                        <th>Acciones</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {plataformas.map((plataforma) => (
-                        <tr key={plataforma.id}>
-                          <td>{plataforma.id}</td>
-                          <td>{plataforma.nombrePlataforma}</td>
-                          <td>
-                            <div className="sectores-plataformas-action-buttons">
-                              <button
-                                className="sectores-plataformas-btn-action sectores-plataformas-edit"
-                                onClick={() => handleEditPlataforma(plataforma.id)}
-                                title="Editar plataforma"
-                              >
-                                <img src={editIcon || "/placeholder.svg"} alt="Editar" />
-                              </button>
-                              <button
-                                className="sectores-plataformas-btn-action sectores-plataformas-delete"
-                                onClick={() => handleDeletePlataforma(plataforma.id)}
-                                title="Eliminar plataforma"
-                              >
-                                <img src={deleteIcon || "/placeholder.svg"} alt="Eliminar" />
-                              </button>
-                            </div>
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              </section>
-            )}
           </div>
         </main>
 
@@ -684,14 +443,6 @@ const ConfiguracionGestionSectoresPlataformas = () => {
           onSave={handleSaveSector}
           sector={modals.sector.data}
           mode={modals.sector.mode}
-        />
-
-        <PlataformaModal
-          isOpen={modals.plataforma.isOpen}
-          onClose={() => closeModal("plataforma")}
-          onSave={handleSavePlataforma}
-          plataforma={modals.plataforma.data}
-          mode={modals.plataforma.mode}
         />
 
         <ConfirmarEliminacionModal

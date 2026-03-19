@@ -675,7 +675,7 @@ const ConfiguracionPlantillas = () => {
               className="correo-plantillas-nav-item"
               onClick={() => navigate("/configuracion_gestion_sectores_plataformas")}
             >
-              Sectores y plataformas
+              Sectores
             </div>
             <div
               className="correo-plantillas-nav-item"
