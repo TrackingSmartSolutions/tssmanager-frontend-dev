@@ -24,6 +24,7 @@ import DashboardMetricas from './components/Dashboard Metricas/DashboardMetricas
 import ConfiguracionGestionSectoresPlataformas from './components/Configuración/Configuracion_GestionSectoresPlataformas';
 import ConfiguracionCorreos from './components/Configuración/Configuracion_Correos';
 import AdminComisiones from './components/Admin/Admin_Comisiones';
+import Calendario from './components/Calendario/Calendario';
 
 function App() {
   return (
@@ -54,6 +55,7 @@ function App() {
         <Route path='/configuracion_gestion_sectores_plataformas' element={<ConfiguracionGestionSectoresPlataformas />} />
         <Route path='/configuracion_correos' element={<ConfiguracionCorreos />} />
         <Route path="/admin_comisiones" element={<AdminComisiones />} />
+        <Route path="/calendario" element={<Calendario />} />
       </Routes>
     </Router>
   );

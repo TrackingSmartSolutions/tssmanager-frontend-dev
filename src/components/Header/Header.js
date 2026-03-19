@@ -11,7 +11,7 @@ import notificationSound from "../../assets/sounds/notification.wav"
 import actividadProxSound from "../../assets/sounds/actividadprox.wav"
 import alertSound from "../../assets/sounds/alert.wav"
 import RecordatorioPopup from "./RecordatorioPopup"
-
+import calendarIcon from "../../assets/icons/calendario.png"
 
 // Cache global para el logo
 let logoCache = {
@@ -833,6 +833,10 @@ const Header = ({ logoUrl }) => {
         </nav>
 
         <div className="ts-header-navbar-end">
+
+          <button className="ts-header-icon-button" onClick={() => navigate("/calendario")}>
+            <img src={calendarIcon} alt="Icono de Calendario" />
+          </button>
 
           <div className="header-notification-container">
             <button className="ts-header-icon-button ts-header-notification" onClick={handleNotificationClick}>
