@@ -1,8 +1,10 @@
 :root {
     /* ═══════════════════════════════════════════════
-       [ 1. PALETA BASE (Colores Crudos) ]
-       INFO: Estos son los colores "puros". No los uses directamente en los componentes.
-       ACCION: Si cambias el HEX aquí, afectará a todas las variables de abajo que lo usen.
+       [ 1. PALETA BASE (Valores Primitivos) ]
+       INFO: Colores base del sistema. No deben aplicarse directamente 
+       en las clases de los componentes.
+       ACCION: Modificar estos valores hexadecimales redefinira la 
+       gama de colores de toda la interfaz.
     ═══════════════════════════════════════════════ */
     --g-color-dark-blue-1: #00133b;
     --g-color-dark-blue-2: #001959;
@@ -18,66 +20,74 @@
     --g-color-purple: #9c16f7;
 
     /* ═══════════════════════════════════════════════
-       [ 2. SEMANTICA GLOBAL (El Sistema de Temas real) ]
-       INFO: ESTAS son las variables que debes modificar para cambiar el look de la app.
+       [ 2. SEMANTICA GLOBAL (Tokens de Diseño) ]
+       INFO: Variables principales utilizadas por los componentes. 
+       Modifique estos valores para alterar la apariencia de la plataforma.
     ═══════════════════════════════════════════════ */
 
-    /* > FONDOS PRINCIPALES: Cambia esto para modificar el color de fondo de toda la plataforma */
+    /* --- FONDOS PRINCIPALES --- */
+    /* ACCION: Modifica el color de fondo general del area de trabajo (lo que se encuentra detras de las tarjetas blancas). */
     --g-bg: #f0f4ff;
-    /* Fondo general de las pantallas (detrás de los cuadros blancos) */
+
+    /* ACCION: Modifica el color de fondo de las tarjetas, contenedores y modales de informacion. */
     --g-panel-bg: #ffffff;
-    /* Fondo de las tarjetas, modales y cuadros blancos */
+
+    /* ACCION: Modifica el color de fondo de los elementos en estado activo o seleccionado (ej. el fondo del item seleccionado en el menu lateral de Administracion). */
     --g-active-bg: #dff1dd;
-    /* Fondo de elementos seleccionados o activos */
 
-    /* > BOTONES DE ACCION: Cambia esto para modificar TODOS los botones de la plataforma */
+
+    /* --- BOTONES DE ACCION SECUNDARIOS --- */
+    /* NOTA: Los botones principales (Agregar empresa, Login) se controlan mas abajo con la variable --g-accent. */
+
+    /* ACCION: Modifica el color de fondo para botones de accion estandar (ej. Guardar, Confirmar). */
     --g-btn-primary-bg: #007bff;
-    /* Color principal de botones "Guardar", "Aceptar", "Nuevo" */
     --g-btn-primary-hover: #0056b3;
-    /* Color cuando pasas el mouse por el botón primario */
 
+    /* ACCION: Modifica el color de fondo para botones secundarios o de cancelacion. */
     --g-btn-secondary-bg: #6c757d;
-    /* Color de botones "Cancelar", "Regresar" o inactivos */
     --g-btn-secondary-hover: #5a6268;
-    /* Hover de botones secundarios */
+
+    /* ACCION: Modifica el color de fondo para botones de ordenamiento o acciones menores. */
     --g-btn-order-bg: #6c757d;
-    /* Alias para botones de ordenamiento */
     --g-btn-order-hover: #5a6268;
 
+    /* ACCION: Modifica el color de fondo para botones de acciones destructivas o reportes (rojos). */
     --g-btn-report-bg: #c73232;
-    /* Botones de peligro: "Eliminar", "Reportar", "Borrar" */
     --g-btn-report-hover: #a82828;
-    /* Hover de botones de peligro */
     --g-btn-danger-hover: #d32f2f;
-    /* Alias para hover de peligro genérico */
     --g-btn-remove-bg: var(--g-danger);
-    /* Botones circulares de eliminar (X) */
     --g-btn-remove-hover: var(--g-btn-danger-hover);
 
+    /* ACCION: Modifica el color de fondo para botones de filtrado (ej. boton de "Mes actual"). */
     --g-btn-filter-bg: #0d6efd;
-    /* Botones de información o filtros */
     --g-btn-filter-hover: #0b5ed7;
-    /* Hover de botones de filtro */
 
+    /* ACCION: Modifica el color de fondo para botones de acciones correctas o aperturas de mapas (verdes). */
     --g-btn-map-bg: #28a745;
-    /* Botones de éxito o acciones especiales (como abrir mapa) */
     --g-btn-map-hover: #218838;
 
+    /* ACCION: Modifica el color de fondo para cualquier boton en estado deshabilitado. */
     --g-btn-disabled-bg: #cccccc;
-    /* Color de cualquier botón cuando está deshabilitado */
 
-    /* > HEADER Y NAVEGACION: Controla la barra superior y menús laterales */
+
+    /* --- HEADER Y NAVEGACION --- */
+    /* ACCION: Modifica el color de fondo de la barra de navegacion superior oscura (Header principal). */
     --g-header-bg: var(--g-color-dark-blue-1);
-    /* Color principal de la barra de arriba */
+
+    /* ACCION: Modifica el color del texto y enlaces en la barra de navegacion superior. Si cambia el header a un color claro, cambie esto a oscuro. */
     --g-header-link: #ffffff;
-    /* Color del texto de los links en el header */
     --g-header-link-hover: var(--g-color-light-blue);
+
+    /* INFO: Controla el color de los menus desplegables y laterales. Utiliza var(--g-header-bg) para que hereden automaticamente el color del header sin tener que reescribirlo. */
     --g-header-dropdown-bg: var(--g-header-bg);
-    --g-header-dropdown-divider: rgba(255, 255, 255, 0.1);
-    --g-header-dropdown-hover-bg: rgba(255, 255, 255, 0.15);
     --g-header-sidebar-bg: var(--g-header-bg);
-    /* Fondo del menú lateral */
+
+    /* INFO: Efecto automatico. Utiliza una capa blanca transparente (rgba 255, 255, 255, 0.15) para que, al pasar el cursor sobre los submenus, el color se vuelva un tono mas claro automaticamente, adaptandose a cualquier color de fondo sin necesidad de recalcular variables. */
+    --g-header-dropdown-hover-bg: rgba(255, 255, 255, 0.15);
     --g-header-sidebar-hover: rgba(255, 255, 255, 0.1);
+
+    /* Propiedades de dimensionamiento y separadores del header */
+    --g-header-dropdown-divider: rgba(255, 255, 255, 0.1);
     --g-header-icon-filter: brightness(0) invert(1);
     --g-header-avatar-size: 45px;
     --g-header-height: 70px;
@@ -89,45 +99,49 @@
     --g-header-inactivity-border: #f5c6cb;
     --g-header-icon-btn-hover: rgba(255, 255, 255, 0.1);
 
-    /* > TEXTOS GLOBALES: Modifica el color de las letras en general */
+
+    /* --- TIPOGRAFIA: COLORES --- */
+    /* ACCION: Modifica el color del texto principal de la aplicacion. */
     --g-text: #333333;
-    /* Texto principal (títulos y párrafos normales) */
+    /* ACCION: Modifica el color del texto secundario, subtitulos o etiquetas. */
     --g-text-light: #666666;
-    /* Texto secundario o subtítulos */
     --g-text-muted: #999999;
-    /* Texto apagado (placeholders, notas pequeñas) */
+    /* ACCION: Modifica el color del texto en contraste (ej. texto blanco sobre botones oscuros). */
     --g-text-inverse: #ffffff;
-    /* Texto sobre fondos oscuros (ej. letras blancas en botones) */
 
-    /* > BORDES GLOBALES: Líneas divisorias, contornos de inputs y tablas */
+
+    /* --- BORDES GLOBALES --- */
+    /* ACCION: Modifica el color principal de los bordes estructurales (tablas, contenedores, inputs). */
     --g-border: #e0e0e0;
-    /* Borde estándar para tarjetas y tablas */
     --g-border-light: #f0f0f0;
-    /* Borde muy sutil para separadores internos */
 
-    /* > COLORES DE ESTADO (Badges, Alertas, Notificaciones) */
+
+    /* --- COLORES DE ESTADO SEMANTICO --- */
+    /* ACCION: Modifica la paleta de colores para indicadores de estado, notificaciones y alertas. */
     --g-success: #4caf50;
-    /* Verde: Operaciones exitosas */
     --g-success-alt: #28a745;
     --g-danger: #f44336;
-    /* Rojo: Errores o rechazos */
     --g-danger-alt: #dc3545;
     --g-warning: #ff9800;
-    /* Naranja/Amarillo: Advertencias o pendientes */
     --g-warning-alt: #ffc107;
     --g-info: #2196f3;
-    /* Azul: Información neutra */
     --g-pending: #2196f3;
 
-    /* > IDENTIDAD DE MARCA: Variables heredadas para componentes principales */
+
+    /* --- IDENTIDAD DE MARCA (Variables Maestras) --- */
+    /* ACCION: Define el color institucional primario de la plataforma. */
     --g-primary: var(--g-color-dark-blue-1);
-    /* color del borde de los encabezados de tablas y de las opciones del submenu de administracion */
+
+    /* ACCION: Define el color secundario. Modifique este valor para cambiar el color de la linea inferior en las pestañas de navegacion superiores (ej. modulo de Configuracion) y los bordes destacables de elementos activos. */
     --g-secondary: var(--g-color-blue-3);
+
+    /* ACCION: Define el color de acento principal. Modifique este valor para cambiar, de forma centralizada, el color de los botones principales de toda la plataforma (ej. botones "Agregar empresa", "Iniciar sesion", y llamados a la accion destacados). */
     --g-accent: var(--g-color-orange);
 
     /* ═══════════════════════════════════════════════
-       [ 3. ESPACIADO Y TIPOGRAFIA (Márgenes y Letras) ]
-       INFO: Modifica esto para hacer la app más "apretada" o más "suelta"
+       [ 3. SISTEMA DE ESPACIADO Y TIPOGRAFIA ]
+       INFO: Valores de dimensionamiento estandarizados. 
+       Modificar unicamente si se requiere ajustar la densidad visual.
     ═══════════════════════════════════════════════ */
     --g-space-xs: 0.25rem;
     --g-space-sm: 0.5rem;
@@ -137,11 +151,8 @@
     --g-space-xxl: 2rem;
 
     --g-radius-sm: 4px;
-    /* Bordes ligeramente redondeados */
     --g-radius-md: 8px;
-    /* Bordes redondeados estándar (tarjetas) */
     --g-radius-lg: 12px;
-    /* Bordes muy redondeados (modales) */
 
     --g-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     --g-shadow-hover: 0 4px 20px rgba(0, 0, 0, 0.15);
@@ -156,7 +167,7 @@
 
     /* ═══════════════════════════════════════════════
        [ 4. TOKENS ESPECIFICOS DE MODULOS ]
-       INFO: Cambios aquí solo afectan a su propio módulo (ej. solo al Calendario)
+       INFO: Variables aisladas para componentes de alta complejidad.
     ═══════════════════════════════════════════════ */
 
     /* > MODULO: Calendario */
@@ -316,7 +327,7 @@
     --map-error-color: #f44336;
     --map-error-bg: rgba(255, 255, 255, 0.9);
 
-    /* > MODULO: Popups y Editores (estilo Gmail) */
+    /* > MODULO: Popups y Editores */
     --popup-bg: #ffffff;
     --popup-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
     --popup-shadow-mobile: 0 5px 20px rgba(0, 0, 0, 0.2);
@@ -362,7 +373,6 @@
 
     /* > VARIOS: Formularios, Tablas, Contadores y Dropzones */
     --g-filter-section-bg: #f8f9fa;
-    /* color de los encabezados de tablas y de las opciones del submenu de administracion */
     --g-table-header-active-bg: #cdd6ee;
     --g-card-success-bg-start: #e8f5e8;
     --g-card-success-bg-end: #c8e6c9;
@@ -444,8 +454,8 @@
 
     /* ═══════════════════════════════════════════════
        [ 5. ALIASES DE COMPATIBILIDAD ]
-       INFO: NO TOCAR. Existen solo para que los componentes viejos no se rompan
-             y apunten a los nuevos colores globales.
+       INFO: Reglas de mapeo para mantener soporte con modulos heredados.
+       No alterar a menos que se introduzca un componente nuevo con esquema antiguo.
     ═══════════════════════════════════════════════ */
     --color-dark-blue-1: var(--g-color-dark-blue-1);
     --color-dark-blue-2: var(--g-color-dark-blue-2);
