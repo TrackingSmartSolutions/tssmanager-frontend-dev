@@ -1,26 +1,26 @@
 /* Estilos para las listas en el editor */
 .gmail-message-editor ul,
 .correo-plantillas-textarea ul {
-  margin: 8px 0;
+  margin: var(--g-space-sm) 0;
   padding-left: 20px;
 }
 
 .gmail-message-editor ol,
 .correo-plantillas-textarea ol {
-  margin: 8px 0;
+  margin: var(--g-space-sm) 0;
   padding-left: 20px;
 }
 
 .gmail-message-editor li,
 .correo-plantillas-textarea li {
-  margin: 4px 0;
+  margin: var(--g-space-xs) 0;
   line-height: 1.5;
 }
 
 .gmail-message-editor,
 .correo-plantillas-textarea {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif !important;
-  font-size: 14px !important;
+  font-size: var(--g-font-md) !important;
   line-height: 1.5 !important;
 }
 
@@ -32,7 +32,7 @@
 
 .gmail-message-editor p,
 .correo-plantillas-textarea p {
-  margin: 0 0 8px 0 !important;
+  margin: 0 0 var(--g-space-sm) 0 !important;
   font-family: inherit !important;
   font-size: inherit !important;
 }
@@ -50,12 +50,12 @@
 
 /* Estilos para enlaces dentro del editor */
 .gmail-message-editor a {
-  color: #1a73e8;
+  color: var(--g-editor-link);
   text-decoration: underline;
   cursor: pointer;
 }
 
 .gmail-message-editor a:hover {
-  color: #174ea6;
+  color: var(--g-editor-link-hover);
   text-decoration: underline;
 }

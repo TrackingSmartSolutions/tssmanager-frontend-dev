@@ -1,3 +1,5 @@
+/* config-copias.css */
+
 .config-copias-config-header {
   background-color: var(--config-copias-panel-background);
   padding: var(--config-copias-spacing-lg) var(--config-copias-spacing-xl);
@@ -30,13 +32,13 @@
 
 .config-copias-nav-item:hover {
   color: var(--config-copias-secondary-color);
-  background-color: rgba(3, 124, 224, 0.05);
+  background-color: rgba(0, 0, 0, 0.04);
 }
 
 .config-copias-nav-item-active {
   color: var(--config-copias-secondary-color);
   border-bottom-color: var(--config-copias-secondary-color);
-  background-color: rgba(3, 124, 224, 0.05);
+  background-color: rgba(0, 0, 0, 0.04);
 }
 
 .config-copias-main-content {
@@ -68,13 +70,13 @@
   margin: 0 0 var(--config-copias-spacing-xl) 0;
 }
 
-/* Informacion */
+/* Información */
 .config-copias-info-box {
   display: flex;
   gap: var(--config-copias-spacing-sm);
   padding: var(--config-copias-spacing-md);
-  background-color: #e3f2fd;
-  border: 1px solid #bbdefb;
+  background-color: var(--g-info-bg);
+  border: 1px solid var(--g-info-border);
   border-radius: var(--config-copias-border-radius-sm);
   margin-bottom: var(--config-copias-spacing-xl);
 }
@@ -137,7 +139,7 @@
   border: 1px solid var(--config-copias-border-color);
   border-radius: var(--config-copias-border-radius-sm);
   font-size: var(--config-copias-font-size-sm);
-  background-color: white;
+  background-color: var(--g-panel-bg);
   color: var(--config-copias-text-color);
   transition: border-color 0.3s, box-shadow 0.3s;
   box-sizing: border-box;
@@ -150,12 +152,12 @@
 }
 
 .config-copias-form-control:disabled {
-  background-color: #f5f5f5;
+  background-color: var(--g-input-disabled-bg);
   color: var(--config-copias-text-light);
   cursor: not-allowed;
 }
 
-/* Google Drive Seccion */
+/* Google Drive Sección */
 .config-copias-google-drive-section {
   display: flex;
   flex-direction: column;
@@ -183,8 +185,8 @@
   display: flex;
   gap: var(--config-copias-spacing-sm);
   padding: var(--config-copias-spacing-sm);
-  background-color: #e8f5e8;
-  border: 1px solid #c8e6c9;
+  background-color: var(--g-success-bg);
+  border: 1px solid var(--g-success-border);
   border-radius: var(--config-copias-border-radius-sm);
 }
 
@@ -245,32 +247,32 @@
 
 .config-copias-btn-primary {
   background-color: var(--config-copias-secondary-color);
-  color: white;
+  color: var(--g-text-inverse);
 }
 
 .config-copias-btn-primary:hover:not(:disabled) {
-  background-color: #0056b8;
+  background-color: var(--g-btn-primary-alt-hover);
   transform: translateY(-1px);
 }
 
 .config-copias-btn-secondary {
-  background-color: #6c757d;
-  color: white;
+  background-color: var(--g-btn-secondary-bg);
+  color: var(--g-text-inverse);
 }
 
 .config-copias-btn-secondary:hover:not(:disabled) {
-  background-color: #5a6268;
+  background-color: var(--g-btn-secondary-hover);
   transform: translateY(-1px);
 }
 
 .config-copias-btn-instant {
   background-color: var(--config-copias-secondary-color);
-  color: white;
+  color: var(--g-text-inverse);
 }
 
 .config-copias-action-btn.config-copias-delete-btn {
-  background-color: #f44336;
-  color: white;
+  background-color: var(--g-danger);
+  color: var(--g-text-inverse);
   border: none;
   padding: 5px 10px;
   border-radius: 4px;
@@ -280,7 +282,7 @@
 }
 
 .config-copias-action-btn.config-copias-delete-btn:hover {
-  background-color: #d32f2f;
+  background-color: var(--g-btn-danger-hover);
 }
 
 .config-copias-statistics-section {
@@ -292,7 +294,7 @@
 }
 
 .config-copias-btn-instant:hover {
-  background-color: #0056b8;
+  background-color: var(--g-btn-primary-alt-hover);
   transform: translateY(-1px);
 }
 
@@ -331,11 +333,11 @@
 .config-copias-table {
   width: 100%;
   border-collapse: collapse;
-  background-color: white;
+  background-color: var(--g-panel-bg);
 }
 
 .config-copias-table th {
-  background-color: #f8f9fa;
+  background-color: var(--g-table-header-bg);
   padding: var(--config-copias-spacing-md);
   text-align: left;
   font-size: var(--config-copias-font-size-sm);
@@ -366,10 +368,10 @@
 }
 
 .config-copias-table tbody tr:hover {
-  background-color: #f8f9fa;
+  background-color: var(--g-section-inner-bg);
 }
 
-/* Botones */
+/* Botones de acción */
 .config-copias-action-buttons {
   display: flex;
   gap: var(--config-copias-spacing-xs);
@@ -389,44 +391,44 @@
 
 .config-copias-csv-btn {
   background-color: var(--config-copias-success-color);
-  color: white;
+  color: var(--g-text-inverse);
 }
 
 .config-copias-csv-btn:hover {
-  background-color: #45a049;
+  background-color: var(--g-success-alt);
   transform: translateY(-1px);
 }
 
 .config-copias-pdf-btn {
   background-color: var(--config-copias-danger-color);
-  color: white;
+  color: var(--g-text-inverse);
 }
 
 .config-copias-pdf-btn:hover {
-  background-color: #d32f2f;
+  background-color: var(--g-btn-danger-hover);
   transform: translateY(-1px);
 }
 
 .config-copias-restore-btn {
   background-color: var(--config-copias-secondary-color);
-  color: white;
+  color: var(--g-text-inverse);
 }
 
 .config-copias-restore-btn:hover {
-  background-color: #0056b8;
+  background-color: var(--g-btn-primary-alt-hover);
   transform: translateY(-1px);
 }
 
-/* Estilos para el grupo de checkboxes */
+/* Checkboxes */
 .config-copias-checkbox-group {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 16px;
   margin-top: 12px;
   padding: 20px;
-  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  background: linear-gradient(135deg, var(--g-checkbox-group-bg-start) 0%, var(--g-checkbox-group-bg-end) 100%);
   border-radius: 12px;
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--g-checkbox-group-border);
 }
 
 .config-copias-checkbox-item {
@@ -435,7 +437,7 @@
   align-items: center;
   gap: 12px;
   padding: 12px 16px;
-  background: white;
+  background: var(--g-panel-bg);
   border-radius: 8px;
   border: 2px solid transparent;
   cursor: pointer;
@@ -444,15 +446,15 @@
 }
 
 .config-copias-checkbox-item:hover {
-  border-color: #3b82f6;
-  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+  border-color: var(--g-checkbox-focus-color);
+  box-shadow: 0 4px 12px var(--g-checkbox-item-hover-shadow);
   transform: translateY(-1px);
 }
 
 .config-copias-checkbox-item:has(input:checked) {
-  background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
-  border-color: #3b82f6;
-  box-shadow: 0 4px 16px rgba(59, 130, 246, 0.25);
+  background: linear-gradient(135deg, var(--g-checkbox-item-checked-bg-start) 0%, var(--g-checkbox-item-checked-bg-end) 100%);
+  border-color: var(--g-checkbox-focus-color);
+  box-shadow: 0 4px 16px var(--g-checkbox-item-checked-shadow);
 }
 
 .config-copias-checkbox {
@@ -468,22 +470,22 @@
   position: relative;
   width: 20px;
   height: 20px;
-  border: 2px solid #d1d5db;
+  border: 2px solid var(--g-checkbox-unchecked-border);
   border-radius: 4px;
-  background: white;
+  background: var(--g-panel-bg);
   transition: all 0.3s ease;
   flex-shrink: 0;
 }
 
 .config-copias-checkbox-item:hover::before {
-  border-color: #3b82f6;
+  border-color: var(--g-checkbox-focus-color);
   box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
 }
 
 .config-copias-checkbox-item:has(input:checked)::before {
-  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
-  border-color: #1d4ed8;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+  background: linear-gradient(135deg, var(--g-checkbox-active-bg-start) 0%, var(--g-checkbox-active-bg-end) 100%);
+  border-color: var(--g-checkbox-active-border);
+  box-shadow: 0 0 0 3px var(--g-checkbox-active-shadow);
 }
 
 .config-copias-checkbox-item:has(input:checked)::after {
@@ -492,7 +494,7 @@
   left: 19px;
   top: 50%;
   transform: translateY(-50%);
-  color: white;
+  color: var(--g-text-inverse);
   font-size: 14px;
   font-weight: bold;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
@@ -502,7 +504,7 @@
   cursor: pointer;
   font-size: 14px;
   font-weight: 500;
-  color: #374151;
+  color: var(--g-text);
   user-select: none;
   transition: color 0.3s ease;
   margin: 0;
@@ -510,7 +512,7 @@
 }
 
 .config-copias-checkbox-item:has(input:checked) .config-copias-checkbox-label {
-  color: #1d4ed8;
+  color: var(--g-checkbox-item-checked-color);
   font-weight: 600;
 }
 
@@ -520,12 +522,12 @@
 }
 
 .config-copias-checkbox:focus+.config-copias-checkbox-label {
-  outline: 2px solid #3b82f6;
+  outline: 2px solid var(--g-checkbox-focus-color);
   outline-offset: 2px;
   border-radius: 4px;
 }
 
-/* Diseño Responsivo */
+/* Responsive */
 @media (max-width: 1200px) {
   .config-copias-form-row {
     flex-direction: column;
@@ -602,9 +604,7 @@
   .config-copias-table td {
     padding: var(--config-copias-spacing-sm);
   }
-}
 
-@media (max-width: 768px) {
   .config-copias-checkbox-group {
     grid-template-columns: 1fr;
     gap: 12px;
@@ -651,12 +651,12 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: var(--g-loading-bg);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   z-index: 1000;
   font-size: 16px;
-  color: #037ce0;
+  color: var(--g-loading-color);
 }

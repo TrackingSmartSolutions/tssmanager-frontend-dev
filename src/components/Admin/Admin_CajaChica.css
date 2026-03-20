@@ -1,3 +1,5 @@
+/* cajachica.css */
+
 /* Layout Principal */
 .cajachica-main-content {
   padding: var(--cajachica-spacing-lg) var(--cajachica-spacing-xl);
@@ -59,12 +61,12 @@
 }
 
 .cajachica-menu-item:hover {
-  background-color: rgba(3, 124, 224, 0.05);
+  background-color: rgba(0, 0, 0, 0.04);
   border-color: var(--cajachica-border-color);
 }
 
 .cajachica-menu-item-active {
-  background-color: #cdd6ee;
+  background-color: var(--g-table-header-active-bg);
   color: var(--cajachica-primary-color);
   font-weight: 500;
   border-color: var(--cajachica-secondary-color);
@@ -118,7 +120,7 @@
 }
 
 .cajachica-resumen-card {
-  background-color: white;
+  background-color: var(--g-panel-bg);
   padding: var(--cajachica-spacing-lg);
   border-radius: var(--cajachica-border-radius-md);
   box-shadow: var(--cajachica-box-shadow);
@@ -147,12 +149,12 @@
 
 /* Colores Específicos Cards Resumen */
 .cajachica-ingresos {
-  background: linear-gradient(135deg, #e8f5e8 0%, #c8e6c9 100%);
+  background: linear-gradient(135deg, var(--g-card-success-bg-start) 0%, var(--g-card-success-bg-end) 100%);
   border-left: 4px solid var(--cajachica-success-color);
 }
 
 .cajachica-ingresos .cajachica-resumen-titulo {
-  color: #2e7d32;
+  color: var(--g-card-success-border);
 }
 
 .cajachica-ingresos .cajachica-resumen-monto {
@@ -160,12 +162,12 @@
 }
 
 .cajachica-gastos {
-  background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%);
+  background: linear-gradient(135deg, var(--g-card-danger-bg-start) 0%, var(--g-card-danger-bg-end) 100%);
   border-left: 4px solid var(--cajachica-danger-color);
 }
 
 .cajachica-gastos .cajachica-resumen-titulo {
-  color: #c62828;
+  color: var(--g-card-danger-border);
 }
 
 .cajachica-gastos .cajachica-resumen-monto {
@@ -173,12 +175,12 @@
 }
 
 .cajachica-utilidad {
-  background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+  background: linear-gradient(135deg, var(--g-card-info-bg-start) 0%, var(--g-card-info-bg-end) 100%);
   border-left: 4px solid var(--cajachica-info-color);
 }
 
 .cajachica-utilidad .cajachica-resumen-titulo {
-  color: #1565c0;
+  color: var(--g-card-info-border);
 }
 
 .cajachica-utilidad .cajachica-resumen-monto {
@@ -191,8 +193,8 @@
   align-items: flex-end;
   margin-bottom: var(--cajachica-spacing-xl);
   padding: 15px;
-  background: #f8f9fa;
-  border-radius: 8px;
+  background: var(--g-filter-section-bg);
+  border-radius: var(--cajachica-border-radius-md);
   flex-wrap: wrap;
 }
 
@@ -205,13 +207,13 @@
 .cajachica-filtro-grupo label {
   font-size: 14px;
   font-weight: 500;
-  color: #333;
+  color: var(--cajachica-text-color);
 }
 
 .cajachica-date-input {
   padding: 8px 12px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+  border: 1px solid var(--g-date-input-border);
+  border-radius: var(--cajachica-border-radius-sm);
   font-size: 14px;
   min-width: 150px;
 }
@@ -233,34 +235,40 @@
 }
 
 .cajachica-btn-filtro {
-  background: #007bff;
-  color: white;
+  background: var(--g-btn-filter-bg);
+  color: var(--g-text-inverse);
   border: none;
   padding: 8px 16px;
-  border-radius: 4px;
+  border-radius: var(--cajachica-border-radius-sm);
   cursor: pointer;
   font-size: 14px;
   height: 35px;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.cajachica-btn-filtro:hover {
+  background-color: var(--g-btn-filter-hover);
+  transform: translateY(-1px);
 }
 
 .cajachica-btn-orden {
-  background-color: #6c757d;
-  color: white;
+  background-color: var(--g-btn-order-bg);
+  color: var(--g-text-inverse);
   border: none;
   padding: 8px 12px;
-  border-radius: 4px;
+  border-radius: var(--cajachica-border-radius-sm);
   cursor: pointer;
   font-size: 14px;
   height: 35px;
 }
 
 .cajachica-btn-orden:hover {
-  background-color: #5a6268;
+  background-color: var(--g-btn-order-hover);
 }
 
 /* Tabla */
 .cajachica-table-card {
-  background-color: white;
+  background-color: var(--g-panel-bg);
   padding: var(--cajachica-spacing-lg);
   border-radius: var(--cajachica-border-radius-md);
   box-shadow: var(--cajachica-box-shadow);
@@ -288,14 +296,14 @@
 .cajachica-table-header-fixed {
   position: sticky;
   top: 0;
-  background-color: #cdd6ee;
+  background-color: var(--g-table-header-active-bg);
   z-index: 10;
 }
 
 .cajachica-table {
   width: 100%;
   border-collapse: collapse;
-  background-color: white;
+  background-color: var(--g-panel-bg);
   min-width: 800px;
 }
 
@@ -309,7 +317,7 @@
 }
 
 .cajachica-table th {
-  background-color: #cdd6ee;
+  background-color: var(--g-table-header-active-bg);
   font-weight: 600;
   color: var(--cajachica-primary-color);
 }
@@ -353,27 +361,27 @@
 }
 
 .cajachica-btn-reporte {
-  background-color: #c73232;
-  color: white;
+  background-color: var(--g-btn-report-bg);
+  color: var(--g-text-inverse);
   padding: var(--cajachica-spacing-sm) var(--cajachica-spacing-lg);
   font-size: var(--cajachica-font-size-sm);
   min-width: 100px;
 }
 
 .cajachica-btn-reporte:hover {
-  background-color: #d86600;
+  background-color: var(--g-btn-report-hover);
   transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(242, 113, 0, 0.3);
+  box-shadow: 0 4px 15px rgba(199, 50, 50, 0.3);
 }
 
 .cajachica-select-filter {
   padding: 8px 12px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+  border: 1px solid var(--g-date-input-border);
+  border-radius: var(--cajachica-border-radius-sm);
   font-size: 14px;
   min-width: 200px;
-  background-color: white;
-  color: #333;
+  background-color: var(--g-panel-bg);
+  color: var(--cajachica-text-color);
 }
 
 .cajachica-select-filter:focus {
@@ -391,12 +399,12 @@
 
 .cajachica-date-picker {
   padding: 8px 70px 8px 12px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+  border: 1px solid var(--g-date-input-border);
+  border-radius: var(--cajachica-border-radius-sm);
   font-size: 14px;
   width: 100%;
-  background-color: white;
-  color: #333;
+  background-color: var(--g-panel-bg);
+  color: var(--g-date-input-color);
   cursor: pointer;
   box-sizing: border-box;
 }
@@ -419,18 +427,18 @@
 }
 
 .cajachica-calendar-icon {
-  color: #666;
+  color: var(--g-date-icon-color);
   display: flex;
   align-items: center;
 }
 
 .cajachica-btn-limpiar {
-  background-color: #6c757d;
-  color: white;
+  background-color: var(--g-btn-order-bg);
+  color: var(--g-text-inverse);
 }
 
 .cajachica-btn-limpiar:hover {
-  background-color: #5a6268;
+  background-color: var(--g-btn-order-hover);
 }
 
 @media (max-width: 768px) {
@@ -476,7 +484,6 @@
     height: auto;
   }
 
-  /* Menú Horizontal en Tablet */
   .cajachica-sidebar-menu {
     display: flex;
     flex-direction: row;
@@ -507,8 +514,6 @@
 }
 
 @media (max-width: 768px) {
-
-  /* Corrección de Filtros en Móvil: Stack Vertical */
   .cajachica-filtros-fecha {
     flex-direction: column;
     align-items: stretch;
@@ -530,7 +535,6 @@
     margin-top: 5px;
   }
 
-  /* Ajustes Generales Móvil */
   .cajachica-main-content {
     padding: var(--cajachica-spacing-sm);
   }
@@ -604,7 +608,6 @@
     padding: var(--cajachica-spacing-xs);
   }
 
-  /* Menú Vertical en Móvil Pequeño */
   .cajachica-sidebar-menu {
     flex-direction: column;
     overflow-x: visible;
@@ -670,12 +673,12 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: var(--g-loading-bg);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   z-index: 1000;
   font-size: 16px;
-  color: #037ce0;
+  color: var(--g-loading-color);
 }

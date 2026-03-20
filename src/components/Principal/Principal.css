@@ -1,4 +1,4 @@
-/* Restablecimiento y Estilos Base */
+/* Resetea márgenes, padding y aplica box-sizing y fuente por defecto */
 * {
   margin: 0;
   padding: 0;
@@ -148,7 +148,7 @@ button {
   font-size: var(--font-size-sm);
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius-sm);
-  background-color: white;
+  background-color: var(--g-panel-bg);
   appearance: none;
   padding-right: 30px;
 }
@@ -171,7 +171,7 @@ button {
 }
 
 .chart-section {
-  background-color: #f8f9fa;
+  background-color: var(--dash-chart-section-bg);
   border-radius: var(--border-radius-md);
   padding: var(--spacing-lg);
   border: 1px solid var(--border-color);
@@ -194,7 +194,7 @@ button {
 }
 
 .task-item {
-  background-color: #f5f5f5;
+  background-color: var(--g-bg);
   border-radius: var(--border-radius-sm);
   padding: var(--spacing-md);
   display: flex;
@@ -248,7 +248,7 @@ button {
   display: inline-flex;
   align-items: center;
   background-color: var(--accent-color);
-  color: white;
+  color: var(--g-text-inverse);
   font-size: var(--font-size-xs);
   font-weight: 500;
   padding: var(--spacing-xs) var(--spacing-sm);
@@ -258,16 +258,12 @@ button {
   letter-spacing: 0.3px;
   max-width: fit-content;
   transition: all 0.2s ease;
-  border: 1px solid rgba(242, 113, 0, 0.8);
 }
 
 .task-empresa:hover {
-  background-color: #d86600;
-  box-shadow: 0 2px 4px rgba(242, 113, 0, 0.4);
+  background-color: var(--g-btn-accent-hover);
+  box-shadow: 0 2px 4px rgba(255, 255, 255, 0.4);
 }
-
-
-
 
 /* Estilos de Botones */
 .btn {
@@ -287,20 +283,20 @@ button {
 
 .btn-primary {
   background-color: var(--accent-color);
-  color: white;
+  color: var(--g-text-inverse);
 }
 
 .btn-primary:hover {
-  background-color: #d86600;
+  background-color: var(--g-btn-accent-hover);
 }
 
 .btn-secondary {
-  background-color: #e0e0e0;
+  background-color: var(--g-active-bg);
   color: var(--text-color);
 }
 
 .btn-secondary:hover {
-  background-color: #d0d0d0;
+  background-color: var(--g-border);
 }
 
 /* Estilos de Gráfico */
@@ -312,7 +308,6 @@ button {
   height: auto;
 }
 
-/* Visibilidad mejorada de las etiquetas del gráfico */
 canvas#prospectsChart,
 canvas#companiesChart,
 canvas#usersChart {
@@ -346,7 +341,6 @@ canvas#usersChart {
   text-align: center;
   padding: var(--spacing-sm);
 }
-
 
 /* Ajustes Responsivos */
 @media (max-width: 1400px) {
@@ -509,7 +503,6 @@ canvas#usersChart {
     font-size: var(--font-size-sm);
   }
 
-  /* Responsive para el contenedor de duración */
   .duracion-container {
     flex-direction: column;
     gap: var(--spacing-md);
@@ -592,7 +585,7 @@ canvas#usersChart {
   }
 
   .task-empresa {
-    font-size: 0.6rem;
+    font-size: var(--g-font-xs);
     padding: 1px var(--spacing-xs);
   }
 }
@@ -621,7 +614,7 @@ canvas#usersChart {
 
 .btn-actividad-tipo {
   width: 100%;
-  background-color: white;
+  background-color: var(--g-panel-bg);
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius-sm);
   padding: var(--spacing-lg);
@@ -648,7 +641,7 @@ canvas#usersChart {
   padding: var(--spacing-sm) var(--spacing-md);
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius-sm);
-  background-color: white;
+  background-color: var(--g-panel-bg);
   color: var(--text-color);
   cursor: pointer;
   transition: all 0.3s;
@@ -662,7 +655,7 @@ canvas#usersChart {
 
 .btn-tipo.active {
   background-color: var(--secondary-color);
-  color: white;
+  color: var(--g-text-inverse);
   border-color: var(--secondary-color);
 }
 
@@ -676,10 +669,10 @@ canvas#usersChart {
 .btn-response {
   flex: 1;
   padding: var(--spacing-lg);
-  border: 2px solid #e0e0e0;
+  border: 2px solid var(--g-border);
   border-radius: var(--border-radius-md);
-  background-color: #f8f9fa;
-  color: #6c757d;
+  background-color: var(--g-bg);
+  color: var(--g-text-light);
   cursor: pointer;
   transition: all 0.3s ease;
   font-size: 24px;
@@ -697,16 +690,16 @@ canvas#usersChart {
 }
 
 .btn-response.active.positive {
-  background-color: #d4edda;
-  border-color: #28a745;
-  color: #28a745;
+  background-color: var(--dash-trend-up-bg);
+  border-color: var(--g-success-alt);
+  color: var(--g-success-alt);
   box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.25);
 }
 
 .btn-response.active.negative {
-  background-color: #f8d7da;
-  border-color: #dc3545;
-  color: #dc3545;
+  background-color: var(--dash-trend-down-bg);
+  border-color: var(--g-danger-alt);
+  color: var(--g-danger-alt);
   box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.25);
 }
 
@@ -721,9 +714,9 @@ canvas#usersChart {
 .btn-interest {
   width: 50px;
   height: 50px;
-  border: 3px solid #e0e0e0;
+  border: 3px solid var(--g-border);
   border-radius: 50%;
-  background-color: #f8f9fa;
+  background-color: var(--g-bg);
   cursor: pointer;
   transition: all 0.3s ease;
   font-size: 20px;
@@ -739,23 +732,23 @@ canvas#usersChart {
 }
 
 .btn-interest.active.low {
-  background-color: #f8d7da;
-  border-color: #dc3545;
-  color: #dc3545;
+  background-color: var(--dash-trend-down-bg);
+  border-color: var(--g-danger-alt);
+  color: var(--g-danger-alt);
   box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.25);
 }
 
 .btn-interest.active.medium {
-  background-color: #fff3cd;
-  border-color: #ffc107;
-  color: #856404;
+  background-color: rgba(255, 193, 7, 0.15);
+  border-color: var(--g-warning-alt);
+  color: var(--g-text);
   box-shadow: 0 0 0 3px rgba(255, 193, 7, 0.25);
 }
 
 .btn-interest.active.high {
-  background-color: #d4edda;
-  border-color: #28a745;
-  color: #28a745;
+  background-color: var(--dash-trend-up-bg);
+  border-color: var(--g-success-alt);
+  color: var(--g-success-alt);
   box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.25);
 }
 
@@ -765,12 +758,10 @@ canvas#usersChart {
   margin-bottom: var(--spacing-lg);
 }
 
-/* Contenedor principal del interés */
 .detalles-trato-modal-overlay .interest-container {
   margin-bottom: var(--spacing-lg);
 }
 
-/* Contenedor para las opciones individuales (Bajo, Medio, Alto) */
 .detalles-trato-modal-overlay .interest-options {
   display: flex;
   justify-content: space-around;
@@ -778,7 +769,6 @@ canvas#usersChart {
   padding: 0 var(--spacing-sm);
 }
 
-/* Estilos para cada grupo de botón y label */
 .detalles-trato-modal-overlay .interest-option {
   display: flex;
   flex-direction: column;
@@ -786,7 +776,6 @@ canvas#usersChart {
   text-align: center;
 }
 
-/* Estilos para los botones (los círculos) */
 .detalles-trato-modal-overlay .btn-interest {
   width: 30px;
   height: 30px;
@@ -795,8 +784,8 @@ canvas#usersChart {
   justify-content: center;
   align-items: center;
   font-size: var(--font-size-lg);
-  color: white;
-  background-color: #ccc;
+  color: var(--g-text-inverse);
+  background-color: var(--g-text-muted);
   border: none;
   cursor: pointer;
   margin-bottom: var(--spacing-xs);
@@ -829,11 +818,11 @@ canvas#usersChart {
   align-items: center;
   justify-content: center;
   height: 300px;
-  color: #64748b;
+  color: var(--g-text-light);
 }
 
 .loading-spinner p {
   margin: 0;
-  font-size: 14px;
+  font-size: var(--font-size-sm);
   font-weight: 500;
 }

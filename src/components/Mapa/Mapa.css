@@ -1,4 +1,3 @@
-/* Estilos base de Mapa */
 .mapa-screen {
     height: 100vh;
     width: 100%;
@@ -10,7 +9,6 @@
     padding-top: 70px;
 }
 
-/* Contenedor principal que organiza el mapa y la barra lateral */
 .mapa-content {
     flex-grow: 1;
     width: 100%;
@@ -19,7 +17,6 @@
     flex-direction: column;
 }
 
-/* Contenedor del mapa, ocupa el espacio disponible */
 .mapa-container {
     flex: 1;
     height: 100%;
@@ -27,13 +24,12 @@
     z-index: 500;
 }
 
-/* Filtro de sector */
 .mapa-filter {
     position: absolute;
     top: 10px;
     right: 10px;
     z-index: 1000;
-    background: rgba(255, 255, 255, 0.9);
+    background: var(--map-filter-bg);
     padding: 5px 10px;
     border-radius: 3px;
     display: flex;
@@ -43,7 +39,7 @@
 
 .mapa-filter-select {
     padding: 5px;
-    border: 1px solid #ccc;
+    border: 1px solid var(--map-filter-border);
     border-radius: 3px;
     font-size: 0.9em;
     cursor: pointer;
@@ -51,48 +47,44 @@
 
 .mapa-filter-select:focus {
     outline: none;
-    border-color: #bdbfc2;
-    box-shadow: 0 0 5px rgba(0, 87, 201, 0.5);
+    border-color: var(--map-filter-border);
+    box-shadow: 0 0 5px var(--map-filter-focus-shadow);
 }
 
-/* Estilo del mapa Leaflet, asegura que ocupe todo el contenedor */
 .leaflet-map {
     height: 100%;
     width: 100%;
     z-index: 500;
 }
 
-/* Estilo para mensajes de error, posicionados en la esquina superior izquierda */
 .mapa-error {
     position: absolute;
     top: 45px;
     left: 10px;
-    color: #f44336;
+    color: var(--map-error-color);
     z-index: 1000;
-    background: rgba(255, 255, 255, 0.9);
+    background: var(--map-error-bg);
     padding: 5px 10px;
     border-radius: 3px;
     font-size: 1em;
 }
 
-/* Barra lateral con información adicional */
 .mapa-sidebar {
     width: 100%;
     height: auto;
     max-height: 25vh;
-    background: white;
+    background: var(--map-bg);
     padding: 10px;
     border-left: none;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid var(--map-sidebar-border);
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--map-sidebar-shadow);
     z-index: 600;
 }
 
-/* Estilo para el título de la barra de arriba */
 .mapa-sidebar-header {
     border-bottom: none;
     background: transparent;
@@ -103,7 +95,7 @@
 .mapa-sidebar-header h3 {
     margin: 0;
     font-size: 1.2em;
-    color: #333;
+    color: var(--map-header-title-color);
 }
 
 .mapa-details {
@@ -112,27 +104,26 @@
     display: flex;
     flex-wrap: wrap;
     gap: 15px;
-    border-left: 1px solid #eee;
+    border-left: 1px solid var(--map-details-border);
     overflow-y: auto;
 }
 
 .mapa-details p {
     margin: 0;
     font-size: 0.9em;
+    color: var(--map-details-text-color);
 }
 
 .mapa-details p:last-child {
     margin-bottom: 0;
 }
 
-/* Estilo para los enlaces en los detalles */
 .mapa-details a {
-    color: #0057c9;
+    color: var(--map-link-color);
     text-decoration: none;
     word-break: break-all;
 }
 
-/* Efecto hover para los enlaces */
 .mapa-details a:hover {
     text-decoration: underline;
 }
@@ -147,11 +138,10 @@
     gap: 10px;
 }
 
-/* Botón de direcciones sin fondo ni borde */
 .mapa-btn-directions {
     flex: 1 1 0px;
-    background: #007bff;
-    color: white;
+    background: var(--map-btn-primary-bg);
+    color: var(--map-btn-primary-color);
     border: none;
     cursor: pointer;
     padding: 8px 12px;
@@ -166,20 +156,18 @@
 }
 
 .mapa-btn-directions:hover {
-    background: #0056b3;
+    background: var(--map-btn-primary-hover);
 }
 
 .mapa-btn-directions span {
     font-weight: 500;
 }
 
-/* Tamaño del ícono de coche */
 .mapa-car-icon {
     width: 18px;
     height: 18px;
 }
 
-/* Estilo base para botones */
 .mapa-btn {
     padding: 5px 10px;
     border: none;
@@ -188,11 +176,10 @@
     font-size: 0.95em;
 }
 
-/* Estilo para botones secundarios */
 .mapa-btn-secondary {
     flex: 1 1 0px;
-    background: #6c757d;
-    color: white;
+    background: var(--map-btn-secondary-bg);
+    color: var(--map-btn-secondary-color);
     padding: 8px 12px;
     border: none;
     border-radius: 4px;
@@ -206,7 +193,7 @@
 }
 
 .mapa-btn-secondary:hover {
-    background: #5a6268;
+    background: var(--map-btn-secondary-hover);
 }
 
 .mapa-controls {
@@ -215,7 +202,7 @@
     align-items: center;
     margin-bottom: 10px;
     padding: 10px;
-    background-color: #f5f5f5;
+    background-color: var(--map-controls-bg);
     border-radius: 5px;
     flex-wrap: wrap;
     gap: 10px;
@@ -233,8 +220,8 @@
 }
 
 .mapa-btn-primary {
-    background-color: #007bff;
-    color: white;
+    background-color: var(--map-btn-primary-bg);
+    color: var(--map-btn-primary-color);
     padding: 8px 16px;
     border: none;
     border-radius: 4px;
@@ -242,26 +229,25 @@
 }
 
 .mapa-btn-primary:disabled {
-    background-color: #ccc;
+    background-color: var(--map-btn-disabled-bg);
     cursor: not-allowed;
 }
 
-/* Estilos para botones de colapso */
 .mapa-collapse-btn {
-    background: rgba(255, 255, 255, 0.95);
-    border: 1px solid #ddd;
+    background: var(--map-collapse-bg);
+    border: 1px solid var(--map-collapse-border);
     border-radius: 4px;
     padding: 8px 12px;
     font-size: 0.9em;
     cursor: pointer;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--map-sidebar-shadow);
     width: 100%;
     text-align: left;
 }
 
 .mapa-collapse-btn:hover {
-    background: rgba(255, 255, 255, 1);
-    border-color: #007bff;
+    background: var(--map-bg);
+    border-color: var(--map-collapse-hover-border);
 }
 
 .mapa-filter-header,
@@ -282,7 +268,7 @@
 .mapa-sector-filter {
     margin-top: 10px;
     padding: 8px;
-    background: rgba(255, 255, 255, 0.9);
+    background: var(--map-filter-bg);
     border-radius: 4px;
 }
 
@@ -295,7 +281,6 @@
     image-rendering: optimizeSpeed;
 }
 
-/* Más optimizaciones graduales */
 .leaflet-container {
     -webkit-tap-highlight-color: transparent;
     -webkit-touch-callout: none;
@@ -409,7 +394,6 @@
     }
 }
 
-/* Para pantallas muy pequeñas */
 @media (max-width: 320px) {
     .mapa-info span {
         font-size: 12px;
@@ -421,7 +405,6 @@
     }
 }
 
-/* Tablets en orientación vertical */
 @media (max-width: 768px) {
     .mapa-container {
         height: 65vh;
@@ -441,7 +424,6 @@
     }
 }
 
-/* Móviles en orientación vertical */
 @media (max-width: 480px) {
     .mapa-container {
         height: 60vh;

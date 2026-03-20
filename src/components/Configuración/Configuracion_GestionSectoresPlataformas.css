@@ -1,3 +1,5 @@
+/* sectores-plataformas.css */
+
 .sectores-plataformas-config-header {
     background-color: var(--sectores-plataformas-panel-background);
     padding: var(--sectores-plataformas-spacing-lg) var(--sectores-plataformas-spacing-xl);
@@ -30,13 +32,13 @@
 
 .sectores-plataformas-nav-item:hover {
     color: var(--sectores-plataformas-secondary-color);
-    background-color: rgba(3, 124, 224, 0.05);
+    background-color: rgba(0, 0, 0, 0.04);
 }
 
 .sectores-plataformas-nav-item-active {
     color: var(--sectores-plataformas-secondary-color);
     border-bottom-color: var(--sectores-plataformas-secondary-color);
-    background-color: rgba(3, 124, 224, 0.05);
+    background-color: rgba(0, 0, 0, 0.04);
 }
 
 .sectores-plataformas-main-content {
@@ -128,11 +130,11 @@
 
 .sectores-plataformas-btn-add {
     background-color: var(--sectores-plataformas-accent-color);
-    color: white;
+    color: var(--g-text-inverse);
 }
 
 .sectores-plataformas-btn-add:hover:not(:disabled) {
-    background-color: #d86600;
+    background-color: var(--g-btn-accent-hover);
     transform: translateY(-1px);
 }
 
@@ -149,17 +151,17 @@
     position: sticky;
     top: 0;
     z-index: 10;
-    background-color: #f8f9fa;
+    background-color: var(--g-table-header-bg);
 }
 
 .sectores-plataformas-table {
     width: 100%;
     border-collapse: collapse;
-    background-color: white;
+    background-color: var(--g-panel-bg);
 }
 
 .sectores-plataformas-table th {
-    background-color: #f8f9fa;
+    background-color: var(--g-table-header-bg);
     padding: var(--sectores-plataformas-spacing-md);
     text-align: left;
     font-size: var(--sectores-plataformas-font-size-sm);
@@ -190,7 +192,7 @@
 }
 
 .sectores-plataformas-table tbody tr:hover {
-    background-color: #f8f9fa;
+    background-color: var(--g-table-header-bg);
 }
 
 .sectores-plataformas-action-buttons {
@@ -239,14 +241,14 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: var(--g-loading-bg);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     z-index: 1000;
     font-size: 16px;
-    color: #037ce0;
+    color: var(--g-loading-color);
 }
 
 /* Diseño responsivo */

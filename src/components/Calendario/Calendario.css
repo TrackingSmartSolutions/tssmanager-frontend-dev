@@ -1,7 +1,6 @@
-/* Contenedor principal del calendario */
 .ts-calendar-container {
   padding: 20px;
-  background-color: #f8fafc;
+  background-color: var(--cal-bg);
   height: calc(100vh - 70px);
   display: flex;
   flex-direction: column;
@@ -10,17 +9,16 @@
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
-/* Header del calendario */
 .ts-calendar-header {
   display: flex;
   flex-direction: column;
   gap: 16px;
   align-items: stretch;
   margin-bottom: 20px;
-  background: white;
+  background: var(--cal-panel-bg);
   padding: 16px 24px;
-  border-radius: 12px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border-radius: var(--cal-radius);
+  box-shadow: var(--cal-shadow);
   position: relative;
   min-height: auto;
   flex-shrink: 0;
@@ -39,14 +37,13 @@
   flex: none;
 }
 
-/* Filtro de usuarios mejorado con mejor diseño */
 .ts-calendar-select {
   padding: 10px 16px;
-  border: 2px solid #e5e7eb;
-  border-radius: 8px;
-  background: white;
+  border: 2px solid var(--cal-select-border);
+  border-radius: var(--g-radius-md);
+  background: var(--cal-select-bg);
   font-size: 14px;
-  color: #374151;
+  color: var(--cal-select-text);
   cursor: pointer;
   width: 100%;
   max-width: 250px;
@@ -55,22 +52,21 @@
 }
 
 .ts-calendar-select:hover {
-  border-color: #cbd5e0;
-  background: #f9fafb;
+  border-color: var(--cal-select-border-hover);
+  background: var(--g-bg);
 }
 
 .ts-calendar-select:focus {
   outline: none;
-  border-color: #3b82f6;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-  background: white;
+  border-color: var(--cal-select-border-focus);
+  box-shadow: 0 0 0 3px var(--cal-select-focus-shadow);
+  background: var(--cal-select-bg);
 }
 
-/* Botones de vista mejorados con mejor contraste */
 .ts-calendar-view-buttons {
   display: flex;
-  background: #f3f4f6;
-  border-radius: 8px;
+  background: var(--cal-view-bg);
+  border-radius: var(--g-radius-md);
   padding: 4px;
   width: 100%;
   justify-content: center;
@@ -81,10 +77,10 @@
   padding: 8px 16px;
   border: none;
   background: transparent;
-  color: #6b7280;
+  color: var(--cal-view-btn-color);
   font-size: 14px;
   font-weight: 500;
-  border-radius: 6px;
+  border-radius: var(--g-radius-sm);
   cursor: pointer;
   transition: all 0.2s ease;
   flex: 1;
@@ -92,71 +88,68 @@
 }
 
 .ts-calendar-view-btn.active {
-  background: white;
-  color: #1f2937;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  background: var(--cal-view-btn-active-bg);
+  color: var(--cal-view-btn-active-color);
+  box-shadow: var(--cal-shadow);
   font-weight: 600;
 }
 
 .ts-calendar-view-btn:hover:not(.active) {
-  color: #374151;
-  background: rgba(255, 255, 255, 0.5);
+  color: var(--cal-view-btn-hover-color);
+  background: var(--cal-view-btn-hover-bg);
 }
 
-/* Navegación de fechas */
 .ts-calendar-navigation {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 20px;
   margin-bottom: 20px;
-  background: white;
+  background: var(--cal-panel-bg);
   padding: 16px 24px;
-  border-radius: 12px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border-radius: var(--cal-radius);
+  box-shadow: var(--cal-shadow);
 }
 
 .ts-calendar-nav-btn {
-  background: #f3f4f6;
+  background: var(--cal-nav-btn-bg);
   border: none;
   width: 40px;
   height: 40px;
-  border-radius: 8px;
+  border-radius: var(--g-radius-md);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   font-size: 18px;
-  color: #6b7280;
+  color: var(--cal-nav-btn-color);
   transition: all 0.2s ease;
 }
 
 .ts-calendar-nav-btn:hover {
-  background: #e5e7eb;
-  color: #374151;
+  background: var(--cal-nav-btn-hover);
+  color: var(--cal-nav-btn-hover-color);
 }
 
 .ts-calendar-title {
   font-size: 24px;
   font-weight: 600;
-  color: #1f2937;
+  color: var(--cal-title-color);
   margin: 0;
   text-align: center;
   min-width: 300px;
 }
 
-/* Contenido del calendario */
 .ts-calendar-content {
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  background: var(--cal-panel-bg);
+  border-radius: var(--cal-radius);
+  box-shadow: var(--cal-shadow);
   overflow: hidden;
   flex: 1;
   height: 100%;
   position: relative;
 }
 
-/* Estilos de FullCalendar mejorados */
 .fc-daygrid-event .fc-event-time {
   display: none;
 }
@@ -171,7 +164,7 @@
   white-space: nowrap !important;
   min-height: 18px !important;
   border: 1px solid !important;
-  border-color: rgba(0, 0, 0, 0.15) !important;
+  border-color: var(--cal-event-border-alpha) !important;
   position: relative;
   font-weight: 500;
 }
@@ -207,19 +200,19 @@
 
 .fc-daygrid-more-link {
   font-size: 11px !important;
-  color: #6b7280 !important;
+  color: var(--cal-more-color) !important;
   padding: 3px 8px !important;
   cursor: pointer !important;
   text-decoration: none !important;
   border-radius: 4px !important;
-  background: #f3f4f6 !important;
+  background: var(--cal-more-bg) !important;
   margin-top: 2px !important;
   font-weight: 600;
 }
 
 .fc-daygrid-more-link:hover {
-  background: #e5e7eb !important;
-  color: #374151 !important;
+  background: var(--cal-more-hover-bg) !important;
+  color: var(--cal-more-hover-color) !important;
 }
 
 .fc-timegrid-event {
@@ -266,63 +259,63 @@
 .fc-event {
   border: none !important;
   background-color: var(--event-bg-color) !important;
-  color: white !important;
+  color: var(--g-text-inverse) !important;
 }
 
-/* Estilos por tipo de evento con mejor contraste */
+/* Eventos por tipo */
 .fc-daygrid-event.evento-reunion {
-  background-color: #3b82f6 !important;
-  border-color: #2563eb !important;
+  background-color: var(--cal-event-reunion-bg) !important;
+  border-color: var(--cal-event-reunion-border) !important;
 }
 
 .fc-daygrid-event.evento-llamada {
-  background-color: #10b981 !important;
-  border-color: #059669 !important;
+  background-color: var(--cal-event-llamada-bg) !important;
+  border-color: var(--cal-event-llamada-border) !important;
 }
 
 .fc-daygrid-event.evento-tarea {
-  background-color: #f50bc3 !important;
-  border-color: #db0a8a !important;
+  background-color: var(--cal-event-tarea-bg) !important;
+  border-color: var(--cal-event-tarea-border) !important;
 }
 
 .fc-daygrid-event.evento-recarga {
-  background-color: #f59e0b !important;
-  border-color: #d97706 !important;
+  background-color: var(--cal-event-recarga-bg) !important;
+  border-color: var(--cal-event-recarga-border) !important;
 }
 
 .fc-daygrid-event.evento-cuenta-cobrar {
-  background-color: #ef4444 !important;
-  border-color: #dc2626 !important;
+  background-color: var(--cal-event-cobrar-bg) !important;
+  border-color: var(--cal-event-cobrar-border) !important;
 }
 
 .fc-daygrid-event.evento-cuenta-pagar {
-  background-color: #8b5cf6 !important;
-  border-color: #7c3aed !important;
+  background-color: var(--cal-event-pagar-bg) !important;
+  border-color: var(--cal-event-pagar-border) !important;
 }
 
 .fc-timegrid-event.evento-reunion {
-  background-color: #3b82f6 !important;
-  border-color: #2563eb !important;
+  background-color: var(--cal-event-reunion-bg) !important;
+  border-color: var(--cal-event-reunion-border) !important;
 }
 
 .fc-timegrid-event.evento-llamada {
-  background-color: #10b981 !important;
-  border-color: #059669 !important;
+  background-color: var(--cal-event-llamada-bg) !important;
+  border-color: var(--cal-event-llamada-border) !important;
 }
 
 .fc-timegrid-event.evento-tarea {
-  background-color: #f50bc3 !important;
-  border-color: #db0a8a !important;
+  background-color: var(--cal-event-tarea-bg) !important;
+  border-color: var(--cal-event-tarea-border) !important;
 }
 
-/* Modal de evento */
+/* Modal del calendario */
 .ts-calendar-modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: var(--cal-modal-overlay);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -330,37 +323,37 @@
 }
 
 .ts-calendar-modal {
-  background: white;
-  border-radius: 12px;
+  background: var(--cal-panel-bg);
+  border-radius: var(--cal-radius);
   width: 90%;
   max-width: 500px;
   max-height: 80vh;
   overflow-y: auto;
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--cal-modal-shadow);
 }
 
 .ts-calendar-modal-header {
   padding: 20px 24px;
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 1px solid var(--cal-modal-header-border);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #f9fafb;
-  border-radius: 12px 12px 0 0;
+  background: var(--cal-modal-header-bg);
+  border-radius: var(--cal-radius) var(--cal-radius) 0 0;
 }
 
 .ts-calendar-modal-header h3 {
   margin: 0;
   font-size: 18px;
   font-weight: 600;
-  color: #1f2937;
+  color: var(--cal-modal-title-color);
 }
 
 .ts-calendar-modal-close {
   background: none;
   border: none;
   font-size: 24px;
-  color: #6b7280;
+  color: var(--cal-modal-close-color);
   cursor: pointer;
   padding: 0;
   width: 32px;
@@ -368,12 +361,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 6px;
+  border-radius: var(--g-radius-sm);
   transition: background-color 0.2s ease;
 }
 
 .ts-calendar-modal-close:hover {
-  background: #e5e7eb;
+  background: var(--cal-modal-close-hover);
 }
 
 .ts-calendar-modal-content {
@@ -388,19 +381,19 @@
 }
 
 .ts-calendar-modal-field strong {
-  color: #374151;
+  color: var(--cal-modal-field-label);
   font-weight: 600;
   font-size: 14px;
 }
 
 .ts-calendar-modal-field:not(:has(strong)) {
-  color: #6b7280;
+  color: var(--cal-modal-close-color);
   font-size: 14px;
   line-height: 1.5;
 }
 
 .ts-calendar-modal-field a {
-  color: #3b82f6;
+  color: var(--cal-modal-link);
   text-decoration: none;
   word-break: break-all;
 }
@@ -410,12 +403,11 @@
 }
 
 .evento-expiracion-equipo {
-  background-color: #facc15 !important;
-  border-left: 4px solid #eab308 !important;
-  color: #713f12 !important;
+  background-color: var(--cal-event-expiracion-bg) !important;
+  border-left: 4px solid var(--cal-event-expiracion-border) !important;
+  color: var(--cal-event-expiracion-color) !important;
 }
 
-/* Filtro de usuarios mejorado con label */
 .ts-calendar-user-filter {
   display: flex;
   flex-direction: column;
@@ -427,12 +419,11 @@
 .ts-calendar-user-filter label {
   font-size: 12px;
   font-weight: 600;
-  color: #6b7280;
+  color: var(--cal-filter-label-color);
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
 
-/* Contenedor de checkboxes mejorado */
 .ts-calendar-filters-wrapper {
   display: flex;
   align-items: flex-start;
@@ -447,11 +438,10 @@
   align-items: center;
   flex-wrap: wrap;
   padding-left: 24px;
-  border-left: 2px solid #e5e7eb;
+  border-left: 2px solid var(--cal-filter-divider);
   flex: 1;
 }
 
-/* Checkboxes mucho más pequeños y compactos */
 .ts-calendar-filter-checkbox {
   display: flex;
   align-items: center;
@@ -459,23 +449,23 @@
   cursor: pointer;
   font-size: 13px;
   font-weight: 500;
-  color: #374151;
+  color: var(--cal-filter-text);
   user-select: none;
   transition: all 0.15s ease;
   padding: 4px 8px;
-  border-radius: 6px;
+  border-radius: var(--g-radius-sm);
 }
 
 .ts-calendar-filter-checkbox:hover {
-  background-color: #f3f4f6;
-  color: #1f2937;
+  background-color: var(--cal-filter-hover-bg);
+  color: var(--cal-filter-hover-color);
 }
 
 .ts-calendar-filter-checkbox input[type="checkbox"] {
   width: 14px;
   height: 14px;
   cursor: pointer;
-  accent-color: #3b82f6;
+  accent-color: var(--cal-checkbox-accent);
   border-radius: 3px;
   transition: all 0.15s ease;
   flex-shrink: 0;
@@ -486,7 +476,7 @@
 }
 
 .ts-calendar-filter-checkbox input[type="checkbox"]:checked {
-  accent-color: #2563eb;
+  accent-color: var(--cal-checkbox-checked);
 }
 
 .ts-calendar-filter-checkbox span {
@@ -543,18 +533,17 @@
 }
 
 .ts-fecha-seleccionada {
-  background-color: rgba(59, 130, 246, 0.15) !important;
+  background-color: var(--cal-selected-day-bg) !important;
   transition: background-color 0.3s ease;
 }
 
 .ts-fecha-seleccionada .fc-daygrid-day-number {
-  color: #2563eb !important;
+  color: var(--cal-selected-day-color) !important;
   font-weight: bold;
 }
 
-
 .fc-timegrid-col.ts-fecha-seleccionada {
-  background-color: rgba(59, 130, 246, 0.10) !important;
+  background-color: var(--cal-selected-col-bg) !important;
 }
 
 /* Responsivo */
@@ -643,7 +632,7 @@
   .ts-calendar-filters {
     width: 100%;
     border-left: none;
-    border-top: 2px solid #e5e7eb;
+    border-top: 2px solid var(--cal-filter-divider);
     padding-left: 0;
     padding-top: 12px;
     gap: 12px;
@@ -735,24 +724,25 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: var(--cal-loading-bg);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   z-index: 1000;
   font-size: 16px;
-  color: #037ce0;
+  color: var(--cal-loading-color);
 }
 
+/* Popover */
 .fc-popover {
   max-height: 400px !important;
   overflow-y: auto !important;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15) !important;
+  box-shadow: var(--cal-popover-shadow) !important;
   position: absolute !important;
   z-index: 10001 !important;
-  border-radius: 8px !important;
-  border: 1px solid #e5e7eb !important;
+  border-radius: var(--g-radius-md) !important;
+  border: 1px solid var(--cal-popover-border) !important;
 }
 
 .fc-popover.custom-popover-fixed {
@@ -770,13 +760,12 @@
   min-width: 250px !important;
 }
 
-/* Scroll interno del popover */
 .fc-popover-body {
   max-height: 300px !important;
   overflow-y: auto !important;
   padding: 8px !important;
   scrollbar-width: thin;
-  scrollbar-color: #cbd5e0 transparent;
+  scrollbar-color: var(--cal-popover-scroll-thumb) transparent;
 }
 
 .fc-popover-body::-webkit-scrollbar {
@@ -788,12 +777,12 @@
 }
 
 .fc-popover-body::-webkit-scrollbar-thumb {
-  background-color: #cbd5e0;
+  background-color: var(--cal-popover-scroll-thumb);
   border-radius: 3px;
 }
 
 .fc-popover-body::-webkit-scrollbar-thumb:hover {
-  background-color: #a0aec0;
+  background-color: var(--cal-popover-scroll-hover);
 }
 
 .fc-popover-body {
@@ -805,15 +794,14 @@
 .fc-popover-header {
   position: sticky !important;
   top: 0 !important;
-  background: white !important;
+  background: var(--cal-popover-header-bg) !important;
   z-index: 1 !important;
-  border-bottom: 1px solid #e5e7eb !important;
+  border-bottom: 1px solid var(--cal-popover-header-border) !important;
   padding: 8px 12px !important;
   font-weight: 600 !important;
-  border-radius: 8px 8px 0 0 !important;
+  border-radius: var(--g-radius-md) var(--g-radius-md) 0 0 !important;
 }
 
-/* Responsive para móviles */
 @media (max-width: 768px) {
   .fc-popover {
     max-height: 60vh !important;

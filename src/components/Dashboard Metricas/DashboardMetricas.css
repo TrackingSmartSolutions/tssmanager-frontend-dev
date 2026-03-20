@@ -1,5 +1,5 @@
 .dashboard-metricas {
-  background-color: #f8f9fa;
+  background-color: var(--dash-bg);
   min-height: 100vh;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -14,18 +14,18 @@
 }
 
 .dashboard-metricas__tarjeta-resumen {
-  background: white;
-  border-radius: 8px;
+  background: var(--dash-panel-bg);
+  border-radius: var(--g-radius-md);
   padding: clamp(0.875rem, 2vw, 1.125rem);
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
-  border: 1px solid #e9ecef;
+  box-shadow: var(--dash-panel-shadow);
+  border: 1px solid var(--dash-panel-border);
   transition: box-shadow 0.2s ease, transform 0.2s ease;
   position: relative;
   overflow: hidden;
 }
 
 .dashboard-metricas__tarjeta-resumen:hover {
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--dash-panel-shadow-hover);
   transform: translateY(-2px);
 }
 
@@ -36,7 +36,7 @@
   left: 0;
   right: 0;
   height: 4px;
-  background: linear-gradient(90deg, #45b7d1, #96c93d, #f39c12, #e74c3c);
+  background: var(--dash-card-top-gradient);
 }
 
 .dashboard-metricas__tarjeta-header {
@@ -49,17 +49,16 @@
 .dashboard-metricas__tarjeta-icono {
   width: clamp(2rem, 5vw, 2.5rem);
   height: clamp(2rem, 5vw, 2.5rem);
-  border-radius: 8px;
-  background: linear-gradient(135deg, #45b7d1, #5bc0de);
+  border-radius: var(--g-radius-md);
+  background: var(--dash-card-icon-gradient);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: var(--dash-card-icon-color);
   font-size: clamp(1rem, 3vw, 1.2rem);
   flex-shrink: 0;
 }
 
-/* Estilos para iconos Unicode */
 .dashboard-metricas__icono-unicode {
   font-size: clamp(1.125rem, 3vw, 1.5rem);
 }
@@ -72,26 +71,26 @@
 }
 
 .dashboard-metricas__tendencia--up {
-  background: rgba(76, 175, 80, 0.1);
-  color: #4caf50;
+  background: var(--dash-trend-up-bg);
+  color: var(--dash-trend-up-color);
 }
 
 .dashboard-metricas__tendencia--down {
-  background: rgba(244, 67, 54, 0.1);
-  color: #f44336;
+  background: var(--dash-trend-down-bg);
+  color: var(--dash-trend-down-color);
 }
 
 .dashboard-metricas__tarjeta-valor {
   font-size: clamp(1.5rem, 4vw, 2rem);
   font-weight: 700;
   margin: 0 0 0.25rem 0;
-  color: #2c3e50;
+  color: var(--dash-card-value-color);
   word-break: break-word;
 }
 
 .dashboard-metricas__tarjeta-titulo {
   font-size: clamp(0.8rem, 2vw, 0.9rem);
-  color: #7f8c8d;
+  color: var(--dash-card-label-color);
   margin: 0;
   font-weight: 500;
   line-height: 1.3;
@@ -108,25 +107,25 @@
 
 .dashboard-metricas__grafica-container,
 .dashboard-metricas__grafica-conversion {
-  background: white;
-  border-radius: 8px;
+  background: var(--dash-panel-bg);
+  border-radius: var(--g-radius-md);
   padding: clamp(0.875rem, 2.5vw, 1.25rem);
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
-  border: 1px solid #e9ecef;
+  box-shadow: var(--dash-panel-shadow);
+  border: 1px solid var(--dash-panel-border);
   overflow: visible;
 }
 
 .dashboard-metricas__grafica-titulo {
   font-size: clamp(1rem, 2.5vw, 1.2rem);
   font-weight: 600;
-  color: #2c3e50;
+  color: var(--dash-chart-title-color);
   margin: 0 0 clamp(0.875rem, 2vw, 1.25rem) 0;
   padding-bottom: clamp(0.625rem, 1.5vw, 0.75rem);
-  border-bottom: 2px solid #ecf0f1;
+  border-bottom: 2px solid var(--dash-section-divider);
   line-height: 1.3;
 }
 
-/* Leyenda de Gráficas */
+/* Leyenda */
 .dashboard-metricas__grafica-leyenda {
   display: flex;
   flex-wrap: wrap;
@@ -151,7 +150,7 @@
 
 .dashboard-metricas__leyenda-texto {
   font-size: clamp(0.75rem, 2vw, 0.9rem);
-  color: #5a6c7d;
+  color: var(--dash-legend-text-color);
   font-weight: 500;
   line-height: 1.2;
 }
@@ -163,7 +162,7 @@
   align-items: flex-end;
   height: clamp(200px, 40vw, 300px);
   padding: clamp(3rem, 8vw, 4.375rem) clamp(0.625rem, 2vw, 0.9375rem) clamp(1.25rem, 3vw, 1.875rem);
-  border-bottom: 2px solid #ecf0f1;
+  border-bottom: 2px solid var(--dash-section-divider);
   position: relative;
   overflow: visible;
   margin-top: clamp(0.875rem, 2vw, 1.25rem);
@@ -212,7 +211,7 @@
   transform: translateX(-50%);
   font-size: clamp(0.625rem, 1.5vw, 0.75rem);
   font-weight: 600;
-  color: #2c3e50;
+  color: var(--dash-value-color);
   white-space: nowrap;
   z-index: 20;
   opacity: 1;
@@ -227,7 +226,7 @@
 
 .dashboard-metricas__barra-label {
   font-size: clamp(0.625rem, 1.8vw, 0.8rem);
-  color: #5a6c7d;
+  color: var(--dash-label-color);
   font-weight: 500;
   text-align: center;
   max-width: 100%;
@@ -249,16 +248,16 @@
 }
 
 .dashboard-metricas__conversion-usuario {
-  border: 1px solid #e9ecef;
-  border-radius: 6px;
+  border: 1px solid var(--dash-panel-border);
+  border-radius: var(--g-radius-sm);
   padding: clamp(0.75rem, 2vw, 0.9375rem);
-  background: #f8f9fa;
+  background: var(--dash-inner-bg);
 }
 
 .dashboard-metricas__conversion-nombre {
   font-size: clamp(0.875rem, 2vw, 1rem);
   font-weight: 600;
-  color: #2c3e50;
+  color: var(--dash-chart-title-color);
   margin: 0 0 clamp(0.625rem, 2vw, 0.75rem) 0;
   line-height: 1.3;
 }
@@ -269,11 +268,11 @@
 
 .dashboard-metricas__conversion-barra-stack {
   height: clamp(28px, 5vw, 32px);
-  border-radius: 6px;
+  border-radius: var(--g-radius-sm);
   overflow: hidden;
   display: flex;
   position: relative;
-  background: #ecf0f1;
+  background: var(--dash-section-divider);
 }
 
 .dashboard-metricas__conversion-segmento {
@@ -281,7 +280,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: var(--g-text-inverse);
   font-weight: 600;
   font-size: clamp(0.65rem, 1.5vw, 0.8rem);
   position: relative;
@@ -295,19 +294,19 @@
 }
 
 .dashboard-metricas__conversion-segmento--contactadas {
-  background-color: #87ceeb;
+  background-color: var(--dash-seg-contactadas);
 }
 
 .dashboard-metricas__conversion-segmento--positiva {
-  background-color: #5bc0de;
+  background-color: var(--dash-seg-positiva);
 }
 
 .dashboard-metricas__conversion-segmento--interes {
-  background-color: #2c5aa0;
+  background-color: var(--dash-seg-interes);
 }
 
 .dashboard-metricas__conversion-segmento--reuniones {
-  background-color: #030020;
+  background-color: var(--dash-seg-reuniones);
 }
 
 .dashboard-metricas__conversion-metricas {
@@ -318,44 +317,45 @@
 
 .dashboard-metricas__conversion-metrica {
   font-size: clamp(0.7rem, 1.8vw, 0.9rem);
-  color: #5a6c7d;
+  color: var(--dash-metric-color);
   font-weight: 500;
   padding: clamp(0.25rem, 1vw, 0.3125rem) clamp(0.625rem, 2vw, 0.75rem);
-  background: white;
+  background: var(--dash-metric-bg);
   border-radius: 20px;
-  border: 1px solid #dee2e6;
+  border: 1px solid var(--dash-metric-border);
   white-space: nowrap;
 }
 
 /* Estado sin datos */
 .dashboard-metricas__no-data {
-  background: white;
-  border-radius: 8px;
+  background: var(--dash-panel-bg);
+  border-radius: var(--g-radius-md);
   padding: clamp(1.25rem, 4vw, 2.5rem);
   text-align: center;
   margin: clamp(0.625rem, 2vw, 1.25rem);
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
-  border: 1px solid #e9ecef;
+  box-shadow: var(--dash-panel-shadow);
+  border: 1px solid var(--dash-panel-border);
 }
 
 .dashboard-metricas__no-data-content h3 {
-  color: #6c757d;
+  color: var(--dash-nodata-title);
   margin-bottom: 0.625rem;
   font-size: clamp(1rem, 2.5vw, 1.25rem);
 }
 
 .dashboard-metricas__no-data-content p {
-  color: #8e9ba8;
+  color: var(--dash-nodata-text);
   margin: 0;
   font-size: clamp(0.875rem, 2vw, 1rem);
 }
 
+/* Inputs y selects */
 .reporte-date-range-container select.reporte-date-input {
-  border: 2px solid #dee2e6;
-  border-radius: 6px;
+  border: 2px solid var(--dash-select-border);
+  border-radius: var(--g-radius-sm);
   padding: clamp(0.5rem, 1.5vw, 0.625rem) clamp(0.625rem, 2vw, 0.75rem);
-  background-color: white;
-  color: #495057;
+  background-color: var(--dash-select-bg);
+  color: var(--dash-select-color);
   font-size: clamp(0.75rem, 2vw, 0.9rem);
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   appearance: none;
@@ -410,12 +410,12 @@
 
 .reporte-date-range-container select.reporte-date-input:focus {
   outline: none;
-  border-color: #45b7d1;
-  box-shadow: 0 0 0 0.2rem rgba(69, 183, 209, 0.25);
+  border-color: var(--dash-select-focus-border);
+  box-shadow: 0 0 0 0.2rem var(--dash-select-focus-shadow);
 }
 
 .reporte-date-range-container select.reporte-date-input:hover {
-  border-color: #adb5bd;
+  border-color: var(--dash-select-hover-border);
 }
 
 .dashboard-metricas__conversion-valor-fijo {
@@ -424,10 +424,10 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: white;
+  color: var(--g-text-inverse);
   font-weight: bold;
   font-size: clamp(0.625rem, 1.5vw, 0.75rem);
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+  text-shadow: 1px 1px 2px var(--dash-seg-text-shadow);
   pointer-events: none;
   z-index: 2;
   opacity: 1;
@@ -437,6 +437,7 @@
   position: relative;
 }
 
+/* Date picker del dashboard */
 .dashboard-date-picker-wrapper {
   position: relative;
   display: inline-block;
@@ -446,20 +447,20 @@
 
 .dashboard-date-picker {
   padding: 8px 70px 8px 12px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--dash-input-border);
   border-radius: 4px;
   font-size: 14px;
   width: 100%;
-  background-color: white;
-  color: #333;
+  background-color: var(--dash-input-bg);
+  color: var(--dash-input-color);
   cursor: pointer;
   box-sizing: border-box;
 }
 
 .dashboard-date-picker:focus {
   outline: none;
-  border-color: #45b7d1;
-  box-shadow: 0 0 0 2px rgba(69, 183, 209, 0.2);
+  border-color: var(--dash-input-focus-border);
+  box-shadow: 0 0 0 2px var(--dash-input-focus-shadow);
 }
 
 .dashboard-date-picker-icons {
@@ -474,14 +475,15 @@
 }
 
 .dashboard-calendar-icon {
-  color: #666;
+  color: var(--dash-input-icon-color);
   display: flex;
   align-items: center;
 }
 
+/* Botón secundario del dashboard */
 .reporte-btn-secondary {
-  background-color: #45b7d1;
-  color: white;
+  background-color: var(--dash-btn-bg);
+  color: var(--dash-btn-color);
   padding: 8px 16px;
   border: none;
   border-radius: 4px;
@@ -492,7 +494,7 @@
 }
 
 .reporte-btn-secondary:hover {
-  background-color: #3a9bb8;
+  background-color: var(--dash-btn-hover-bg);
   transform: translateY(-1px);
 }
 
@@ -523,7 +525,6 @@
   }
 }
 
-/* Tablets medianas (768px - 991px) */
 @media (max-width: 991px) {
   .dashboard-metricas__resumen-ejecutivo {
     grid-template-columns: repeat(2, 1fr);
@@ -539,7 +540,6 @@
   }
 }
 
-/* Tablets pequeñas (576px - 767px) */
 @media (max-width: 767px) {
   .dashboard-metricas__resumen-ejecutivo {
     grid-template-columns: repeat(2, 1fr);
@@ -596,7 +596,6 @@
   }
 }
 
-/* Móviles grandes (481px - 575px) */
 @media (max-width: 575px) {
   .dashboard-metricas__resumen-ejecutivo {
     grid-template-columns: 1fr;
@@ -657,7 +656,6 @@
   }
 }
 
-/* Móviles pequeños (menos de 480px) */
 @media (max-width: 480px) {
   .dashboard-metricas__resumen-ejecutivo {
     padding: 0 0.5rem;
@@ -733,7 +731,6 @@
   }
 }
 
-/* Móviles extra pequeños (menos de 360px) */
 @media (max-width: 359px) {
   .dashboard-metricas__grafica-barras {
     height: 180px;
@@ -772,7 +769,6 @@
   }
 }
 
-/* Animaciones */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -796,10 +792,8 @@
   transition: transform 0.3s ease;
 }
 
-/* Mejoras de accesibilidad y usabilidad */
 @media (hover: none) and (pointer: coarse) {
 
-  /* Dispositivos táctiles */
   .dashboard-metricas__barra,
   .dashboard-metricas__conversion-segmento {
     cursor: default;
@@ -810,17 +804,16 @@
   }
 }
 
-/* Modo de impresión */
 @media print {
   .dashboard-metricas {
-    background-color: white;
+    background-color: var(--dash-panel-bg);
   }
 
   .dashboard-metricas__tarjeta-resumen,
   .dashboard-metricas__grafica-container,
   .dashboard-metricas__grafica-conversion {
     box-shadow: none;
-    border: 1px solid #ddd;
+    border: 1px solid var(--dash-panel-border);
     page-break-inside: avoid;
   }
 
@@ -834,7 +827,6 @@
   }
 }
 
-/* Preferencias de movimiento reducido */
 @media (prefers-reduced-motion: reduce) {
 
   *,

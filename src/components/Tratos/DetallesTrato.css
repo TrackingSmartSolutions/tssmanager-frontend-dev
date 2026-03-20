@@ -48,7 +48,7 @@
 
 .btn-editar-trato {
   background-color: var(--accent-color);
-  color: white;
+  color: var(--g-text-inverse);
   border: none;
   border-radius: var(--border-radius-sm);
   padding: var(--spacing-sm) var(--spacing-lg);
@@ -59,7 +59,7 @@
 }
 
 .btn-editar-trato:hover {
-  background-color: #d86600;
+  background-color: var(--g-btn-accent-hover);
   transform: translateY(-1px);
 }
 
@@ -111,7 +111,7 @@
 }
 
 .fase-item {
-  background-color: #e0e0e0;
+  background-color: var(--g-border);
   color: var(--text-color);
   padding: var(--spacing-sm) var(--spacing-md);
   border-radius: var(--border-radius-sm);
@@ -193,7 +193,7 @@
   height: 50px;
   border-radius: 50%;
   background-color: var(--secondary-color);
-  color: white;
+  color: var(--g-text-inverse);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -279,13 +279,13 @@
 }
 
 .btn-contacto.whatsapp {
-  border-color: #25d366;
+  border-color: var(--g-btn-map-bg);
   background-color: rgba(37, 211, 102, 0.1);
 }
 
 .btn-contacto.whatsapp:hover {
-  background-color: #25d366;
-  border-color: #25d366;
+  background-color: var(--g-btn-map-bg);
+  border-color: var(--g-btn-map-bg);
 }
 
 .btn-contacto.whatsapp:hover .contacto-icon {
@@ -306,7 +306,7 @@
 }
 
 .detalle-item a {
-  color: #2196f3;
+  color: var(--g-info);
   text-decoration: underline;
   word-break: break-all;
   overflow-wrap: break-word;
@@ -318,11 +318,11 @@
 }
 
 .detalle-item a:hover {
-  color: #1976d2;
+  color: var(--g-color-blue-1);
 }
 
 .detalle-item a:visited {
-  color: #7b1fa2;
+  color: var(--g-color-dark-purple);
 }
 
 .detalle-item {
@@ -342,7 +342,6 @@
   max-width: 100%;
 }
 
-
 /* Fases clickeables */
 .fase-item {
   background: none;
@@ -353,7 +352,7 @@
 }
 
 .fase-item:hover {
-  background-color: #d0d0d0;
+  background-color: var(--g-active-bg);
   transform: translateY(-1px);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -381,23 +380,23 @@
 }
 
 .badge.completada.clickeable:hover {
-  background-color: #45a049;
+  background-color: var(--g-success-alt);
 }
 
 .badge.reprogramar.clickeable:hover {
-  background-color: #e68900;
+  background-color: var(--g-btn-accent-hover);
 }
 
 .badge.eliminar {
-  background-color: #dc3545;
-  color: white;
+  background-color: var(--g-danger-alt);
+  color: var(--g-text-inverse);
   display: flex;
   align-items: center;
   gap: var(--spacing-xs);
 }
 
 .badge.eliminar.clickeable:hover {
-  background-color: #c82333;
+  background-color: var(--g-danger);
 }
 
 .badge.eliminar img {
@@ -419,15 +418,15 @@
 
 /* Estados específicos para fases */
 .fase-item.completada:hover {
-  background-color: #0288d1;
+  background-color: var(--g-color-blue-3);
 }
 
 .fase-item.actual:hover {
-  background-color: #e68900;
+  background-color: var(--g-btn-accent-hover);
 }
 
 .fase-item:not(.completada):not(.actual):hover {
-  background-color: #bdbdbd;
+  background-color: var(--g-active-bg);
   color: var(--text-color);
 }
 
@@ -443,7 +442,7 @@
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius-sm);
   margin-bottom: var(--spacing-md);
-  background-color: white;
+  background-color: var(--g-panel-bg);
 }
 
 .nota-avatar {
@@ -451,7 +450,7 @@
   height: 40px;
   border-radius: 50%;
   background-color: var(--secondary-color);
-  color: white;
+  color: var(--g-text-inverse);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -499,7 +498,7 @@
 }
 
 .btn-eliminar-nota:hover {
-  background-color: rgba(244, 67, 54, 0.1);
+  background-color: var(--dash-trend-down-bg);
 }
 
 .btn-eliminar-nota img {
@@ -517,7 +516,7 @@
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius-sm);
   font-size: var(--font-size-sm);
-  background-color: white;
+  background-color: var(--g-panel-bg);
 }
 
 .input-nota:focus {
@@ -537,7 +536,7 @@
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius-sm);
   font-size: var(--font-size-sm);
-  background-color: white;
+  background-color: var(--g-panel-bg);
   margin-bottom: var(--spacing-sm);
 }
 
@@ -564,25 +563,25 @@
 
 .btn-save-nota {
   background-color: var(--secondary-color);
-  color: white;
+  color: var(--g-text-inverse);
 }
 
 .btn-save-nota:hover {
-  background-color: #0266b3;
+  background-color: var(--g-color-blue-1);
 }
 
 .btn-cancel-nota {
-  background-color: #6c757d;
-  color: white;
+  background-color: var(--map-btn-secondary-bg);
+  color: var(--g-text-inverse);
 }
 
 .btn-cancel-nota:hover {
-  background-color: #5a6268;
+  background-color: var(--map-btn-secondary-hover);
 }
 
 /* Actividades */
 .btn-agregar {
-  color: white;
+  color: var(--g-text-inverse);
   border: none;
   border-radius: 50%;
   width: 32px;
@@ -595,7 +594,7 @@
 }
 
 .btn-agregar:hover {
-  background-color: var(--color-blue-1);
+  background-color: var(--g-color-blue-1);
   transform: scale(1.1);
 }
 
@@ -635,7 +634,7 @@
 .actividades-lista {
   padding: var(--spacing-md);
   min-height: 150px;
-  background-color: white;
+  background-color: var(--g-panel-bg);
 }
 
 .no-actividades {
@@ -650,7 +649,7 @@
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius-sm);
   margin-bottom: var(--spacing-md);
-  background-color: white;
+  background-color: var(--g-panel-bg);
 }
 
 .actividad-item.llamada {
@@ -694,13 +693,13 @@
 }
 
 .badge.completada {
-  background-color: #4caf50;
-  color: white;
+  background-color: var(--g-success);
+  color: var(--g-text-inverse);
 }
 
 .badge.programada {
   background-color: var(--accent-color);
-  color: white;
+  color: var(--g-text-inverse);
 }
 
 /* Historial de interacciones */
@@ -731,7 +730,7 @@
 }
 
 .tabla-body {
-  background-color: white;
+  background-color: var(--g-panel-bg);
 }
 
 .tabla-row {
@@ -791,18 +790,18 @@
 }
 
 .tipo-badge.llamada {
-  background-color: #e3f2fd;
-  color: #1976d2;
+  background-color: var(--g-bg);
+  color: var(--g-color-blue-1);
 }
 
 .tipo-badge.reunion {
-  background-color: #f3e5f5;
-  color: #7b1fa2;
+  background-color: rgba(175, 134, 255, 0.15);
+  color: var(--g-color-dark-purple);
 }
 
 .tipo-badge.tarea {
-  background-color: #e8f5e8;
-  color: #388e3c;
+  background-color: var(--dash-trend-up-bg);
+  color: var(--g-success-alt);
 }
 
 .resultado-badge {
@@ -814,13 +813,13 @@
 }
 
 .resultado-badge.positivo {
-  background-color: #e8f5e8;
-  color: #388e3c;
+  background-color: var(--dash-trend-up-bg);
+  color: var(--g-success-alt);
 }
 
 .resultado-badge.negativo {
-  background-color: #ffebee;
-  color: #d32f2f;
+  background-color: var(--dash-trend-down-bg);
+  color: var(--g-danger-alt);
 }
 
 .interes-badge {
@@ -832,18 +831,18 @@
 }
 
 .interes-badge.bajo {
-  background-color: #ffebee;
-  color: #d32f2f;
+  background-color: var(--dash-trend-down-bg);
+  color: var(--g-danger-alt);
 }
 
 .interes-badge.medio {
-  background-color: #fff3e0;
-  color: #f57c00;
+  background-color: rgba(255, 152, 0, 0.1);
+  color: var(--g-warning);
 }
 
 .interes-badge.alto {
-  background-color: #e8f5e8;
-  color: #388e3c;
+  background-color: var(--dash-trend-up-bg);
+  color: var(--g-success-alt);
 }
 
 .notas-cell {
@@ -887,7 +886,7 @@
 }
 
 .email-item {
-  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  background: linear-gradient(135deg, var(--g-panel-bg) 0%, var(--dash-table-header-bg) 100%);
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius-lg);
   padding: var(--spacing-lg);
@@ -948,7 +947,7 @@
 }
 
 .email-asunto {
-  background-color: #f8f9fa;
+  background-color: var(--dash-table-header-bg);
   border-left: 3px solid var(--accent-color);
   padding: var(--spacing-sm) var(--spacing-md);
   margin: var(--spacing-md) 0;
@@ -972,8 +971,8 @@
 }
 
 .email-cuerpo {
-  background-color: white;
-  border: 1px solid #e8eaed;
+  background-color: var(--g-panel-bg);
+  border: 1px solid var(--g-border);
   border-radius: var(--border-radius-sm);
   padding: var(--spacing-md);
   margin: var(--spacing-md) 0;
@@ -1004,7 +1003,7 @@
 }
 
 .email-cuerpo-texto::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: var(--g-border-light);
   border-radius: 2px;
 }
 
@@ -1014,8 +1013,8 @@
 }
 
 .email-adjuntos {
-  background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
-  border: 1px solid #ffcc02;
+  background: linear-gradient(135deg, rgba(255, 152, 0, 0.1) 0%, rgba(255, 152, 0, 0.2) 100%);
+  border: 1px solid var(--g-warning-alt);
   border-radius: var(--border-radius-sm);
   padding: var(--spacing-sm) var(--spacing-md);
   margin-top: var(--spacing-md);
@@ -1031,7 +1030,7 @@
 
 .email-adjuntos-label {
   font-size: var(--font-size-xs);
-  color: #e65100;
+  color: var(--g-warning);
   text-transform: uppercase;
   letter-spacing: 0.5px;
   margin-bottom: var(--spacing-xs);
@@ -1042,7 +1041,7 @@
 
 .email-adjuntos-lista {
   margin-left: 24px;
-  color: #bf360c;
+  background-color: var(--g-btn-accent-hover);
   font-size: var(--font-size-sm);
   font-weight: 500;
 }
@@ -1053,15 +1052,15 @@
   align-items: center;
   margin-top: var(--spacing-lg);
   padding-top: var(--spacing-md);
-  border-top: 1px solid #e8eaed;
+  border-top: 1px solid var(--g-border);
 }
 
 .email-status {
   display: flex;
   align-items: center;
   gap: var(--spacing-xs);
-  background-color: #e8f5e8;
-  color: #2e7d32;
+  background-color: var(--dash-trend-up-bg);
+  color: var(--g-success-alt);
   padding: var(--spacing-xs) var(--spacing-sm);
   border-radius: var(--border-radius-sm);
   font-size: var(--font-size-xs);
@@ -1073,9 +1072,8 @@
   font-weight: bold;
 }
 
-
 .correos-electronicos .no-actividades {
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  background: linear-gradient(135deg, var(--dash-table-header-bg) 0%, var(--g-active-bg) 100%);
   border: 2px dashed var(--border-color);
   border-radius: var(--border-radius-lg);
   padding: var(--spacing-xl);
@@ -1094,15 +1092,13 @@
   opacity: 0.5;
 }
 
-
 /* Estilos para el modal de correos */
 .gmail-compose-form {
   display: flex;
   flex-direction: column;
   height: 500px;
-  background: white;
+  background: var(--g-panel-bg);
 }
-
 
 .gmail-compose-actions {
   display: flex;
@@ -1116,14 +1112,14 @@
   border: none;
   padding: 4px 8px;
   cursor: pointer;
-  border-radius: 4px;
-  color: #5f6368;
+  border-radius: var(--g-radius-sm);
+  color: var(--g-text-light);
 }
 
 .gmail-btn-minimize:hover,
 .gmail-btn-expand:hover,
 .gmail-btn-close:hover {
-  background: #e8eaed;
+  background: var(--g-border);
 }
 
 .gmail-compose-body {
@@ -1136,14 +1132,14 @@
 .gmail-field-group {
   display: flex;
   align-items: center;
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid var(--g-border);
   padding: 8px 16px;
 }
 
 .gmail-field-label {
   min-width: 60px;
-  color: #5f6368;
-  font-size: 14px;
+  color: var(--g-text-light);
+  font-size: var(--g-font-md);
   margin-right: 12px;
 }
 
@@ -1151,7 +1147,7 @@
   flex: 1;
   border: none;
   outline: none;
-  font-size: 14px;
+  font-size: var(--g-font-md);
   padding: 4px 0;
 }
 
@@ -1167,13 +1163,13 @@
   outline: none;
   resize: none;
   font-family: Arial, sans-serif;
-  font-size: 14px;
+  font-size: var(--g-font-md);
   line-height: 1.5;
 }
 
 .gmail-attachments {
   padding: 8px 16px;
-  border-top: 1px solid #e0e0e0;
+  border-top: 1px solid var(--g-border);
 }
 
 .gmail-attach-btn {
@@ -1184,12 +1180,12 @@
   border: none;
   background: transparent;
   cursor: pointer;
-  border-radius: 4px;
+  border-radius: var(--g-radius-sm);
   transition: background-color 0.2s ease;
 }
 
 .gmail-attach-btn:hover {
-  background-color: #f1f3f4;
+  background-color: var(--g-bg);
 }
 
 .attach-icon {
@@ -1208,9 +1204,9 @@
   align-items: center;
   gap: 8px;
   padding: 8px 12px;
-  background-color: #f8f9fa;
-  border: 1px solid #e8eaed;
-  border-radius: 8px;
+  background-color: var(--dash-table-header-bg);
+  border: 1px solid var(--g-border);
+  border-radius: var(--g-radius-md);
   margin-bottom: 8px;
 }
 
@@ -1223,8 +1219,8 @@
 
 .gmail-attachment-item span {
   flex: 1;
-  font-size: 14px;
-  color: #3c4043;
+  font-size: var(--g-font-md);
+  color: var(--g-text);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -1233,7 +1229,7 @@
 .gmail-remove-attachment {
   background: none;
   border: none;
-  color: #5f6368;
+  color: var(--g-text-light);
   cursor: pointer;
   padding: 4px;
   border-radius: 50%;
@@ -1248,14 +1244,14 @@
 }
 
 .gmail-remove-attachment:hover {
-  background-color: #f1f3f4;
-  color: #d93025;
+  background-color: var(--g-bg);
+  color: var(--g-danger);
 }
 
 .gmail-attachments {
   margin-top: 16px;
   padding-top: 16px;
-  border-top: 1px solid #e8eaed;
+  border-top: 1px solid var(--g-border);
 }
 
 .gmail-compose-footer {
@@ -1263,7 +1259,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 12px 16px;
-  border-top: 1px solid #e0e0e0;
+  border-top: 1px solid var(--g-border);
 }
 
 .gmail-footer-left {
@@ -1273,32 +1269,32 @@
 }
 
 .gmail-btn-send {
-  background: #1a73e8;
-  color: white;
+  background: var(--g-editor-link);
+  color: var(--g-text-inverse);
   border: none;
-  border-radius: 4px;
+  border-radius: var(--g-radius-sm);
   padding: 8px 24px;
-  font-size: 14px;
+  font-size: var(--g-font-md);
   cursor: pointer;
   font-weight: 500;
 }
 
 .gmail-btn-send:hover {
-  background: #1557b0;
+  background: var(--g-editor-link-hover);
 }
 
 .gmail-btn-template {
   background: none;
-  border: 1px solid #dadce0;
-  border-radius: 4px;
+  border: 1px solid var(--g-border);
+  border-radius: var(--g-radius-sm);
   padding: 6px 12px;
-  font-size: 14px;
+  font-size: var(--g-font-md);
   cursor: pointer;
-  color: #1a73e8;
+  color: var(--g-editor-link);
 }
 
 .gmail-btn-template:hover {
-  background: #f8f9fa;
+  background: var(--dash-table-header-bg);
 }
 
 .gmail-footer-right {
@@ -1312,12 +1308,12 @@
   border: none;
   padding: 8px;
   cursor: pointer;
-  border-radius: 4px;
-  color: #5f6368;
+  border-radius: var(--g-radius-sm);
+  color: var(--g-text-light);
 }
 
 .gmail-more-options:hover {
-  background: #f8f9fa;
+  background: var(--dash-table-header-bg);
 }
 
 /* Estilos para el modal de plantillas */
@@ -1329,39 +1325,39 @@
 
 .plantilla-item {
   padding: 16px;
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
+  border: 1px solid var(--g-border);
+  border-radius: var(--g-radius-md);
   margin-bottom: 12px;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 .plantilla-item:hover {
-  border-color: #1a73e8;
+  border-color: var(--g-editor-link);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .plantilla-info h4 {
   margin: 0 0 8px 0;
-  color: #1a73e8;
-  font-size: 16px;
+  color: var(--g-editor-link);
+  font-size: var(--g-font-lg);
 }
 
 .plantilla-asunto {
   font-weight: 500;
   margin: 4px 0;
-  color: #333;
+  color: var(--g-text);
 }
 
 .plantilla-preview {
-  color: #666;
-  font-size: 14px;
+  color: var(--g-text-light);
+  font-size: var(--g-font-md);
   margin: 8px 0;
 }
 
 .plantilla-adjuntos {
-  color: #1a73e8;
-  font-size: 12px;
+  color: var(--g-editor-link);
+  font-size: var(--g-font-xs);
   margin-top: 8px;
 }
 
@@ -1371,8 +1367,8 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  color: white;
+  background: var(--g-header-overlay-bg);
+  color: var(--g-text-inverse);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1380,7 +1376,7 @@
 }
 
 .error-message {
-  color: red;
+  color: var(--g-danger);
   margin-top: 10px;
   text-align: center;
 }
@@ -1393,17 +1389,17 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #e3f2fd;
+  background: var(--g-bg);
   padding: 8px 12px;
-  border-radius: 4px;
-  font-size: 14px;
-  color: #1976d2;
+  border-radius: var(--g-radius-sm);
+  font-size: var(--g-font-md);
+  color: var(--g-color-blue-1);
 }
 
 .limpiar-plantilla-btn {
   background: none;
   border: none;
-  color: #666;
+  color: var(--g-text-light);
   cursor: pointer;
   font-size: 16px;
   padding: 0;
@@ -1411,16 +1407,15 @@
 }
 
 .template-attachment {
-  background: #f0f8ff;
-  border: 1px solid #e3f2fd;
+  background: var(--g-bg);
+  border: 1px solid var(--g-border);
 }
 
 .gmail-attachments h4 {
   margin: 10px 0 5px 0;
-  font-size: 14px;
-  color: #666;
+  font-size: var(--g-font-md);
+  color: var(--g-text-light);
 }
-
 
 /* Estados de carga y error */
 .loading-container,
@@ -1449,11 +1444,11 @@
 }
 
 .btn-estado.ganado {
-  background-color: #4caf50;
+  background-color: var(--g-success);
 }
 
 .btn-estado.perdido {
-  background-color: #f44336;
+  background-color: var(--g-danger);
 }
 
 .btn-estado:hover {
@@ -1488,8 +1483,8 @@
 
 /* Badge reprogramar */
 .badge.reprogramar {
-  background-color: var(--color-orange);
-  color: white;
+  background-color: var(--g-color-orange);
+  color: var(--g-text-inverse);
 }
 
 /* Estilos para el contenedor de duración */
@@ -1523,16 +1518,16 @@
   padding: 8px 12px;
   margin: 12px auto;
   max-width: 80%;
-  background-color: #fef2f2;
-  border: 1px solid #fecaca;
-  border-left: 4px solid #ef4444;
-  border-radius: 4px;
+  background-color: var(--dash-trend-down-bg);
+  border: 1px solid rgba(244, 67, 54, 0.3);
+  border-left: 4px solid var(--g-danger);
+  border-radius: var(--g-radius-sm);
   text-align: center;
 }
 
 .conflict-warning .error-message {
-  color: #dc2626;
-  font-size: 13px;
+  color: var(--g-danger-alt);
+  font-size: var(--g-font-sm);
   font-weight: 500;
   margin: 0;
 }
@@ -1543,7 +1538,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: var(--g-header-overlay-bg);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1552,7 +1547,7 @@
 }
 
 .detalles-trato-modal-overlay .modal-content {
-  background-color: white;
+  background-color: var(--g-panel-bg);
   border-radius: var(--border-radius-lg);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   max-height: 90vh;
@@ -1586,7 +1581,7 @@
   align-items: center;
   padding: var(--spacing-lg) 0 var(--spacing-lg) 0;
   border-bottom: 1px solid var(--border-color);
-  background-color: white;
+  background-color: var(--g-panel-bg);
   border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
   position: relative;
   z-index: 1;
@@ -1626,7 +1621,7 @@
 
 .detalles-trato-modal-overlay .modal-body {
   padding: 0;
-  background-color: white;
+  background-color: var(--g-panel-bg);
   border-radius: 0 0 var(--border-radius-lg) var(--border-radius-lg);
   overflow-y: auto;
   flex: 1;
@@ -1673,7 +1668,7 @@
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius-sm);
   font-size: var(--font-size-sm);
-  background-color: white;
+  background-color: var(--g-panel-bg);
   color: var(--text-color);
   transition: border-color 0.3s, box-shadow 0.3s;
   box-sizing: border-box;
@@ -1686,11 +1681,11 @@
 }
 
 .detalles-trato-modal-overlay .modal-form-control.error {
-  border-color: #f44336;
+  border-color: var(--g-danger);
 }
 
 .detalles-trato-modal-overlay .modal-form-control.readonly {
-  background-color: #f8f9fa;
+  background-color: var(--dash-table-header-bg);
   color: var(--text-light);
   cursor: not-allowed;
 }
@@ -1724,12 +1719,12 @@
 }
 
 .detalles-trato-modal-overlay .required {
-  color: #f44336;
+  color: var(--g-danger);
   font-weight: bold;
 }
 
 .detalles-trato-modal-overlay .error-message {
-  color: #f44336;
+  color: var(--g-danger);
   font-size: var(--font-size-xs);
   margin-top: var(--spacing-xs);
 }
@@ -1781,27 +1776,25 @@
 
 .detalles-trato-modal-overlay .btn-primary {
   background-color: var(--accent-color);
-  color: white;
+  color: var(--g-text-inverse);
 }
 
 .detalles-trato-modal-overlay .btn-primary:hover {
-  background-color: #d86600;
+  background-color: var(--g-btn-accent-hover);
   transform: translateY(-1px);
 }
 
 .detalles-trato-modal-overlay .btn-secondary {
-  background-color: #6c757d;
-  color: white;
+  background-color: var(--map-btn-secondary-bg);
+  color: var(--g-text-inverse);
 }
 
 .detalles-trato-modal-overlay .btn-secondary:hover {
-  background-color: #5a6268;
+  background-color: var(--map-btn-secondary-hover);
   transform: translateY(-1px);
 }
 
 /* Estilos específicos para modales de actividades de detalles trato */
-
-/* Selector de actividad específico para detalles trato */
 .detalles-trato-modal-overlay .actividad-selector {
   display: flex;
   flex-direction: column;
@@ -1812,7 +1805,7 @@
 
 .detalles-trato-modal-overlay .btn-actividad-tipo {
   width: 100%;
-  background-color: white;
+  background-color: var(--g-panel-bg);
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius-sm);
   padding: var(--spacing-lg);
@@ -1828,7 +1821,6 @@
   border-color: var(--secondary-color);
 }
 
-/* Botones de tipo para tareas específico para detalles trato */
 .detalles-trato-modal-overlay .tipo-buttons {
   display: flex;
   gap: var(--spacing-sm);
@@ -1839,7 +1831,7 @@
   padding: var(--spacing-sm) var(--spacing-md);
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius-sm);
-  background-color: white;
+  background-color: var(--g-panel-bg);
   color: var(--text-color);
   cursor: pointer;
   transition: all 0.3s;
@@ -1853,10 +1845,9 @@
 
 .detalles-trato-modal-overlay .btn-tipo.active {
   background-color: var(--secondary-color);
-  color: white;
+  color: var(--g-text-inverse);
   border-color: var(--secondary-color);
 }
-
 
 /* Botones de respuesta */
 .detalles-trato-modal-overlay .response-buttons {
@@ -1868,10 +1859,10 @@
 .detalles-trato-modal-overlay .btn-response {
   flex: 1;
   padding: var(--spacing-lg);
-  border: 2px solid #e0e0e0;
+  border: 2px solid var(--g-border);
   border-radius: var(--border-radius-md);
-  background-color: #f8f9fa;
-  color: #6c757d;
+  background-color: var(--g-bg);
+  color: var(--g-text-light);
   cursor: pointer;
   transition: all 0.3s ease;
   font-size: 24px;
@@ -1889,16 +1880,16 @@
 }
 
 .detalles-trato-modal-overlay .btn-response.active.positive {
-  background-color: #d4edda;
-  border-color: #28a745;
-  color: #28a745;
+  background-color: var(--dash-trend-up-bg);
+  border-color: var(--g-success-alt);
+  color: var(--g-success-alt);
   box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.25);
 }
 
 .detalles-trato-modal-overlay .btn-response.active.negative {
-  background-color: #f8d7da;
-  border-color: #dc3545;
-  color: #dc3545;
+  background-color: var(--dash-trend-down-bg);
+  border-color: var(--g-danger-alt);
+  color: var(--g-danger-alt);
   box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.25);
 }
 
@@ -1913,9 +1904,9 @@
 .detalles-trato-modal-overlay .btn-interest {
   width: 50px;
   height: 50px;
-  border: 3px solid #e0e0e0;
+  border: 3px solid var(--g-border);
   border-radius: 50%;
-  background-color: #f8f9fa;
+  background-color: var(--g-bg);
   cursor: pointer;
   transition: all 0.3s ease;
   font-size: 20px;
@@ -1931,32 +1922,30 @@
 }
 
 .detalles-trato-modal-overlay .btn-interest.active.low {
-  background-color: #f8d7da;
-  border-color: #dc3545;
-  color: #dc3545;
+  background-color: var(--dash-trend-down-bg);
+  border-color: var(--g-danger-alt);
+  color: var(--g-danger-alt);
   box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.25);
 }
 
 .detalles-trato-modal-overlay .btn-interest.active.medium {
-  background-color: #fff3cd;
-  border-color: #ffc107;
-  color: #856404;
+  background-color: rgba(255, 193, 7, 0.15);
+  border-color: var(--g-warning-alt);
+  color: var(--g-text);
   box-shadow: 0 0 0 3px rgba(255, 193, 7, 0.25);
 }
 
 .detalles-trato-modal-overlay .btn-interest.active.high {
-  background-color: #d4edda;
-  border-color: #28a745;
-  color: #28a745;
+  background-color: var(--dash-trend-up-bg);
+  border-color: var(--g-success-alt);
+  color: var(--g-success-alt);
   box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.25);
 }
 
-/* Contenedor principal del interés */
 .detalles-trato-modal-overlay .interest-container {
   margin-bottom: var(--spacing-lg);
 }
 
-/* Contenedor para las opciones individuales (Bajo, Medio, Alto) */
 .detalles-trato-modal-overlay .interest-options {
   display: flex;
   justify-content: space-around;
@@ -1964,7 +1953,6 @@
   padding: 0 var(--spacing-sm);
 }
 
-/* Estilos para cada grupo de botón y label */
 .detalles-trato-modal-overlay .interest-option {
   display: flex;
   flex-direction: column;
@@ -1972,7 +1960,6 @@
   text-align: center;
 }
 
-/* Estilos para los botones (los círculos) */
 .detalles-trato-modal-overlay .btn-interest {
   width: 30px;
   height: 30px;
@@ -1981,15 +1968,13 @@
   justify-content: center;
   align-items: center;
   font-size: var(--font-size-lg);
-  color: white;
-  background-color: #ccc;
+  color: var(--g-text-inverse);
+  background-color: var(--g-text-muted);
   border: none;
   cursor: pointer;
   margin-bottom: var(--spacing-xs);
 }
 
-
-/* Mejorar el espaciado general del modal */
 .detalles-trato-modal-overlay .modal-form-group {
   margin-bottom: var(--spacing-lg);
 }
@@ -2000,17 +1985,14 @@
   color: var(--text-color);
 }
 
-
 .confirmacion-envio-modal {
-  background: rgba(0, 0, 0, 0.6);
+  background: var(--g-header-overlay-bg);
 }
 
 .confirmacion-envio-modal .modal-content {
-  /* Sombra normal */
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
-  border-radius: 12px;
-  background: white;
-  /* Animación sencilla */
+  border-radius: var(--g-radius-lg);
+  background: var(--g-panel-bg);
   animation: modalFadeIn 0.3s ease-out;
 }
 
@@ -2027,25 +2009,25 @@
 }
 
 .confirmacion-envio-modal .modal-header {
-  background: var(--color-dark-blue-1);
-  border-radius: 12px 12px 0 0;
+  background: var(--g-color-dark-blue-1);
+  border-radius: var(--g-radius-lg) var(--g-radius-lg) 0 0;
   padding: 20px 24px;
 }
 
 .confirmacion-envio-modal .modal-title {
-  color: white;
+  color: var(--g-text-inverse);
   font-weight: 600;
-  font-size: 1.1rem;
+  font-size: var(--g-font-lg);
   margin: 0;
 }
 
 .confirmacion-envio-modal .modal-close {
   background: rgba(255, 255, 255, 0.2);
   border: none;
-  color: white;
+  color: var(--g-text-inverse);
   width: 32px;
   height: 32px;
-  border-radius: 6px;
+  border-radius: var(--g-radius-sm);
   transition: background-color 0.2s ease;
 }
 
@@ -2063,7 +2045,7 @@
   width: 60px;
   height: 60px;
   margin: 0 auto 20px;
-  background: var(--color-orange);
+  background-color: var(--g-btn-accent-hover);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -2076,8 +2058,8 @@
 }
 
 .confirmacion-envio-step1 .confirmation-message {
-  font-size: 1rem;
-  color: var(--text-color);
+  font-size: var(--g-font-lg);
+  color: var(--g-text);
   font-weight: 500;
   line-height: 1.5;
   margin-bottom: 28px;
@@ -2095,31 +2077,31 @@
 .confirmacion-envio-step1 .btn {
   min-width: 100px;
   padding: 12px 20px;
-  font-size: 0.95rem;
+  font-size: var(--g-font-md);
   font-weight: 500;
-  border-radius: 8px;
+  border-radius: var(--g-radius-md);
   border: none;
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
 .confirmacion-envio-step1 .btn-secondary {
-  background: #6c757d;
-  color: white;
+  background: var(--map-btn-secondary-bg);
+  color: var(--g-text-inverse);
 }
 
 .confirmacion-envio-step1 .btn-secondary:hover {
-  background: #5a6268;
+  background: var(--map-btn-secondary-hover);
   transform: translateY(-1px);
 }
 
 .confirmacion-envio-step1 .btn-primary {
-  background: var(--color-orange);
-  color: white;
+  background-color: var(--g-btn-accent-hover);
+  color: var(--g-text-inverse);
 }
 
 .confirmacion-envio-step1 .btn-primary:hover {
-  background: #d86600;
+  background: var(--g-accent);
   transform: translateY(-1px);
 }
 
@@ -2134,8 +2116,8 @@
 }
 
 .confirmacion-envio-step2 .method-selection-title {
-  font-size: 1rem;
-  color: var(--text-color);
+  font-size: var(--g-font-lg);
+  color: var(--g-text);
   font-weight: 600;
   margin-bottom: 12px;
 }
@@ -2144,12 +2126,12 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  background: #f0f8ff;
+  background: var(--g-bg);
   padding: 6px 12px;
   border-radius: 16px;
-  font-size: 0.85rem;
-  color: var(--color-blue-1);
-  border: 1px solid #e3f2fd;
+  font-size: var(--g-font-sm);
+  color: var(--g-color-blue-1);
+  border: 1px solid var(--g-border);
 }
 
 .confirmacion-envio-step2 .contact-info::before {
@@ -2167,14 +2149,14 @@
   flex: 1;
   max-width: 140px;
   padding: 16px 12px;
-  border: 2px solid #e0e0e0;
-  border-radius: 10px;
+  border: 2px solid var(--g-border);
+  border-radius: var(--g-radius-md);
   cursor: pointer;
   transition: all 0.2s ease;
   text-align: center;
   font-weight: 500;
-  font-size: 0.9rem;
-  background: white;
+  font-size: var(--g-font-md);
+  background: var(--g-panel-bg);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -2193,11 +2175,11 @@
 
 /* Botón de correo */
 .confirmacion-envio-step2 .btn-method.email {
-  color: #6c757d;
+  color: var(--g-text-light);
 }
 
 .confirmacion-envio-step2 .btn-method.email .method-icon {
-  background: #f8f9fa;
+  background: var(--dash-table-header-bg);
 }
 
 .confirmacion-envio-step2 .btn-method.email .method-icon::before {
@@ -2205,24 +2187,24 @@
 }
 
 .confirmacion-envio-step2 .btn-method.email:hover:not(:disabled) {
-  border-color: #6c757d;
-  background: #f8f9fa;
+  border-color: var(--g-text-light);
+  background: var(--dash-table-header-bg);
 }
 
 .confirmacion-envio-step2 .btn-method.email:disabled {
-  background: #f8f9fa;
-  color: #adb5bd;
+  background: var(--dash-table-header-bg);
+  color: var(--g-text-muted);
   cursor: not-allowed;
   opacity: 0.6;
 }
 
 /* Botón de WhatsApp */
 .confirmacion-envio-step2 .btn-method.whatsapp {
-  color: #25d366;
+  color: var(--g-btn-map-bg);
 }
 
 .confirmacion-envio-step2 .btn-method.whatsapp .method-icon {
-  background: #e8f5e8;
+  background: var(--dash-trend-up-bg);
 }
 
 .confirmacion-envio-step2 .btn-method.whatsapp .method-icon::before {
@@ -2230,13 +2212,13 @@
 }
 
 .confirmacion-envio-step2 .btn-method.whatsapp:hover:not(:disabled) {
-  border-color: #25d366;
-  background: #f0fdf4;
+  border-color: var(--g-btn-map-bg);
+  background: rgba(40, 167, 69, 0.05);
 }
 
 .confirmacion-envio-step2 .btn-method.whatsapp:disabled {
-  background: #f8f9fa;
-  color: #adb5bd;
+  background: var(--dash-table-header-bg);
+  color: var(--g-text-muted);
   cursor: not-allowed;
   opacity: 0.6;
 }
@@ -2248,8 +2230,8 @@
 
 .confirmacion-envio-step2 .btn-method .loading-text {
   display: none;
-  font-size: 0.8rem;
-  color: #6c757d;
+  font-size: var(--g-font-sm);
+  color: var(--g-text-light);
 }
 
 .confirmacion-envio-step2 .btn-method.loading .method-label {
@@ -2283,7 +2265,7 @@
   border: none;
   cursor: pointer;
   padding: 6px;
-  border-radius: 4px;
+  border-radius: var(--g-radius-sm);
   transition: background-color 0.2s;
   display: flex;
   align-items: center;
@@ -2304,13 +2286,13 @@
 .empresa-link {
   background: none;
   border: none;
-  color: #666666;
-  font-size: 0.875rem;
+  color: var(--g-text-light);
+  font-size: var(--g-font-sm);
   font-weight: 500;
   font-family: inherit;
   text-align: left;
   padding: 4px 8px;
-  border-radius: 6px;
+  border-radius: var(--g-radius-md);
   cursor: pointer;
   position: relative;
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
@@ -2321,8 +2303,8 @@
 }
 
 .empresa-link:hover:not(:disabled) {
-  color: #1f2937;
-  background-color: #f3f4f6;
+  color: var(--g-text);
+  background-color: var(--cal-nav-btn-bg);
   transform: translateY(-1px);
 }
 
@@ -2333,11 +2315,11 @@
 .empresa-link:focus {
   outline: none;
   box-shadow: 0 0 0 3px rgba(55, 65, 81, 0.1);
-  background-color: #f9fafb;
+  background-color: var(--dash-table-header-bg);
 }
 
 .empresa-link:disabled {
-  color: #94a3b8;
+  color: var(--g-text-muted);
   cursor: not-allowed;
   background-color: transparent;
   transform: none;
@@ -2346,13 +2328,13 @@
 .gmail-message-editor {
   min-height: 200px;
   max-height: 400px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--g-text-muted);
   padding: 10px;
-  border-radius: 4px;
-  background-color: white;
+  border-radius: var(--g-radius-sm);
+  background-color: var(--g-panel-bg);
   overflow-y: auto;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  font-size: 14px;
+  font-size: var(--g-font-md);
   line-height: 1.5;
   direction: ltr !important;
   text-align: left !important;
@@ -2362,27 +2344,26 @@
 
 .gmail-message-editor:focus {
   outline: none;
-  border-color: #1a73e8;
+  border-color: var(--g-editor-link);
   box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.2);
 }
 
 .gmail-message-editor img {
   max-width: 400px !important;
-  /* Reducir de 100% a 400px máximo */
   width: auto !important;
   height: auto !important;
   display: block;
-  border-radius: 4px;
+  border-radius: var(--g-radius-sm);
   margin: 10px 0;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .image-loading {
-  background-color: #f0f0f0;
+  background-color: var(--g-border-light);
   padding: 10px;
-  border-radius: 4px;
+  border-radius: var(--g-radius-sm);
   text-align: center;
-  color: #666;
+  color: var(--g-text-light);
   font-style: italic;
   margin: 10px 0;
 }
@@ -2396,7 +2377,7 @@
 .gmail-image-btn {
   cursor: pointer;
   padding: 8px;
-  border-radius: 4px;
+  border-radius: var(--g-radius-sm);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -2408,7 +2389,7 @@
 }
 
 .gmail-image-btn:hover {
-  background-color: #f1f3f4;
+  background-color: var(--g-bg);
 }
 
 .ver-mas-notas-container {
@@ -2416,17 +2397,17 @@
   justify-content: center;
   margin: 20px 0;
   padding: 10px 0;
-  border-top: 1px solid #e0e0e0;
+  border-top: 1px solid var(--g-border);
 }
 
 /* Botón para mostrar/ocultar notas adicionales */
 .btn-ver-mas-notas {
   background: transparent;
-  border: 2px solid #007bff;
-  color: #007bff;
+  border: 2px solid var(--map-btn-primary-bg);
+  color: var(--map-btn-primary-bg);
   padding: 8px 16px;
   border-radius: 20px;
-  font-size: 14px;
+  font-size: var(--g-font-md);
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -2436,8 +2417,8 @@
 }
 
 .btn-ver-mas-notas:hover {
-  background-color: #007bff;
-  color: white;
+  background-color: var(--map-btn-primary-bg);
+  color: var(--g-text-inverse);
   transform: translateY(-1px);
   box-shadow: 0 2px 8px rgba(0, 123, 255, 0.2);
 }
@@ -2449,13 +2430,13 @@
 .no-notas {
   text-align: center;
   padding: 40px 20px;
-  color: #666;
+  color: var(--g-text-light);
   font-style: italic;
 }
 
 .no-notas p {
   margin: 0;
-  font-size: 16px;
+  font-size: var(--g-font-lg);
 }
 
 .btn-ver-mas-notas::before {
@@ -2473,38 +2454,38 @@
 }
 
 .btn-ver-mas-notas-sutil {
-  background: #f8f9fa;
-  border: 1px solid #dee2e6;
-  color: #6c757d;
+  background: var(--dash-table-header-bg);
+  border: 1px solid var(--dash-metric-border);
+  color: var(--dash-nodata-title);
   padding: 10px 20px;
-  border-radius: 6px;
-  font-size: 14px;
+  border-radius: var(--g-radius-md);
+  font-size: var(--g-font-md);
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
 .btn-ver-mas-notas-sutil:hover {
-  background-color: #e9ecef;
-  color: #495057;
-  border-color: #adb5bd;
+  background-color: var(--g-active-bg);
+  color: var(--g-text);
+  border-color: var(--g-text-muted);
 }
 
 .email-chips-container {
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  border: 1px solid var(--g-text-muted);
+  border-radius: var(--g-radius-sm);
   padding: 6px;
-  background: white;
+  background: var(--g-panel-bg);
   min-height: 40px;
   cursor: text;
 }
 
 .email-chips-container:focus-within {
-  border-color: #4285f4;
-  box-shadow: 0 0 0 1px #4285f4;
+  border-color: var(--g-editor-link);
+  box-shadow: 0 0 0 1px var(--g-editor-link);
 }
 
 .email-chips-container.error {
-  border-color: #dc3545;
+  border-color: var(--g-danger-alt);
 }
 
 .email-chips-wrapper {
@@ -2517,11 +2498,11 @@
 .email-chip {
   display: inline-flex;
   align-items: center;
-  background: #e3f2fd;
-  color: #1976d2;
+  background: var(--g-bg);
+  color: var(--g-color-blue-1);
   padding: 2px 6px;
   border-radius: 12px;
-  font-size: 13px;
+  font-size: var(--g-font-sm);
   max-width: 200px;
 }
 
@@ -2534,7 +2515,7 @@
 .email-chip-remove {
   background: none;
   border: none;
-  color: #1976d2;
+  color: var(--g-color-blue-1);
   margin-left: 4px;
   cursor: pointer;
   font-size: 16px;
@@ -2558,7 +2539,7 @@
   background: transparent;
   flex: 1;
   min-width: 120px;
-  font-size: 14px;
+  font-size: var(--g-font-md);
   padding: 2px;
 }
 
@@ -2582,16 +2563,16 @@
 }
 
 .email-info-row small {
-  color: #666;
-  font-size: 11px;
+  color: var(--g-text-light);
+  font-size: var(--g-font-xs);
 }
 
 .email-counter {
-  background: #f5f5f5;
-  color: #666;
+  background: var(--g-border-light);
+  color: var(--g-text-light);
   padding: 2px 8px;
   border-radius: 10px;
-  font-size: 11px;
+  font-size: var(--g-font-xs);
 }
 
 /* Sección de Cotizaciones */
@@ -2648,7 +2629,7 @@
 
 /* Botón EDITAR - Azul */
 .cotizaciones-trato .btn-accion-cotizacion:nth-child(1) {
-  border-color: #2196f3;
+  border-color: var(--g-info);
 }
 
 .cotizaciones-trato .btn-accion-cotizacion:nth-child(1) img {
@@ -2657,12 +2638,12 @@
 
 .cotizaciones-trato .btn-accion-cotizacion:nth-child(1):hover {
   background-color: rgba(33, 150, 243, 0.1);
-  border-color: #1976d2;
+  border-color: var(--g-color-blue-1);
 }
 
 /* Botón DESCARGAR - Verde */
 .cotizaciones-trato .btn-accion-cotizacion:nth-child(2) {
-  border-color: #4caf50;
+  border-color: var(--g-success);
 }
 
 .cotizaciones-trato .btn-accion-cotizacion:nth-child(2) img {
@@ -2670,13 +2651,13 @@
 }
 
 .cotizaciones-trato .btn-accion-cotizacion:nth-child(2):hover {
-  background-color: rgba(76, 175, 80, 0.1);
-  border-color: #388e3c;
+  background-color: var(--dash-trend-up-bg);
+  border-color: var(--g-success-alt);
 }
 
 /* Botón ENVIAR - Azul oscuro */
 .cotizaciones-trato .btn-accion-cotizacion:nth-child(3) {
-  border-color: #1565c0;
+  border-color: var(--g-color-blue-2);
 }
 
 .cotizaciones-trato .btn-accion-cotizacion:nth-child(3) img {
@@ -2685,7 +2666,7 @@
 
 .cotizaciones-trato .btn-accion-cotizacion:nth-child(3):hover {
   background-color: rgba(21, 101, 192, 0.1);
-  border-color: #0a387e;
+  border-color: var(--g-color-dark-blue-2);
 }
 
 .cotizaciones-trato .btn-accion-cotizacion:nth-child(4):disabled img {
@@ -2694,7 +2675,7 @@
 
 /* Botón ELIMINAR - Rojo */
 .cotizaciones-trato .btn-accion-cotizacion:nth-child(5) {
-  border-color: #dc3545;
+  border-color: var(--g-danger-alt);
 }
 
 .cotizaciones-trato .btn-accion-cotizacion:nth-child(5) img {
@@ -2702,8 +2683,8 @@
 }
 
 .cotizaciones-trato .btn-accion-cotizacion:nth-child(5):hover {
-  background-color: rgba(220, 53, 69, 0.1);
-  border-color: #c82333;
+  background-color: var(--dash-trend-down-bg);
+  border-color: var(--g-danger);
 }
 
 .cotizaciones-trato .estatus-badge {
@@ -2716,53 +2697,50 @@
 }
 
 .cotizaciones-trato .estatus-badge.pendiente {
-  background-color: #fff3cd;
-  color: #856404;
+  background-color: rgba(255, 193, 7, 0.15);
+  color: var(--g-text);
 }
 
 .cotizaciones-trato .estatus-badge.enviada {
-  background-color: #d1ecf1;
-  color: #0c5460;
+  background-color: rgba(33, 150, 243, 0.1);
+  color: var(--g-color-dark-blue-3);
 }
 
 .cotizaciones-trato .estatus-badge.aceptada {
-  background-color: #d4edda;
-  color: #155724;
+  background-color: var(--dash-trend-up-bg);
+  color: var(--g-success-alt);
 }
 
 .cotizaciones-trato .estatus-badge.rechazada {
-  background-color: #f8d7da;
-  color: #721c24;
+  background-color: var(--dash-trend-down-bg);
+  color: var(--g-danger-alt);
 }
 
 .cotizaciones-trato .btn-accion-cotizacion.cotizaciones-receivable-btn-vinculada {
-  border-color: #4caf50 !important;
-  background-color: rgba(76, 175, 80, 0.1) !important;
+  border-color: var(--g-success) !important;
+  background-color: var(--dash-trend-up-bg) !important;
 }
 
 .cotizaciones-trato .btn-accion-cotizacion.cotizaciones-receivable-btn-vinculada:hover {
   background-color: rgba(76, 175, 80, 0.2) !important;
-  border-color: #388e3c !important;
+  border-color: var(--g-success-alt) !important;
 }
 
-/* Filtro para que el icono se vea verde */
 .cotizaciones-trato .btn-accion-cotizacion.cotizaciones-receivable-btn-vinculada img {
   filter: invert(64%) sepia(49%) saturate(450%) hue-rotate(75deg) brightness(91%) contrast(88%) !important;
 }
 
-
 /* Estilo DISPONIBLE (ROJO/NARANJA) */
 .cotizaciones-trato .btn-accion-cotizacion.cotizaciones-receivable-btn-disponible {
-  border-color: #f44336 !important;
-  background-color: rgba(244, 67, 54, 0.1) !important;
+  border-color: var(--g-danger) !important;
+  background-color: var(--dash-trend-down-bg) !important;
 }
 
 .cotizaciones-trato .btn-accion-cotizacion.cotizaciones-receivable-btn-disponible:hover {
   background-color: rgba(244, 67, 54, 0.2) !important;
-  border-color: #d32f2f !important;
+  border-color: var(--g-danger-alt) !important;
 }
 
-/* Filtro para que el icono se vea rojo */
 .cotizaciones-trato .btn-accion-cotizacion.cotizaciones-receivable-btn-disponible img {
   filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(104%) contrast(97%) !important;
 }
@@ -2781,11 +2759,11 @@
   gap: 10px;
   padding: 12px 24px;
   border: none;
-  border-radius: 6px;
+  border-radius: var(--g-radius-md);
   cursor: pointer;
-  font-size: 14px;
+  font-size: var(--g-font-md);
   font-weight: 500;
-  color: white;
+  color: var(--g-text-inverse);
   transition: background-color 0.2s, transform 0.1s;
   min-width: 140px;
 }
@@ -2795,19 +2773,19 @@
 }
 
 .btn-share-whatsapp {
-  background-color: #25D366;
+  background-color: var(--g-btn-map-bg);
 }
 
 .btn-share-whatsapp:hover {
-  background-color: #1eab52;
+  background-color: var(--g-btn-map-hover);
 }
 
 .btn-share-email {
-  background-color: #037ce0;
+  background-color: var(--g-color-blue-3);
 }
 
 .btn-share-email:hover {
-  background-color: #0260b0;
+  background-color: var(--g-color-blue-2);
 }
 
 .share-icon-img {
@@ -2829,12 +2807,12 @@
 
 .pdf-preview-modal .modal-header {
   padding: 16px 20px;
-  border-bottom: 1px solid #dee2e6;
+  border-bottom: 1px solid var(--g-border);
   flex-shrink: 0;
 }
 
 .pdf-preview-modal .modal-title {
-  font-size: 1.1rem;
+  font-size: var(--g-font-lg);
   font-weight: 600;
   color: var(--text-color);
 }
@@ -2861,13 +2839,13 @@
 }
 
 .btn-download-pdf {
-  background-color: #c73232;
-  color: white;
+  background-color: var(--g-danger-alt);
+  color: var(--g-text-inverse);
   padding: 10px 20px;
   border: none;
-  border-radius: 4px;
+  border-radius: var(--g-radius-sm);
   cursor: pointer;
-  font-size: 13px;
+  font-size: var(--g-font-sm);
   font-weight: 500;
   white-space: nowrap;
   display: flex;
@@ -2877,7 +2855,7 @@
 }
 
 .btn-download-pdf:hover {
-  background-color: #a82828;
+  background-color: var(--g-danger);
   transform: translateY(-1px);
 }
 
@@ -2886,8 +2864,8 @@
 }
 
 .pdf-preview-frame {
-  border: 1px solid #ddd;
-  border-radius: 4px;
+  border: 1px solid var(--dash-input-border);
+  border-radius: var(--g-radius-sm);
   overflow: hidden;
   flex: 1;
   min-height: 0;
@@ -2909,8 +2887,8 @@
 }
 
 .detalles-trato-modal-overlay .btn-primary:disabled {
-  background-color: #e0e0e0;
-  color: #a0a0a0;
+  background-color: var(--g-border);
+  color: var(--g-text-muted);
   cursor: not-allowed;
   transform: none;
   box-shadow: none;
@@ -2935,7 +2913,7 @@
 
   .btn-download-pdf {
     padding: 8px 16px;
-    font-size: 12px;
+    font-size: var(--g-font-xs);
   }
 }
 
@@ -2965,7 +2943,6 @@
   animation: pulseActive 0.3s ease-out;
 }
 
-
 @keyframes pulseActive {
   0% {
     transform: scale(1);
@@ -2980,16 +2957,12 @@
   }
 }
 
-
-/* Media query para pantallas extra grandes (monitores de escritorio y TVs) */
+/* Media query para pantallas extra grandes */
 @media (min-width: 1600px) {
-
-  /* El contenedor principal se centra con un ancho mayor */
   .detalles-trato-container {
     max-width: 1400px;
   }
 
-  /* Los encabezados y textos principales pueden ser un poco más grandes */
   .trato-titulo {
     font-size: var(--font-size-xxl);
   }
@@ -2998,52 +2971,42 @@
     font-size: var(--font-size-xl);
   }
 
-  /* El tamaño de fuente base se ajusta para mejor legibilidad */
   html {
     font-size: 17px;
   }
 }
 
-/* Media query para pantallas grandes (desktops y laptops) */
+/* Media query para pantallas grandes */
 @media (max-width: 1200px) {
-
-  /* Las actividades se organizan en una sola columna para ahorrar espacio horizontal */
   .actividades-grid {
     grid-template-columns: 1fr;
     gap: var(--spacing-md);
   }
 
-  /* Los detalles del trato también se organizan en una sola columna */
   .detalles-grid {
     grid-template-columns: 1fr;
   }
 
-  /* Se ajusta el tamaño de la fuente base para pantallas más comunes */
   html {
     font-size: 16px;
   }
 
-  /* Ajustar tabla del historial */
   .tabla-header,
   .tabla-row {
     grid-template-columns: 100px 120px 80px 100px 80px 60px 1fr 60px;
   }
 }
 
-/* Media query para pantallas medianas (tablets en orientación horizontal) */
+/* Media query para pantallas medianas */
 @media (max-width: 992px) {
-
-  /* El contenedor principal tiene un padding ligeramente reducido */
   .detalles-trato-container {
     padding: var(--spacing-lg) var(--spacing-md);
   }
 
-  /* Se reduce un poco el tamaño del título del trato */
   .trato-titulo {
     font-size: var(--font-size-xl);
   }
 
-  /* Simplificar tabla del historial */
   .tabla-header,
   .tabla-row {
     grid-template-columns: 1fr 1fr 1fr 60px;
@@ -3068,28 +3031,23 @@
   }
 }
 
-/* Media query para pantallas pequeñas (tablets en orientación vertical y móviles grandes) */
+/* Media query para pantallas pequeñas */
 @media (max-width: 768px) {
-
-  /* El padding del contenedor principal se reduce aún más */
   .detalles-trato-container {
     padding: var(--spacing-md);
   }
 
-  /* El encabezado del trato se apila verticalmente */
   .detalles-header {
     flex-direction: column;
     gap: var(--spacing-md);
     align-items: stretch;
   }
 
-  /* El breadcrumb de fases también se apila verticalmente */
   .fases-breadcrumb {
     flex-direction: column;
     gap: var(--spacing-md);
   }
 
-  /* El contenedor de fases se centra sin márgenes laterales */
   .fases-container {
     margin: 0;
     justify-content: center;
@@ -3098,7 +3056,6 @@
     padding-bottom: var(--spacing-sm);
   }
 
-  /* La información de contacto se apila verticalmente y se centra */
   .contacto-info {
     flex-direction: column;
     align-items: center;
@@ -3116,18 +3073,15 @@
     justify-content: flex-start;
   }
 
-  /* Las pestañas de correos electrónicos pueden envolverse si no hay espacio */
   .correos-tabs {
     flex-wrap: wrap;
     justify-content: center;
   }
 
-  /* Se ajusta el tamaño de la fuente base para móviles */
   html {
     font-size: 15px;
   }
 
-  /* Tabla del historial en formato de tarjetas */
   .historial-tabla {
     display: block;
   }
@@ -3158,7 +3112,6 @@
     margin-right: var(--spacing-sm);
   }
 
-  /* Responsive para el contenedor de duración */
   .duracion-container {
     flex-direction: column;
     gap: var(--spacing-md);
@@ -3176,45 +3129,37 @@
   }
 }
 
-/* Media query para pantallas muy pequeñas (móviles pequeños) */
+/* Media query para pantallas muy pequeñas */
 @media (max-width: 576px) {
-
-  /* Los ítems de fase reducen su padding y tamaño de fuente */
   .fase-item {
     font-size: var(--font-size-xs);
     padding: var(--spacing-xs) var(--spacing-sm);
   }
 
-  /* Los ítems de nota se apilan verticalmente */
   .nota-item {
     flex-direction: column;
     gap: var(--spacing-sm);
   }
 
-  /* El padding de los ítems de actividad se reduce */
   .actividad-item {
     padding: var(--spacing-sm);
   }
 
-  /* Se reduce aún más el tamaño de la fuente base para una mejor visualización en pantallas muy pequeñas */
   html {
     font-size: 14px;
   }
 
-  /* Oculta la fecha de inicio y final para ahorrar espacio en pantallas muy pequeñas */
   .fecha-inicio,
   .fecha-final {
     display: none;
   }
 
-  /* Se ajusta el margen y el tamaño de la fuente del título del trato */
   .trato-titulo {
     font-size: var(--font-size-lg);
     text-align: center;
     width: 100%;
   }
 
-  /* El botón de editar trato ocupa todo el ancho */
   .btn-editar-trato {
     width: 100%;
     text-align: center;
@@ -3223,13 +3168,10 @@
 
 /* Media query para pantallas mínimas */
 @media (max-width: 400px) {
-
-  /* Se reduce el padding general para dejar más espacio al contenido */
   .detalles-trato-container {
     padding: var(--spacing-sm);
   }
 
-  /* Ajuste final para los tamaños de fuente más pequeños */
   html {
     font-size: 13px;
   }
@@ -3406,7 +3348,6 @@
     gap: var(--spacing-xs);
   }
 
-  /* Tabla simplificada */
   .tabla-header,
   .tabla-row {
     grid-template-columns: 1fr 1fr 1fr 2fr;
@@ -3471,7 +3412,6 @@
     height: 28px;
   }
 
-  /* Tabla como tarjetas en móviles */
   .historial-tabla {
     display: block;
     border: none;
@@ -3492,7 +3432,7 @@
     border-radius: var(--border-radius-sm);
     margin-bottom: var(--spacing-md);
     padding: var(--spacing-md);
-    background-color: white;
+    background-color: var(--g-panel-bg);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     min-width: auto;
   }
@@ -3503,7 +3443,7 @@
     align-items: center;
     border: none;
     padding: var(--spacing-sm) 0;
-    border-bottom: 1px solid #f0f0f0;
+    border-bottom: 1px solid var(--g-border-light);
   }
 
   .cell:last-child {
@@ -3524,7 +3464,6 @@
     min-width: 80px;
   }
 
-  /* Labels para las celdas */
   .tabla-row .cell:nth-child(1)::before {
     content: "Fecha";
   }
@@ -3568,7 +3507,6 @@
   }
 }
 
-
 @media (max-width: 576px) {
   .fases-breadcrumb {
     padding: var(--spacing-sm);
@@ -3605,7 +3543,6 @@
     height: 12px;
   }
 
-  /* Tarjetas más compactas */
   .tabla-row {
     padding: var(--spacing-sm);
     margin-bottom: var(--spacing-sm);
@@ -3671,7 +3608,6 @@
     width: 10px;
     height: 10px;
   }
-
 
   .fecha-inicio,
   .fecha-final {

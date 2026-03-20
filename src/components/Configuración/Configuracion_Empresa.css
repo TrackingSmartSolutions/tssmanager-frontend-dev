@@ -1,3 +1,5 @@
+/* config-empresa.css */
+
 /* Configuration Header and Navigation */
 .config-empresa-config-header {
   background-color: var(--config-empresa-panel-background);
@@ -31,13 +33,13 @@
 
 .config-empresa-nav-item:hover {
   color: var(--config-empresa-secondary-color);
-  background-color: rgba(3, 124, 224, 0.05);
+  background-color: rgba(0, 0, 0, 0.04);
 }
 
 .config-empresa-nav-item-active {
   color: var(--config-empresa-secondary-color);
   border-bottom-color: var(--config-empresa-secondary-color);
-  background-color: rgba(3, 124, 224, 0.05);
+  background-color: rgba(0, 0, 0, 0.04);
 }
 
 /* Layout Principal */
@@ -105,7 +107,7 @@
   border: 1px solid var(--config-empresa-border-color);
   border-radius: var(--config-empresa-border-radius-sm);
   font-size: var(--config-empresa-font-size-sm);
-  background-color: white;
+  background-color: var(--g-panel-bg);
   color: var(--config-empresa-text-color);
   transition: border-color 0.3s, box-shadow 0.3s;
   box-sizing: border-box;
@@ -118,7 +120,7 @@
 }
 
 .config-empresa-required {
-  color: #f44336;
+  color: var(--g-danger);
   font-weight: bold;
 }
 
@@ -146,7 +148,7 @@
   border-radius: var(--config-empresa-border-radius-md);
   padding: var(--config-empresa-spacing-lg);
   text-align: center;
-  background-color: #fafafa;
+  background-color: var(--g-drop-zone-bg);
   transition: border-color 0.3s, background-color 0.3s;
   position: relative;
   min-height: 120px;
@@ -214,7 +216,7 @@
   border: 1px solid var(--config-empresa-border-color);
   border-radius: var(--config-empresa-border-radius-md);
   padding: var(--config-empresa-spacing-lg);
-  background-color: white;
+  background-color: var(--g-panel-bg);
   min-height: 120px;
   display: flex;
   align-items: center;
@@ -242,8 +244,8 @@
   position: absolute;
   top: -8px;
   right: -8px;
-  background-color: #f44336;
-  color: white;
+  background-color: var(--g-btn-remove-bg);
+  color: var(--g-text-inverse);
   border: none;
   border-radius: 50%;
   width: 20px;
@@ -257,7 +259,7 @@
 }
 
 .config-empresa-remove-logo:hover {
-  background-color: #d32f2f;
+  background-color: var(--g-btn-remove-hover);
 }
 
 .config-empresa-no-preview {
@@ -293,21 +295,21 @@
 
 .config-empresa-btn-primary {
   background-color: var(--config-empresa-accent-color);
-  color: white;
+  color: var(--g-text-inverse);
 }
 
 .config-empresa-btn-primary:hover:not(:disabled) {
-  background-color: #d86600;
+  background-color: var(--g-btn-accent-hover);
   transform: translateY(-1px);
 }
 
 .config-empresa-btn-secondary {
-  background-color: #6c757d;
-  color: white;
+  background-color: var(--g-btn-secondary-bg);
+  color: var(--g-text-inverse);
 }
 
 .config-empresa-btn-secondary:hover {
-  background-color: #5a6268;
+  background-color: var(--g-btn-secondary-hover);
   transform: translateY(-1px);
 }
 
@@ -438,12 +440,12 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: var(--g-loading-bg);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   z-index: 1000;
   font-size: 16px;
-  color: #037ce0;
+  color: var(--g-loading-color);
 }

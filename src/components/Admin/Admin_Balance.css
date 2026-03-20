@@ -1,3 +1,5 @@
+/* adminbalance.css */
+
 /* Layout Principal */
 .adminbalance-main-content {
   padding: var(--adminbalance-spacing-lg) var(--adminbalance-spacing-xl);
@@ -59,12 +61,12 @@
 }
 
 .adminbalance-menu-item:hover {
-  background-color: rgba(3, 124, 224, 0.05);
+  background-color: rgba(0, 0, 0, 0.04);
   border-color: var(--adminbalance-border-color);
 }
 
 .adminbalance-menu-item-active {
-  background-color: #cdd6ee;
+  background-color: var(--g-table-header-active-bg);
   color: var(--adminbalance-primary-color);
   font-weight: 500;
   border-color: var(--adminbalance-secondary-color);
@@ -119,7 +121,7 @@
   border: 1px solid var(--adminbalance-border-color);
   border-radius: var(--adminbalance-border-radius-sm);
   font-size: var(--adminbalance-font-size-sm);
-  background-color: white;
+  background-color: var(--g-panel-bg);
   color: var(--adminbalance-text-color);
   cursor: pointer;
   min-width: 120px;
@@ -140,7 +142,7 @@
 }
 
 .adminbalance-resumen-card {
-  background-color: white;
+  background-color: var(--g-panel-bg);
   padding: var(--adminbalance-spacing-lg);
   border-radius: var(--adminbalance-border-radius-md);
   box-shadow: var(--adminbalance-box-shadow);
@@ -149,18 +151,18 @@
 }
 
 .adminbalance-resumen-card.adminbalance-ingresos {
-  background: linear-gradient(135deg, #4caf50 0%, #66bb6a 100%);
-  color: white;
+  background: linear-gradient(135deg, var(--g-success) 0%, #66bb6a 100%);
+  color: var(--g-text-inverse);
 }
 
 .adminbalance-resumen-card.adminbalance-gastos {
-  background: linear-gradient(135deg, #f44336 0%, #ef5350 100%);
-  color: white;
+  background: linear-gradient(135deg, var(--g-danger) 0%, #ef5350 100%);
+  color: var(--g-text-inverse);
 }
 
 .adminbalance-resumen-card.adminbalance-utilidad {
-  background: linear-gradient(135deg, #2196f3 0%, #42a5f5 100%);
-  color: white;
+  background: linear-gradient(135deg, var(--g-info) 0%, #42a5f5 100%);
+  color: var(--g-text-inverse);
 }
 
 .adminbalance-resumen-titulo {
@@ -178,7 +180,7 @@
 
 /* Gráfico */
 .adminbalance-chart-card {
-  background-color: white;
+  background-color: var(--g-panel-bg);
   padding: var(--adminbalance-spacing-lg);
   border-radius: var(--adminbalance-border-radius-md);
   box-shadow: var(--adminbalance-box-shadow);
@@ -208,7 +210,7 @@
 }
 
 .adminbalance-table-card {
-  background-color: white;
+  background-color: var(--g-panel-bg);
   padding: var(--adminbalance-spacing-lg);
   border-radius: var(--adminbalance-border-radius-md);
   box-shadow: var(--adminbalance-box-shadow);
@@ -236,7 +238,7 @@
 .adminbalance-table {
   width: 100%;
   border-collapse: collapse;
-  background-color: white;
+  background-color: var(--g-panel-bg);
 }
 
 .adminbalance-table th,
@@ -248,7 +250,7 @@
 }
 
 .adminbalance-table th {
-  background-color: #cdd6ee;
+  background-color: var(--g-table-header-active-bg);
   font-weight: 600;
   color: var(--adminbalance-primary-color);
   position: sticky;
@@ -270,7 +272,7 @@
   border: 1px solid var(--adminbalance-border-color);
   border-radius: var(--adminbalance-border-radius-sm);
   font-size: var(--adminbalance-font-size-xs);
-  background-color: white;
+  background-color: var(--g-panel-bg);
   cursor: pointer;
 }
 
@@ -300,12 +302,12 @@
 }
 
 .adminbalance-btn-reporte {
-  background-color: #c73232;
-  color: white;
+  background-color: var(--g-btn-report-bg);
+  color: var(--g-text-inverse);
 }
 
 .adminbalance-btn-reporte:hover {
-  background-color: #a82828;
+  background-color: var(--g-btn-report-hover);
   transform: translateY(-1px);
 }
 
@@ -330,7 +332,7 @@
 }
 
 .adminbalance-modal-content {
-  background-color: white;
+  background-color: var(--g-panel-bg);
   border-radius: var(--adminbalance-border-radius-lg);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   max-height: 90vh;
@@ -364,7 +366,7 @@
   align-items: center;
   padding: var(--adminbalance-spacing-lg);
   border-bottom: 1px solid var(--adminbalance-border-color);
-  background-color: white;
+  background-color: var(--g-panel-bg);
   border-radius: var(--adminbalance-border-radius-lg) var(--adminbalance-border-radius-lg) 0 0;
 }
 
@@ -398,7 +400,7 @@
 
 .adminbalance-modal-body {
   padding: var(--adminbalance-spacing-lg);
-  background-color: white;
+  background-color: var(--g-panel-bg);
   border-radius: 0 0 var(--adminbalance-border-radius-lg) var(--adminbalance-border-radius-lg);
   overflow-y: auto;
   flex: 1;
@@ -677,12 +679,12 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: var(--g-loading-bg);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   z-index: 1000;
   font-size: 16px;
-  color: #037ce0;
+  color: var(--g-loading-color);
 }

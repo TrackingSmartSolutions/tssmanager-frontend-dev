@@ -1,3 +1,5 @@
+/* correos.css */
+
 .correos-config-header {
   background-color: var(--correos-panel-background);
   padding: var(--correos-spacing-lg) var(--correos-spacing-xl);
@@ -30,13 +32,13 @@
 
 .correos-nav-item:hover {
   color: var(--correos-secondary-color);
-  background-color: rgba(3, 124, 224, 0.05);
+  background-color: rgba(0, 0, 0, 0.04);
 }
 
 .correos-nav-item-active {
   color: var(--correos-secondary-color);
   border-bottom-color: var(--correos-secondary-color);
-  background-color: rgba(3, 124, 224, 0.05);
+  background-color: rgba(0, 0, 0, 0.04);
 }
 
 .correos-main-content {
@@ -80,20 +82,20 @@
   max-height: calc(100vh - 300px);
   border: 1px solid var(--correos-border-color);
   border-radius: var(--correos-border-radius-sm);
-  background-color: white;
+  background-color: var(--g-panel-bg);
 }
 
 .correos-table {
   width: 100%;
   border-collapse: collapse;
-  background-color: white;
+  background-color: var(--g-panel-bg);
 }
 
 .correos-table th {
   position: sticky;
   top: 0;
   z-index: 10;
-  background-color: #f8f9fa;
+  background-color: var(--g-table-header-bg);
   padding: var(--correos-spacing-md);
   text-align: left;
   font-size: var(--correos-font-size-sm);
@@ -125,7 +127,7 @@
 }
 
 .correos-table tbody tr:hover {
-  background-color: #f8f9fa;
+  background-color: var(--g-table-header-bg);
 }
 
 .status-badge {
@@ -138,19 +140,19 @@
 }
 
 .status-sent {
-  background-color: #e3f2fd;
-  color: #1565c0;
+  background-color: var(--g-status-sent-bg);
+  color: var(--g-status-sent-color);
 }
 
 .status-delivered {
-  background-color: #e8f5e9;
-  color: #2e7d32;
+  background-color: var(--g-status-delivered-bg);
+  color: var(--g-status-delivered-color);
 }
 
 .status-failed,
 .status-bounced {
-  background-color: #ffebee;
-  color: #c62828;
+  background-color: var(--g-status-failed-bg);
+  color: var(--g-status-failed-color);
 }
 
 .correos-loading {
@@ -159,14 +161,14 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: var(--g-loading-bg);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   z-index: 1000;
   font-size: 16px;
-  color: #037ce0;
+  color: var(--g-loading-color);
 }
 
 @media (max-width: 992px) {

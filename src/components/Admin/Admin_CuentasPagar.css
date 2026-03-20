@@ -1,3 +1,5 @@
+/* cuentaspagar.css */
+
 /* Layout Principal */
 .cuentaspagar-main-content {
   padding: var(--cuentaspagar-spacing-lg) var(--cuentaspagar-spacing-xl);
@@ -16,7 +18,7 @@
   min-height: calc(100vh - 160px);
 }
 
-/* Sidebar (Dimensiones idénticas a los otros módulos) */
+/* Sidebar */
 .cuentaspagar-sidebar {
   flex: 0 0 280px;
   min-width: 260px;
@@ -59,12 +61,12 @@
 }
 
 .cuentaspagar-menu-item:hover {
-  background-color: rgba(3, 124, 224, 0.05);
+  background-color: rgba(0, 0, 0, 0.04);
   border-color: var(--cuentaspagar-border-color);
 }
 
 .cuentaspagar-menu-item-active {
-  background-color: #cdd6ee;
+  background-color: var(--g-table-header-active-bg);
   color: var(--cuentaspagar-primary-color);
   font-weight: 500;
   border-color: var(--cuentaspagar-secondary-color);
@@ -134,27 +136,27 @@
 
 .cuentaspagar-btn-primary {
   background-color: var(--cuentaspagar-accent-color);
-  color: white;
+  color: var(--g-text-inverse);
 }
 
 .cuentaspagar-btn-primary:hover {
-  background-color: #d86600;
+  background-color: var(--g-btn-accent-hover);
   transform: translateY(-1px);
 }
 
 .cuentaspagar-btn-cancel {
-  background-color: #6c757d;
-  color: white;
+  background-color: var(--g-btn-order-bg);
+  color: var(--g-text-inverse);
 }
 
 .cuentaspagar-btn-cancel:hover {
-  background-color: #5a6268;
+  background-color: var(--g-btn-order-hover);
   transform: translateY(-1px);
 }
 
 .cuentaspagar-btn-confirm {
-  background-color: #c73232;
-  color: white;
+  background-color: var(--g-btn-report-bg);
+  color: var(--g-text-inverse);
 }
 
 .cuentaspagar-btn-confirm:hover {
@@ -172,18 +174,18 @@
   transition: all 0.3s ease;
   min-width: 120px;
   text-align: center;
-  background-color: #c73232;
-  color: white;
+  background-color: var(--g-btn-report-bg);
+  color: var(--g-text-inverse);
 }
 
 .cuentaspagar-btn-reporte:hover {
-  background-color: #a82828;
+  background-color: var(--g-btn-report-hover);
   transform: translateY(-1px);
 }
 
 /* Tabla */
 .cuentaspagar-table-card {
-  background-color: white;
+  background-color: var(--g-panel-bg);
   padding: var(--cuentaspagar-spacing-lg);
   border-radius: var(--cuentaspagar-border-radius-md);
   box-shadow: var(--cuentaspagar-box-shadow);
@@ -213,28 +215,26 @@
   gap: 15px;
   align-items: flex-end;
   flex-wrap: wrap;
-  /* Clave para responsividad */
 }
 
 .cuentaspagar-filter-container {
   display: flex;
   flex-direction: column;
-  /* Etiquetas arriba de inputs */
   gap: 5px;
 }
 
 .cuentaspagar-filter-container label {
   font-weight: 500;
-  color: #333;
+  color: var(--g-text);
   font-size: var(--cuentaspagar-font-size-xs);
 }
 
 .cuentaspagar-filter-select {
   padding: var(--cuentaspagar-spacing-sm);
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  background-color: white;
-  color: #333;
+  border: 1px solid var(--g-date-input-border);
+  border-radius: var(--cuentaspagar-border-radius-sm);
+  background-color: var(--g-panel-bg);
+  color: var(--g-text);
   font-size: var(--cuentaspagar-font-size-sm);
   min-width: 140px;
 }
@@ -246,11 +246,11 @@
 }
 
 .cuentaspagar-btn-orden {
-  background-color: #6c757d;
-  color: white;
+  background-color: var(--g-btn-order-bg);
+  color: var(--g-text-inverse);
   border: none;
   padding: 8px 12px;
-  border-radius: 4px;
+  border-radius: var(--cuentaspagar-border-radius-sm);
   cursor: pointer;
   font-size: var(--cuentaspagar-font-size-sm);
   display: flex;
@@ -258,11 +258,10 @@
   justify-content: center;
   gap: 5px;
   height: 35px;
-  /* Altura fija para alineación */
 }
 
 .cuentaspagar-btn-orden:hover {
-  background-color: #5a6268;
+  background-color: var(--g-btn-order-hover);
 }
 
 /* Tabla Container */
@@ -283,9 +282,8 @@
 .cuentaspagar-table {
   width: 100%;
   border-collapse: collapse;
-  background-color: white;
+  background-color: var(--g-panel-bg);
   min-width: 1200px;
-  /* Scroll horizontal asegurado */
 }
 
 .cuentaspagar-table th,
@@ -298,7 +296,7 @@
 }
 
 .cuentaspagar-table th {
-  background-color: #cdd6ee;
+  background-color: var(--g-table-header-active-bg);
   font-weight: 600;
   color: var(--cuentaspagar-primary-color);
   position: sticky;
@@ -354,7 +352,7 @@
 .cuentaspagar-sim-id {
   display: inline-block;
   background: linear-gradient(135deg, #4f46e5, #7c3aed);
-  color: white;
+  color: var(--g-text-inverse);
   font-size: 0.7rem;
   font-weight: 600;
   padding: 2px 6px;
@@ -428,7 +426,7 @@
 }
 
 .cuentaspagar-modal-content {
-  background-color: white;
+  background-color: var(--g-panel-bg);
   border-radius: var(--cuentaspagar-border-radius-lg);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   max-height: 90vh;
@@ -461,7 +459,7 @@
   align-items: center;
   padding: var(--cuentaspagar-spacing-lg);
   border-bottom: 1px solid var(--cuentaspagar-border-color);
-  background-color: white;
+  background-color: var(--g-panel-bg);
   border-radius: var(--cuentaspagar-border-radius-lg) var(--cuentaspagar-border-radius-lg) 0 0;
 }
 
@@ -489,7 +487,7 @@
 
 .cuentaspagar-modal-body {
   padding: var(--cuentaspagar-spacing-lg);
-  background-color: white;
+  background-color: var(--g-panel-bg);
   border-radius: 0 0 var(--cuentaspagar-border-radius-lg) var(--cuentaspagar-border-radius-lg);
   overflow-y: auto;
   flex: 1;
@@ -561,9 +559,9 @@
 
 /* Info Section */
 .cuentaspagar-info-section {
-  background-color: #f8f9fa;
+  background-color: var(--g-filter-section-bg);
   padding: 15px;
-  border-radius: 5px;
+  border-radius: var(--cuentaspagar-border-radius-sm);
   margin-bottom: 20px;
 }
 
@@ -582,7 +580,7 @@
   display: flex;
   flex-direction: column;
   font-size: 0.75em;
-  color: #666;
+  color: var(--cuentaspagar-text-light);
 }
 
 /* Confirmacion */
@@ -619,12 +617,12 @@
 
 .cuentaspagar-date-picker {
   padding: 8px 70px 8px 12px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+  border: 1px solid var(--g-date-input-border);
+  border-radius: var(--cuentaspagar-border-radius-sm);
   font-size: 14px;
   width: 100%;
-  background-color: white;
-  color: #333;
+  background-color: var(--g-panel-bg);
+  color: var(--g-date-input-color);
   cursor: pointer;
   box-sizing: border-box;
 }
@@ -647,7 +645,7 @@
 }
 
 .cuentaspagar-calendar-icon {
-  color: #666;
+  color: var(--g-date-icon-color);
   display: flex;
   align-items: center;
 }
@@ -707,7 +705,6 @@
     height: auto;
   }
 
-  /* Menú Horizontal en Tablet */
   .cuentaspagar-sidebar-menu {
     display: flex;
     flex-direction: row;
@@ -739,8 +736,6 @@
 }
 
 @media (max-width: 768px) {
-
-  /* Ajustes Generales Móvil */
   .cuentaspagar-main-content {
     padding: var(--cuentaspagar-spacing-sm);
   }
@@ -818,7 +813,6 @@
     padding: var(--cuentaspagar-spacing-xs);
   }
 
-  /* Menú Vertical en Móvil Pequeño */
   .cuentaspagar-sidebar-menu {
     flex-direction: column;
     overflow-x: visible;
@@ -886,12 +880,12 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: var(--g-loading-bg);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   z-index: 1000;
   font-size: 16px;
-  color: #037ce0;
+  color: var(--g-loading-color);
 }

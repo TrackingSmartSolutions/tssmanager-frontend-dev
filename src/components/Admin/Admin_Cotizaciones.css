@@ -1,3 +1,5 @@
+/* cotizaciones.css */
+
 /* Layout Principal */
 .cotizaciones-main-content {
   padding: var(--cotizaciones-spacing-lg) var(--cotizaciones-spacing-xl);
@@ -59,12 +61,12 @@
 }
 
 .cotizaciones-menu-item:hover {
-  background-color: rgba(3, 124, 224, 0.05);
+  background-color: rgba(0, 0, 0, 0.04);
   border-color: var(--cotizaciones-border-color);
 }
 
 .cotizaciones-menu-item-active {
-  background-color: #cdd6ee;
+  background-color: var(--g-table-header-active-bg);
   color: var(--cotizaciones-primary-color);
   font-weight: 500;
   border-color: var(--cotizaciones-secondary-color);
@@ -116,7 +118,7 @@
   align-items: center;
 }
 
-/* Filtros (Ajustados para evitar desbordamiento) */
+/* Filtros */
 .cotizaciones-filter {
   margin-bottom: var(--cotizaciones-spacing-xl);
   display: flex;
@@ -160,37 +162,37 @@
 
 .cotizaciones-btn-primary {
   background-color: var(--cotizaciones-accent-color);
-  color: white;
+  color: var(--g-text-inverse);
 }
 
 .cotizaciones-btn-primary:hover {
-  background-color: #d86600;
+  background-color: var(--g-btn-accent-hover);
   transform: translateY(-1px);
 }
 
 .cotizaciones-btn-secondary {
   background-color: var(--cotizaciones-accent-color);
-  color: white;
+  color: var(--g-text-inverse);
 }
 
 .cotizaciones-btn-secondary:hover {
-  background-color: #d86600;
+  background-color: var(--g-btn-accent-hover);
   transform: translateY(-1px);
 }
 
 .cotizaciones-btn-cancel {
-  background-color: #6c757d;
-  color: white;
+  background-color: var(--g-btn-order-bg);
+  color: var(--g-text-inverse);
 }
 
 .cotizaciones-btn-cancel:hover {
-  background-color: #5a6268;
+  background-color: var(--g-btn-order-hover);
   transform: translateY(-1px);
 }
 
 .cotizaciones-btn-confirm {
-  background-color: #c73232;
-  color: white;
+  background-color: var(--g-btn-report-bg);
+  color: var(--g-text-inverse);
 }
 
 .cotizaciones-btn-confirm:hover {
@@ -200,14 +202,14 @@
 
 .cotizaciones-btn-add-concepto {
   background-color: var(--cotizaciones-accent-color);
-  color: white;
+  color: var(--g-text-inverse);
   padding: var(--cotizaciones-spacing-xs) var(--cotizaciones-spacing-sm);
   min-width: auto;
   font-size: var(--cotizaciones-font-size-xs);
 }
 
 .cotizaciones-btn-add-concepto:hover {
-  background-color: #d86600;
+  background-color: var(--g-btn-accent-hover);
 }
 
 .cotizaciones-btn-icon {
@@ -218,7 +220,7 @@
 
 /* Tabla */
 .cotizaciones-table-card {
-  background-color: white;
+  background-color: var(--g-panel-bg);
   padding: var(--cotizaciones-spacing-lg);
   border-radius: var(--cotizaciones-border-radius-md);
   box-shadow: var(--cotizaciones-box-shadow);
@@ -251,9 +253,8 @@
 .cotizaciones-table {
   width: 100%;
   border-collapse: collapse;
-  background-color: white;
+  background-color: var(--g-panel-bg);
   min-width: 1000px;
-  /* Scroll horizontal asegurado */
 }
 
 .cotizaciones-table th,
@@ -266,7 +267,7 @@
 }
 
 .cotizaciones-table th {
-  background-color: #cdd6ee;
+  background-color: var(--g-table-header-active-bg);
   font-weight: 600;
   color: var(--cotizaciones-primary-color);
   position: sticky;
@@ -362,15 +363,15 @@
   filter: brightness(0) saturate(100%) invert(44%) sepia(96%) saturate(1237%) hue-rotate(87deg) brightness(98%) contrast(89%);
 }
 
-/* Botones Vinculados (Generar Cuenta) */
+/* Botones Vinculados */
 .cotizaciones-receivable-btn-vinculada {
   background-color: rgba(76, 175, 80, 0.1);
-  border-color: #4caf50;
+  border-color: var(--cotizaciones-success-color);
 }
 
 .cotizaciones-receivable-btn-vinculada:hover {
   background-color: rgba(76, 175, 80, 0.2);
-  border-color: #4caf50;
+  border-color: var(--cotizaciones-success-color);
 }
 
 .cotizaciones-receivable-btn-vinculada .cotizaciones-action-icon {
@@ -379,12 +380,12 @@
 
 .cotizaciones-receivable-btn-disponible {
   background-color: rgba(244, 67, 54, 0.1);
-  border-color: #f44336;
+  border-color: var(--cotizaciones-danger-color);
 }
 
 .cotizaciones-receivable-btn-disponible:hover {
   background-color: rgba(244, 67, 54, 0.2);
-  border-color: #f44336;
+  border-color: var(--cotizaciones-danger-color);
 }
 
 .cotizaciones-receivable-btn-disponible .cotizaciones-action-icon {
@@ -407,7 +408,7 @@
 }
 
 .cotizaciones-modal-content {
-  background-color: white;
+  background-color: var(--g-panel-bg);
   border-radius: var(--cotizaciones-border-radius-lg);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   max-height: 90vh;
@@ -440,7 +441,7 @@
   align-items: center;
   padding: var(--cotizaciones-spacing-lg);
   border-bottom: 1px solid var(--cotizaciones-border-color);
-  background-color: white;
+  background-color: var(--g-panel-bg);
   border-radius: var(--cotizaciones-border-radius-lg) var(--cotizaciones-border-radius-lg) 0 0;
 }
 
@@ -468,7 +469,7 @@
 
 .cotizaciones-modal-body {
   padding: var(--cotizaciones-spacing-lg);
-  background-color: white;
+  background-color: var(--g-panel-bg);
   border-radius: 0 0 var(--cotizaciones-border-radius-lg) var(--cotizaciones-border-radius-lg);
   overflow-y: auto;
   flex: 1;
@@ -499,7 +500,7 @@
   font-size: var(--cotizaciones-font-size-sm);
   width: 100%;
   box-sizing: border-box;
-  background-color: white;
+  background-color: var(--g-panel-bg);
   color: var(--cotizaciones-text-color);
   transition: border-color 0.3s, box-shadow 0.3s;
 }
@@ -516,7 +517,7 @@
 
 .cotizaciones-form-control:disabled,
 .cotizaciones-form-control[readonly] {
-  background-color: #f8f9fa;
+  background-color: var(--g-filter-section-bg);
   color: var(--cotizaciones-text-light);
   cursor: not-allowed;
 }
@@ -573,7 +574,7 @@
   align-items: flex-start;
   padding: var(--cotizaciones-spacing-md);
   border-bottom: 1px solid var(--cotizaciones-border-color);
-  background-color: #f8f9fa;
+  background-color: var(--g-filter-section-bg);
 }
 
 .cotizaciones-concepto-item:last-child {
@@ -670,15 +671,15 @@
 
 /* Advertencias y Subida */
 .cotizaciones-size-warning {
-  background-color: #f8f9fa;
-  border: 1px solid #e9ecef;
-  border-radius: 8px;
+  background-color: var(--g-filter-section-bg);
+  border: 1px solid var(--g-info-box-border);
+  border-radius: var(--cotizaciones-border-radius-md);
   padding: 16px;
   margin-bottom: 16px;
 }
 
 .cotizaciones-warning-title {
-  color: #495057;
+  color: var(--g-text-light);
   font-size: 14px;
   font-weight: 600;
   margin-bottom: 12px;
@@ -691,7 +692,7 @@
 }
 
 .cotizaciones-warning-list li {
-  color: #6c757d;
+  color: var(--g-btn-order-bg);
   font-size: 13px;
   margin-bottom: 6px;
   line-height: 1.4;
@@ -701,7 +702,7 @@
   color: #856404;
   background-color: #fff3cd;
   border: 1px solid #ffeaa7;
-  border-radius: 4px;
+  border-radius: var(--cotizaciones-border-radius-sm);
   padding: 8px 12px;
   font-size: 12px;
   margin: 0;
@@ -711,21 +712,21 @@
 .cotizaciones-file-info {
   margin-top: 8px;
   padding: 8px;
-  background-color: #f8f9fa;
-  border-radius: 4px;
-  border: 1px solid #e9ecef;
+  background-color: var(--g-filter-section-bg);
+  border-radius: var(--cotizaciones-border-radius-sm);
+  border: 1px solid var(--g-info-box-border);
 }
 
 .cotizaciones-file-selected {
   margin: 0 0 4px 0;
   font-size: 13px;
-  color: #495057;
+  color: var(--g-text-light);
 }
 
 .cotizaciones-file-details {
   margin: 0;
   font-size: 12px;
-  color: #6c757d;
+  color: var(--g-btn-order-bg);
 }
 
 .cotizaciones-filter-container {
@@ -734,9 +735,9 @@
   align-items: flex-end;
   gap: 15px;
   flex-wrap: wrap;
-  background-color: #fff;
+  background-color: var(--g-panel-bg);
   padding: 15px;
-  border-radius: 8px;
+  border-radius: var(--cotizaciones-border-radius-md);
   border: 1px solid var(--cotizaciones-border-color);
 }
 
@@ -779,10 +780,10 @@
 
 .cotizaciones-filter-input {
   padding: var(--cotizaciones-spacing-sm);
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  background-color: white;
-  color: #333;
+  border: 1px solid var(--g-date-input-border);
+  border-radius: var(--cotizaciones-border-radius-sm);
+  background-color: var(--g-panel-bg);
+  color: var(--g-text);
   font-size: var(--cotizaciones-font-size-sm);
   min-width: 160px;
   height: 36px;
@@ -796,11 +797,11 @@
 }
 
 .cotizaciones-btn-orden {
-  background-color: #6c757d;
-  color: white;
+  background-color: var(--g-btn-order-bg);
+  color: var(--g-text-inverse);
   border: none;
   padding: 0 15px;
-  border-radius: 4px;
+  border-radius: var(--cotizaciones-border-radius-sm);
   cursor: pointer;
   font-size: 14px;
   display: flex;
@@ -813,7 +814,7 @@
 }
 
 .cotizaciones-btn-orden:hover {
-  background-color: #5a6268;
+  background-color: var(--g-btn-order-hover);
 }
 
 .cotizaciones-icon-orden {
@@ -830,12 +831,12 @@
 
 .cotizaciones-date-picker {
   padding: 8px 70px 8px 12px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+  border: 1px solid var(--g-date-input-border);
+  border-radius: var(--cotizaciones-border-radius-sm);
   font-size: 14px;
   width: 100%;
-  background-color: white;
-  color: #333;
+  background-color: var(--g-panel-bg);
+  color: var(--g-date-input-color);
   cursor: pointer;
   box-sizing: border-box;
   height: 36px;
@@ -859,7 +860,7 @@
 }
 
 .cotizaciones-calendar-icon {
-  color: #666;
+  color: var(--g-date-icon-color);
   display: flex;
   align-items: center;
 }
@@ -884,16 +885,12 @@
     width: 100%;
     min-width: auto;
   }
-}
 
-
-@media (max-width: 768px) {
   .cotizaciones-btn-orden {
     width: 100%;
   }
 }
 
-/* Responsividad */
 @media (max-width: 992px) {
   .cotizaciones-table-header-row {
     flex-direction: column;
@@ -952,7 +949,6 @@
     height: auto;
   }
 
-  /* Menú Horizontal en Tablet */
   .cotizaciones-sidebar-menu {
     display: flex;
     flex-direction: row;
@@ -988,8 +984,6 @@
 }
 
 @media (max-width: 768px) {
-
-  /* Ajustes Generales Móvil */
   .cotizaciones-main-content {
     padding: var(--cotizaciones-spacing-sm);
   }
@@ -1038,7 +1032,6 @@
     gap: var(--cotizaciones-spacing-xs);
   }
 
-  /* Filtros Responsivos */
   .cotizaciones-filter {
     flex-direction: column;
     align-items: stretch;
@@ -1085,7 +1078,6 @@
     padding: var(--cotizaciones-spacing-xs);
   }
 
-  /* Menú Vertical en Móvil Pequeño */
   .cotizaciones-sidebar-menu {
     flex-direction: column;
     overflow-x: visible;
@@ -1163,19 +1155,19 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: var(--g-loading-bg);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   z-index: 1000;
   font-size: 16px;
-  color: #037ce0;
+  color: var(--g-loading-color);
 }
 
 .spinner {
   border: 4px solid rgba(0, 0, 0, 0.1);
-  border-left-color: #9c16f7;
+  border-left-color: var(--g-color-purple);
   border-radius: 50%;
   width: 40px;
   height: 40px;

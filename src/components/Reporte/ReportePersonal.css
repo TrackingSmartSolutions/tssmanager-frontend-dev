@@ -69,7 +69,7 @@
   display: flex;
   align-items: center;
   gap: var(--reporte-spacing-sm);
-  background-color: white;
+  background-color: var(--g-panel-bg);
   border: 1px solid var(--reporte-border-color);
   border-radius: var(--reporte-border-radius-sm);
   padding: var(--reporte-spacing-xs) var(--reporte-spacing-sm);
@@ -110,22 +110,22 @@
 }
 
 .reporte-btn-download {
-  background-color: #e74c3c;
-  color: white;
+  background-color: var(--g-danger);
+  color: var(--g-text-inverse);
 }
 
 .reporte-btn-download:hover {
-  background-color: #c0392b;
+  background-color: var(--g-danger-alt);
   transform: translateY(-1px);
 }
 
 .reporte-btn-secondary {
   background-color: var(--reporte-secondary-color);
-  color: white;
+  color: var(--g-text-inverse);
 }
 
 .reporte-btn-secondary:hover {
-  background-color: #0056b3;
+  background-color: var(--g-color-blue-1);
   transform: translateY(-1px);
 }
 
@@ -299,14 +299,14 @@
 .reporte-horizontal-bar-container {
   flex: 1;
   height: 20px;
-  background-color: #f0f0f0;
+  background-color: var(--dash-bar-track-bg);
   border-radius: var(--reporte-border-radius-sm);
   overflow: hidden;
 }
 
 .reporte-horizontal-bar {
   height: 100%;
-  background: linear-gradient(90deg, #3498db, #2980b9);
+  background: linear-gradient(90deg, var(--dash-bar-gradient-start), var(--dash-bar-gradient-end));
   border-radius: var(--reporte-border-radius-sm);
   transition: width 0.3s ease;
   min-width: 2px;
@@ -354,7 +354,7 @@
 .reporte-table {
   width: 100%;
   border-collapse: collapse;
-  background-color: white;
+  background-color: var(--g-panel-bg);
   min-width: 800px;
 }
 
@@ -368,7 +368,7 @@
 }
 
 .reporte-table th {
-  background-color: #f8f9fa;
+  background-color: var(--dash-table-header-bg);
   font-weight: 600;
   color: var(--reporte-text-color);
   position: sticky;
@@ -377,7 +377,7 @@
 }
 
 .reporte-table tbody tr:hover {
-  background-color: rgba(3, 124, 224, 0.05);
+  background-color: var(--dash-table-row-hover);
 }
 
 .reporte-table tbody tr:last-child td {
@@ -413,13 +413,12 @@
 }
 
 .reporte-respuesta-si {
-  background-color: rgba(76, 175, 80, 0.1);
+  background-color: var(--dash-trend-up-bg);
   color: var(--reporte-success-color);
 }
 
-
 .reporte-respuesta-no {
-  background-color: rgba(244, 67, 54, 0.1);
+  background-color: var(--dash-trend-down-bg);
   color: var(--reporte-danger-color);
 }
 
@@ -434,7 +433,7 @@
 }
 
 .reporte-interes-bajo {
-  background-color: rgba(244, 67, 54, 0.1);
+  background-color: var(--dash-trend-down-bg);
   color: var(--reporte-danger-color);
 }
 
@@ -447,19 +446,19 @@
 
 .reporte-user-select {
   padding: 8px 12px;
-  border: 1px solid #d1d5db;
-  border-radius: 8px;
-  background: white;
-  font-size: 14px;
-  color: #374151;
+  border: 1px solid var(--g-border);
+  border-radius: var(--g-radius-lg);
+  background: var(--g-panel-bg);
+  font-size: var(--g-font-md);
+  color: var(--g-text);
   cursor: pointer;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .reporte-user-select:focus {
   outline: none;
-  border-color: #3b82f6;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  border-color: var(--cal-select-border-focus);
+  box-shadow: 0 0 0 3px var(--cal-select-focus-shadow);
 }
 
 .reporte-header-controls {
@@ -516,7 +515,6 @@
   background: var(--reporte-primary-color);
 }
 
-/* Para Firefox */
 .reporte-chart-companies-scroll {
   scrollbar-width: thin;
   scrollbar-color: var(--reporte-secondary-color) var(--reporte-border-color);
@@ -531,12 +529,12 @@
 
 .reporte-date-picker {
   padding: 8px 70px 8px 12px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 14px;
+  border: 1px solid var(--dash-input-border);
+  border-radius: var(--reporte-border-radius-sm);
+  font-size: var(--reporte-font-size-sm);
   width: 100%;
-  background-color: white;
-  color: #333;
+  background-color: var(--g-panel-bg);
+  color: var(--reporte-text-color);
   cursor: pointer;
   box-sizing: border-box;
 }
@@ -559,7 +557,7 @@
 }
 
 .reporte-calendar-icon {
-  color: #666;
+  color: var(--dash-input-icon-color);
   display: flex;
   align-items: center;
 }
@@ -690,12 +688,12 @@
 
   .reporte-company-label {
     min-width: 60px;
-    font-size: 0.7rem;
+    font-size: var(--g-font-xs);
   }
 
   .reporte-table {
     min-width: 500px;
-    font-size: 0.7rem;
+    font-size: var(--g-font-xs);
   }
 
   .reporte-table th,
@@ -777,7 +775,7 @@
 
   .reporte-main-content {
     padding: 0;
-    background-color: white;
+    background-color: var(--g-panel-bg);
   }
 
   .reporte-chart-card,
@@ -793,7 +791,7 @@
 
   .reporte-table {
     min-width: auto;
-    font-size: 0.8rem;
+    font-size: var(--g-font-sm);
   }
 
   .reporte-table th,

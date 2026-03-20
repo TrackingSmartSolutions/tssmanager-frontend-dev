@@ -56,15 +56,12 @@ body {
   flex-grow: 1;
 }
 
-/* Añadir estilos para los grupos de filtros y etiquetas */
 .filter-group {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-xs);
   flex: 0 1 250px;
-  /* Base de 250px */
   min-width: 250px;
-  /* Ancho mínimo de 250px */
 }
 
 .filter-label {
@@ -81,7 +78,7 @@ body {
 
 .tratos-container .tratos-filters .filter-group .user-select {
   appearance: none;
-  background-color: white;
+  background-color: var(--g-panel-bg);
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius-sm);
   padding: var(--spacing-sm) var(--spacing-md);
@@ -98,9 +95,8 @@ body {
   box-shadow: 0 0 0 2px rgba(3, 124, 224, 0.2);
 }
 
-
 .tratos-container .tratos-filters .date-range-container .date-filter-btn {
-  background-color: white;
+  background-color: var(--g-panel-bg);
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius-sm);
   padding: var(--spacing-sm) var(--spacing-md);
@@ -115,7 +111,7 @@ body {
 }
 
 .tratos-container .tratos-filters .date-range-container .date-filter-btn:hover {
-  background-color: #f5f5f5;
+  background-color: var(--g-bg);
 }
 
 .tratos-container .tratos-filters .filter-group .icon-deploy {
@@ -145,7 +141,6 @@ body {
   display: flex;
   align-items: center;
   width: 100%;
-  /* Ocupar el 100% de su filter-group */
 }
 
 .search-container {
@@ -155,7 +150,7 @@ body {
 
 .global-search-input {
   appearance: none;
-  background-color: white;
+  background-color: var(--g-panel-bg);
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius-sm);
   padding: var(--spacing-sm) var(--spacing-md);
@@ -179,7 +174,7 @@ body {
 
 .btn-crear-trato {
   background-color: var(--accent-color);
-  color: white;
+  color: var(--g-text-inverse);
   border: none;
   border-radius: var(--border-radius-sm);
   padding: var(--spacing-sm) var(--spacing-lg);
@@ -191,7 +186,7 @@ body {
 }
 
 .btn-crear-trato:hover {
-  background-color: #d86600;
+  background-color: var(--g-btn-accent-hover);
   transform: translateY(-1px);
 }
 
@@ -224,7 +219,6 @@ body {
   width: 320px;
 }
 
-/* Línea de color arriba de cada fase */
 .column-color-line {
   height: 4px;
   width: 100%;
@@ -244,11 +238,10 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 20px 0;
-  color: white;
+  color: var(--g-text-inverse);
   transition: all 0.3s ease;
 }
 
-/* Modificar el estilo del contador para que no se solape */
 .kanban-column.expanded .column-header {
   height: 60px;
   width: calc(100% - 20px);
@@ -314,7 +307,7 @@ body {
   padding: var(--spacing-lg);
   max-height: 500px;
   overflow-y: auto;
-  background-color: white;
+  background-color: var(--g-panel-bg);
   border-radius: var(--border-radius-md);
   box-shadow: var(--box-shadow);
   margin: 10px;
@@ -356,24 +349,24 @@ body {
   width: 100%;
   padding: 10px 12px;
   border: 2px solid transparent;
-  border-radius: 8px;
-  font-size: 13px;
+  border-radius: var(--g-radius-md);
+  font-size: var(--g-font-sm);
   font-weight: 500;
-  background: white;
+  background: var(--g-panel-bg);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
   box-sizing: border-box;
-  color: #333;
+  color: var(--g-text);
 }
 
 .column-search-input::placeholder {
-  color: #999;
+  color: var(--g-text-muted);
   font-weight: 400;
 }
 
 .column-search-input:focus {
   outline: none;
-  border-color: #6366f1;
+  border-color: var(--g-color-blue-4);
   box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1), 0 4px 12px rgba(0, 0, 0, 0.15);
   transform: translateY(-1px);
 }
@@ -395,7 +388,6 @@ body {
   transform: scale(1.2);
 }
 
-/* Iconos de Expandir/Contraer en las columnas del Kanban */
 .nav-icon img.icon {
   width: 18px;
   height: 18px;
@@ -409,7 +401,7 @@ body {
 
 /* Tarjetas de trato */
 .trato-card {
-  background-color: white;
+  background-color: var(--g-panel-bg);
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius-md);
   padding: var(--spacing-lg);
@@ -455,7 +447,6 @@ body {
   right: 0;
 }
 
-/* Iconos de actividad en las Trato Cards */
 .trato-activity-icon {
   width: 32px;
   height: 32px;
@@ -490,38 +481,35 @@ body {
 }
 
 .activity-vencida {
-  border: 2px solid red;
+  border: 2px solid var(--g-danger);
   border-radius: 50%;
 }
 
 .activity-proxima {
-  border: 2px solid orange;
+  border: 2px solid var(--g-warning);
   border-radius: 50%;
 }
 
-/* Colors para iconos basados en los mismos colores de los bordes */
 .activity-future {
-  border: 2px solid #28a745;
+  border: 2px solid var(--g-btn-map-bg);
   background-color: rgba(40, 167, 69, 0.15);
   border-radius: 50%;
   filter: brightness(0) saturate(100%) invert(58%) sepia(96%) saturate(1352%) hue-rotate(87deg) brightness(85%) contrast(119%);
 }
 
 .activity-today {
-  border: 2px solid #ffc107;
+  border: 2px solid var(--g-warning-alt);
   background-color: rgba(255, 193, 7, 0.15);
   border-radius: 50%;
   filter: brightness(0) saturate(100%) invert(70%) sepia(100%) saturate(1200%) hue-rotate(0deg) brightness(85%) contrast(110%);
 }
 
 .activity-overdue {
-  border: 2px solid #dc3545;
+  border: 2px solid var(--g-danger-alt);
   background-color: rgba(220, 53, 69, 0.15);
   border-radius: 50%;
   filter: brightness(0) saturate(100%) invert(24%) sepia(91%) saturate(2068%) hue-rotate(344deg) brightness(87%) contrast(96%);
 }
-
-
 
 .trato-details {
   font-size: var(--font-size-sm);
@@ -610,7 +598,6 @@ body {
   background-color: #fa8585;
 }
 
-
 /* Líneas de color específicas */
 .column-color-line.clasificacion-line {
   background-color: #e180f4;
@@ -652,7 +639,6 @@ body {
   background-color: #fa8585;
 }
 
-
 /* Modal Overlay específico para tratos */
 .tratos-modal-overlay {
   position: fixed;
@@ -660,7 +646,7 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: var(--g-header-overlay-bg);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -668,9 +654,8 @@ body {
   padding: var(--spacing-lg);
 }
 
-/* Modal Content específico para tratos */
 .tratos-modal-overlay .modal-content {
-  background-color: white;
+  background-color: var(--g-panel-bg);
   border-radius: var(--border-radius-lg);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   max-height: 90vh;
@@ -698,14 +683,13 @@ body {
   max-width: 900px;
 }
 
-/* Modal Header específico para tratos */
 .tratos-modal-overlay .modal-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: var(--spacing-lg) 0 var(--spacing-lg) 0;
   border-bottom: 1px solid var(--border-color);
-  background-color: white;
+  background-color: var(--g-panel-bg);
   border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
   position: relative;
   z-index: 1;
@@ -743,17 +727,15 @@ body {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
-/* Modal Body específico para tratos */
 .tratos-modal-overlay .modal-body {
   padding: 0;
-  background-color: white;
+  background-color: var(--g-panel-bg);
   border-radius: 0 0 var(--border-radius-lg) var(--border-radius-lg);
   overflow-y: auto;
   flex: 1;
   width: 100%;
 }
 
-/* Modal Form específico para tratos */
 .tratos-modal-overlay .modal-form {
   display: flex;
   flex-direction: column;
@@ -794,7 +776,7 @@ body {
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius-sm);
   font-size: var(--font-size-sm);
-  background-color: white;
+  background-color: var(--g-panel-bg);
   color: var(--text-color);
   transition: border-color 0.3s, box-shadow 0.3s;
   box-sizing: border-box;
@@ -807,11 +789,11 @@ body {
 }
 
 .tratos-modal-overlay .modal-form-control.error {
-  border-color: #f44336;
+  border-color: var(--g-danger);
 }
 
 .tratos-modal-overlay .modal-form-control.readonly {
-  background-color: #f8f9fa;
+  background-color: var(--dash-table-header-bg);
   color: var(--text-light);
   cursor: not-allowed;
 }
@@ -859,7 +841,6 @@ input[type="number"].modal-form-control::-webkit-inner-spin-button {
   padding: var(--spacing-sm);
 }
 
-/* Mejorar el contador de la columna para que se vea bien en todas las dimensiones */
 .column-count {
   background-color: rgba(255, 255, 255, 0.2);
   border-radius: 50%;
@@ -879,7 +860,6 @@ input[type="number"].modal-form-control::-webkit-inner-spin-button {
   box-sizing: border-box;
 }
 
-/* Asegurar que el contador se vea bien en todas las dimensiones */
 @media (max-width: 576px) {
   .column-count {
     width: 45px;
@@ -900,7 +880,6 @@ input[type="number"].modal-form-control::-webkit-inner-spin-button {
   }
 }
 
-/* Responsive para el contenedor de duración */
 @media (max-width: 768px) {
   .duracion-container {
     flex-direction: column;
@@ -919,7 +898,6 @@ input[type="number"].modal-form-control::-webkit-inner-spin-button {
   }
 }
 
-/* Wrapper para selects en modales de tratos */
 .tratos-modal-overlay .modal-select-wrapper {
   position: relative;
   width: 100%;
@@ -941,30 +919,25 @@ input[type="number"].modal-form-control::-webkit-inner-spin-button {
   -webkit-appearance: none;
   -moz-appearance: none;
   padding-right: 35px;
-  /* Espacio para el icono */
 }
 
-/* Required field indicator específico para tratos */
 .tratos-modal-overlay .required {
-  color: #f44336;
+  color: var(--g-danger);
   font-weight: bold;
 }
 
-/* Error messages específico para tratos */
 .tratos-modal-overlay .error-message {
-  color: #f44336;
+  color: var(--g-danger);
   font-size: var(--font-size-xs);
   margin-top: var(--spacing-xs);
 }
 
-/* Help text específico para tratos */
 .tratos-modal-overlay .help-text {
   color: var(--text-light);
   font-size: var(--font-size-xs);
   margin-top: var(--spacing-xs);
 }
 
-/* Input with prefix específico para tratos */
 .tratos-modal-overlay .input-with-prefix {
   position: relative;
   display: flex;
@@ -983,7 +956,6 @@ input[type="number"].modal-form-control::-webkit-inner-spin-button {
   padding-left: calc(var(--spacing-md) + 20px);
 }
 
-/* Modal Form Actions específico para tratos */
 .tratos-modal-overlay .modal-form-actions {
   display: flex;
   gap: var(--spacing-md);
@@ -994,7 +966,6 @@ input[type="number"].modal-form-control::-webkit-inner-spin-button {
   width: 100%;
 }
 
-/* Button styles for modals específico para tratos */
 .tratos-modal-overlay .btn {
   padding: var(--spacing-sm) var(--spacing-lg);
   border: none;
@@ -1008,27 +979,24 @@ input[type="number"].modal-form-control::-webkit-inner-spin-button {
 
 .tratos-modal-overlay .btn-primary {
   background-color: var(--accent-color);
-  color: white;
+  color: var(--g-text-inverse);
 }
 
 .tratos-modal-overlay .btn-primary:hover {
-  background-color: #d86600;
+  background-color: var(--g-btn-accent-hover);
   transform: translateY(-1px);
 }
 
 .tratos-modal-overlay .btn-secondary {
-  background-color: #6c757d;
-  color: white;
+  background-color: var(--map-btn-secondary-bg);
+  color: var(--g-text-inverse);
 }
 
 .tratos-modal-overlay .btn-secondary:hover {
-  background-color: #5a6268;
+  background-color: var(--map-btn-secondary-hover);
   transform: translateY(-1px);
 }
 
-/* Estilos específicos para modales de actividades de tratos */
-
-/* Selector de actividad específico para tratos */
 .tratos-modal-overlay .actividad-selector {
   display: flex;
   flex-direction: column;
@@ -1039,7 +1007,7 @@ input[type="number"].modal-form-control::-webkit-inner-spin-button {
 
 .tratos-modal-overlay .btn-actividad-tipo {
   width: 100%;
-  background-color: white;
+  background-color: var(--g-panel-bg);
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius-sm);
   padding: var(--spacing-lg);
@@ -1055,7 +1023,6 @@ input[type="number"].modal-form-control::-webkit-inner-spin-button {
   border-color: var(--secondary-color);
 }
 
-/* Botones de tipo para tareas específico para tratos */
 .tratos-modal-overlay .tipo-buttons {
   display: flex;
   gap: var(--spacing-sm);
@@ -1066,7 +1033,7 @@ input[type="number"].modal-form-control::-webkit-inner-spin-button {
   padding: var(--spacing-sm) var(--spacing-md);
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius-sm);
-  background-color: white;
+  background-color: var(--g-panel-bg);
   color: var(--text-color);
   cursor: pointer;
   transition: all 0.3s;
@@ -1080,11 +1047,10 @@ input[type="number"].modal-form-control::-webkit-inner-spin-button {
 
 .tratos-modal-overlay .btn-tipo.active {
   background-color: var(--secondary-color);
-  color: white;
+  color: var(--g-text-inverse);
   border-color: var(--secondary-color);
 }
 
-/* Estilos para los controles de tratos */
 .tratos-actions {
   display: flex;
   gap: var(--spacing-md);
@@ -1095,7 +1061,7 @@ input[type="number"].modal-form-control::-webkit-inner-spin-button {
 
 .btn-toggle-all {
   background-color: var(--secondary-color);
-  color: white;
+  color: var(--g-text-inverse);
   border: none;
   border-radius: var(--border-radius-sm);
   padding: var(--spacing-sm) var(--spacing-md);
@@ -1108,19 +1074,18 @@ input[type="number"].modal-form-control::-webkit-inner-spin-button {
 }
 
 .btn-toggle-all:hover {
-  background-color: #0266b3;
+  background-color: var(--g-color-blue-1);
   transform: translateY(-1px);
 }
 
-/* Botón de ordenamiento por interacción */
 .btn-orden-interaccion {
-  background-color: #6c757d;
-  color: white;
+  background-color: var(--map-btn-secondary-bg);
+  color: var(--g-text-inverse);
   border: none;
   padding: 10px 16px;
-  border-radius: 6px;
+  border-radius: var(--g-radius-md);
   cursor: pointer;
-  font-size: 14px;
+  font-size: var(--g-font-md);
   font-weight: 500;
   transition: all 0.3s ease;
   min-height: 40px;
@@ -1131,7 +1096,7 @@ input[type="number"].modal-form-control::-webkit-inner-spin-button {
 }
 
 .btn-orden-interaccion:hover {
-  background-color: #5a6268;
+  background-color: var(--map-btn-secondary-hover);
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
@@ -1147,13 +1112,13 @@ input[type="number"].modal-form-control::-webkit-inner-spin-button {
 }
 
 .trato-card.desatendido {
-  background-color: #ffebee;
-  border: 1px solid #ef5350;
+  background-color: var(--dash-trend-down-bg);
+  border: 1px solid var(--g-danger);
   box-shadow: 0 2px 5px rgba(239, 83, 80, 0.4);
 }
 
 .trato-card.desatendido:hover {
-  background-color: #ffcdd2;
+  background-color: rgba(244, 67, 54, 0.15);
 }
 
 .leyenda-container {
@@ -1200,8 +1165,8 @@ input[type="number"].modal-form-control::-webkit-inner-spin-button {
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 13px;
-  color: #333;
+  font-size: var(--g-font-sm);
+  color: var(--g-text);
   font-weight: 500;
   line-height: 1.2;
 }
@@ -1221,15 +1186,15 @@ input[type="number"].modal-form-control::-webkit-inner-spin-button {
 }
 
 .indicador-verde {
-  background-color: #28a745;
+  background-color: var(--g-success-alt);
 }
 
 .indicador-amarillo {
-  background-color: #ffc107;
+  background-color: var(--g-warning-alt);
 }
 
 .indicador-rojo {
-  background-color: #dc3545;
+  background-color: var(--g-danger-alt);
 }
 
 .tratos-date-picker-wrapper {
@@ -1245,7 +1210,7 @@ input[type="number"].modal-form-control::-webkit-inner-spin-button {
   border-radius: var(--border-radius-sm);
   font-size: var(--font-size-sm);
   width: 100%;
-  background-color: white;
+  background-color: var(--g-panel-bg);
   color: var(--text-color);
   cursor: pointer;
   box-sizing: border-box;
@@ -1270,7 +1235,7 @@ input[type="number"].modal-form-control::-webkit-inner-spin-button {
 }
 
 .tratos-calendar-icon {
-  color: #666;
+  color: var(--dash-input-icon-color);
   display: flex;
   align-items: center;
 }
@@ -1349,7 +1314,6 @@ input[type="number"].modal-form-control::-webkit-inner-spin-button {
   }
 }
 
-/* Media query para pantallas pequeñas (tablets y móviles) */
 @media (max-width: 768px) {
   .tratos-actions {
     flex-direction: row;
@@ -1358,9 +1322,7 @@ input[type="number"].modal-form-control::-webkit-inner-spin-button {
 
   .filter-group {
     min-width: 100%;
-    /* Forzar a los filtros a apilarse */
     flex-basis: 100%;
-    /* Ocupar todo el ancho */
   }
 
   .btn-toggle-all,
@@ -1392,18 +1354,15 @@ input[type="number"].modal-form-control::-webkit-inner-spin-button {
     min-width: 0;
   }
 
-  /* Prevenir auto-zoom en iOS y mejorar legibilidad */
   .user-select,
   .global-search-input,
   .date-filter-btn {
     font-size: 1rem;
-    /* 16px */
     padding: var(--spacing-md);
   }
 
   .tratos-modal-overlay .modal-form-control {
     font-size: 1rem;
-    /* 16px */
   }
 
   .trato-card {
@@ -1422,10 +1381,8 @@ input[type="number"].modal-form-control::-webkit-inner-spin-button {
     gap: var(--spacing-md);
   }
 
-  /* Comportamiento de columnas en móvil: siempre expandidas y con scroll */
   .kanban-column {
     width: 270px;
-    /* Ancho de columna fijo en móvil */
     min-height: 300px;
     transition: none;
     justify-content: flex-start;
@@ -1433,12 +1390,10 @@ input[type="number"].modal-form-control::-webkit-inner-spin-button {
 
   .kanban-column.expanded {
     width: 270px;
-    /* Mismo ancho, sin-efecto */
   }
 
   .column-navigation {
     display: none;
-    /* Ocultar botones de expandir/contraer */
   }
 
   .column-header {
@@ -1470,13 +1425,11 @@ input[type="number"].modal-form-control::-webkit-inner-spin-button {
 
   .column-content {
     display: block;
-    /* Forzar visualización */
     max-height: 400px;
     overflow-y: auto;
     flex: 1;
   }
 
-  /* Modal responsive específico para tratos */
   .tratos-modal-overlay .modal-form-row {
     flex-direction: column;
     gap: var(--spacing-sm);
@@ -1505,12 +1458,11 @@ input[type="number"].modal-form-control::-webkit-inner-spin-button {
   .btn-orden-interaccion {
     width: 100%;
     justify-content: center;
-    font-size: 13px;
+    font-size: var(--g-font-sm);
     padding: 8px 12px;
   }
 }
 
-/* Media query para pantallas muy pequeñas (móviles) */
 @media (max-width: 576px) {
   .tratos-actions {
     flex-direction: column;
@@ -1520,27 +1472,19 @@ input[type="number"].modal-form-control::-webkit-inner-spin-button {
   .kanban-column,
   .kanban-column.expanded {
     width: 260px;
-    /* Un poco más angosto */
   }
 
-  /* Modal ultra compacto específico para tratos */
   .tratos-modal-overlay {
     padding: var(--spacing-sm);
-    /* Añadir padding al overlay */
   }
 
   .tratos-modal-overlay .modal-content {
     max-width: 95vw;
-    /* Ocupar el 95% del ancho */
     width: 100%;
     height: auto;
-    /* Dejar que el contenido defina la altura */
     max-height: 90vh;
-    /* No más del 90% de la altura */
     border-radius: var(--border-radius-lg);
-    /* Devolver los bordes redondeados */
     margin: 0;
-    /* Centrado por el flex del overlay */
   }
 
   .tratos-modal-overlay .modal-header {
@@ -1560,7 +1504,6 @@ input[type="number"].modal-form-control::-webkit-inner-spin-button {
     flex-direction: column;
     gap: var(--spacing-sm);
     align-items: stretch;
-    /* Botones de ancho completo */
   }
 
   .tratos-modal-overlay .modal-form-actions .btn {
@@ -1568,7 +1511,6 @@ input[type="number"].modal-form-control::-webkit-inner-spin-button {
   }
 }
 
-/* Media query para pantallas mínimas */
 @media (max-width: 400px) {
   .main-content {
     padding: var(--spacing-sm);
@@ -1577,7 +1519,6 @@ input[type="number"].modal-form-control::-webkit-inner-spin-button {
   .kanban-column,
   .kanban-column.expanded {
     width: 240px;
-    /* Ancho final para pantallas muy chicas */
   }
 }
 
@@ -1587,14 +1528,14 @@ input[type="number"].modal-form-control::-webkit-inner-spin-button {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: var(--cal-loading-bg);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   z-index: 1000;
-  font-size: 16px;
-  color: #037ce0;
+  font-size: var(--g-font-lg);
+  color: var(--g-color-blue-3);
 }
 
 .tratos-loading p {

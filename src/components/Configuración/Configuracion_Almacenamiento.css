@@ -1,3 +1,5 @@
+/* config-almacenamiento.css */
+
 /* Loading Spinner */
 .config-almacenamiento-loading {
   position: fixed;
@@ -5,14 +7,14 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: var(--g-loading-bg);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   z-index: 1000;
   font-size: var(--config-almacenamiento-font-size-md);
-  color: #037ce0;
+  color: var(--g-loading-color);
 }
 
 .config-almacenamiento-config-header {
@@ -47,13 +49,13 @@
 
 .config-almacenamiento-nav-item:hover {
   color: var(--config-almacenamiento-secondary-color);
-  background-color: rgba(3, 124, 224, 0.05);
+  background-color: rgba(0, 0, 0, 0.04);
 }
 
 .config-almacenamiento-nav-item-active {
   color: var(--config-almacenamiento-secondary-color);
   border-bottom-color: var(--config-almacenamiento-secondary-color);
-  background-color: rgba(3, 124, 224, 0.05);
+  background-color: rgba(0, 0, 0, 0.04);
 }
 
 /* Layout Principal */
@@ -102,7 +104,7 @@
   gap: var(--config-almacenamiento-spacing-lg);
   margin-bottom: var(--config-almacenamiento-spacing-xl);
   padding: var(--config-almacenamiento-spacing-md);
-  background-color: #f8f9fa;
+  background-color: var(--g-section-inner-bg);
   border-radius: var(--config-almacenamiento-border-radius-sm);
   border: 1px solid var(--config-almacenamiento-border-color);
 }
@@ -148,7 +150,7 @@
 .config-almacenamiento-progress-bar {
   width: 100%;
   height: 12px;
-  background-color: #e0e0e0;
+  background-color: var(--g-border);
   border-radius: var(--config-almacenamiento-border-radius-sm);
   overflow: hidden;
 }
@@ -163,7 +165,7 @@
 }
 
 .config-almacenamiento-progress-warning {
-  background: linear-gradient(90deg, var(--config-almacenamiento-warning-color) 0%, #ffc107 100%);
+  background: linear-gradient(90deg, var(--config-almacenamiento-warning-color) 0%, var(--g-warning-alt) 100%);
 }
 
 .config-almacenamiento-progress-danger {
@@ -198,14 +200,13 @@
   display: grid;
   grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
   min-width: 700px;
-  /* Keeps the table layout intact */
 }
 
 .config-almacenamiento-table-header {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
   min-width: 700px;
-  background-color: #f8f9fa;
+  background-color: var(--g-table-header-bg);
   border-bottom: 1px solid var(--config-almacenamiento-border-color);
   flex-shrink: 0;
 }
@@ -224,7 +225,7 @@
 }
 
 .config-almacenamiento-table-body {
-  background-color: white;
+  background-color: var(--g-panel-bg);
   flex: 1;
 }
 
@@ -272,8 +273,8 @@
   display: flex;
   gap: var(--config-almacenamiento-spacing-sm);
   padding: var(--config-almacenamiento-spacing-md);
-  background-color: #fff3cd;
-  border: 1px solid #ffeaa7;
+  background-color: var(--g-warning-bg);
+  border: 1px solid var(--g-warning-border);
   border-radius: var(--config-almacenamiento-border-radius-sm);
   margin-bottom: var(--config-almacenamiento-spacing-lg);
 }
@@ -331,7 +332,7 @@
   border: 1px solid var(--config-almacenamiento-border-color);
   border-radius: var(--config-almacenamiento-border-radius-sm);
   font-size: var(--config-almacenamiento-font-size-sm);
-  background-color: white;
+  background-color: var(--g-panel-bg);
   color: var(--config-almacenamiento-text-color);
   transition: border-color 0.3s, box-shadow 0.3s;
   box-sizing: border-box;
@@ -348,7 +349,7 @@
   flex-direction: column;
   gap: var(--config-almacenamiento-spacing-sm);
   padding: var(--config-almacenamiento-spacing-md);
-  background-color: #f8f9fa;
+  background-color: var(--g-section-inner-bg);
   border-radius: var(--config-almacenamiento-border-radius-sm);
   border: 1px solid var(--config-almacenamiento-border-color);
 }
@@ -392,11 +393,11 @@
 
 .config-almacenamiento-btn-danger {
   background-color: var(--config-almacenamiento-danger-color);
-  color: white;
+  color: var(--g-text-inverse);
 }
 
 .config-almacenamiento-btn-danger:hover:not(:disabled) {
-  background-color: #d32f2f;
+  background-color: var(--g-btn-danger-hover);
   transform: translateY(-1px);
 }
 

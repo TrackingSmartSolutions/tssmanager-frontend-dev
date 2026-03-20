@@ -1,6 +1,6 @@
 .address-input-container {
     display: flex;
-    gap: 8px;
+    gap: var(--g-space-sm);
     align-items: flex-start;
 }
 
@@ -9,22 +9,22 @@
 }
 
 .btn-map {
-    background-color: #28a745;
-    color: white;
+    background-color: var(--g-btn-map-bg);
+    color: var(--g-text-inverse);
     border: none;
-    padding: 8px 16px;
-    border-radius: 4px;
+    padding: var(--g-space-sm) var(--g-space-lg);
+    border-radius: var(--g-radius-sm);
     cursor: pointer;
     white-space: nowrap;
-    font-size: 14px;
+    font-size: var(--g-font-md);
 }
 
 .btn-map:hover {
-    background-color: #218838;
+    background-color: var(--g-btn-map-hover);
 }
 
 .btn-map:disabled {
-    background-color: #6c757d;
+    background-color: var(--map-btn-secondary-bg);
     cursor: not-allowed;
 }
 
@@ -40,6 +40,6 @@
 
     .modal-form-actions {
         flex-direction: column;
-        gap: 8px;
+        gap: var(--g-space-sm);
     }
 }

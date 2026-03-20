@@ -1,3 +1,5 @@
+/* config-usuarios.css */
+
 /* Configuration Header and Navigation */
 .config-usuarios-config-header {
   background-color: var(--config-usuarios-panel-background);
@@ -31,13 +33,13 @@
 
 .config-usuarios-nav-item:hover {
   color: var(--config-usuarios-secondary-color);
-  background-color: rgba(3, 124, 224, 0.05);
+  background-color: rgba(0, 0, 0, 0.04);
 }
 
 .config-usuarios-nav-item-active {
   color: var(--config-usuarios-secondary-color);
   border-bottom-color: var(--config-usuarios-secondary-color);
-  background-color: rgba(3, 124, 224, 0.05);
+  background-color: rgba(0, 0, 0, 0.04);
 }
 
 /* Layout Principal */
@@ -100,11 +102,11 @@
 
 .config-usuarios-btn-add {
   background-color: var(--config-usuarios-accent-color);
-  color: white;
+  color: var(--g-text-inverse);
 }
 
 .config-usuarios-btn-add:hover:not(:disabled) {
-  background-color: #d86600;
+  background-color: var(--g-btn-accent-hover);
   transform: translateY(-1px);
 }
 
@@ -118,11 +120,11 @@
 .config-usuarios-table {
   width: 100%;
   border-collapse: collapse;
-  background-color: white;
+  background-color: var(--g-panel-bg);
 }
 
 .config-usuarios-table th {
-  background-color: #f8f9fa;
+  background-color: var(--g-table-header-bg);
   padding: var(--config-usuarios-spacing-md);
   text-align: left;
   font-size: var(--config-usuarios-font-size-sm);
@@ -153,7 +155,7 @@
 }
 
 .config-usuarios-table tbody tr:hover {
-  background-color: #f8f9fa;
+  background-color: var(--g-table-header-bg);
 }
 
 /* Status Cell */
@@ -163,7 +165,6 @@
   justify-content: flex-start;
 }
 
-/* Remover estilos innecesarios del status icon */
 .config-usuarios-status-icon {
   display: none;
 }
@@ -217,9 +218,6 @@
   filter: brightness(0) saturate(100%) invert(44%) sepia(7%) saturate(1102%) hue-rotate(169deg) brightness(96%) contrast(88%);
 }
 
-/* Estilos para los colores de los iconos de toggle: */
-
-/* Toggle Status Icon Colors */
 .config-usuarios-btn-action.config-usuarios-toggle-status .config-usuarios-toggle-icon.activate {
   filter: brightness(0) saturate(100%) invert(27%) sepia(98%) saturate(7462%) hue-rotate(120deg) brightness(103%) contrast(97%);
 }
@@ -235,7 +233,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: var(--g-modal-overlay-bg);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -244,9 +242,9 @@
 }
 
 .modal-content {
-  background-color: white;
+  background-color: var(--g-panel-bg);
   border-radius: var(--config-usuarios-border-radius-lg);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  box-shadow: var(--g-modal-shadow);
   max-height: 90vh;
   overflow: hidden;
   position: relative;
@@ -278,7 +276,7 @@
   align-items: center;
   padding: var(--config-usuarios-spacing-lg) 0 var(--config-usuarios-spacing-lg) 0;
   border-bottom: 1px solid var(--config-usuarios-border-color);
-  background-color: white;
+  background-color: var(--g-panel-bg);
   border-radius: var(--config-usuarios-border-radius-lg) var(--config-usuarios-border-radius-lg) 0 0;
   position: relative;
   z-index: 1;
@@ -313,12 +311,12 @@
 
 .modal-close:hover {
   color: var(--config-usuarios-text-color);
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: var(--g-modal-close-hover-bg);
 }
 
 .modal-body {
   padding: var(--config-usuarios-spacing-lg);
-  background-color: white;
+  background-color: var(--g-panel-bg);
   border-radius: 0 0 var(--config-usuarios-border-radius-lg) var(--config-usuarios-border-radius-lg);
   overflow-y: auto;
   flex: 1;
@@ -359,7 +357,7 @@
   border: 1px solid var(--config-usuarios-border-color);
   border-radius: var(--config-usuarios-border-radius-sm);
   font-size: var(--config-usuarios-font-size-sm);
-  background-color: white;
+  background-color: var(--g-panel-bg);
   color: var(--config-usuarios-text-color);
   transition: border-color 0.3s, box-shadow 0.3s;
 }
@@ -371,16 +369,16 @@
 }
 
 .modal-form-control.error {
-  border-color: #f44336;
+  border-color: var(--g-danger);
 }
 
 .required {
-  color: #f44336;
+  color: var(--g-danger);
   font-weight: bold;
 }
 
 .error-message {
-  color: #f44336;
+  color: var(--g-danger);
   font-size: var(--config-usuarios-font-size-xs);
   margin-top: var(--config-usuarios-spacing-xs);
 }
@@ -417,7 +415,6 @@
   color: var(--config-usuarios-text-color);
 }
 
-/* Password Toggle Icon */
 .password-toggle-icon {
   width: 16px;
   height: 16px;
@@ -450,27 +447,27 @@
 
 .btn-primary {
   background-color: var(--config-usuarios-accent-color);
-  color: white;
+  color: var(--g-text-inverse);
 }
 
 .btn-primary:hover {
-  background-color: #d86600;
+  background-color: var(--g-btn-accent-hover);
   transform: translateY(-1px);
 }
 
 .btn-secondary {
-  background-color: #6c757d;
-  color: white;
+  background-color: var(--g-btn-secondary-bg);
+  color: var(--g-text-inverse);
 }
 
 .btn-secondary:hover {
-  background-color: #5a6268;
+  background-color: var(--g-btn-secondary-hover);
   transform: translateY(-1px);
 }
 
 .btn-cancel {
-  background-color: #6c757d;
-  color: white;
+  background-color: var(--g-btn-secondary-bg);
+  color: var(--g-text-inverse);
   padding: var(--config-usuarios-spacing-sm) var(--config-usuarios-spacing-lg);
   border: none;
   border-radius: var(--config-usuarios-border-radius-sm);
@@ -482,13 +479,13 @@
 }
 
 .btn-cancel:hover {
-  background-color: #5a6268;
+  background-color: var(--g-btn-secondary-hover);
   transform: translateY(-1px);
 }
 
 .btn-confirm {
-  background-color: #c73232;
-  color: white;
+  background-color: var(--g-btn-confirm-bg);
+  color: var(--g-text-inverse);
   padding: var(--config-usuarios-spacing-sm) var(--config-usuarios-spacing-lg);
   border: none;
   border-radius: var(--config-usuarios-border-radius-sm);
@@ -500,7 +497,7 @@
 }
 
 .btn-confirm:hover {
-  background-color: #f96767;
+  background-color: var(--g-btn-confirm-hover-bg);
   transform: translateY(-1px);
 }
 
@@ -541,9 +538,9 @@
 .contadores-reasignacion {
   margin: 20px 0;
   padding: 15px;
-  background-color: #f8f9fa;
+  background-color: var(--g-section-inner-bg);
   border-radius: 8px;
-  border-left: 4px solid #007bff;
+  border-left: 4px solid var(--g-contadores-border-color);
 }
 
 .contadores-info {
@@ -562,12 +559,12 @@
 .contador-numero {
   font-size: 24px;
   font-weight: bold;
-  color: #007bff;
+  color: var(--g-contador-numero-color);
 }
 
 .contador-label {
   font-size: 12px;
-  color: #6c757d;
+  color: var(--g-contador-label-color);
   margin-top: 4px;
 }
 
@@ -688,12 +685,12 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: var(--g-loading-bg);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   z-index: 1000;
   font-size: 16px;
-  color: #037ce0;
+  color: var(--g-loading-color);
 }

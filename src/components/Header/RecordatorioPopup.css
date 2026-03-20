@@ -4,9 +4,9 @@
   right: 24px;
   width: 360px;
   max-width: calc(100vw - 48px);
-  background: white;
+  background: var(--popup-bg);
   border-radius: 16px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--popup-shadow);
   z-index: 10000;
   opacity: 0;
   transform: translateY(20px) scale(0.95);
@@ -24,8 +24,8 @@
   gap: 12px;
   padding: 16px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
+  background: var(--popup-header-gradient);
+  color: var(--popup-header-color);
   border-radius: 16px 16px 0 0;
 }
 
@@ -35,7 +35,7 @@
   justify-content: center;
   width: 42px;
   height: 42px;
-  background: rgba(255, 255, 255, 0.2);
+  background: var(--popup-icon-bg);
   border-radius: 10px;
   flex-shrink: 0;
 }
@@ -64,7 +64,7 @@
 .recordatorio-close {
   background: transparent;
   border: none;
-  color: white;
+  color: var(--popup-header-color);
   cursor: pointer;
   padding: 8px;
   margin: -8px;
@@ -76,7 +76,7 @@
 }
 
 .recordatorio-close:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: var(--popup-close-hover);
 }
 
 .recordatorio-body {
@@ -86,14 +86,14 @@
 .recordatorio-trato {
   font-size: 16px;
   font-weight: 700;
-  color: #1f2937;
+  color: var(--popup-title-color);
   margin: 0 0 4px 0;
   line-height: 1.4;
 }
 
 .recordatorio-empresa {
   font-size: 14px;
-  color: #6b7280;
+  color: var(--popup-subtitle-color);
   margin: 0 0 16px 0;
   font-weight: 500;
 }
@@ -105,7 +105,7 @@
   gap: 16px;
   margin-bottom: 16px;
   font-size: 14px;
-  color: #4b5563;
+  color: var(--popup-body-color);
 }
 
 .recordatorio-hora,
@@ -113,28 +113,28 @@
   display: flex;
   align-items: center;
   gap: 6px;
-  background: #f3f4f6;
+  background: var(--popup-detail-bg);
   padding: 4px 8px;
-  border-radius: 6px;
+  border-radius: var(--g-radius-sm);
 }
 
 .recordatorio-link {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: #667eea;
-  color: white;
+  background: var(--popup-link-bg);
+  color: var(--popup-link-color);
   padding: 10px 20px;
-  border-radius: 8px;
+  border-radius: var(--g-radius-md);
   text-decoration: none;
   font-size: 14px;
   font-weight: 600;
   transition: background 0.2s, transform 0.1s;
-  box-shadow: 0 2px 4px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 2px 4px var(--popup-link-shadow);
 }
 
 .recordatorio-link:hover {
-  background: #5a6fd6;
+  background: var(--popup-link-hover);
 }
 
 .recordatorio-link:active {
@@ -146,21 +146,21 @@
   align-items: center;
   gap: 8px;
   font-size: 14px;
-  color: #4b5563;
+  color: var(--popup-body-color);
   margin: 0;
-  background: #f9fafb;
+  background: var(--popup-place-bg);
   padding: 8px;
-  border-radius: 8px;
-  border: 1px solid #e5e7eb;
+  border-radius: var(--g-radius-md);
+  border: 1px solid var(--popup-place-border);
 }
 
 .recordatorio-dismiss {
   width: 100%;
   padding: 14px;
   border: none;
-  border-top: 1px solid #f3f4f6;
-  background: white;
-  color: #9ca3af;
+  border-top: 1px solid var(--popup-dismiss-border);
+  background: var(--popup-dismiss-bg);
+  color: var(--popup-dismiss-color);
   font-size: 13px;
   font-weight: 500;
   cursor: pointer;
@@ -169,10 +169,9 @@
 }
 
 .recordatorio-dismiss:hover {
-  background: #f9fafb;
-  color: #6b7280;
+  background: var(--popup-dismiss-hover-bg);
+  color: var(--popup-dismiss-hover-color);
 }
-
 
 @media (max-width: 640px) {
   .recordatorio-popup {
@@ -181,15 +180,11 @@
     margin: 0 auto;
     width: 94%;
     max-width: 360px;
-
-    /* Posición inferior */
     bottom: calc(10px + env(safe-area-inset-bottom));
-
     border-radius: 12px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: var(--popup-shadow-mobile);
   }
 
-  /* Header Mini */
   .recordatorio-header {
     padding: 8px 10px;
     height: 38px;
@@ -198,7 +193,7 @@
   .recordatorio-icono {
     width: 24px;
     height: 24px;
-    border-radius: 6px;
+    border-radius: var(--g-radius-sm);
   }
 
   .recordatorio-icono svg {
@@ -215,7 +210,6 @@
     margin-top: 0;
   }
 
-  /* Body Ultra Compacto */
   .recordatorio-body {
     padding: 10px;
     gap: 4px;
@@ -243,13 +237,12 @@
   .recordatorio-hora,
   .recordatorio-duracion {
     background: transparent;
-    border: 1px solid #e5e7eb;
+    border: 1px solid var(--popup-place-border);
     padding: 2px 6px;
     font-size: 11px;
     height: 20px;
   }
 
-  /* Botón delgado y ancho */
   .recordatorio-link {
     padding: 6px;
     font-size: 12px;
@@ -263,11 +256,10 @@
     padding: 4px 8px;
   }
 
-  /* Footer texto */
   .recordatorio-dismiss {
     padding: 8px;
     font-size: 10px;
-    background: #fafafa;
+    background: var(--g-bg);
     border-radius: 0 0 12px 12px;
   }
 }

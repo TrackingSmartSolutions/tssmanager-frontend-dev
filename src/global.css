@@ -1,45 +1,9 @@
 :root {
-    --g-primary: #00133b;
-    --g-secondary: #037ce0;
-    --g-accent: #f27100;
-    --g-bg: #f0f4ff;
-    --g-panel-bg: #ffffff;
-    --g-text: #333333;
-    --g-text-light: #666666;
-    --g-text-muted: #999999;
-    --g-border: #e0e0e0;
-    --g-border-light: #f0f0f0;
-    --g-success: #4caf50;
-    --g-success-alt: #28a745;
-    --g-danger: #f44336;
-    --g-danger-alt: #dc3545;
-    --g-warning: #ff9800;
-    --g-warning-alt: #ffc107;
-    --g-info: #2196f3;
-    --g-pending: #2196f3;
-    --g-active-bg: #cdd6ee;
-
-    --g-space-xs: 0.25rem;
-    --g-space-sm: 0.5rem;
-    --g-space-md: 0.75rem;
-    --g-space-lg: 1rem;
-    --g-space-xl: 1.5rem;
-    --g-space-xxl: 2rem;
-
-    --g-radius-sm: 4px;
-    --g-radius-md: 8px;
-    --g-radius-lg: 12px;
-    --g-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    --g-shadow-hover: 0 4px 20px rgba(0, 0, 0, 0.15);
-
-    --g-font-xs: 0.65rem;
-    --g-font-sm: 0.8rem;
-    --g-font-md: 0.9rem;
-    --g-font-lg: 1.1rem;
-    --g-font-xl: 1.3rem;
-    --g-font-xxl: 1.8rem;
-    --g-font-family: "Arial", sans-serif;
-
+    /* ═══════════════════════════════════════════════
+       [ 1. PALETA BASE (Colores Crudos) ]
+       INFO: Estos son los colores "puros". No los uses directamente en los componentes.
+       ACCION: Si cambias el HEX aquí, afectará a todas las variables de abajo que lo usen.
+    ═══════════════════════════════════════════════ */
     --g-color-dark-blue-1: #00133b;
     --g-color-dark-blue-2: #001959;
     --g-color-dark-blue-3: #0f1575;
@@ -53,6 +17,436 @@
     --g-color-blue-4: #2a5cf8;
     --g-color-purple: #9c16f7;
 
+    /* ═══════════════════════════════════════════════
+       [ 2. SEMANTICA GLOBAL (El Sistema de Temas real) ]
+       INFO: ESTAS son las variables que debes modificar para cambiar el look de la app.
+    ═══════════════════════════════════════════════ */
+
+    /* > FONDOS PRINCIPALES: Cambia esto para modificar el color de fondo de toda la plataforma */
+    --g-bg: #f0f4ff;
+    /* Fondo general de las pantallas (detrás de los cuadros blancos) */
+    --g-panel-bg: #ffffff;
+    /* Fondo de las tarjetas, modales y cuadros blancos */
+    --g-active-bg: #dff1dd;
+    /* Fondo de elementos seleccionados o activos */
+
+    /* > BOTONES DE ACCION: Cambia esto para modificar TODOS los botones de la plataforma */
+    --g-btn-primary-bg: #007bff;
+    /* Color principal de botones "Guardar", "Aceptar", "Nuevo" */
+    --g-btn-primary-hover: #0056b3;
+    /* Color cuando pasas el mouse por el botón primario */
+
+    --g-btn-secondary-bg: #6c757d;
+    /* Color de botones "Cancelar", "Regresar" o inactivos */
+    --g-btn-secondary-hover: #5a6268;
+    /* Hover de botones secundarios */
+    --g-btn-order-bg: #6c757d;
+    /* Alias para botones de ordenamiento */
+    --g-btn-order-hover: #5a6268;
+
+    --g-btn-report-bg: #c73232;
+    /* Botones de peligro: "Eliminar", "Reportar", "Borrar" */
+    --g-btn-report-hover: #a82828;
+    /* Hover de botones de peligro */
+    --g-btn-danger-hover: #d32f2f;
+    /* Alias para hover de peligro genérico */
+    --g-btn-remove-bg: var(--g-danger);
+    /* Botones circulares de eliminar (X) */
+    --g-btn-remove-hover: var(--g-btn-danger-hover);
+
+    --g-btn-filter-bg: #0d6efd;
+    /* Botones de información o filtros */
+    --g-btn-filter-hover: #0b5ed7;
+    /* Hover de botones de filtro */
+
+    --g-btn-map-bg: #28a745;
+    /* Botones de éxito o acciones especiales (como abrir mapa) */
+    --g-btn-map-hover: #218838;
+
+    --g-btn-disabled-bg: #cccccc;
+    /* Color de cualquier botón cuando está deshabilitado */
+
+    /* > HEADER Y NAVEGACION: Controla la barra superior y menús laterales */
+    --g-header-bg: var(--g-color-dark-blue-1);
+    /* Color principal de la barra de arriba */
+    --g-header-link: #ffffff;
+    /* Color del texto de los links en el header */
+    --g-header-link-hover: var(--g-color-light-blue);
+    --g-header-dropdown-bg: var(--g-header-bg);
+    --g-header-dropdown-divider: rgba(255, 255, 255, 0.1);
+    --g-header-dropdown-hover-bg: rgba(255, 255, 255, 0.15);
+    --g-header-sidebar-bg: var(--g-header-bg);
+    /* Fondo del menú lateral */
+    --g-header-sidebar-hover: rgba(255, 255, 255, 0.1);
+    --g-header-icon-filter: brightness(0) invert(1);
+    --g-header-avatar-size: 45px;
+    --g-header-height: 70px;
+    --g-header-overlay-bg: rgba(0, 0, 0, 0.5);
+    --g-header-sidebar-sub-bg: rgba(0, 0, 0, 0.2);
+    --g-header-badge-bg: #ef4444;
+    --g-header-badge-border: #ffffff;
+    --g-header-inactivity-bg: #f8d7da;
+    --g-header-inactivity-border: #f5c6cb;
+    --g-header-icon-btn-hover: rgba(255, 255, 255, 0.1);
+
+    /* > TEXTOS GLOBALES: Modifica el color de las letras en general */
+    --g-text: #333333;
+    /* Texto principal (títulos y párrafos normales) */
+    --g-text-light: #666666;
+    /* Texto secundario o subtítulos */
+    --g-text-muted: #999999;
+    /* Texto apagado (placeholders, notas pequeñas) */
+    --g-text-inverse: #ffffff;
+    /* Texto sobre fondos oscuros (ej. letras blancas en botones) */
+
+    /* > BORDES GLOBALES: Líneas divisorias, contornos de inputs y tablas */
+    --g-border: #e0e0e0;
+    /* Borde estándar para tarjetas y tablas */
+    --g-border-light: #f0f0f0;
+    /* Borde muy sutil para separadores internos */
+
+    /* > COLORES DE ESTADO (Badges, Alertas, Notificaciones) */
+    --g-success: #4caf50;
+    /* Verde: Operaciones exitosas */
+    --g-success-alt: #28a745;
+    --g-danger: #f44336;
+    /* Rojo: Errores o rechazos */
+    --g-danger-alt: #dc3545;
+    --g-warning: #ff9800;
+    /* Naranja/Amarillo: Advertencias o pendientes */
+    --g-warning-alt: #ffc107;
+    --g-info: #2196f3;
+    /* Azul: Información neutra */
+    --g-pending: #2196f3;
+
+    /* > IDENTIDAD DE MARCA: Variables heredadas para componentes principales */
+    --g-primary: var(--g-color-dark-blue-1);
+    /* color del borde de los encabezados de tablas y de las opciones del submenu de administracion */
+    --g-secondary: var(--g-color-blue-3);
+    --g-accent: var(--g-color-orange);
+
+    /* ═══════════════════════════════════════════════
+       [ 3. ESPACIADO Y TIPOGRAFIA (Márgenes y Letras) ]
+       INFO: Modifica esto para hacer la app más "apretada" o más "suelta"
+    ═══════════════════════════════════════════════ */
+    --g-space-xs: 0.25rem;
+    --g-space-sm: 0.5rem;
+    --g-space-md: 0.75rem;
+    --g-space-lg: 1rem;
+    --g-space-xl: 1.5rem;
+    --g-space-xxl: 2rem;
+
+    --g-radius-sm: 4px;
+    /* Bordes ligeramente redondeados */
+    --g-radius-md: 8px;
+    /* Bordes redondeados estándar (tarjetas) */
+    --g-radius-lg: 12px;
+    /* Bordes muy redondeados (modales) */
+
+    --g-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    --g-shadow-hover: 0 4px 20px rgba(0, 0, 0, 0.15);
+
+    --g-font-family: "Arial", sans-serif;
+    --g-font-xs: 0.65rem;
+    --g-font-sm: 0.8rem;
+    --g-font-md: 0.9rem;
+    --g-font-lg: 1.1rem;
+    --g-font-xl: 1.3rem;
+    --g-font-xxl: 1.8rem;
+
+    /* ═══════════════════════════════════════════════
+       [ 4. TOKENS ESPECIFICOS DE MODULOS ]
+       INFO: Cambios aquí solo afectan a su propio módulo (ej. solo al Calendario)
+    ═══════════════════════════════════════════════ */
+
+    /* > MODULO: Calendario */
+    --cal-bg: var(--g-bg);
+    --cal-panel-bg: var(--g-panel-bg);
+    --cal-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --cal-border: #e5e7eb;
+    --cal-radius: 12px;
+    --cal-nav-btn-bg: #f3f4f6;
+    --cal-nav-btn-hover: #e5e7eb;
+    --cal-nav-btn-color: #6b7280;
+    --cal-nav-btn-hover-color: #374151;
+    --cal-title-color: #1f2937;
+    --cal-select-border: #e5e7eb;
+    --cal-select-border-hover: #cbd5e0;
+    --cal-select-border-focus: #3b82f6;
+    --cal-select-focus-shadow: rgba(59, 130, 246, 0.1);
+    --cal-select-bg: #ffffff;
+    --cal-select-text: #374151;
+    --cal-view-bg: #f3f4f6;
+    --cal-view-btn-color: #6b7280;
+    --cal-view-btn-active-bg: #ffffff;
+    --cal-view-btn-active-color: #1f2937;
+    --cal-view-btn-hover-color: #374151;
+    --cal-view-btn-hover-bg: rgba(255, 255, 255, 0.5);
+    --cal-filter-divider: #e5e7eb;
+    --cal-checkbox-accent: #3b82f6;
+    --cal-checkbox-checked: #2563eb;
+    --cal-filter-hover-bg: #f3f4f6;
+    --cal-filter-hover-color: #1f2937;
+    --cal-filter-label-color: #6b7280;
+    --cal-filter-text: #374151;
+
+    /* Eventos del calendario por tipo */
+    --cal-event-reunion-bg: #3b82f6;
+    --cal-event-reunion-border: #2563eb;
+    --cal-event-llamada-bg: #10b981;
+    --cal-event-llamada-border: #059669;
+    --cal-event-tarea-bg: #f50bc3;
+    --cal-event-tarea-border: #db0a8a;
+    --cal-event-recarga-bg: #f59e0b;
+    --cal-event-recarga-border: #d97706;
+    --cal-event-cobrar-bg: #ef4444;
+    --cal-event-cobrar-border: #dc2626;
+    --cal-event-pagar-bg: #8b5cf6;
+    --cal-event-pagar-border: #7c3aed;
+    --cal-event-expiracion-bg: #facc15;
+    --cal-event-expiracion-border: #eab308;
+    --cal-event-expiracion-color: #713f12;
+    --cal-event-border-alpha: rgba(0, 0, 0, 0.15);
+
+    /* Modal del calendario */
+    --cal-modal-overlay: rgba(0, 0, 0, 0.5);
+    --cal-modal-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    --cal-modal-header-bg: #f9fafb;
+    --cal-modal-header-border: #e5e7eb;
+    --cal-modal-title-color: #1f2937;
+    --cal-modal-close-color: #6b7280;
+    --cal-modal-close-hover: #e5e7eb;
+    --cal-modal-field-label: #374151;
+    --cal-modal-link: #3b82f6;
+    --cal-more-bg: #f3f4f6;
+    --cal-more-color: #6b7280;
+    --cal-more-hover-bg: #e5e7eb;
+    --cal-more-hover-color: #374151;
+    --cal-popover-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    --cal-popover-border: #e5e7eb;
+    --cal-popover-header-bg: #ffffff;
+    --cal-popover-header-border: #e5e7eb;
+    --cal-popover-scroll-thumb: #cbd5e0;
+    --cal-popover-scroll-hover: #a0aec0;
+    --cal-selected-day-bg: rgba(59, 130, 246, 0.15);
+    --cal-selected-day-color: #2563eb;
+    --cal-selected-col-bg: rgba(59, 130, 246, 0.10);
+    --cal-loading-bg: rgba(255, 255, 255, 0.8);
+    --cal-loading-color: #037ce0;
+
+    /* > MODULO: Dashboard de Métricas */
+    --dash-bg: #f8f9fa;
+    --dash-panel-bg: #ffffff;
+    --dash-panel-border: #e9ecef;
+    --dash-panel-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    --dash-panel-shadow-hover: 0 4px 20px rgba(0, 0, 0, 0.1);
+    --dash-section-divider: #ecf0f1;
+    --dash-inner-bg: #f8f9fa;
+    --dash-inner-border: #e9ecef;
+    --dash-card-top-gradient: linear-gradient(90deg, #45b7d1, #96c93d, #f39c12, #e74c3c);
+    --dash-card-icon-gradient: linear-gradient(135deg, #45b7d1, #5bc0de);
+    --dash-card-icon-color: #ffffff;
+    --dash-card-value-color: #2c3e50;
+    --dash-card-label-color: #7f8c8d;
+    --dash-trend-up-bg: rgba(76, 175, 80, 0.1);
+    --dash-trend-up-color: #4caf50;
+    --dash-trend-down-bg: rgba(244, 67, 54, 0.1);
+    --dash-trend-down-color: #f44336;
+    --dash-chart-title-color: #2c3e50;
+    --dash-legend-text-color: #5a6c7d;
+    --dash-label-color: #5a6c7d;
+    --dash-value-color: #2c3e50;
+    --dash-bar-hover-color: rgba(255, 255, 255, 0.8);
+    --dash-seg-contactadas: #87ceeb;
+    --dash-seg-positiva: #5bc0de;
+    --dash-seg-interes: #2c5aa0;
+    --dash-seg-reuniones: #030020;
+    --dash-seg-hover: rgba(0, 0, 0, 0.07);
+    --dash-seg-text-shadow: rgba(0, 0, 0, 0.7);
+    --dash-metric-bg: #ffffff;
+    --dash-metric-border: #dee2e6;
+    --dash-metric-color: #5a6c7d;
+    --dash-empty-bg: #ecf0f1;
+    --dash-nodata-title: #6c757d;
+    --dash-nodata-text: #8e9ba8;
+    --dash-input-border: #ddd;
+    --dash-input-bg: #ffffff;
+    --dash-input-color: #333333;
+    --dash-input-focus-border: #45b7d1;
+    --dash-input-focus-shadow: rgba(69, 183, 209, 0.2);
+    --dash-input-icon-color: #666666;
+    --dash-select-border: #dee2e6;
+    --dash-select-bg: #ffffff;
+    --dash-select-color: #495057;
+    --dash-select-focus-border: #45b7d1;
+    --dash-select-focus-shadow: rgba(69, 183, 209, 0.25);
+    --dash-select-hover-border: #adb5bd;
+    --dash-btn-bg: #45b7d1;
+    --dash-btn-color: #ffffff;
+    --dash-btn-hover-bg: #3a9bb8;
+    --dash-chart-section-bg: #f8f9fa;
+    --dash-bar-track-bg: #f0f0f0;
+    --dash-bar-gradient-start: #3498db;
+    --dash-bar-gradient-end: #2980b9;
+    --dash-table-header-bg: #f8f9fa;
+    --dash-table-row-hover: rgba(3, 124, 224, 0.05);
+
+    /* > MODULO: Mapa */
+    --map-bg: #ffffff;
+    --map-filter-bg: rgba(255, 255, 255, 0.9);
+    --map-filter-border: #cccccc;
+    --map-filter-focus-shadow: rgba(0, 87, 201, 0.5);
+    --map-sidebar-border: #cccccc;
+    --map-sidebar-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    --map-details-border: #eeeeee;
+    --map-link-color: #0057c9;
+    --map-controls-bg: #f5f5f5;
+    --map-btn-primary-bg: #007bff;
+    --map-btn-primary-color: #ffffff;
+    --map-btn-primary-hover: #0056b3;
+    --map-btn-secondary-bg: #6c757d;
+    --map-btn-secondary-color: #ffffff;
+    --map-btn-secondary-hover: #5a6268;
+    --map-btn-disabled-bg: #cccccc;
+    --map-collapse-bg: rgba(255, 255, 255, 0.95);
+    --map-collapse-border: #dddddd;
+    --map-collapse-hover-border: #007bff;
+    --map-header-title-color: #333333;
+    --map-details-text-color: #333333;
+    --map-error-color: #f44336;
+    --map-error-bg: rgba(255, 255, 255, 0.9);
+
+    /* > MODULO: Popups y Editores (estilo Gmail) */
+    --popup-bg: #ffffff;
+    --popup-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    --popup-shadow-mobile: 0 5px 20px rgba(0, 0, 0, 0.2);
+    --popup-header-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --popup-header-color: #ffffff;
+    --popup-icon-bg: rgba(255, 255, 255, 0.2);
+    --popup-close-hover: rgba(255, 255, 255, 0.2);
+    --popup-title-color: #1f2937;
+    --popup-subtitle-color: #6b7280;
+    --popup-body-color: #4b5563;
+    --popup-detail-bg: #f3f4f6;
+    --popup-place-bg: #f9fafb;
+    --popup-place-border: #e5e7eb;
+    --popup-link-bg: #667eea;
+    --popup-link-color: #ffffff;
+    --popup-link-hover: #5a6fd6;
+    --popup-link-shadow: rgba(102, 126, 234, 0.3);
+    --popup-dismiss-bg: #ffffff;
+    --popup-dismiss-color: #9ca3af;
+    --popup-dismiss-border: #f3f4f6;
+    --popup-dismiss-hover-bg: #f9fafb;
+    --popup-dismiss-hover-color: #6b7280;
+    --g-editor-link: #1a73e8;
+    --g-editor-link-hover: #174ea6;
+    --g-editor-border: #ccc;
+    --g-editor-focus-shadow: rgba(26, 115, 232, 0.2);
+    --g-editor-img-shadow: rgba(0, 0, 0, 0.1);
+    --g-editor-image-loading-bg: #f0f0f0;
+    --g-editor-image-loading-color: #666;
+    --g-editor-img-btn-bg: #f8f9fa;
+    --g-editor-img-btn-border: #dadce0;
+    --g-editor-img-btn-hover-bg: #e8f0fe;
+    --g-toolbar-bg: #f8f9fa;
+    --g-toolbar-border: #dee2e6;
+    --g-toolbar-btn-bg: #ffffff;
+    --g-toolbar-btn-color: #495057;
+    --g-toolbar-btn-border: #ced4da;
+    --g-toolbar-btn-hover-bg: #e9ecef;
+    --g-toolbar-btn-hover-border: #adb5bd;
+    --g-toolbar-btn-hover-color: #212529;
+    --g-toolbar-btn-active-bg: #dee2e6;
+    --g-toolbar-help-color: #6c757d;
+
+    /* > VARIOS: Formularios, Tablas, Contadores y Dropzones */
+    --g-filter-section-bg: #f8f9fa;
+    /* color de los encabezados de tablas y de las opciones del submenu de administracion */
+    --g-table-header-active-bg: #cdd6ee;
+    --g-card-success-bg-start: #e8f5e8;
+    --g-card-success-bg-end: #c8e6c9;
+    --g-card-success-border: #2e7d32;
+    --g-card-danger-bg-start: #ffebee;
+    --g-card-danger-bg-end: #ffcdd2;
+    --g-card-danger-border: #c62828;
+    --g-card-info-bg-start: #e3f2fd;
+    --g-card-info-bg-end: #bbdefb;
+    --g-card-info-border: #1565c0;
+    --g-card-warning-bg-start: #fff3e0;
+    --g-card-warning-bg-end: #ffe0b2;
+    --g-card-warning-border: #e65100;
+    --g-badge-success-bg: #28a745;
+    --g-badge-danger-bg: #dc3545;
+    --g-badge-danger-hover: #bb2d3b;
+    --g-badge-secondary-bg: #6c757d;
+    --g-date-input-border: #ddd;
+    --g-date-input-color: #333;
+    --g-date-icon-color: #666;
+    --g-info-box-bg: #f8f9fa;
+    --g-info-box-border: #dee2e6;
+    --g-loading-bg: rgba(255, 255, 255, 0.8);
+    --g-loading-color: #037ce0;
+    --g-estatus-pagado-bg: #e8f5e9;
+    --g-estatus-pagado-color: #2e7d32;
+    --g-estatus-pagado-border: #a5d6a7;
+    --g-estatus-pendiente-bg: #fff9e6;
+    --g-estatus-pendiente-color: #f57c00;
+    --g-estatus-pendiente-border: #ffcc80;
+    --g-conceptos-readonly-bg: #f8f9fa;
+    --g-conceptos-readonly-border: #e9ecef;
+    --g-conceptos-section-border: #e0e0e0;
+    --g-info-bg: #e3f2fd;
+    --g-info-border: #bbdefb;
+    --g-warning-bg: #fff3cd;
+    --g-warning-border: #ffeaa7;
+    --g-success-bg: #e8f5e8;
+    --g-success-border: #c8e6c9;
+    --g-section-inner-bg: #f8f9fa;
+    --g-section-inner-border: #e9ecef;
+    --g-table-header-bg: #f8f9fa;
+    --g-input-disabled-bg: #f5f5f5;
+    --g-btn-primary-alt-hover: #0056b8;
+    --g-btn-accent-hover: #d86600;
+    --g-checkbox-active-bg-start: #3b82f6;
+    --g-checkbox-active-bg-end: #1d4ed8;
+    --g-checkbox-active-border: #1d4ed8;
+    --g-checkbox-active-shadow: rgba(59, 130, 246, 0.2);
+    --g-checkbox-item-hover-shadow: rgba(59, 130, 246, 0.15);
+    --g-checkbox-item-checked-bg-start: #dbeafe;
+    --g-checkbox-item-checked-bg-end: #bfdbfe;
+    --g-checkbox-item-checked-shadow: rgba(59, 130, 246, 0.25);
+    --g-checkbox-item-checked-color: #1d4ed8;
+    --g-checkbox-group-bg-start: #f8fafc;
+    --g-checkbox-group-bg-end: #e2e8f0;
+    --g-checkbox-group-border: #e2e8f0;
+    --g-checkbox-unchecked-border: #d1d5db;
+    --g-checkbox-focus-color: #3b82f6;
+    --g-status-sent-bg: #e3f2fd;
+    --g-status-sent-color: #1565c0;
+    --g-status-delivered-bg: #e8f5e9;
+    --g-status-delivered-color: #2e7d32;
+    --g-status-failed-bg: #ffebee;
+    --g-status-failed-color: #c62828;
+    --g-drop-zone-bg: #fafafa;
+    --g-modal-overlay-bg: rgba(0, 0, 0, 0.5);
+    --g-modal-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    --g-modal-close-hover-bg: rgba(0, 0, 0, 0.1);
+    --g-btn-array-add-bg: #333333;
+    --g-btn-array-add-hover-bg: #222222;
+    --g-btn-array-remove-bg: var(--g-danger);
+    --g-btn-array-remove-hover-bg: var(--g-btn-danger-hover);
+    --g-btn-confirm-bg: var(--g-btn-report-bg);
+    --g-btn-confirm-hover-bg: #f96767;
+    --g-contador-numero-color: var(--g-btn-primary-bg);
+    --g-contador-label-color: var(--g-text-muted);
+    --g-contadores-border-color: var(--g-btn-primary-bg);
+
+    /* ═══════════════════════════════════════════════
+       [ 5. ALIASES DE COMPATIBILIDAD ]
+       INFO: NO TOCAR. Existen solo para que los componentes viejos no se rompan
+             y apunten a los nuevos colores globales.
+    ═══════════════════════════════════════════════ */
     --color-dark-blue-1: var(--g-color-dark-blue-1);
     --color-dark-blue-2: var(--g-color-dark-blue-2);
     --color-dark-blue-3: var(--g-color-dark-blue-3);
@@ -71,7 +465,7 @@
     --background-color: var(--g-bg);
     --panel-background: var(--g-panel-bg);
     --text-color: var(--g-text);
-    --text-color-2: #ffffff;
+    --text-color-2: var(--g-text-inverse);
     --text-light: var(--g-text-light);
     --border-color: var(--g-border);
     --spacing-xs: var(--g-space-xs);
@@ -90,7 +484,6 @@
     --font-size-lg: var(--g-font-lg);
     --font-size-xl: var(--g-font-xl);
     --font-size-xxl: var(--g-font-xxl);
-
     --dark-blue-1: var(--g-color-dark-blue-1);
     --dark-blue-2: var(--g-color-dark-blue-2);
     --dark-blue-3: var(--g-color-dark-blue-3);
@@ -108,6 +501,7 @@
     --white: #ffffff;
     --input-bg: rgba(255, 255, 255, 0.9);
 
+    /* ALIASES MODULOS ADMIN */
     --adminbalance-primary-color: var(--g-primary);
     --adminbalance-secondary-color: var(--g-secondary);
     --adminbalance-accent-color: var(--g-accent);
@@ -320,13 +714,14 @@
     --transacciones-font-size-lg: var(--g-font-lg);
     --transacciones-font-size-xl: var(--g-font-xl);
 
+    /* ALIASES MODULOS CONFIGURACION */
     --config-admin-primary-color: var(--g-primary);
     --config-admin-secondary-color: var(--g-secondary);
     --config-admin-accent-color: var(--g-accent);
     --config-admin-background-color: var(--g-bg);
     --config-admin-panel-background: var(--g-panel-bg);
     --config-admin-text-color: var(--g-text);
-    --config-admin-text-color-2: #ffffff;
+    --config-admin-text-color-2: var(--g-text-inverse);
     --config-admin-text-light: var(--g-text-light);
     --config-admin-border-color: var(--g-border);
     --config-admin-spacing-xs: var(--g-space-xs);
@@ -364,7 +759,7 @@
     --config-almacenamiento-background-color: var(--g-bg);
     --config-almacenamiento-panel-background: var(--g-panel-bg);
     --config-almacenamiento-text-color: var(--g-text);
-    --config-almacenamiento-text-color-2: #ffffff;
+    --config-almacenamiento-text-color-2: var(--g-text-inverse);
     --config-almacenamiento-text-light: var(--g-text-light);
     --config-almacenamiento-border-color: var(--g-border);
     --config-almacenamiento-danger-color: var(--g-danger);
@@ -404,7 +799,7 @@
     --config-copias-background-color: var(--g-bg);
     --config-copias-panel-background: var(--g-panel-bg);
     --config-copias-text-color: var(--g-text);
-    --config-copias-text-color-2: #ffffff;
+    --config-copias-text-color-2: var(--g-text-inverse);
     --config-copias-text-light: var(--g-text-light);
     --config-copias-border-color: var(--g-border);
     --config-copias-success-color: var(--g-success);
@@ -445,7 +840,7 @@
     --config-empresa-background-color: var(--g-bg);
     --config-empresa-panel-background: var(--g-panel-bg);
     --config-empresa-text-color: var(--g-text);
-    --config-empresa-text-color-2: #ffffff;
+    --config-empresa-text-color-2: var(--g-text-inverse);
     --config-empresa-text-light: var(--g-text-light);
     --config-empresa-border-color: var(--g-border);
     --config-empresa-spacing-xs: var(--g-space-xs);
@@ -483,7 +878,7 @@
     --config-usuarios-background-color: var(--g-bg);
     --config-usuarios-panel-background: var(--g-panel-bg);
     --config-usuarios-text-color: var(--g-text);
-    --config-usuarios-text-color-2: #ffffff;
+    --config-usuarios-text-color-2: var(--g-text-inverse);
     --config-usuarios-text-light: var(--g-text-light);
     --config-usuarios-border-color: var(--g-border);
     --config-usuarios-success-color: var(--g-success);
@@ -524,7 +919,7 @@
     --correo-plantillas-background-color: var(--g-bg);
     --correo-plantillas-panel-background: var(--g-panel-bg);
     --correo-plantillas-text-color: var(--g-text);
-    --correo-plantillas-text-color-2: #ffffff;
+    --correo-plantillas-text-color-2: var(--g-text-inverse);
     --correo-plantillas-text-light: var(--g-text-light);
     --correo-plantillas-border-color: var(--g-border);
     --correo-plantillas-spacing-xs: var(--g-space-xs);
@@ -562,7 +957,7 @@
     --correos-background-color: var(--g-bg);
     --correos-panel-background: var(--g-panel-bg);
     --correos-text-color: var(--g-text);
-    --correos-text-color-2: #ffffff;
+    --correos-text-color-2: var(--g-text-inverse);
     --correos-text-light: var(--g-text-light);
     --correos-border-color: var(--g-border);
     --correos-success-color: var(--g-success);
@@ -603,7 +998,7 @@
     --sectores-plataformas-background-color: var(--g-bg);
     --sectores-plataformas-panel-background: var(--g-panel-bg);
     --sectores-plataformas-text-color: var(--g-text);
-    --sectores-plataformas-text-color-2: #ffffff;
+    --sectores-plataformas-text-color-2: var(--g-text-inverse);
     --sectores-plataformas-text-light: var(--g-text-light);
     --sectores-plataformas-border-color: var(--g-border);
     --sectores-plataformas-success-color: var(--g-success);
@@ -638,6 +1033,7 @@
     --sectores-plataformas-color-blue-4: var(--g-color-blue-4);
     --sectores-plataformas-color-purple: var(--g-color-purple);
 
+    /* ALIASES MODULOS EQUIPOS */
     --creditosplataforma-primary-color: var(--g-primary);
     --creditosplataforma-secondary-color: var(--g-secondary);
     --creditosplataforma-accent-color: var(--g-accent);
@@ -805,6 +1201,7 @@
     --sim-font-size-lg: var(--g-font-lg);
     --sim-font-size-xl: var(--g-font-xl);
 
+    /* ALIASES MODULO REPORTE */
     --reporte-primary-color: var(--g-primary);
     --reporte-secondary-color: var(--g-secondary);
     --reporte-accent-color: var(--g-accent);
@@ -833,56 +1230,17 @@
     --reporte-font-size-lg: var(--g-font-lg);
     --reporte-font-size-xl: var(--g-font-xl);
     --reporte-font-size-xxl: 1.5rem;
-
-    /* ── dashboard.css bridge ── */
-    --primary-color: var(--g-primary);
-    --secondary-color: var(--g-secondary);
-    --accent-color: var(--g-accent);
-    --background-color: var(--g-bg);
-    --panel-background: var(--g-panel-bg);
-    --text-color: var(--g-text);
-    --text-light: var(--g-text-light);
-    --border-color: var(--g-border);
-    --spacing-xs: var(--g-space-xs);
-    --spacing-sm: var(--g-space-sm);
-    --spacing-md: var(--g-space-md);
-    --spacing-lg: var(--g-space-lg);
-    --spacing-xl: var(--g-space-xl);
-    --border-radius-sm: var(--g-radius-sm);
-    --border-radius-md: var(--g-radius-md);
-    --border-radius-lg: var(--g-radius-lg);
-    --box-shadow: var(--g-shadow);
-    --font-family: var(--g-font-family);
-    --font-size-xs: var(--g-font-xs);
-    --font-size-sm: var(--g-font-sm);
-    --font-size-md: var(--g-font-md);
-    --font-size-lg: var(--g-font-lg);
-    --font-size-xl: var(--g-font-xl);
-    --font-size-xxl: var(--g-font-xxl);
-
-    /* ── login.css bridge ── */
-    /* (uses --g-color-* vars already defined above, plus inline values in the file) */
-    --dark-blue-1: var(--g-color-dark-blue-1);
-    --dark-blue-2: var(--g-color-dark-blue-2);
-    --dark-blue-3: var(--g-color-dark-blue-3);
-    --medium-blue-1: var(--g-color-blue-1);
-    --medium-blue-2: var(--g-color-blue-2);
-    --light-blue-1: var(--g-color-blue-3);
-    --light-blue-2: var(--g-color-light-blue);
-    --orange: var(--g-color-orange);
-    --lavender: var(--g-color-light-purple);
-    --deep-purple: var(--g-color-dark-purple);
-    --sky-blue: var(--g-color-blue-4);
-    --bright-purple: var(--g-color-purple);
-    --card-bg: rgba(175, 134, 255, 0.15);
-    --card-border: rgba(175, 134, 255, 0.3);
-    --white: #ffffff;
-    --input-bg: rgba(255, 255, 255, 0.9);
 }
 
+/* ═══════════════════════════════════════════════
+   [ 6. CLASES GLOBALES ]
+   INFO: Estilos que aplican a toda la app por igual
+═══════════════════════════════════════════════ */
+
+/* --- Spinner global ------------------------------- */
 .spinner {
     border: 4px solid rgba(0, 0, 0, 0.1);
-    border-left-color: #9c16f7;
+    border-left-color: var(--g-color-purple);
     border-radius: 50%;
     width: 40px;
     height: 40px;
@@ -910,6 +1268,7 @@
     }
 }
 
+/* --- DatePicker global ---------------------------- */
 .react-datepicker-popper {
     z-index: 9999 !important;
 }
@@ -928,14 +1287,14 @@
 
 .react-datepicker__current-month,
 .react-datepicker__day-name {
-    color: white;
+    color: var(--g-text-inverse);
 }
 
 .react-datepicker__day--selected,
 .react-datepicker__day--in-selecting-range,
 .react-datepicker__day--in-range {
     background-color: var(--g-secondary);
-    color: white;
+    color: var(--g-text-inverse);
 }
 
 .react-datepicker__day--keyboard-selected {
@@ -948,20 +1307,21 @@
 }
 
 .react-datepicker__close-icon::after {
-    background-color: #dc3545 !important;
+    background-color: var(--g-danger-alt) !important;
     font-size: 14px !important;
     line-height: 16px !important;
     width: 18px !important;
     height: 18px !important;
 }
 
+/* --- Editor toolbar global ----------------------- */
 .editor-toolbar {
     display: flex;
     align-items: center;
     gap: 8px;
     padding: 8px 12px;
-    background: #f8f9fa;
-    border: 1px solid #dee2e6;
+    background: var(--g-bg);
+    border: 1px solid var(--g-border);
     border-bottom: none;
     border-radius: 4px 4px 0 0;
     flex-wrap: wrap;
@@ -979,31 +1339,31 @@
     min-width: 32px;
     height: 28px;
     padding: 4px 8px;
-    border: 1px solid #dee2e6;
-    background: white;
+    border: 1px solid var(--g-border);
+    background: var(--g-panel-bg);
     border-radius: 3px;
     cursor: pointer;
     font-size: 12px;
     font-weight: 500;
-    color: #495057;
+    color: var(--g-text);
     transition: all 0.15s ease;
 }
 
 .toolbar-btn:hover {
-    background: #e9ecef;
-    border-color: #adb5bd;
-    color: #212529;
+    background: var(--g-active-bg);
+    border-color: var(--g-text-muted);
+    color: var(--g-text);
 }
 
 .toolbar-btn:active {
-    background: #dee2e6;
+    background: var(--g-border);
     transform: translateY(1px);
 }
 
 .toolbar-separator {
     width: 1px;
     height: 20px;
-    background: #dee2e6;
+    background: var(--g-border);
     margin: 0 4px;
 }
 
@@ -1021,8 +1381,8 @@
     position: absolute;
     top: 100%;
     left: 0;
-    background: white;
-    border: 1px solid #dee2e6;
+    background: var(--g-panel-bg);
+    border: 1px solid var(--g-border);
     border-radius: 3px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
     z-index: 1000;
@@ -1038,11 +1398,11 @@
     text-align: left;
     cursor: pointer;
     font-size: 14px;
-    color: #495057;
+    color: var(--g-text);
 }
 
 .dropdown-item:hover {
-    background: #f8f9fa;
+    background: var(--g-bg);
 }
 
 @media (max-width: 768px) {
@@ -1058,6 +1418,7 @@
     }
 }
 
+/* --- Map search global ---------------------------- */
 .map-search-container {
     margin-bottom: 16px;
 }
@@ -1071,15 +1432,15 @@
 .map-search-input {
     flex: 1;
     padding: 8px 12px;
-    border: 1px solid #ddd;
+    border: 1px solid var(--g-border);
     border-radius: 4px;
     font-size: 14px;
 }
 
 .selected-address {
     padding: 8px;
-    background-color: #f8f9fa;
-    border: 1px solid #e9ecef;
+    background-color: var(--g-bg);
+    border: 1px solid var(--g-border-light);
     border-radius: 4px;
     font-size: 14px;
 }
@@ -1098,8 +1459,9 @@
     }
 }
 
+/* --- Padding de página con header ---------------- */
 .page-with-header {
-    padding-top: 70px;
+    padding-top: var(--g-header-height, 70px);
 }
 
 @media (max-width: 992px) {
