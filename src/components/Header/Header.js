@@ -495,8 +495,10 @@ const Header = ({ logoUrl }) => {
     const checkInactivity = () => {
       const timeSinceLastActivity = Date.now() - lastActivity
       if (timeSinceLastActivity >= timeoutDuration) {
+        const savedLogo = localStorage.getItem("cachedLogoUrl");
         localStorage.clear();
         sessionStorage.clear();
+        if (savedLogo) localStorage.setItem("cachedLogoUrl", savedLogo);
         Swal.fire({
           icon: "warning",
           title: "Sesión Expirada",
@@ -708,10 +710,14 @@ const Header = ({ logoUrl }) => {
       timer: 1500,
       showConfirmButton: false,
     }).then(() => {
+      const savedLogo = localStorage.getItem("cachedLogoUrl");
+
       localStorage.clear();
       sessionStorage.clear();
-      logoCache = { url: null, timestamp: null, isLoading: false, hasError: false }
 
+      if (savedLogo) localStorage.setItem("cachedLogoUrl", savedLogo);
+
+      logoCache = { url: null, timestamp: null, isLoading: false, hasError: false }
       navigate("/")
     })
   }

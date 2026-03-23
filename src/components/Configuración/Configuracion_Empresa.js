@@ -174,6 +174,7 @@ const ConfiguracionEmpresa = () => {
           telefonoMovil: companyData.telefonoMovil,
           telefonoFijo: companyData.telefonoFijo,
           direccionPrincipal: companyData.direccionPrincipal,
+          logoUrl: companyData.logoPreview === null ? "" : "mantener"
         })], { type: "application/json" }));
         if (companyData.logo) {
           formData.append("logo", companyData.logo);
