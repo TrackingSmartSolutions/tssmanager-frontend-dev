@@ -11,6 +11,12 @@ const Login = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [currentLogo, setCurrentLogo] = useState(localStorage.getItem("cachedLogoUrl") || "");
+  const [requiereCambio, setRequiereCambio] = useState(false);
+  const [tempUsername, setTempUsername] = useState("");
+  const [nuevaContrasena, setNuevaContrasena] = useState("");
+  const [confirmarContrasena, setConfirmarContrasena] = useState("");
+  const [showNewPassword, setShowNewPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const navigate = useNavigate();
 
   // Activa animación inicial tras un breve retraso
@@ -61,6 +67,13 @@ const Login = () => {
         contrasena: password,
       });
 
+      if (response.data.requiereCambioContrasena) {
+        setTempUsername(response.data.nombreUsuario);
+        setRequiereCambio(true);
+        setIsLoading(false);
+        return;
+      }
+
       const { token, message, rol } = response.data;
       localStorage.setItem('token', token);
       const name = message.replace('Bienvenido/a ', '').trim();
@@ -94,6 +107,34 @@ const Login = () => {
         confirmButtonText: 'Aceptar',
         confirmButtonColor: '#3085d6',
       });
+    }
+  };
+
+  const handleCambioContrasena = async (e) => {
+    e.preventDefault();
+    if (nuevaContrasena !== confirmarContrasena) {
+      Swal.fire({ icon: 'warning', title: 'Atención', text: 'Las contraseñas no coinciden', confirmButtonColor: '#f27474' });
+      return;
+    }
+
+    setIsLoading(true);
+    try {
+      await axios.post(`${API_BASE_URL}/auth/forzar-cambio-contrasena`, {
+        nombreUsuario: tempUsername,
+        nuevaContrasena: nuevaContrasena
+      });
+
+      Swal.fire({ icon: 'success', title: '¡Actualizada!', text: 'Contraseña cambiada con éxito. Por favor, inicia sesión con tus nuevas credenciales.', confirmButtonColor: '#3085d6' });
+
+      // Reseteamos el estado para volver al login normal
+      setRequiereCambio(false);
+      setNuevaContrasena("");
+      setConfirmarContrasena("");
+      document.getElementById('password').value = ''; // Limpiar el input original
+    } catch (error) {
+      Swal.fire({ icon: 'error', title: 'Error', text: 'No se pudo actualizar la contraseña' });
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -194,6 +235,14 @@ const Login = () => {
     setShowPassword(!showPassword);
   };
 
+  const toggleNewPasswordVisibility = () => {
+    setShowNewPassword(!showNewPassword);
+  };
+
+  const toggleConfirmPasswordVisibility = () => {
+    setShowConfirmPassword(!showConfirmPassword);
+  };
+
   return (
     <div style={{ width: '100%', height: '100vh', overflow: 'hidden', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
       {isLoading && (
@@ -264,6 +313,61 @@ const Login = () => {
         <div className="dotted-line line-2"></div>
         <div className="dotted-line line-3"></div>
       </div>
+      {requiereCambio && (
+        <div className="loading-overlay" style={{ zIndex: 101, backgroundColor: 'rgba(0, 10, 30, 0.95)' }}>
+          <div className="login-card loaded" style={{ position: 'relative', transform: 'none', top: 'auto', left: 'auto', margin: '0 20px' }}>
+            <div className="logo-container" style={{ marginBottom: '15px' }}>
+              <h3 style={{ color: 'var(--white)', textAlign: 'center', fontSize: '18px' }}>Bienvenido</h3>
+              <p style={{ color: 'var(--light-blue-2)', fontSize: '12px', textAlign: 'center', marginTop: '5px' }}>
+                Por seguridad, es obligatorio cambiar tu contraseña de acceso inicial.
+              </p>
+            </div>
+            <form className="login-form" onSubmit={handleCambioContrasena}>
+              <div className="form-group-login">
+                <label htmlFor="new-password">Nueva Contraseña</label>
+                <input
+                  type={showNewPassword ? 'text' : 'password'}
+                  id="new-password"
+                  className="form-control-login"
+                  value={nuevaContrasena}
+                  onChange={(e) => setNuevaContrasena(e.target.value)}
+                  required
+                />
+                <div className="toggle-password">
+                  <input
+                    type="checkbox"
+                    id="show-new-password"
+                    onChange={toggleNewPasswordVisibility}
+                  />
+                  <label htmlFor="show-new-password"></label>
+                </div>
+              </div>
+              <div className="form-group-login">
+                <label htmlFor="confirm-password">Confirmar Contraseña</label>
+                <input
+                  type={showConfirmPassword ? 'text' : 'password'}
+                  id="confirm-password"
+                  className="form-control-login"
+                  value={confirmarContrasena}
+                  onChange={(e) => setConfirmarContrasena(e.target.value)}
+                  required
+                />
+                <div className="toggle-password">
+                  <input
+                    type="checkbox"
+                    id="show-confirm-password"
+                    onChange={toggleConfirmPasswordVisibility}
+                  />
+                  <label htmlFor="show-confirm-password"></label>
+                </div>
+              </div>
+              <button type="submit" className="login-btn" disabled={isLoading}>
+                {isLoading ? 'Guardando...' : 'Cambiar y Continuar'}
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
