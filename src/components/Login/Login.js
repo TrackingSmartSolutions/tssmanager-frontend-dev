@@ -74,11 +74,13 @@ const Login = () => {
         return;
       }
 
-      const { token, message, rol } = response.data;
+      const { token, message, rol, modulosActivos } = response.data;
       localStorage.setItem('token', token);
       const name = message.replace('Bienvenido/a ', '').trim();
       localStorage.setItem('userName', name);
       localStorage.setItem('userRol', rol);
+
+      localStorage.setItem('modulosActivos', JSON.stringify(modulosActivos || { crm: true, admin: true, configuracion: true, empresas: true, tratos: true, reportes: true, metricas: true, balance: true, transacciones: true, cotizaciones: true, facturacion: true, cxc: true, cxp: true, comisiones: true, calendario: true }));
 
       const userResponse = await axios.get(`${API_BASE_URL}/auth/users/by-username/${username}`, {
         headers: { Authorization: `Bearer ${token}` },

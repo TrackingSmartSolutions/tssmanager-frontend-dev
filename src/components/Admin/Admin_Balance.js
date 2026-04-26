@@ -116,6 +116,7 @@ const PdfPreviewModal = ({ isOpen, onClose, pdfUrl, onDownload }) => {
 
 const AdminBalance = () => {
   const navigate = useNavigate()
+  const modulosActivos = JSON.parse(localStorage.getItem("modulosActivos")) || { balance: true, transacciones: true, cotizaciones: true, facturacion: true, cxc: true, cxp: true, comisiones: true };
   const [balanceData, setBalanceData] = useState({
     resumenContable: { totalIngresos: 0, totalGastos: 0, utilidadPerdida: 0 },
     graficoMensual: [],
@@ -832,33 +833,53 @@ const AdminBalance = () => {
                 <h3 className="adminbalance-sidebar-title">Administración</h3>
               </div>
               <div className="adminbalance-sidebar-menu">
-                <div
-                  className="adminbalance-menu-item adminbalance-menu-item-active"
-                  onClick={() => handleMenuNavigation("balance")}
-                >
-                  Balance
-                </div>
-                <div className="adminbalance-menu-item" onClick={() => handleMenuNavigation("transacciones")}>
-                  Transacciones
-                </div>
-                <div className="adminbalance-menu-item" onClick={() => handleMenuNavigation("cotizaciones")}>
-                  Cotizaciones
-                </div>
-                <div className="adminbalance-menu-item" onClick={() => handleMenuNavigation("facturas-notas")}>
-                  Facturas/Notas
-                </div>
-                <div className="adminbalance-menu-item" onClick={() => handleMenuNavigation("cuentas-cobrar")}>
-                  Cuentas por Cobrar
-                </div>
-                <div className="adminbalance-menu-item" onClick={() => handleMenuNavigation("cuentas-pagar")}>
-                  Cuentas por Pagar
-                </div>
-                <div className="adminbalance-menu-item" onClick={() => handleMenuNavigation("caja-chica")}>
-                  Caja chica
-                </div>
-                <div className="transacciones-menu-item" onClick={() => handleMenuNavigation("comisiones")}>
-                  Comisiones
-                </div>
+                {modulosActivos.balance && (
+                  <div className="adminbalance-menu-item adminbalance-menu-item-active" onClick={() => handleMenuNavigation("balance")}>
+                    Balance
+                  </div>
+                )}
+
+                {modulosActivos.transacciones && (
+                  <div className="adminbalance-menu-item" onClick={() => handleMenuNavigation("transacciones")}>
+                    Transacciones
+                  </div>
+                )}
+
+                {modulosActivos.cotizaciones && (
+                  <div className="adminbalance-menu-item" onClick={() => handleMenuNavigation("cotizaciones")}>
+                    Cotizaciones
+                  </div>
+                )}
+
+                {modulosActivos.facturacion && (
+                  <div className="adminbalance-menu-item" onClick={() => handleMenuNavigation("facturas-notas")}>
+                    Facturas/Notas
+                  </div>
+                )}
+
+                {modulosActivos.cxc && (
+                  <div className="adminbalance-menu-item" onClick={() => handleMenuNavigation("cuentas-cobrar")}>
+                    Cuentas por Cobrar
+                  </div>
+                )}
+
+                {modulosActivos.cxp && (
+                  <div className="adminbalance-menu-item" onClick={() => handleMenuNavigation("cuentas-pagar")}>
+                    Cuentas por Pagar
+                  </div>
+                )}
+
+                {modulosActivos.transacciones && (
+                  <div className="adminbalance-menu-item" onClick={() => handleMenuNavigation("caja-chica")}>
+                    Caja chica
+                  </div>
+                )}
+
+                {modulosActivos.comisiones && (
+                  <div className="transacciones-menu-item" onClick={() => handleMenuNavigation("comisiones")}>
+                    Comisiones
+                  </div>
+                )}
               </div>
             </section>
             <section className="adminbalance-content-panel">

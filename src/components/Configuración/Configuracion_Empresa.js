@@ -35,6 +35,7 @@ const ConfiguracionEmpresa = () => {
   const [hasChanges, setHasChanges] = useState(false);
   const [isLoading, setIsLoading] = useState(true)
   const navigate = useNavigate();
+  const modulosActivos = JSON.parse(localStorage.getItem("modulosActivos")) || { empresas: true };
 
   useEffect(() => {
     const cargarConfiguracion = async () => {
@@ -294,12 +295,14 @@ const ConfiguracionEmpresa = () => {
             <div className="config-empresa-nav-item" onClick={() => navigate("/configuracion_usuarios")}>
               Usuarios y roles
             </div>
-            <div
-              className="config-empresa-nav-item"
-              onClick={() => navigate("/configuracion_gestion_sectores_plataformas")}
-            >
-              Sectores
-            </div>
+            {modulosActivos.empresas && (
+              <div
+                className="config-empresa-nav-item"
+                onClick={() => navigate("/configuracion_gestion_sectores_plataformas")}
+              >
+                Sectores
+              </div>
+            )}
             <div
               className="config-empresa-nav-item"
               onClick={() => navigate("/configuracion_correos")}

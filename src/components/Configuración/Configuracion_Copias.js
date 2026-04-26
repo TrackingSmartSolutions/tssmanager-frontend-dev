@@ -103,12 +103,15 @@ const ConfiguracionCopias = () => {
   }, [usuarioId]);
 
   const navigate = useNavigate()
+  const modulosActivos = JSON.parse(localStorage.getItem("modulosActivos")) || { tratos: true, empresas: true };
 
   const datosRespaldoOptions = [
-    { value: "TRATOS", label: "Tratos" },
-    { value: "EMPRESAS", label: "Empresas" },
-    { value: "CONTACTOS", label: "Contactos" },
-  ]
+    ...(modulosActivos.tratos ? [{ value: "TRATOS", label: "Tratos" }] : []),
+    ...(modulosActivos.empresas ? [
+      { value: "EMPRESAS", label: "Empresas" },
+      { value: "CONTACTOS", label: "Contactos" }
+    ] : [])
+  ];
 
   const frecuenciaOptions = [
     { value: "SEMANAL", label: "Semanal" },

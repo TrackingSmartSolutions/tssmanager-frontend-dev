@@ -21,6 +21,7 @@ const ConfiguracionCorreos = () => {
   const [correos, setCorreos] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
+  const modulosActivos = JSON.parse(localStorage.getItem("modulosActivos")) || { empresas: true };
 
   useEffect(() => {
     fetchCorreos();
@@ -69,7 +70,9 @@ const ConfiguracionCorreos = () => {
           <div className="correos-nav-item" onClick={() => navigate("/configuracion_almacenamiento")}>Almacenamiento</div>
           <div className="correos-nav-item" onClick={() => navigate("/configuracion_copias_seguridad")}>Copias de Seguridad</div>
           <div className="correos-nav-item" onClick={() => navigate("/configuracion_usuarios")}>Usuarios y roles</div>
-          <div className="correos-nav-item" onClick={() => navigate("/configuracion_gestion_sectores_plataformas")}>Sectores</div>
+          {modulosActivos.empresas && (
+            <div className="correos-nav-item" onClick={() => navigate("/configuracion_gestion_sectores_plataformas")}>Sectores</div>
+          )}
           <div className="correos-nav-item correos-nav-item-active">Historial de Correos</div>
         </nav>
       </div>

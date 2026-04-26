@@ -1498,6 +1498,7 @@ const CrearComisionDesdeCuentaModal = ({ isOpen, onClose, onSave, cuentaId, mont
 // Componente Principal
 const AdminCuentasCobrar = () => {
   const navigate = useNavigate();
+  const modulosActivos = JSON.parse(localStorage.getItem("modulosActivos")) || { balance: true, transacciones: true, cotizaciones: true, facturacion: true, cxc: true, cxp: true, comisiones: true };
   const location = useLocation();
   const userRol = localStorage.getItem("userRol")
   const [cuentasPorCobrar, setCuentasPorCobrar] = useState([]);
@@ -1542,12 +1543,20 @@ const AdminCuentasCobrar = () => {
       try {
         const params = filtroEstatus !== "Todas" ? `?estatus=${filtroEstatus}` : "";
 
-        const [clientesData, cuentasData, emisoresData, categoriasIngresoData] = await Promise.all([
+        const [clientesData, cuentasData, categoriasIngresoData] = await Promise.all([
           fetchWithToken(`${API_BASE_URL}/empresas?estatus=CLIENTE`),
           fetchWithToken(`${API_BASE_URL}/cuentas-por-cobrar${params}`),
-          fetchWithToken(`${API_BASE_URL}/solicitudes-factura-nota/emisores`),
           fetchWithToken(`${API_BASE_URL}/cuentas-por-cobrar/categorias-ingreso`),
         ]);
+
+        let emisoresData = [];
+        if (modulosActivos.facturacion) {
+          try {
+            emisoresData = await fetchWithToken(`${API_BASE_URL}/solicitudes-factura-nota/emisores`);
+          } catch (e) {
+            console.warn("Módulo de facturación inactivo o sin emisores");
+          }
+        }
 
         setClientes(clientesData);
         setCuentasPorCobrar(cuentasData);
@@ -1679,7 +1688,7 @@ const AdminCuentasCobrar = () => {
       prev.map((c) => (c.id === updatedCuenta.id ? { ...c, ...updatedCuenta } : c))
     );
 
-    if (responseData.mostrarModalComision) {
+    if (responseData.mostrarModalComision && modulosActivos.comisiones) {
       setModalComision({
         isOpen: true,
         cuentaId: cuentaId,
@@ -1689,7 +1698,7 @@ const AdminCuentasCobrar = () => {
       Swal.fire({
         icon: "success",
         title: "Éxito",
-        text: "Cuenta marcada como pagada y transacción generada automáticamente por el sistema",
+        text: "Cuenta marcada como pagada correctamente",
       });
     }
   };
@@ -1741,15 +1750,19 @@ const AdminCuentasCobrar = () => {
     try {
       Swal.showLoading();
 
-      const cotizacionData = await fetchWithToken(`${API_BASE_URL}/cotizaciones/${cuenta.cotizacionId}`);
-
+      let cotizacionData = {};
       let tratoNombre = null;
-      if (cotizacionData.tratoId) {
-        try {
-          const tratoResponse = await fetchWithToken(`${API_BASE_URL}/tratos/${cotizacionData.tratoId}`);
-          tratoNombre = tratoResponse.nombre;
-        } catch (error) {
-          console.warn("No se pudo cargar el trato:", error);
+
+      if (modulosActivos.cotizaciones && cuenta.cotizacionId) {
+        cotizacionData = await fetchWithToken(`${API_BASE_URL}/cotizaciones/${cuenta.cotizacionId}`);
+
+        if (modulosActivos.tratos && cotizacionData.tratoId) {
+          try {
+            const tratoResponse = await fetchWithToken(`${API_BASE_URL}/tratos/${cotizacionData.tratoId}`);
+            tratoNombre = tratoResponse.nombre;
+          } catch (error) {
+            console.warn("No se pudo cargar el trato:", error);
+          }
         }
       }
 
@@ -1766,11 +1779,7 @@ const AdminCuentasCobrar = () => {
       }));
     } catch (error) {
       Swal.close();
-      Swal.fire({
-        icon: "error",
-        title: "Error",
-        text: "No se pudo cargar la información de la cuenta: " + error.message,
-      });
+      Swal.fire({ icon: "error", title: "Error", text: "No se pudo cargar la información: " + error.message });
     }
   };
 
@@ -1905,35 +1914,46 @@ const AdminCuentasCobrar = () => {
                 <h3 className="cuentascobrar-sidebar-title">Administración</h3>
               </div>
               <div className="cuentascobrar-sidebar-menu">
-                {userRol === "ADMINISTRADOR" && (
+                {userRol === "ADMINISTRADOR" && modulosActivos.balance && (
                   <div className="cuentascobrar-menu-item" onClick={() => handleMenuNavigation("balance")}>
                     Balance
                   </div>
                 )}
-                <div className="cuentascobrar-menu-item" onClick={() => handleMenuNavigation("transacciones")}>
-                  Transacciones
-                </div>
-                <div className="cuentascobrar-menu-item" onClick={() => handleMenuNavigation("cotizaciones")}>
-                  Cotizaciones
-                </div>
-                <div className="cuentascobrar-menu-item" onClick={() => handleMenuNavigation("facturacion")}>
-                  Facturas/Notas
-                </div>
-                <div
-                  className="cuentascobrar-menu-item cuentascobrar-menu-item-active"
-                  onClick={() => handleMenuNavigation("cuentas-cobrar")}
-                >
-                  Cuentas por Cobrar
-                </div>
-                <div className="cuentascobrar-menu-item" onClick={() => handleMenuNavigation("cuentas-pagar")}>
-                  Cuentas por Pagar
-                </div>
-                <div className="cuentascobrar-menu-item" onClick={() => handleMenuNavigation("caja-chica")}>
-                  Caja chica
-                </div>
-                <div className="transacciones-menu-item" onClick={() => handleMenuNavigation("comisiones")}>
-                  Comisiones
-                </div>
+                {modulosActivos.transacciones && (
+                  <div className="cuentascobrar-menu-item" onClick={() => handleMenuNavigation("transacciones")}>
+                    Transacciones
+                  </div>
+                )}
+                {modulosActivos.cotizaciones && (
+                  <div className="cuentascobrar-menu-item" onClick={() => handleMenuNavigation("cotizaciones")}>
+                    Cotizaciones
+                  </div>
+                )}
+                {modulosActivos.facturacion && (
+                  <div className="cuentascobrar-menu-item" onClick={() => handleMenuNavigation("facturacion")}>
+                    Facturas/Notas
+                  </div>
+                )}
+                {modulosActivos.cxc && (
+                  <div className="cuentascobrar-menu-item cuentascobrar-menu-item-active" onClick={() => handleMenuNavigation("cuentas-cobrar")}>
+                    Cuentas por Cobrar
+                  </div>
+                )}
+                {modulosActivos.cxp && (
+                  <div className="cuentascobrar-menu-item" onClick={() => handleMenuNavigation("cuentas-pagar")}>
+                    Cuentas por Pagar
+                  </div>
+                )}
+                {modulosActivos.transacciones && (
+                  <div className="cuentascobrar-menu-item" onClick={() => handleMenuNavigation("caja-chica")}>
+                    Caja chica
+                  </div>
+                )}
+                {modulosActivos.comisiones && (
+                  <div className="transacciones-menu-item" onClick={() => handleMenuNavigation("comisiones")}>
+                    Comisiones
+                  </div>
+                )}
               </div>
             </section>
 
@@ -2144,34 +2164,36 @@ const AdminCuentasCobrar = () => {
                                       />
                                     </button>
                                   )}
-                                <button
-                                  className={`cuentascobrar-action-btn cuentascobrar-download-btn ${cuentasVinculadas.has(cuenta.id)
-                                    ? 'cuentascobrar-request-btn-vinculada'
-                                    : 'cuentascobrar-request-btn-disponible'
-                                    }`}
-                                  onClick={async () => {
-                                    if (cuentasVinculadas.has(cuenta.id)) {
-                                      Swal.fire({
-                                        icon: "warning",
-                                        title: "Alerta",
-                                        text: "Ya se generó su solicitud de factura/nota",
-                                      });
-                                    } else {
-                                      openModal("crearSolicitud", { cuenta: cuenta });
+                                {modulosActivos.facturacion && (
+                                  <button
+                                    className={`cuentascobrar-action-btn cuentascobrar-download-btn ${cuentasVinculadas.has(cuenta.id)
+                                      ? 'cuentascobrar-request-btn-vinculada'
+                                      : 'cuentascobrar-request-btn-disponible'
+                                      }`}
+                                    onClick={async () => {
+                                      if (cuentasVinculadas.has(cuenta.id)) {
+                                        Swal.fire({
+                                          icon: "warning",
+                                          title: "Alerta",
+                                          text: "Ya se generó su solicitud de factura/nota",
+                                        });
+                                      } else {
+                                        openModal("crearSolicitud", { cuenta: cuenta });
+                                      }
+                                    }}
+                                    title={
+                                      cuentasVinculadas.has(cuenta.id)
+                                        ? "Solicitud ya generada"
+                                        : "Generar Solicitud de Factura o Nota"
                                     }
-                                  }}
-                                  title={
-                                    cuentasVinculadas.has(cuenta.id)
-                                      ? "Solicitud ya generada"
-                                      : "Generar Solicitud de Factura o Nota"
-                                  }
-                                >
-                                  <img
-                                    src={requestIcon || "/placeholder.svg"}
-                                    alt="Emitir"
-                                    className="cuentascobrar-action-icon"
-                                  />
-                                </button>
+                                  >
+                                    <img
+                                      src={requestIcon || "/placeholder.svg"}
+                                      alt="Emitir"
+                                      className="cuentascobrar-action-icon"
+                                    />
+                                  </button>
+                                )}
                               </div>
                             </td>
                           </tr>

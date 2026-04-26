@@ -792,6 +792,7 @@ const ConfiguracionUsuarios = () => {
 
   const [usuarios, setUsuarios] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const modulosActivos = JSON.parse(localStorage.getItem("modulosActivos")) || { empresas: true, tratos: true };
   const [usuariosActivos, setUsuariosActivos] = useState([]);
   const [conflictModalOpen, setConflictModalOpen] = useState(false);
   const [conflictData, setConflictData] = useState([]);
@@ -872,7 +873,11 @@ const ConfiguracionUsuarios = () => {
     const usuario = usuarios.find((u) => u.id === userId)
 
     if (usuario.estatus === "ACTIVO") {
-      // Si va a desactivar, abrir modal de reasignación
+      if (!modulosActivos.tratos) {
+        await ejecutarCambioEstatus(userId);
+        return;
+      }
+
       const usuariosDisponibles = usuariosActivos.filter(u => u.id !== userId)
       if (usuariosDisponibles.length === 0) {
         Swal.fire({
@@ -1086,12 +1091,14 @@ const ConfiguracionUsuarios = () => {
               Copias de Seguridad
             </div>
             <div className="config-usuarios-nav-item config-usuarios-nav-item-active">Usuarios y roles</div>
-            <div
-              className="config-usuarios-nav-item"
-              onClick={() => navigate("/configuracion_gestion_sectores_plataformas")}
-            >
-              Sectores
-            </div>
+            {modulosActivos.empresas && (
+              <div
+                className="config-usuarios-nav-item"
+                onClick={() => navigate("/configuracion_gestion_sectores_plataformas")}
+              >
+                Sectores
+              </div>
+            )}
             <div
               className="config-usuarios-nav-item"
               onClick={() => navigate("/configuracion_correos")}

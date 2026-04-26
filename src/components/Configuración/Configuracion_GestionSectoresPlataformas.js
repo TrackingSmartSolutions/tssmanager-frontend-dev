@@ -193,6 +193,7 @@ const ConfiguracionGestionSectoresPlataformas = () => {
   const [sectores, setSectores] = useState([])
   const [isLoading, setIsLoading] = useState(true)
   const [activeTab, setActiveTab] = useState("sectores")
+  const modulosActivos = JSON.parse(localStorage.getItem("modulosActivos")) || { empresas: true };
   const [modals, setModals] = useState({
     sector: { isOpen: false, mode: "add", data: null },
     confirmarEliminacion: { isOpen: false, data: null, type: null },
@@ -359,9 +360,11 @@ const ConfiguracionGestionSectoresPlataformas = () => {
             <div className="sectores-plataformas-nav-item" onClick={() => navigate("/configuracion_usuarios")}>
               Usuarios y roles
             </div>
-            <div className="sectores-plataformas-nav-item sectores-plataformas-nav-item-active">
-              Sectores
-            </div>
+            {modulosActivos.empresas && (
+              <div className="sectores-plataformas-nav-item sectores-plataformas-nav-item-active">
+                Sectores
+              </div>
+            )}
             <div
               className="sectores-plataformas-nav-item"
               onClick={() => navigate("/configuracion_correos")}

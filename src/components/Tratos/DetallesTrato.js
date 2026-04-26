@@ -3995,6 +3995,7 @@ const SeleccionarProcesoModal = ({ isOpen, onClose, onConfirm }) => {
 const DetallesTrato = () => {
   const params = useParams()
   const navigate = useNavigate()
+  const modulosActivos = JSON.parse(localStorage.getItem("modulosActivos")) || { empresas: true, cotizaciones: true, cxc: true };
   const [trato, setTrato] = useState({
     nombre: "",
     contacto: {
@@ -4743,10 +4744,11 @@ const DetallesTrato = () => {
       'CERRADO_PERDIDO'
     ];
 
-    setShowCotizacionesSection(fasesPermitidas.includes(trato.fase));
+    const debeMostrarCotizaciones = fasesPermitidas.includes(trato.fase) && modulosActivos.cotizaciones;
+    setShowCotizacionesSection(debeMostrarCotizaciones);
 
-    // Cargar cotizaciones si está en fase permitida
-    if (fasesPermitidas.includes(trato.fase)) {
+    // Cargar cotizaciones solo si está en fase permitida Y el módulo está activo
+    if (debeMostrarCotizaciones) {
       cargarCotizaciones();
     }
   }, [trato.fase]);
@@ -5821,7 +5823,12 @@ const DetallesTrato = () => {
                   <button
                     onClick={handleVerEmpresa}
                     className="empresa-link"
-                    disabled={!trato.empresaId}
+                    disabled={!trato.empresaId || !modulosActivos.empresas}
+                    style={{
+                      textDecoration: (!trato.empresaId || !modulosActivos.empresas) ? 'none' : 'underline',
+                      cursor: (!trato.empresaId || !modulosActivos.empresas) ? 'default' : 'pointer',
+                      color: (!trato.empresaId || !modulosActivos.empresas) ? 'inherit' : ''
+                    }}
                   >
                     {trato.nombreEmpresa}
                   </button>
@@ -6297,38 +6304,40 @@ const DetallesTrato = () => {
                             >
                               <img src={send} alt="Enviar" />
                             </button>
-                            <button
-                              onClick={async () => {
-                                const response = await fetchWithToken(`${API_BASE_URL}/cotizaciones/${cotizacion.id}/check-vinculada`);
-                                const { vinculada } = await response.json();
+                            {modulosActivos.cxc && (
+                              <button
+                                onClick={async () => {
+                                  const response = await fetchWithToken(`${API_BASE_URL}/cotizaciones/${cotizacion.id}/check-vinculada`);
+                                  const { vinculada } = await response.json();
 
-                                if (vinculada) {
-                                  Swal.fire({
-                                    icon: "warning",
-                                    title: "Alerta",
-                                    text: "Ya se generaron las cuentas por cobrar para esta cotización",
-                                  });
-                                  setCotizacionesVinculadas(prev => new Set([...prev, cotizacion.id]));
-                                } else {
-                                  openModal("crearCuentas", { cotizacion: cotizacion });
+                                  if (vinculada) {
+                                    Swal.fire({
+                                      icon: "warning",
+                                      title: "Alerta",
+                                      text: "Ya se generaron las cuentas por cobrar para esta cotización",
+                                    });
+                                    setCotizacionesVinculadas(prev => new Set([...prev, cotizacion.id]));
+                                  } else {
+                                    openModal("crearCuentas", { cotizacion: cotizacion });
+                                  }
+                                }}
+                                className={`btn-accion-cotizacion ${cotizacionesVinculadas.has(cotizacion.id)
+                                  ? 'cotizaciones-receivable-btn-vinculada'
+                                  : 'cotizaciones-receivable-btn-disponible'
+                                  }`}
+                                title={
+                                  cotizacionesVinculadas.has(cotizacion.id)
+                                    ? "Cuentas por cobrar ya generadas"
+                                    : "Generar Cuenta por Cobrar"
                                 }
-                              }}
-                              className={`btn-accion-cotizacion ${cotizacionesVinculadas.has(cotizacion.id)
-                                ? 'cotizaciones-receivable-btn-vinculada'
-                                : 'cotizaciones-receivable-btn-disponible'
-                                }`}
-                              title={
-                                cotizacionesVinculadas.has(cotizacion.id)
-                                  ? "Cuentas por cobrar ya generadas"
-                                  : "Generar Cuenta por Cobrar"
-                              }
-                            >
-                              <img
-                                src={receivableIcon}
-                                alt="Cuenta"
-                                className="cotizaciones-action-icon"
-                              />
-                            </button>
+                              >
+                                <img
+                                  src={receivableIcon}
+                                  alt="Cuenta"
+                                  className="cotizaciones-action-icon"
+                                />
+                              </button>
+                            )}
                             <button
                               onClick={() => handleEliminarCotizacion(cotizacion.id)}
                               className="btn-accion-cotizacion"

@@ -107,7 +107,7 @@ const getDefaultPagos = (esquema) => {
   }
 };
 
-const NuevaTransaccionModal = ({ isOpen, onClose, onSave, categorias, cuentas, formasPago, setTransacciones }) => {
+const NuevaTransaccionModal = ({ isOpen, onClose, onSave, categorias, cuentas, formasPago, setTransacciones, modulosActivos }) => {
   const [formData, setFormData] = useState({
     fecha: getTodayDate(),
     tipo: "",
@@ -163,20 +163,20 @@ const NuevaTransaccionModal = ({ isOpen, onClose, onSave, categorias, cuentas, f
       if (formData.categoria) {
         const cat = categorias.find(c => c.descripcion === formData.categoria);
         if (cat) {
-          // Cuentas existentes en base de datos
           const cuentasForCat = cuentas.filter(c => c.categoria && c.categoria.id === cat.id).map(c => c.nombre);
 
-          // Cuentas dinámicas desde APIs
           let cuentasAPI = [];
           const categoriaDesc = formData.categoria.toLowerCase();
 
-          if (formData.tipo === "INGRESO" && ["ventas", "datos y plataforma", "revisiones", "equipos", "pagos de préstamo", "depósitos en garantía"].includes(categoriaDesc)) {
-            const empresas = await fetchEmpresas();
-            cuentasAPI = empresas.map(emp => emp.nombre);
-          } else if (formData.tipo === "GASTO") {
-            if (["rentas", "compra y activación de sim", "recargas de saldos"].includes(categoriaDesc)) {
+          if (modulosActivos.empresas) {
+            if (formData.tipo === "INGRESO" && ["ventas", "datos y plataforma", "revisiones", "equipos", "pagos de préstamo", "depósitos en garantía"].includes(categoriaDesc)) {
               const empresas = await fetchEmpresas();
               cuentasAPI = empresas.map(emp => emp.nombre);
+            } else if (formData.tipo === "GASTO") {
+              if (["rentas", "compra y activación de sim", "recargas de saldos"].includes(categoriaDesc)) {
+                const empresas = await fetchEmpresas();
+                cuentasAPI = empresas.map(emp => emp.nombre);
+              }
             }
           }
 
@@ -239,8 +239,7 @@ const NuevaTransaccionModal = ({ isOpen, onClose, onSave, categorias, cuentas, f
         });
 
         // Verificar si es GASTO con esquema UNICA
-        if (response.data.esUnicaGasto && response.data.cuentaPorPagarId) {
-          // Guardar datos para el modal de pago
+        if (response.data.esUnicaGasto && response.data.cuentaPorPagarId && modulosActivos.cxp) {
           setDatosTransaccionCreada(response.data.transaccion);
           setCuentaPorPagarCreada(response.data.cuentaPorPagarId);
           setMostrarModalPagoInmediato(true);
@@ -1010,6 +1009,7 @@ const CustomDatePickerInput = ({ value, onClick, placeholder }) => (
 
 const AdminTransacciones = () => {
   const navigate = useNavigate();
+  const modulosActivos = JSON.parse(localStorage.getItem("modulosActivos")) || { balance: true, transacciones: true, cotizaciones: true, facturacion: true, cxc: true, cxp: true, comisiones: true };
   const userRol = localStorage.getItem("userRol")
   const [transacciones, setTransacciones] = useState([]);
   const [categorias, setCategorias] = useState([]);
@@ -1345,35 +1345,46 @@ const AdminTransacciones = () => {
                 <h3 className="transacciones-sidebar-title">Administración</h3>
               </div>
               <div className="transacciones-sidebar-menu">
-                {userRol === "ADMINISTRADOR" && (
+                {userRol === "ADMINISTRADOR" && modulosActivos.balance && (
                   <div className="transacciones-menu-item" onClick={() => handleMenuNavigation("balance")}>
                     Balance
                   </div>
                 )}
-                <div
-                  className="transacciones-menu-item transacciones-menu-item-active"
-                  onClick={() => handleMenuNavigation("transacciones")}
-                >
-                  Transacciones
-                </div>
-                <div className="transacciones-menu-item" onClick={() => handleMenuNavigation("cotizaciones")}>
-                  Cotizaciones
-                </div>
-                <div className="transacciones-menu-item" onClick={() => handleMenuNavigation("facturacion")}>
-                  Facturas/Notas
-                </div>
-                <div className="transacciones-menu-item" onClick={() => handleMenuNavigation("cuentas-cobrar")}>
-                  Cuentas por Cobrar
-                </div>
-                <div className="transacciones-menu-item" onClick={() => handleMenuNavigation("cuentas-pagar")}>
-                  Cuentas por Pagar
-                </div>
-                <div className="transacciones-menu-item" onClick={() => handleMenuNavigation("caja-chica")}>
-                  Caja chica
-                </div>
-                <div className="transacciones-menu-item" onClick={() => handleMenuNavigation("comisiones")}>
-                  Comisiones
-                </div>
+                {modulosActivos.transacciones && (
+                  <div className="transacciones-menu-item transacciones-menu-item-active" onClick={() => handleMenuNavigation("transacciones")}>
+                    Transacciones
+                  </div>
+                )}
+                {modulosActivos.cotizaciones && (
+                  <div className="transacciones-menu-item" onClick={() => handleMenuNavigation("cotizaciones")}>
+                    Cotizaciones
+                  </div>
+                )}
+                {modulosActivos.facturacion && (
+                  <div className="transacciones-menu-item" onClick={() => handleMenuNavigation("facturacion")}>
+                    Facturas/Notas
+                  </div>
+                )}
+                {modulosActivos.cxc && (
+                  <div className="transacciones-menu-item" onClick={() => handleMenuNavigation("cuentas-cobrar")}>
+                    Cuentas por Cobrar
+                  </div>
+                )}
+                {modulosActivos.cxp && (
+                  <div className="transacciones-menu-item" onClick={() => handleMenuNavigation("cuentas-pagar")}>
+                    Cuentas por Pagar
+                  </div>
+                )}
+                {modulosActivos.transacciones && (
+                  <div className="transacciones-menu-item" onClick={() => handleMenuNavigation("caja-chica")}>
+                    Caja chica
+                  </div>
+                )}
+                {modulosActivos.comisiones && (
+                  <div className="transacciones-menu-item" onClick={() => handleMenuNavigation("comisiones")}>
+                    Comisiones
+                  </div>
+                )}
               </div>
             </section>
             <section className="transacciones-content-panel">
@@ -1570,6 +1581,7 @@ const AdminTransacciones = () => {
             cuentas={cuentas}
             formasPago={formasPago}
             setTransacciones={setTransacciones}
+            modulosActivos={modulosActivos}
           />
           <GestionarCategoriasModal
             isOpen={modals.gestionarCategorias.isOpen}

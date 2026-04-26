@@ -263,6 +263,7 @@ const ConfiguracionPlantillas = () => {
   const editorRef = useRef(null);
 
   const navigate = useNavigate();
+  const modulosActivos = JSON.parse(localStorage.getItem("modulosActivos")) || { empresas: true };
 
   useEffect(() => {
     fetchTemplates();
@@ -671,12 +672,14 @@ const ConfiguracionPlantillas = () => {
             >
               Usuarios y roles
             </div>
-            <div
-              className="correo-plantillas-nav-item"
-              onClick={() => navigate("/configuracion_gestion_sectores_plataformas")}
-            >
-              Sectores
-            </div>
+            {modulosActivos.empresas && (
+              <div
+                className="correo-plantillas-nav-item"
+                onClick={() => navigate("/configuracion_gestion_sectores_plataformas")}
+              >
+                Sectores
+              </div>
+            )}
             <div
               className="correo-plantillas-nav-item"
               onClick={() => navigate("/configuracion_correos")}

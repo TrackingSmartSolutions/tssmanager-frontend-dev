@@ -430,6 +430,7 @@ const NuevoConceptoModal = ({ isOpen, onClose, onSave, concepto }) => {
 
 // Modal para Nueva/Editar Cotización
 const CotizacionModal = ({ isOpen, onClose, onSave, cotizacion = null, clientes, modals, setModals, users }) => {
+  const modulosActivos = JSON.parse(localStorage.getItem("modulosActivos")) || { tratos: true };
   const [formData, setFormData] = useState({
     cliente: "",
     conceptos: [],
@@ -588,7 +589,7 @@ const CotizacionModal = ({ isOpen, onClose, onSave, cotizacion = null, clientes,
     if (formData.conceptos.length === 0) {
       newErrors.conceptos = "Debe agregar al menos un concepto";
     }
-    if (tratosDisponibles.length > 0 && !formData.tratoId) {
+    if (modulosActivos.tratos && tratosDisponibles.length > 0 && !formData.tratoId) {
       newErrors.tratoId = "Debe vincular un trato a la cotización";
     }
 
@@ -671,7 +672,7 @@ const CotizacionModal = ({ isOpen, onClose, onSave, cotizacion = null, clientes,
             {errors.cliente && <span className="cotizaciones-error-message">{errors.cliente}</span>}
           </div>
 
-          {tratosDisponibles.length > 0 && (
+          {modulosActivos.tratos && tratosDisponibles.length > 0 && (
             <div className="cotizaciones-form-group">
               <label htmlFor="trato">Vincular a Trato <span className="required"> *</span></label>
               <select
@@ -1416,6 +1417,7 @@ const CustomDatePickerInput = ({ value, onClick, placeholder }) => (
 // Componente Principal
 const AdminCotizaciones = () => {
   const navigate = useNavigate()
+  const modulosActivos = JSON.parse(localStorage.getItem("modulosActivos")) || { balance: true, transacciones: true, cotizaciones: true, facturacion: true, cxc: true, cxp: true, comisiones: true };
   const userRol = localStorage.getItem("userRol")
   const [cotizaciones, setCotizaciones] = useState([]);
   const [clientes, setClientes] = useState([]);
@@ -1802,35 +1804,46 @@ const AdminCotizaciones = () => {
                 <h3 className="cotizaciones-sidebar-title">Administración</h3>
               </div>
               <div className="cotizaciones-sidebar-menu">
-                {userRol === "ADMINISTRADOR" && (
+                {userRol === "ADMINISTRADOR" && modulosActivos.balance && (
                   <div className="cotizaciones-menu-item" onClick={() => handleMenuNavigation("balance")}>
                     Balance
                   </div>
                 )}
-                <div className="cotizaciones-menu-item" onClick={() => handleMenuNavigation("transacciones")}>
-                  Transacciones
-                </div>
-                <div
-                  className="cotizaciones-menu-item cotizaciones-menu-item-active"
-                  onClick={() => handleMenuNavigation("cotizaciones")}
-                >
-                  Cotizaciones
-                </div>
-                <div className="cotizaciones-menu-item" onClick={() => handleMenuNavigation("facturacion")}>
-                  Facturas/Notas
-                </div>
-                <div className="cotizaciones-menu-item" onClick={() => handleMenuNavigation("cuentas-cobrar")}>
-                  Cuentas por Cobrar
-                </div>
-                <div className="cotizaciones-menu-item" onClick={() => handleMenuNavigation("cuentas-pagar")}>
-                  Cuentas por Pagar
-                </div>
-                <div className="cotizaciones-menu-item" onClick={() => handleMenuNavigation("caja-chica")}>
-                  Caja chica
-                </div>
-                <div className="transacciones-menu-item" onClick={() => handleMenuNavigation("comisiones")}>
-                  Comisiones
-                </div>
+                {modulosActivos.transacciones && (
+                  <div className="cotizaciones-menu-item" onClick={() => handleMenuNavigation("transacciones")}>
+                    Transacciones
+                  </div>
+                )}
+                {modulosActivos.cotizaciones && (
+                  <div className="cotizaciones-menu-item cotizaciones-menu-item-active" onClick={() => handleMenuNavigation("cotizaciones")}>
+                    Cotizaciones
+                  </div>
+                )}
+                {modulosActivos.facturacion && (
+                  <div className="cotizaciones-menu-item" onClick={() => handleMenuNavigation("facturacion")}>
+                    Facturas/Notas
+                  </div>
+                )}
+                {modulosActivos.cxc && (
+                  <div className="cotizaciones-menu-item" onClick={() => handleMenuNavigation("cuentas-cobrar")}>
+                    Cuentas por Cobrar
+                  </div>
+                )}
+                {modulosActivos.cxp && (
+                  <div className="cotizaciones-menu-item" onClick={() => handleMenuNavigation("cuentas-pagar")}>
+                    Cuentas por Pagar
+                  </div>
+                )}
+                {modulosActivos.transacciones && (
+                  <div className="cotizaciones-menu-item" onClick={() => handleMenuNavigation("caja-chica")}>
+                    Caja chica
+                  </div>
+                )}
+                {modulosActivos.comisiones && (
+                  <div className="transacciones-menu-item" onClick={() => handleMenuNavigation("comisiones")}>
+                    Comisiones
+                  </div>
+                )}
               </div>
             </section>
 
@@ -1961,36 +1974,38 @@ const AdminCotizaciones = () => {
                                       className="cotizaciones-action-icon"
                                     />
                                   </button>
-                                  <button
-                                    className={`cotizaciones-action-btn cotizaciones-receivable-btn ${cotizacionesVinculadas.has(cotizacion.id)
-                                      ? 'cotizaciones-receivable-btn-vinculada'
-                                      : 'cotizaciones-receivable-btn-disponible'
-                                      }`}
-                                    onClick={async () => {
-                                      const response = await fetchWithToken(`${API_BASE_URL}/cotizaciones/${cotizacion.id}/check-vinculada`);
-                                      const { vinculada } = await response.json();
-                                      if (vinculada) {
-                                        Swal.fire({
-                                          icon: "warning",
-                                          title: "Alerta",
-                                          text: "Ya se generaron las cuentas por cobrar",
-                                        });
-                                      } else {
-                                        openModal("crearCuentas", { cotizacion: cotizacion });
+                                  {modulosActivos.cxc && (
+                                    <button
+                                      className={`cotizaciones-action-btn cotizaciones-receivable-btn ${cotizacionesVinculadas.has(cotizacion.id)
+                                        ? 'cotizaciones-receivable-btn-vinculada'
+                                        : 'cotizaciones-receivable-btn-disponible'
+                                        }`}
+                                      onClick={async () => {
+                                        const response = await fetchWithToken(`${API_BASE_URL}/cotizaciones/${cotizacion.id}/check-vinculada`);
+                                        const { vinculada } = await response.json();
+                                        if (vinculada) {
+                                          Swal.fire({
+                                            icon: "warning",
+                                            title: "Alerta",
+                                            text: "Ya se generaron las cuentas por cobrar",
+                                          });
+                                        } else {
+                                          openModal("crearCuentas", { cotizacion: cotizacion });
+                                        }
+                                      }}
+                                      title={
+                                        cotizacionesVinculadas.has(cotizacion.id)
+                                          ? "Cuentas por cobrar ya generadas"
+                                          : "Generar Cuenta por Cobrar"
                                       }
-                                    }}
-                                    title={
-                                      cotizacionesVinculadas.has(cotizacion.id)
-                                        ? "Cuentas por cobrar ya generadas"
-                                        : "Generar Cuenta por Cobrar"
-                                    }
-                                  >
-                                    <img
-                                      src={receivableIcon || "/placeholder.svg"}
-                                      alt="Generar Cuenta"
-                                      className="cotizaciones-action-icon"
-                                    />
-                                  </button>
+                                    >
+                                      <img
+                                        src={receivableIcon || "/placeholder.svg"}
+                                        alt="Generar Cuenta"
+                                        className="cotizaciones-action-icon"
+                                      />
+                                    </button>
+                                  )}
                                 </div>
                               </td>
                             </tr>

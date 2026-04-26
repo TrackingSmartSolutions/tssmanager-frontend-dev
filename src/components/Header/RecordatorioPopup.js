@@ -6,6 +6,7 @@ import './RecordatorioPopup.css';
 const RecordatorioPopup = ({ actividad, onClose, onDismiss }) => {
     const [isVisible, setIsVisible] = useState(false);
     const navigate = useNavigate();
+    const modulosActivos = JSON.parse(localStorage.getItem("modulosActivos")) || { tratos: true };
 
     useEffect(() => {
         // Animación de entrada
@@ -101,7 +102,7 @@ const RecordatorioPopup = ({ actividad, onClose, onDismiss }) => {
                     </p>
                 )}
 
-                {actividad.tratoId && (
+                {actividad.tratoId && modulosActivos.tratos && (
                     <button
                         onClick={handleVerTrato}
                         className="recordatorio-btn-accion"

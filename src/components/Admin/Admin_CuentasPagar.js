@@ -561,6 +561,7 @@ const CustomDatePickerInput = ({ value, onClick, placeholder }) => (
 // Componente Principal
 const AdminCuentasPagar = () => {
   const navigate = useNavigate();
+  const modulosActivos = JSON.parse(localStorage.getItem("modulosActivos")) || { balance: true, transacciones: true, cotizaciones: true, facturacion: true, cxc: true, cxp: true, comisiones: true };
   const location = useLocation();
   const userRol = localStorage.getItem("userRol")
   const [cuentasPagar, setCuentasPagar] = useState([]);
@@ -1112,35 +1113,46 @@ const AdminCuentasPagar = () => {
                 <h3 className="cuentaspagar-sidebar-title">Administración</h3>
               </div>
               <div className="cuentaspagar-sidebar-menu">
-                {userRol === "ADMINISTRADOR" && (
+                {userRol === "ADMINISTRADOR" && modulosActivos.balance && (
                   <div className="cuentaspagar-menu-item" onClick={() => handleMenuNavigation("balance")}>
                     Balance
                   </div>
                 )}
-                <div className="cuentaspagar-menu-item" onClick={() => handleMenuNavigation("transacciones")}>
-                  Transacciones
-                </div>
-                <div className="cuentaspagar-menu-item" onClick={() => handleMenuNavigation("cotizaciones")}>
-                  Cotizaciones
-                </div>
-                <div className="cuentaspagar-menu-item" onClick={() => handleMenuNavigation("facturacion")}>
-                  Facturas/Notas
-                </div>
-                <div className="cuentaspagar-menu-item" onClick={() => handleMenuNavigation("cuentas-cobrar")}>
-                  Cuentas por Cobrar
-                </div>
-                <div
-                  className="cuentaspagar-menu-item cuentaspagar-menu-item-active"
-                  onClick={() => handleMenuNavigation("cuentas-pagar")}
-                >
-                  Cuentas por Pagar
-                </div>
-                <div className="cuentaspagar-menu-item" onClick={() => handleMenuNavigation("caja-chica")}>
-                  Caja chica
-                </div>
-                <div className="transacciones-menu-item" onClick={() => handleMenuNavigation("comisiones")}>
-                  Comisiones
-                </div>
+                {modulosActivos.transacciones && (
+                  <div className="cuentaspagar-menu-item" onClick={() => handleMenuNavigation("transacciones")}>
+                    Transacciones
+                  </div>
+                )}
+                {modulosActivos.cotizaciones && (
+                  <div className="cuentaspagar-menu-item" onClick={() => handleMenuNavigation("cotizaciones")}>
+                    Cotizaciones
+                  </div>
+                )}
+                {modulosActivos.facturacion && (
+                  <div className="cuentaspagar-menu-item" onClick={() => handleMenuNavigation("facturacion")}>
+                    Facturas/Notas
+                  </div>
+                )}
+                {modulosActivos.cxc && (
+                  <div className="cuentaspagar-menu-item" onClick={() => handleMenuNavigation("cuentas-cobrar")}>
+                    Cuentas por Cobrar
+                  </div>
+                )}
+                {modulosActivos.cxp && (
+                  <div className="cuentaspagar-menu-item cuentaspagar-menu-item-active" onClick={() => handleMenuNavigation("cuentas-pagar")}>
+                    Cuentas por Pagar
+                  </div>
+                )}
+                {modulosActivos.transacciones && (
+                  <div className="cuentaspagar-menu-item" onClick={() => handleMenuNavigation("caja-chica")}>
+                    Caja chica
+                  </div>
+                )}
+                {modulosActivos.comisiones && (
+                  <div className="transacciones-menu-item" onClick={() => handleMenuNavigation("comisiones")}>
+                    Comisiones
+                  </div>
+                )}
               </div>
             </section>
 

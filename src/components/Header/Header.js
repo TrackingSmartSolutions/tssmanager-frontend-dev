@@ -31,6 +31,7 @@ const Header = ({ logoUrl }) => {
   const location = useLocation()
   const userName = localStorage.getItem("userName") || "Usuario"
   const userRol = localStorage.getItem("userRol") || "EMPLEADO"
+  const modulosActivos = JSON.parse(localStorage.getItem("modulosActivos")) || { crm: true, admin: true, configuracion: true };
   const cantidadNoLeidasRef = useRef(0);
   const primeraCargarRef = useRef(true);
 
@@ -744,9 +745,17 @@ const Header = ({ logoUrl }) => {
       }
 
       if (notificacion.tipoNotificacion === 'CUENTA_COBRAR') {
-        navigate("/admin_cuentas_cobrar", { state: { filtroFolio: folio } });
+        if (modulosActivos.cxc) {
+          navigate("/admin_cuentas_cobrar", { state: { filtroFolio: folio } });
+        } else {
+          Swal.fire({ icon: 'info', title: 'Módulo Inactivo', text: 'El módulo de Cuentas por Cobrar se encuentra desactivado en su plan actual.' });
+        }
       } else {
-        navigate("/admin_cuentas_pagar", { state: { filtroFolio: folio } });
+        if (modulosActivos.cxp) {
+          navigate("/admin_cuentas_pagar", { state: { filtroFolio: folio } });
+        } else {
+          Swal.fire({ icon: 'info', title: 'Módulo Inactivo', text: 'El módulo de Cuentas por Pagar se encuentra desactivado en su plan actual.' });
+        }
       }
     }
 
@@ -755,7 +764,11 @@ const Header = ({ logoUrl }) => {
 
       if (idMatch && idMatch[1]) {
         const tratoId = idMatch[1];
-        navigate(`/detallestrato/${tratoId}`);
+        if (modulosActivos.tratos) {
+          navigate(`/detallestrato/${tratoId}`);
+        } else {
+          Swal.fire({ icon: 'info', title: 'Módulo Inactivo', text: 'El módulo de Tratos se encuentra desactivado en su plan actual.' });
+        }
       } else {
         console.warn("Esta notificación antigua no contiene ID para redirigir.");
       }
@@ -796,41 +809,35 @@ const Header = ({ logoUrl }) => {
         {/* Menú de navegación para escritorio */}
         <nav className="ts-header-navbar-menu ts-header-desktop-menu">
           <ul>
-            <li className="ts-header-has-dropdown">
-              <a href="#" onClick={toggleCrmDropdown}>
-                CRM{" "}
-                <img
-                  src={dropdownIcon || "/placeholder.svg"}
-                  alt="Icono desplegable"
-                  className={`ts-header-dropdown-arrow ${isCrmDropdownOpen ? "open" : ""}`}
-                />
-              </a>
-              {isCrmDropdownOpen && (
-                <ul className="ts-header-dropdown-menu">
-                  <li>
-                    <Link to="/empresas" onClick={() => setIsCrmDropdownOpen(false)}>
-                      Empresas
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/tratos" onClick={() => setIsCrmDropdownOpen(false)}>
-                      Tratos
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/reporte_personal" onClick={() => setIsCrmDropdownOpen(false)}>
-                      Reporte personal
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/metricas_generales" onClick={() => setIsCrmDropdownOpen(false)}>
-                      Métricas Generales
-                    </Link>
-                  </li>
-                </ul>
-              )}
-            </li>
-            {(userRol === "ADMINISTRADOR" || userRol === "GESTOR") && (
+            {modulosActivos.crm && (
+              <li className="ts-header-has-dropdown">
+                <a href="#" onClick={toggleCrmDropdown}>
+                  CRM{" "}
+                  <img
+                    src={dropdownIcon || "/placeholder.svg"}
+                    alt="Icono desplegable"
+                    className={`ts-header-dropdown-arrow ${isCrmDropdownOpen ? "open" : ""}`}
+                  />
+                </a>
+                {isCrmDropdownOpen && (
+                  <ul className="ts-header-dropdown-menu">
+                    {modulosActivos.empresas && (
+                      <li><Link to="/empresas" onClick={() => setIsCrmDropdownOpen(false)}>Empresas</Link></li>
+                    )}
+                    {modulosActivos.tratos && (
+                      <li><Link to="/tratos" onClick={() => setIsCrmDropdownOpen(false)}>Tratos</Link></li>
+                    )}
+                    {modulosActivos.reportes && (
+                      <li><Link to="/reporte_personal" onClick={() => setIsCrmDropdownOpen(false)}>Reporte personal</Link></li>
+                    )}
+                    {modulosActivos.metricas && (
+                      <li><Link to="/metricas_generales" onClick={() => setIsCrmDropdownOpen(false)}>Métricas Generales</Link></li>
+                    )}
+                  </ul>
+                )}
+              </li>
+            )}
+            {(userRol === "ADMINISTRADOR" || userRol === "GESTOR") && modulosActivos.admin && (
               <li>
                 <Link to={userRol === "ADMINISTRADOR" ? "/admin_balance" : "/admin_transacciones"}>Admin</Link>
               </li>
@@ -839,10 +846,11 @@ const Header = ({ logoUrl }) => {
         </nav>
 
         <div className="ts-header-navbar-end">
-
-          <button className="ts-header-icon-button" onClick={() => navigate("/calendario")}>
-            <img src={calendarIcon} alt="Icono de Calendario" />
-          </button>
+          {modulosActivos.calendario && (
+            <button className="ts-header-icon-button" onClick={() => navigate("/calendario")}>
+              <img src={calendarIcon} alt="Icono de Calendario" />
+            </button>
+          )}
 
           <div className="header-notification-container">
             <button className="ts-header-icon-button ts-header-notification" onClick={handleNotificationClick}>
@@ -933,7 +941,7 @@ const Header = ({ logoUrl }) => {
                     Ayuda
                   </a>
                 </li>
-                {userRol === "ADMINISTRADOR" && (
+                {userRol === "ADMINISTRADOR" && modulosActivos.configuracion && (
                   <li>
                     <Link to="/configuracion_plantillas" onClick={() => setIsProfileDropdownOpen(false)}>
                       Configuración
@@ -978,43 +986,37 @@ const Header = ({ logoUrl }) => {
           </button>
         </div>
         <nav className="ts-header-sidebar-menu">
-          <div className="ts-header-sidebar-section">
-            <div
-              className="ts-header-sidebar-section-header"
-              onClick={handleCrmToggle}
-              onTouchStart={handleCrmToggle}
-            >
-              <span>CRM</span>
-              <img
-                src={dropdownIcon || "/placeholder.svg"}
-                alt="Expandir"
-                className={`ts-header-sidebar-dropdown-icon ${isCrmDropdownOpen ? "open" : ""}`}
-              />
+          {modulosActivos.crm && (
+            <div className="ts-header-sidebar-section">
+              <div
+                className="ts-header-sidebar-section-header"
+                onClick={handleCrmToggle}
+                onTouchStart={handleCrmToggle}
+              >
+                <span>CRM</span>
+                <img
+                  src={dropdownIcon || "/placeholder.svg"}
+                  alt="Expandir"
+                  className={`ts-header-sidebar-dropdown-icon ${isCrmDropdownOpen ? "open" : ""}`}
+                />
+              </div>
+              <ul className={`ts-header-sidebar-submenu ${isCrmDropdownOpen ? "open" : ""}`}>
+                {modulosActivos.empresas && (
+                  <li><Link to="/empresas" onClick={toggleSidebar}>Empresas</Link></li>
+                )}
+                {modulosActivos.tratos && (
+                  <li><Link to="/tratos" onClick={toggleSidebar}>Tratos</Link></li>
+                )}
+                {modulosActivos.reportes && (
+                  <li><Link to="/reporte_personal" onClick={toggleSidebar}>Reporte personal</Link></li>
+                )}
+                {modulosActivos.metricas && (
+                  <li><Link to="/metricas_generales" onClick={toggleSidebar}>Métricas Generales</Link></li>
+                )}
+              </ul>
             </div>
-            <ul className={`ts-header-sidebar-submenu ${isCrmDropdownOpen ? "open" : ""}`}>
-              <li>
-                <Link to="/empresas" onClick={toggleSidebar}>
-                  Empresas
-                </Link>
-              </li>
-              <li>
-                <Link to="/tratos" onClick={toggleSidebar}>
-                  Tratos
-                </Link>
-              </li>
-              <li>
-                <Link to="/reporte_personal" onClick={toggleSidebar}>
-                  Reporte personal
-                </Link>
-              </li>
-              <li>
-                <Link to="/metricas_generales" onClick={toggleSidebar}>
-                  Métricas Generales
-                </Link>
-              </li>
-            </ul>
-          </div>
-          {(userRol === "ADMINISTRADOR" || userRol === "GESTOR") && (
+          )}
+          {(userRol === "ADMINISTRADOR" || userRol === "GESTOR") && modulosActivos.admin && (
             <div className="ts-header-sidebar-section">
               <Link to={userRol === "ADMINISTRADOR" ? "/admin_balance" : "/admin_transacciones"} onClick={toggleSidebar} className="ts-header-sidebar-link">
                 Admin
@@ -1032,7 +1034,7 @@ const Header = ({ logoUrl }) => {
           >
             Ayuda
           </a>
-          {userRol === "ADMINISTRADOR" && (
+          {userRol === "ADMINISTRADOR" && modulosActivos.configuracion && (
             <Link to="/configuracion_plantillas" onClick={toggleSidebar} className="ts-header-sidebar-footer-link">
               Configuración
             </Link>

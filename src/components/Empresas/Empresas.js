@@ -12,7 +12,6 @@ import { API_BASE_URL } from "../Config/Config"
 import MapModal from './MapModal';
 import Swal from "sweetalert2"
 import stringSimilarity from "string-similarity";
-
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -1417,6 +1416,7 @@ const ConfirmarEliminacionModal = ({ isOpen, onClose, onConfirm, contacto, isLas
 const Empresas = () => {
   const userRol = localStorage.getItem("userRol");
   const params = useParams();
+  const modulosActivos = JSON.parse(localStorage.getItem("modulosActivos")) || { tratos: true };
   const [selectedCompany, setSelectedCompany] = useState(null)
   const [contacts, setContacts] = useState([])
   const [searchTerm, setSearchTerm] = useState("")
@@ -1632,7 +1632,8 @@ const Empresas = () => {
 
   useEffect(() => {
     const fetchTratos = async () => {
-      if (!selectedCompany?.id) {
+
+      if (!selectedCompany?.id || !modulosActivos.tratos) {
         setTratos([]);
         return;
       }
@@ -1670,7 +1671,7 @@ const Empresas = () => {
   }, [selectedCompany?.id]);
 
   useEffect(() => {
-    if (companies.length > 0) {
+    if (companies.length > 0 && modulosActivos.tratos) {
       checkCompaniesWithoutDeals();
     }
   }, [companies.length]);
@@ -2145,8 +2146,7 @@ const Empresas = () => {
                 {filteredCompanies.map((company) => (
                   <div
                     key={company.id}
-                    className={`company-item ${selectedCompany?.id === company.id ? "selected" : ""} ${companiesWithoutDeals.has(company.id) ? "no-deals" : ""
-                      }`}
+                    className={`company-item ${selectedCompany?.id === company.id ? "selected" : ""} ${modulosActivos.tratos && companiesWithoutDeals.has(company.id) ? "no-deals" : ""}`}
                     onClick={() => handleCompanySelect(company)}
                   >
                     <div className="company-info">
@@ -2321,79 +2321,81 @@ const Empresas = () => {
                       </table>
                     </div>
                   </div>
-                  <div className="tratos-section">
-                    <div className="tratos-header">
-                      <h3>Tratos de la Empresa</h3>
-                      <button
-                        className="btn btn-add"
-                        onClick={handleCrearTratoDesdeEmpresa}
-                        disabled={!selectedCompany}
-                      >
-                        Crear Trato
-                      </button>
-                    </div>
-                    <div className="tratos-table-container">
-                      <table className="tratos-table">
-                        <thead>
-                          <tr>
-                            <th>No. Trato</th>
-                            <th>Nombre del Trato</th>
-                            <th>Nombre del Contacto</th>
-                            <th>Propietario</th>
-                            <th>Fase</th>
-                            <th>Fecha de Cierre</th>
-                            {(userRol === "ADMINISTRADOR" || userRol === "GESTOR") && (
-                              <th>Acciones</th>
-                            )}
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {tratos.length > 0 ? (
-                            tratos.map((trato, index) => (
-                              <tr
-                                key={trato.id}
-                                style={{ cursor: 'pointer' }}
-                                className="trato-row-clickable"
-                              >
-                                <td onClick={() => handleTratoClick(trato.id)}>{trato.noTrato || index + 1}</td>
-                                <td onClick={() => handleTratoClick(trato.id)}>{trato.nombre || "N/A"}</td>
-                                <td onClick={() => handleTratoClick(trato.id)}>{trato.contacto?.nombre || "N/A"}</td>
-                                <td onClick={() => handleTratoClick(trato.id)}>{trato.propietarioNombre || "N/A"}</td>
-                                <td onClick={() => handleTratoClick(trato.id)}>{trato.fase || "N/A"}</td>
-                                <td onClick={() => handleTratoClick(trato.id)}>
-                                  {trato.fechaCierre
-                                    ? new Date(trato.fechaCierre).toLocaleDateString("es-MX")
-                                    : "N/A"}
-                                </td>
-                                {(userRol === "ADMINISTRADOR" || userRol === "GESTOR") && (
-                                  <td>
-                                    <div className="action-buttons">
-                                      <button
-                                        className="btn-action delete"
-                                        onClick={(e) => handleDeleteTrato(trato.id, e)}
-                                        title="Eliminar trato"
-                                      >
-                                        <img src={deleteIcon} alt="Eliminar" />
-                                      </button>
-                                    </div>
-                                  </td>
-                                )}
-                              </tr>
-                            ))
-                          ) : (
+                  {modulosActivos.tratos && (
+                    <div className="tratos-section">
+                      <div className="tratos-header">
+                        <h3>Tratos de la Empresa</h3>
+                        <button
+                          className="btn btn-add"
+                          onClick={handleCrearTratoDesdeEmpresa}
+                          disabled={!selectedCompany}
+                        >
+                          Crear Trato
+                        </button>
+                      </div>
+                      <div className="tratos-table-container">
+                        <table className="tratos-table">
+                          <thead>
                             <tr>
-                              <td
-                                colSpan={(userRol === "ADMINISTRADOR" || userRol === "GESTOR") ? 7 : 6}
-                                className="no-data"
-                              >
-                                No se encontraron tratos para esta empresa
-                              </td>
+                              <th>No. Trato</th>
+                              <th>Nombre del Trato</th>
+                              <th>Nombre del Contacto</th>
+                              <th>Propietario</th>
+                              <th>Fase</th>
+                              <th>Fecha de Cierre</th>
+                              {(userRol === "ADMINISTRADOR" || userRol === "GESTOR") && (
+                                <th>Acciones</th>
+                              )}
                             </tr>
-                          )}
-                        </tbody>
-                      </table>
+                          </thead>
+                          <tbody>
+                            {tratos.length > 0 ? (
+                              tratos.map((trato, index) => (
+                                <tr
+                                  key={trato.id}
+                                  style={{ cursor: 'pointer' }}
+                                  className="trato-row-clickable"
+                                >
+                                  <td onClick={() => handleTratoClick(trato.id)}>{trato.noTrato || index + 1}</td>
+                                  <td onClick={() => handleTratoClick(trato.id)}>{trato.nombre || "N/A"}</td>
+                                  <td onClick={() => handleTratoClick(trato.id)}>{trato.contacto?.nombre || "N/A"}</td>
+                                  <td onClick={() => handleTratoClick(trato.id)}>{trato.propietarioNombre || "N/A"}</td>
+                                  <td onClick={() => handleTratoClick(trato.id)}>{trato.fase || "N/A"}</td>
+                                  <td onClick={() => handleTratoClick(trato.id)}>
+                                    {trato.fechaCierre
+                                      ? new Date(trato.fechaCierre).toLocaleDateString("es-MX")
+                                      : "N/A"}
+                                  </td>
+                                  {(userRol === "ADMINISTRADOR" || userRol === "GESTOR") && (
+                                    <td>
+                                      <div className="action-buttons">
+                                        <button
+                                          className="btn-action delete"
+                                          onClick={(e) => handleDeleteTrato(trato.id, e)}
+                                          title="Eliminar trato"
+                                        >
+                                          <img src={deleteIcon} alt="Eliminar" />
+                                        </button>
+                                      </div>
+                                    </td>
+                                  )}
+                                </tr>
+                              ))
+                            ) : (
+                              <tr>
+                                <td
+                                  colSpan={(userRol === "ADMINISTRADOR" || userRol === "GESTOR") ? 7 : 6}
+                                  className="no-data"
+                                >
+                                  No se encontraron tratos para esta empresa
+                                </td>
+                              </tr>
+                            )}
+                          </tbody>
+                        </table>
+                      </div>
                     </div>
-                  </div>
+                  )}
                 </>
               ) : (
                 <div className="no-selection">

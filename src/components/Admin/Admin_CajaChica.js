@@ -177,6 +177,7 @@ const CustomDatePickerInput = ({ value, onClick, placeholder }) => (
 
 const AdminCajaChica = () => {
   const navigate = useNavigate()
+  const modulosActivos = JSON.parse(localStorage.getItem("modulosActivos")) || { balance: true, transacciones: true, cotizaciones: true, facturacion: true, cxc: true, cxp: true, comisiones: true };
   const userRol = localStorage.getItem("userRol")
   const [transaccionesEfectivo, setTransaccionesEfectivo] = useState([])
   const [isLoading, setIsLoading] = useState(true)
@@ -210,7 +211,6 @@ const AdminCajaChica = () => {
 
     return [primerDia, ultimoDia];
   };
-
 
   useEffect(() => {
     const fetchData = async () => {
@@ -685,35 +685,56 @@ const AdminCajaChica = () => {
                 <h3 className="cajachica-sidebar-title">Administración</h3>
               </div>
               <div className="cajachica-sidebar-menu">
-                {userRol === "ADMINISTRADOR" && (
+                {userRol === "ADMINISTRADOR" && modulosActivos.balance && (
                   <div className="cajachica-menu-item" onClick={() => handleMenuNavigation("balance")}>
                     Balance
                   </div>
                 )}
-                <div className="cajachica-menu-item" onClick={() => handleMenuNavigation("transacciones")}>
-                  Transacciones
-                </div>
-                <div className="cajachica-menu-item" onClick={() => handleMenuNavigation("cotizaciones")}>
-                  Cotizaciones
-                </div>
-                <div className="cajachica-menu-item" onClick={() => handleMenuNavigation("facturacion")}>
-                  Facturas/Notas
-                </div>
-                <div className="cajachica-menu-item" onClick={() => handleMenuNavigation("cuentas-cobrar")}>
-                  Cuentas por Cobrar
-                </div>
-                <div className="cajachica-menu-item" onClick={() => handleMenuNavigation("cuentas-pagar")}>
-                  Cuentas por Pagar
-                </div>
-                <div
-                  className="cajachica-menu-item cajachica-menu-item-active"
-                  onClick={() => handleMenuNavigation("caja-chica")}
-                >
-                  Caja chica
-                </div>
-                <div className="transacciones-menu-item" onClick={() => handleMenuNavigation("comisiones")}>
-                  Comisiones
-                </div>
+
+                {modulosActivos.transacciones && (
+                  <div className="cajachica-menu-item" onClick={() => handleMenuNavigation("transacciones")}>
+                    Transacciones
+                  </div>
+                )}
+
+                {modulosActivos.cotizaciones && (
+                  <div className="cajachica-menu-item" onClick={() => handleMenuNavigation("cotizaciones")}>
+                    Cotizaciones
+                  </div>
+                )}
+
+                {modulosActivos.facturacion && (
+                  <div className="cajachica-menu-item" onClick={() => handleMenuNavigation("facturacion")}>
+                    Facturas/Notas
+                  </div>
+                )}
+
+                {modulosActivos.cxc && (
+                  <div className="cajachica-menu-item" onClick={() => handleMenuNavigation("cuentas-cobrar")}>
+                    Cuentas por Cobrar
+                  </div>
+                )}
+
+                {modulosActivos.cxp && (
+                  <div className="cajachica-menu-item" onClick={() => handleMenuNavigation("cuentas-pagar")}>
+                    Cuentas por Pagar
+                  </div>
+                )}
+
+                {modulosActivos.transacciones && (
+                  <div
+                    className="cajachica-menu-item cajachica-menu-item-active"
+                    onClick={() => handleMenuNavigation("caja-chica")}
+                  >
+                    Caja chica
+                  </div>
+                )}
+
+                {modulosActivos.comisiones && (
+                  <div className="transacciones-menu-item" onClick={() => handleMenuNavigation("comisiones")}>
+                    Comisiones
+                  </div>
+                )}
               </div>
             </section>
             <section className="cajachica-content-panel">

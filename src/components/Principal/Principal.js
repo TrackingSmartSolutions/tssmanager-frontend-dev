@@ -1057,6 +1057,7 @@ const Principal = () => {
   const navigate = useNavigate();
   const userName = localStorage.getItem("userName") || "Usuario";
   const userRol = localStorage.getItem("userRol") || "EMPLEADO";
+  const modulosActivos = JSON.parse(localStorage.getItem("modulosActivos")) || { crm: true, tratos: true, empresas: true, metricas: true };
   const [selectedUser, setSelectedUser] = useState("Todos");
   const [isLoadingTratos, setIsLoadingTratos] = useState(true);
   const [isLoadingUsuarios, setIsLoadingUsuarios] = useState(true);
@@ -1336,14 +1337,19 @@ const Principal = () => {
       }
     };
 
-    // Ejecutar todas las funciones de carga
     const loadInitialData = async () => {
-      await Promise.all([
-        fetchUsuarios(),
-        fetchTratosPorFase(),
-        fetchEmpresas(),
-        fetchTareasPendientes()
-      ]);
+      const promesas = [fetchUsuarios()];
+
+      if (modulosActivos.tratos) {
+        promesas.push(fetchTratosPorFase());
+        promesas.push(fetchTareasPendientes());
+      }
+
+      if (modulosActivos.empresas) {
+        promesas.push(fetchEmpresas());
+      }
+
+      await Promise.all(promesas);
     };
 
     loadInitialData();
@@ -1574,121 +1580,127 @@ const Principal = () => {
           </h1>
 
           <div className="dashboard-container">
-            <section className="tasks-panel">
-              <h2>Mis tareas pendientes del día de hoy</h2>
-              <div className="task-list">
-                {tareasPendientes.length > 0 ? (
-                  tareasPendientes.map((task) => (
-                    <div key={task.id} className="task-item">
-                      <div className="task-info">
-                        <div className="task-header">
-                          {task.empresaNombre && (
-                            <div
-                              className="task-empresa clickable"
-                              onClick={() => handleEmpresaClick(task.tratoId)}
-                              style={{ cursor: 'pointer' }}
-                            >
-                              {task.empresaNombre}
-                            </div>
-                          )}
-                          <h3>
-                            {task.tipo === "LLAMADA" && <img src={phoneIcon || "/placeholder.svg"} alt="Icono de Teléfono" className="task-icon" />}
-                            {task.tipo === "REUNION" && <img src={meetingIcon || "/placeholder.svg"} alt="Icono de Reunión" className="task-icon" />}
-                            {task.tipo === "TAREA" && <img src={emailIcon || "/placeholder.svg"} alt="Icono de Correo" className="task-icon" />}
-                            {task.contactoNombre ?
-                              `${task.contactoNombre} - ${task.tipo}${task.subtipoTarea ? ` - ${task.subtipoTarea}` : ""}`
-                              : task.tipo
-                            }
-                          </h3>
+            {modulosActivos.tratos && (
+              <section className="tasks-panel">
+                <h2>Mis tareas pendientes del día de hoy</h2>
+                <div className="task-list">
+                  {tareasPendientes.length > 0 ? (
+                    tareasPendientes.map((task) => (
+                      <div key={task.id} className="task-item">
+                        <div className="task-info">
+                          <div className="task-header">
+                            {task.empresaNombre && (
+                              <div
+                                className="task-empresa clickable"
+                                onClick={() => handleEmpresaClick(task.tratoId)}
+                                style={{ cursor: 'pointer' }}
+                              >
+                                {task.empresaNombre}
+                              </div>
+                            )}
+                            <h3>
+                              {task.tipo === "LLAMADA" && <img src={phoneIcon || "/placeholder.svg"} alt="Icono de Teléfono" className="task-icon" />}
+                              {task.tipo === "REUNION" && <img src={meetingIcon || "/placeholder.svg"} alt="Icono de Reunión" className="task-icon" />}
+                              {task.tipo === "TAREA" && <img src={emailIcon || "/placeholder.svg"} alt="Icono de Correo" className="task-icon" />}
+                              {task.contactoNombre ?
+                                `${task.contactoNombre} - ${task.tipo}${task.subtipoTarea ? ` - ${task.subtipoTarea}` : ""}`
+                                : task.tipo
+                              }
+                            </h3>
+                          </div>
+                          <div className="task-time">
+                            {task.horaInicio ? task.horaInicio.toString() : "Sin hora"}
+                          </div>
                         </div>
-                        <div className="task-time">
-                          {task.horaInicio ? task.horaInicio.toString() : "Sin hora"}
+                        <div className="task-actions">
+                          <button
+                            className="btn btn-primary"
+                            onClick={() => abrirModalCompletar(task)}
+                          >
+                            Completar
+                          </button>
+                          <button
+                            className="btn btn-secondary"
+                            onClick={() => {
+                              const modalType = task.tipo === "LLAMADA" ? "reprogramarLlamada" :
+                                task.tipo === "REUNION" ? "reprogramarReunion" :
+                                  "reprogramarTarea";
+                              openModal(modalType, { actividad: task });
+                            }}
+                          >
+                            Reprogramar
+                          </button>
                         </div>
                       </div>
-                      <div className="task-actions">
-                        <button
-                          className="btn btn-primary"
-                          onClick={() => abrirModalCompletar(task)}
+                    ))
+                  ) : (
+                    <p>No hay tareas pendientes para hoy.</p>
+                  )}
+                </div>
+              </section>
+            )}
+
+            {(modulosActivos.tratos || modulosActivos.empresas) && (
+              <section className="stats-panel">
+                <div className="stats-header">
+                  <h2>Estadísticas</h2>
+                  {userRol !== "EMPLEADO" && (
+                    <div className="user-filter">
+                      <label htmlFor="userSelect">Filtrar por usuario:</label>
+                      <div className="modal-select-wrapper">
+                        <select
+                          id="userSelect"
+                          value={selectedUser}
+                          onChange={(e) => setSelectedUser(e.target.value)}
+                          className="modal-form-control"
                         >
-                          Completar
-                        </button>
-                        <button
-                          className="btn btn-secondary"
-                          onClick={() => {
-                            const modalType = task.tipo === "LLAMADA" ? "reprogramarLlamada" :
-                              task.tipo === "REUNION" ? "reprogramarReunion" :
-                                "reprogramarTarea";
-                            openModal(modalType, { actividad: task });
-                          }}
-                        >
-                          Reprogramar
-                        </button>
+                          {usuarios.map((usuario) => (
+                            <option key={usuario} value={usuario}>
+                              {usuario}
+                            </option>
+                          ))}
+                        </select>
+                        <img src={deploy || "/placeholder.svg"} alt="Desplegar" className="deploy-icon" />
                       </div>
                     </div>
-                  ))
-                ) : (
-                  <p>No hay tareas pendientes para hoy.</p>
-                )}
-              </div>
-            </section>
-
-            <section className="stats-panel">
-              <div className="stats-header">
-                <h2>Estadísticas</h2>
-                {userRol !== "EMPLEADO" && (
-                  <div className="user-filter">
-                    <label htmlFor="userSelect">Filtrar por usuario:</label>
-                    <div className="modal-select-wrapper">
-                      <select
-                        id="userSelect"
-                        value={selectedUser}
-                        onChange={(e) => setSelectedUser(e.target.value)}
-                        className="modal-form-control"
-                      >
-                        {usuarios.map((usuario) => (
-                          <option key={usuario} value={usuario}>
-                            {usuario}
-                          </option>
-                        ))}
-                      </select>
-                      <img src={deploy || "/placeholder.svg"} alt="Desplegar" className="deploy-icon" />
-                    </div>
-                  </div>
-                )}
-              </div>
-
-              <div className="charts-grid">
-                <div className="chart-section">
-                  <h3>Prospectos por Etapa</h3>
-                  <div className="chart-container">
-                    {isLoadingTratos ? (
-                      <div className="loading-spinner">
-                        <div className="spinner"></div>
-                        <p>Cargando datos...</p>
-                      </div>
-                    ) : (
-                      <Bar data={data} options={options} id="prospectsChart" />
-                    )}
-                  </div>
+                  )}
                 </div>
 
-                {userRol !== "EMPLEADO" && (
-                  <div className="chart-section">
-                    <h3>Empresas Creadas por Usuario</h3>
-                    <div className="chart-container">
-                      {isLoadingUsuarios ? (
-                        <div className="loading-spinner">
-                          <div className="spinner"></div>
-                          <p>Cargando datos...</p>
-                        </div>
-                      ) : (
-                        <Doughnut data={empresasPorUsuario} options={usuariosOptions} id="usersChart" />
-                      )}
+                <div className="charts-grid">
+                  {modulosActivos.tratos && (
+                    <div className="chart-section">
+                      <h3>Prospectos por Etapa</h3>
+                      <div className="chart-container">
+                        {isLoadingTratos ? (
+                          <div className="loading-spinner">
+                            <div className="spinner"></div>
+                            <p>Cargando datos...</p>
+                          </div>
+                        ) : (
+                          <Bar data={data} options={options} id="prospectsChart" />
+                        )}
+                      </div>
                     </div>
-                  </div>
-                )}
-              </div>
-            </section>
+                  )}
+
+                  {userRol !== "EMPLEADO" && modulosActivos.empresas && (
+                    <div className="chart-section">
+                      <h3>Empresas Creadas por Usuario</h3>
+                      <div className="chart-container">
+                        {isLoadingUsuarios ? (
+                          <div className="loading-spinner">
+                            <div className="spinner"></div>
+                            <p>Cargando datos...</p>
+                          </div>
+                        ) : (
+                          <Doughnut data={empresasPorUsuario} options={usuariosOptions} id="usersChart" />
+                        )}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </section>
+            )}
           </div>
         </main>
 

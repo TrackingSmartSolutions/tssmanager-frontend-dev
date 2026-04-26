@@ -53,6 +53,7 @@ const Calendario = () => {
   });
   const userRol = localStorage.getItem("userRol");
   const userName = localStorage.getItem("userName");
+  const modulosActivos = JSON.parse(localStorage.getItem("modulosActivos")) || { crm: true, admin: true, tratos: true, cxp: true };
   const [isLoading, setIsLoading] = useState(true);
   const [isInitialLoad, setIsInitialLoad] = useState(true);
   const navigate = useNavigate();
@@ -513,22 +514,26 @@ const Calendario = () => {
 
               {userRol !== "EMPLEADO" && (
                 <div className="ts-calendar-filters">
-                  <label className="ts-calendar-filter-checkbox">
-                    <input
-                      type="checkbox"
-                      checked={filtrosCategoria.CRM}
-                      onChange={(e) => setFiltrosCategoria({ ...filtrosCategoria, CRM: e.target.checked })}
-                    />
-                    <span>CRM</span>
-                  </label>
-                  <label className="ts-calendar-filter-checkbox">
-                    <input
-                      type="checkbox"
-                      checked={filtrosCategoria.ADMON}
-                      onChange={(e) => setFiltrosCategoria({ ...filtrosCategoria, ADMON: e.target.checked })}
-                    />
-                    <span>ADMON</span>
-                  </label>
+                  {modulosActivos.crm && (
+                    <label className="ts-calendar-filter-checkbox">
+                      <input
+                        type="checkbox"
+                        checked={filtrosCategoria.CRM}
+                        onChange={(e) => setFiltrosCategoria({ ...filtrosCategoria, CRM: e.target.checked })}
+                      />
+                      <span>CRM</span>
+                    </label>
+                  )}
+                  {modulosActivos.admin && (
+                    <label className="ts-calendar-filter-checkbox">
+                      <input
+                        type="checkbox"
+                        checked={filtrosCategoria.ADMON}
+                        onChange={(e) => setFiltrosCategoria({ ...filtrosCategoria, ADMON: e.target.checked })}
+                      />
+                      <span>ADMON</span>
+                    </label>
+                  )}
                 </div>
               )}
             </div>
@@ -685,15 +690,15 @@ const Calendario = () => {
                           <strong>Trato:</strong>
                           {selectedEvent.trato ? (
                             <span
-                              onClick={() => handleTratoClick(selectedEvent.tratoId)}
+                              onClick={() => modulosActivos.tratos && handleTratoClick(selectedEvent.tratoId)}
                               style={{
-                                color: '#3b82f6',
-                                cursor: 'pointer',
-                                textDecoration: 'underline',
+                                color: modulosActivos.tratos ? '#3b82f6' : 'inherit',
+                                cursor: modulosActivos.tratos ? 'pointer' : 'default',
+                                textDecoration: modulosActivos.tratos ? 'underline' : 'none',
                                 marginLeft: '5px'
                               }}
-                              onMouseOver={(e) => e.target.style.color = '#1d4ed8'}
-                              onMouseOut={(e) => e.target.style.color = '#3b82f6'}
+                              onMouseOver={(e) => modulosActivos.tratos && (e.target.style.color = '#1d4ed8')}
+                              onMouseOut={(e) => modulosActivos.tratos && (e.target.style.color = '#3b82f6')}
                             >
                               {selectedEvent.trato}
                             </span>
@@ -743,7 +748,7 @@ const Calendario = () => {
                         <strong>Cuenta:</strong> {selectedEvent.cliente}
                       </div>
                       {/* Botón para marcar como pagada */}
-                      {selectedEvent.estado !== "Pagado" && (
+                      {selectedEvent.estado !== "Pagado" && modulosActivos.cxp && (
                         <div className="ts-calendar-modal-actions" style={{
                           marginTop: '15px',
                           textAlign: 'center',

@@ -22,9 +22,10 @@ const fetchWithToken = async (url, options = {}) => {
 const ConfiguracionAlmacenamiento = () => {
   const [storageData, setStorageData] = useState([])
   const [isLoading, setIsLoading] = useState(false)
+  const modulosActivos = JSON.parse(localStorage.getItem("modulosActivos")) || { tratos: true, empresas: true, cotizaciones: true, facturacion: true };
 
   const [cleanupSettings, setCleanupSettings] = useState({
-    tipoRegistros: "Tratos",
+    tipoRegistros: "Auditoria",
     antiguedadMinima: "6meses",
   })
 
@@ -45,16 +46,20 @@ const ConfiguracionAlmacenamiento = () => {
   const navigate = useNavigate()
 
   const tiposRegistrosOptions = [
-    { value: "Tratos", label: "Tratos" },
-    { value: "Empresas", label: "Empresas" },
-    { value: "Contactos", label: "Contactos" },
-    { value: "Notas_Tratos", label: "Notas" },
-    { value: "Actividades", label: "Actividades" },
-    { value: "Email_records", label: "Correos electrónicos" },
+    ...(modulosActivos.tratos ? [
+      { value: "Tratos", label: "Tratos" },
+      { value: "Notas_Tratos", label: "Notas" },
+      { value: "Actividades", label: "Actividades" }
+    ] : []),
+    ...(modulosActivos.empresas ? [
+      { value: "Empresas", label: "Empresas" },
+      { value: "Contactos", label: "Contactos" },
+      { value: "Email_records", label: "Correos electrónicos" }
+    ] : []),
+    ...(modulosActivos.cotizaciones ? [{ value: "Cotizaciones", label: "Cotizaciones" }] : []),
+    ...(modulosActivos.facturacion ? [{ value: "Facturas", label: "Facturas" }] : []),
     { value: "Notificaciones", label: "Notificaciones" },
-    { value: "Auditoria", label: "Auditoría" },
-    { value: "Facturas", label: "Facturas" },
-    { value: "Cotizaciones", label: "Cotizaciones" }
+    { value: "Auditoria", label: "Auditoría" }
   ];
 
   const antiguedadOptions = [
@@ -65,16 +70,20 @@ const ConfiguracionAlmacenamiento = () => {
   ]
 
   const tablaToModulo = {
-    "Tratos": "Tratos",
-    "Empresas": "Empresas",
-    "Contactos": "Contactos",
-    "Notas_Tratos": "Notas",
-    "Actividades": "Actividades",
-    "Email_records": "Correos electrónicos",
+    ...(modulosActivos.tratos ? {
+      "Tratos": "Tratos",
+      "Notas_Tratos": "Notas",
+      "Actividades": "Actividades",
+    } : {}),
+    ...(modulosActivos.empresas ? {
+      "Empresas": "Empresas",
+      "Contactos": "Contactos",
+      "Email_records": "Correos electrónicos",
+    } : {}),
+    ...(modulosActivos.facturacion ? { "Facturas": "Facturas" } : {}),
+    ...(modulosActivos.cotizaciones ? { "Cotizaciones": "Cotizaciones" } : {}),
     "Notificaciones": "Notificaciones",
     "Auditoria": "Auditoría",
-    "Facturas": "Facturas",
-    "Cotizaciones": "Cotizaciones"
   }
 
   // Mapeo inverso para el frontend

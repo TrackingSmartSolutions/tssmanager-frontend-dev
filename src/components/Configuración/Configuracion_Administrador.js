@@ -60,31 +60,33 @@ const CustomDatePickerInput = ({ value, onClick, placeholder }) => (
 
 const ConfiguracionAdministrador = () => {
   const [exportData, setExportData] = useState({
-    tiposDatos: "tratos",
+    tiposDatos: "auditoria",
     formato: "csv",
-  })
+  });
 
   const [rangoFechasExport, setRangoFechasExport] = useState([null, null]);
   const [fechaInicioExport, fechaFinExport] = rangoFechasExport;
-
   const [exportHistory, setExportHistory] = useState([]);
-  const [isLoading, setIsLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(true);
 
+  const navigate = useNavigate();
 
-  const navigate = useNavigate()
+  const modulosActivos = JSON.parse(localStorage.getItem("modulosActivos")) || { tratos: true, empresas: true, crm: true };
 
   const tiposDatosOptions = [
-    { value: "tratos", label: "Tratos" },
-    { value: "empresas", label: "Empresas" },
-    { value: "contactos", label: "Contactos" },
-    { value: "correoContactos", label: "Correos de los contactos" },
+    ...(modulosActivos.tratos ? [{ value: "tratos", label: "Tratos" }] : []),
+    ...(modulosActivos.empresas ? [
+      { value: "empresas", label: "Empresas" },
+      { value: "contactos", label: "Contactos" },
+      { value: "correoContactos", label: "Correos de los contactos" }
+    ] : []),
     { value: "auditoria", label: "Auditoría del Sistema" },
-  ]
+  ];
 
   const formatosExportacion = [
     { value: "csv", label: "CSV" },
     { value: "pdf", label: "PDF" },
-  ]
+  ];
 
   const handleExportInputChange = (field, value) => {
     setExportData((prev) => ({

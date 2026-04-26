@@ -359,7 +359,7 @@ const EmisorModal = ({ isOpen, onClose, onSave, emisor = null }) => {
 };
 
 // Modal para Nueva/Editar Solicitud
-const SolicitudModal = ({ isOpen, onClose, onSave, solicitud = null, cotizaciones, cuentasPorCobrar, emisores }) => {
+const SolicitudModal = ({ isOpen, onClose, onSave, solicitud = null, cotizaciones, cuentasPorCobrar, emisores, modulosActivos = { cotizaciones: true, cxc: true } }) => {
   const [formData, setFormData] = useState({
     id: null,
     cotizacion: "",
@@ -545,7 +545,11 @@ const SolicitudModal = ({ isOpen, onClose, onSave, solicitud = null, cotizacione
     if (!formData.claveProductoServicio) newErrors.claveProductoServicio = "La clave producto/servicio es obligatoria";
     if (!formData.claveUnidad) newErrors.claveUnidad = "La clave unidad es obligatoria";
     if (!formData.emisor) newErrors.emisor = "El emisor es obligatorio";
-    if (!formData.cuentaPorCobrar) newErrors.cuentaPorCobrar = "La cuenta por cobrar es obligatoria";
+
+    if (modulosActivos.cxc && !formData.cuentaPorCobrar) {
+      newErrors.cuentaPorCobrar = "La cuenta por cobrar es obligatoria";
+    }
+
     if (isEditing && !formData.fechaEmision) newErrors.fechaEmision = "La fecha de emisión es obligatoria";
     if (formData.tipo === "SOLICITUD_DE_FACTURA" && (!formData.usoCfdi || formData.usoCfdi === "")) {
       newErrors.usoCfdi = "El uso de CFDI es obligatorio para solicitudes de factura";
@@ -636,21 +640,23 @@ const SolicitudModal = ({ isOpen, onClose, onSave, solicitud = null, cotizacione
       closeOnOverlayClick={false}
     >
       <form onSubmit={handleSubmit} className="facturacion-form">
-        <div className="facturacion-form-group">
-          <label htmlFor="cotizacion">Cotización <span className="required"> *</span></label>
-          <select
-            id="cotizacion"
-            value={formData.cotizacion}
-            onChange={(e) => handleInputChange("cotizacion", e.target.value)}
-            className="facturacion-form-control"
-            disabled={!!solicitud}
-          >
-            <option value="">Ninguna seleccionada</option>
-            {cotizaciones.map((cotizacion) => (
-              <option key={cotizacion.id} value={cotizacion.id}>{cotizacion.clienteNombre} - {cotizacion.id}</option>
-            ))}
-          </select>
-        </div>
+        {modulosActivos.cotizaciones && (
+          <div className="facturacion-form-group">
+            <label htmlFor="cotizacion">Cotización <span className="required"> *</span></label>
+            <select
+              id="cotizacion"
+              value={formData.cotizacion}
+              onChange={(e) => handleInputChange("cotizacion", e.target.value)}
+              className="facturacion-form-control"
+              disabled={!!solicitud}
+            >
+              <option value="">Ninguna seleccionada</option>
+              {cotizaciones.map((cotizacion) => (
+                <option key={cotizacion.id} value={cotizacion.id}>{cotizacion.clienteNombre} - {cotizacion.id}</option>
+              ))}
+            </select>
+          </div>
+        )}
         {isEditing && (
           <div className="facturacion-form-group">
             <label htmlFor="fechaEmision">Fecha Emisión <span className="required"> *</span></label>
@@ -771,23 +777,25 @@ const SolicitudModal = ({ isOpen, onClose, onSave, solicitud = null, cotizacione
           </select>
           {errors.emisor && <span className="facturacion-error-message">{errors.emisor}</span>}
         </div>
-        <div className="facturacion-form-group">
-          <label htmlFor="cuentaPorCobrar">Cuenta por Cobrar <span className="required"> *</span></label>
-          <select
-            id="cuentaPorCobrar"
-            value={formData.cuentaPorCobrar}
-            onChange={(e) => handleInputChange("cuentaPorCobrar", e.target.value)}
-            className={`facturacion-form-control ${errors.cuentaPorCobrar ? "error" : ""}`}
-            disabled={true}
-          >
-            <option value="">Ninguna seleccionada</option>
-            {cuentasPorCobrar
-              .map((cuenta) => (
-                <option key={cuenta.id} value={cuenta.id}>{cuenta.folio}</option>
-              ))}
-          </select>
-          {errors.cuentaPorCobrar && <span className="facturacion-error-message">{errors.cuentaPorCobrar}</span>}
-        </div>
+        {modulosActivos.cxc && (
+          <div className="facturacion-form-group">
+            <label htmlFor="cuentaPorCobrar">Cuenta por Cobrar <span className="required"> *</span></label>
+            <select
+              id="cuentaPorCobrar"
+              value={formData.cuentaPorCobrar}
+              onChange={(e) => handleInputChange("cuentaPorCobrar", e.target.value)}
+              className={`facturacion-form-control ${errors.cuentaPorCobrar ? "error" : ""}`}
+              disabled={true}
+            >
+              <option value="">Ninguna seleccionada</option>
+              {cuentasPorCobrar
+                .map((cuenta) => (
+                  <option key={cuenta.id} value={cuenta.id}>{cuenta.folio}</option>
+                ))}
+            </select>
+            {errors.cuentaPorCobrar && <span className="facturacion-error-message">{errors.cuentaPorCobrar}</span>}
+          </div>
+        )}
         <div className="facturacion-form-group">
           <label htmlFor="usoCfdi">Uso de CFDI <span className="required"> *</span></label>
           <select
@@ -1166,6 +1174,7 @@ const CustomDatePickerInput = ({ value, onClick, placeholder }) => (
 // Componente Principal
 const AdminFacturacion = () => {
   const navigate = useNavigate();
+  const modulosActivos = JSON.parse(localStorage.getItem("modulosActivos")) || { balance: true, transacciones: true, cotizaciones: true, facturacion: true, cxc: true, cxp: true, comisiones: true };
   const userRol = localStorage.getItem("userRol")
   const [emisores, setEmisores] = useState([]);
   const [emisorSeleccionado, setEmisorSeleccionado] = useState(0);
@@ -1197,25 +1206,34 @@ const AdminFacturacion = () => {
     const fetchData = async () => {
       setIsLoading(true);
       try {
-        const [emisoresResp, cotizacionesResp, cuentasResp, solicitudesResp, facturasResp] = await Promise.all([
+        const [emisoresResp, solicitudesResp, facturasResp] = await Promise.all([
           fetchWithToken(`${API_BASE_URL}/solicitudes-factura-nota/emisores`),
-          fetchWithToken(`${API_BASE_URL}/cotizaciones`),
-          fetchWithToken(`${API_BASE_URL}/cuentas-por-cobrar`),
           fetchWithToken(`${API_BASE_URL}/solicitudes-factura-nota`),
           fetchWithToken(`${API_BASE_URL}/solicitudes-factura-nota/facturas`),
         ]);
 
         setEmisores(await emisoresResp.json());
-        setCotizaciones(await cotizacionesResp.json());
-        setCuentasPorCobrar(await cuentasResp.json());
         setSolicitudes(await solicitudesResp.json());
 
         const facturasData = await facturasResp.json();
         setFacturas(facturasData);
 
-        // Crear set de solicitudes timbradas
         const timbradas = new Set(facturasData.map(f => f.noSolicitud));
         setSolicitudesTimbradas(timbradas);
+
+        if (modulosActivos.cotizaciones) {
+          try {
+            const cotizacionesResp = await fetchWithToken(`${API_BASE_URL}/cotizaciones`);
+            setCotizaciones(await cotizacionesResp.json());
+          } catch (e) { console.warn("No se pudieron cargar cotizaciones"); }
+        }
+
+        if (modulosActivos.cxc) {
+          try {
+            const cuentasResp = await fetchWithToken(`${API_BASE_URL}/cuentas-por-cobrar`);
+            setCuentasPorCobrar(await cuentasResp.json());
+          } catch (e) { console.warn("No se pudieron cargar cuentas por cobrar"); }
+        }
 
       } catch (error) {
         Swal.fire({ icon: "error", title: "Error", text: error.message });
@@ -1589,19 +1607,46 @@ const AdminFacturacion = () => {
                 <h3 className="facturacion-sidebar-title">Administración</h3>
               </div>
               <div className="facturacion-sidebar-menu">
-                {userRol === "ADMINISTRADOR" && (
-                  <div className="facturacion-menu-item" onClick={() => handleMenuNavigation("balance")}>Balance</div>)}
-                <div className="facturacion-menu-item" onClick={() => handleMenuNavigation("transacciones")}>Transacciones</div>
-                <div className="facturacion-menu-item" onClick={() => handleMenuNavigation("cotizaciones")}>Cotizaciones</div>
-                <div className="facturacion-menu-item facturacion-menu-item-active" onClick={() => handleMenuNavigation("facturacion")}>
-                  Facturas/Notas
-                </div>
-                <div className="facturacion-menu-item" onClick={() => handleMenuNavigation("cuentas-cobrar")}>Cuentas por Cobrar</div>
-                <div className="facturacion-menu-item" onClick={() => handleMenuNavigation("cuentas-pagar")}>Cuentas por Pagar</div>
-                <div className="facturacion-menu-item" onClick={() => handleMenuNavigation("caja-chica")}>Caja chica</div>
-                <div className="transacciones-menu-item" onClick={() => handleMenuNavigation("comisiones")}>
-                  Comisiones
-                </div>
+                {userRol === "ADMINISTRADOR" && modulosActivos.balance && (
+                  <div className="facturacion-menu-item" onClick={() => handleMenuNavigation("balance")}>
+                    Balance
+                  </div>
+                )}
+                {modulosActivos.transacciones && (
+                  <div className="facturacion-menu-item" onClick={() => handleMenuNavigation("transacciones")}>
+                    Transacciones
+                  </div>
+                )}
+                {modulosActivos.cotizaciones && (
+                  <div className="facturacion-menu-item" onClick={() => handleMenuNavigation("cotizaciones")}>
+                    Cotizaciones
+                  </div>
+                )}
+                {modulosActivos.facturacion && (
+                  <div className="facturacion-menu-item facturacion-menu-item-active" onClick={() => handleMenuNavigation("facturacion")}>
+                    Facturas/Notas
+                  </div>
+                )}
+                {modulosActivos.cxc && (
+                  <div className="facturacion-menu-item" onClick={() => handleMenuNavigation("cuentas-cobrar")}>
+                    Cuentas por Cobrar
+                  </div>
+                )}
+                {modulosActivos.cxp && (
+                  <div className="facturacion-menu-item" onClick={() => handleMenuNavigation("cuentas-pagar")}>
+                    Cuentas por Pagar
+                  </div>
+                )}
+                {modulosActivos.transacciones && (
+                  <div className="facturacion-menu-item" onClick={() => handleMenuNavigation("caja-chica")}>
+                    Caja chica
+                  </div>
+                )}
+                {modulosActivos.comisiones && (
+                  <div className="transacciones-menu-item" onClick={() => handleMenuNavigation("comisiones")}>
+                    Comisiones
+                  </div>
+                )}
               </div>
             </section>
             <section className="facturacion-content-panel">
@@ -1918,6 +1963,7 @@ const AdminFacturacion = () => {
             cotizaciones={cotizaciones}
             cuentasPorCobrar={cuentasPorCobrar}
             emisores={emisores}
+            modulosActivos={modulosActivos}
           />
           <TimbrarModal
             isOpen={modals.timbrar.isOpen}
