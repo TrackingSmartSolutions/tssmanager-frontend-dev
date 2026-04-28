@@ -41,6 +41,18 @@ const Header = ({ logoUrl }) => {
   const [timeLeft, setTimeLeft] = useState(120)
   const [alertAudio, setAlertAudio] = useState(null)
 
+  const getFirstAvailableAdminRoute = () => {
+    if (userRol === "ADMINISTRADOR" && modulosActivos.balance) return "/admin_balance";
+    if (modulosActivos.transacciones) return "/admin_transacciones";
+    if (modulosActivos.cotizaciones) return "/admin_cotizaciones";
+    if (modulosActivos.facturacion) return "/admin_facturacion";
+    if (modulosActivos.cxc) return "/admin_cuentas_cobrar";
+    if (modulosActivos.cxp) return "/admin_cuentas_pagar";
+    if (modulosActivos.comisiones) return "/admin_comisiones";
+    // Fallback por si todo está apagado
+    return "/principal";
+  };
+
   // Estado optimizado para el logo
   const [currentLogoUrl, setCurrentLogoUrl] = useState(() => {
     return logoCache.url ||
@@ -839,7 +851,7 @@ const Header = ({ logoUrl }) => {
             )}
             {(userRol === "ADMINISTRADOR" || userRol === "GESTOR") && modulosActivos.admin && (
               <li>
-                <Link to={userRol === "ADMINISTRADOR" ? "/admin_balance" : "/admin_transacciones"}>Admin</Link>
+                <Link to={getFirstAvailableAdminRoute()}>Admin</Link>
               </li>
             )}
           </ul>
@@ -1018,7 +1030,7 @@ const Header = ({ logoUrl }) => {
           )}
           {(userRol === "ADMINISTRADOR" || userRol === "GESTOR") && modulosActivos.admin && (
             <div className="ts-header-sidebar-section">
-              <Link to={userRol === "ADMINISTRADOR" ? "/admin_balance" : "/admin_transacciones"} onClick={toggleSidebar} className="ts-header-sidebar-link">
+              <Link to={getFirstAvailableAdminRoute()} onClick={toggleSidebar} className="ts-header-sidebar-link">
                 Admin
               </Link>
             </div>
