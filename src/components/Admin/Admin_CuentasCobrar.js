@@ -215,7 +215,7 @@ const getEstatusClass = (estatus) => {
 };
 
 // Modal para Agregar Comprobante de Pago
-const ComprobanteModal = ({ isOpen, onClose, onSave, cuenta }) => {
+const ComprobanteModal = ({ isOpen, onClose, onSave, cuenta, categorias }) => {
   const [formData, setFormData] = useState({
     montoPago: "",
     fechaPago: "",
@@ -226,13 +226,6 @@ const ComprobanteModal = ({ isOpen, onClose, onSave, cuenta }) => {
   const saldoPendiente = cuenta?.saldoPendiente || cuenta?.cantidadCobrar || 0;
   const [isLoading, setIsLoading] = useState(false);
   const [categoriaSeleccionada, setCategoriaSeleccionada] = useState("");
-
-  const categoriasPermitidas = [
-    { id: 1, descripcion: "Ventas" },
-    { id: 2, descripcion: "Renta Mensual" },
-    { id: 25, descripcion: "Renta Anual" },
-    { id: 3, descripcion: "Revisiones" }
-  ];
 
   useEffect(() => {
     if (isOpen) {
@@ -416,22 +409,26 @@ const ComprobanteModal = ({ isOpen, onClose, onSave, cuenta }) => {
         <div className="cuentascobrar-form-group">
           <label>Categoría <span className="required"> *</span></label>
           <div className="cuentascobrar-checkbox-group">
-            {categoriasPermitidas.map((categoria) => (
-              <div key={categoria.id} className="cuentascobrar-checkbox-item">
-                <input
-                  type="radio"
-                  id={`categoria-${categoria.id}`}
-                  name="categoria"
-                  value={categoria.id}
-                  checked={categoriaSeleccionada === categoria.id.toString()}
-                  onChange={() => handleCategoriaChange(categoria.id.toString())}
-                  className="cuentascobrar-radio-input"
-                />
-                <label htmlFor={`categoria-${categoria.id}`} className="cuentascobrar-radio-label">
-                  {categoria.descripcion}
-                </label>
-              </div>
-            ))}
+            {categorias && categorias.length > 0 ? (
+              categorias.map((categoria) => (
+                <div key={categoria.id} className="cuentascobrar-checkbox-item">
+                  <input
+                    type="radio"
+                    id={`categoria-${categoria.id}`}
+                    name="categoria"
+                    value={categoria.id}
+                    checked={categoriaSeleccionada === categoria.id.toString()}
+                    onChange={() => handleCategoriaChange(categoria.id.toString())}
+                    className="cuentascobrar-radio-input"
+                  />
+                  <label htmlFor={`categoria-${categoria.id}`} className="cuentascobrar-radio-label">
+                    {categoria.descripcion}
+                  </label>
+                </div>
+              ))
+            ) : (
+              <span className="cuentascobrar-error-message">No hay categorías de ingreso registradas.</span>
+            )}
           </div>
           {errors.categoriaId && <span className="cuentascobrar-error-message">{errors.categoriaId}</span>}
         </div>
@@ -2242,6 +2239,7 @@ const AdminCuentasCobrar = () => {
             onClose={() => closeModal("comprobante")}
             onSave={handleMarcarPagada}
             cuenta={modals.comprobante.cuenta}
+            categorias={categoriasIngreso}
           />
 
           <EditarCuentaModal
