@@ -1449,42 +1449,58 @@ const AdminCotizaciones = () => {
       setIsLoading(true);
       try {
         const fasesInteres = "COTIZACION_PROPUESTA_PRACTICA,NEGOCIACION_REVISION,CERRADO_GANADO";
+
         const [
           empresasPorFaseResp,
           cotizacionesResp,
-          usersResp,
-          emisoresResp,
-          cuentasResp
+          usersResp
         ] = await Promise.all([
           fetchWithToken(`${API_BASE_URL}/empresas/por-fases-trato?fases=${fasesInteres}`),
           fetchWithToken(`${API_BASE_URL}/cotizaciones`),
-          fetchWithToken(`${API_BASE_URL}/auth/users`),
-          fetchWithToken(`${API_BASE_URL}/solicitudes-factura-nota/emisores`),
-          fetchWithToken(`${API_BASE_URL}/cuentas-por-cobrar`),
+          fetchWithToken(`${API_BASE_URL}/auth/users`)
         ]);
 
-        // Procesamos las respuestas
         const empresasData = await empresasPorFaseResp.json();
         const cotizacionesData = await cotizacionesResp.json();
         const usersData = await usersResp.json();
-        const emisoresData = await emisoresResp.json();
-        const cuentasData = await cuentasResp.json();
 
         const listaClientes = Array.isArray(empresasData) ? empresasData : empresasData.data || [];
         const cotizaciones = Array.isArray(cotizacionesData) ? cotizacionesData : cotizacionesData.data || [];
         const users = Array.isArray(usersData) ? usersData : usersData.data || [];
-        const emisores = Array.isArray(emisoresData) ? emisoresData : emisoresData.data || [];
-        const cuentasPorCobrar = Array.isArray(cuentasData) ? cuentasData : cuentasData.data || [];
 
         setClientes(listaClientes);
         setCotizaciones(cotizaciones);
+        setUsers(users);
 
         if (cotizaciones.length > 0) {
           await checkVinculaciones(cotizaciones);
         }
-        setUsers(users);
-        setEmisores(emisores);
-        setCuentasPorCobrar(cuentasPorCobrar);
+
+        if (modulosActivos.facturacion) {
+          try {
+            const emisoresResp = await fetchWithToken(`${API_BASE_URL}/solicitudes-factura-nota/emisores`);
+            const emisoresData = await emisoresResp.json();
+            setEmisores(Array.isArray(emisoresData) ? emisoresData : emisoresData.data || []);
+          } catch (e) {
+            console.warn("No se pudieron cargar emisores (Módulo inactivo o sin permisos).");
+            setEmisores([]);
+          }
+        } else {
+          setEmisores([]);
+        }
+
+        if (modulosActivos.cxc) {
+          try {
+            const cuentasResp = await fetchWithToken(`${API_BASE_URL}/cuentas-por-cobrar`);
+            const cuentasData = await cuentasResp.json();
+            setCuentasPorCobrar(Array.isArray(cuentasData) ? cuentasData : cuentasData.data || []);
+          } catch (e) {
+            console.warn("No se pudieron cargar cuentas por cobrar (Módulo inactivo o sin permisos).");
+            setCuentasPorCobrar([]);
+          }
+        } else {
+          setCuentasPorCobrar([]);
+        }
 
       } catch (error) {
         console.error("Error en fetchData:", error);

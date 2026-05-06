@@ -1209,12 +1209,15 @@ const CrearComisionDesdeCuentaModal = ({ isOpen, onClose, onSave, cuentaId, mont
     vendedorCuentaId: "",
     vendedorNuevoNombre: "",
     porcentajeVenta: "",
+    proyectoCuentaId: "",
+    proyectoNuevoNombre: "",
     porcentajeProyecto: "",
     notas: ""
   });
   const [errors, setErrors] = useState({});
   const [cuentasComisiones, setCuentasComisiones] = useState([]);
   const [isCreatingNewVendedor, setIsCreatingNewVendedor] = useState(false);
+  const [isCreatingNewProyecto, setIsCreatingNewProyecto] = useState(false);
   const [montoVentaCalculado, setMontoVentaCalculado] = useState(0);
   const [montoProyectoCalculado, setMontoProyectoCalculado] = useState(0);
 
@@ -1222,19 +1225,19 @@ const CrearComisionDesdeCuentaModal = ({ isOpen, onClose, onSave, cuentaId, mont
     if (isOpen) {
       fetchCuentasComisiones().then((cuentas) => {
         if (cuentas && Array.isArray(cuentas)) {
-          const cuentaDagoberto = cuentas.find(c => c.nombre.includes("Dagoberto"));
-
           setFormData({
             vendedorCuentaId: "",
             vendedorNuevoNombre: "",
             porcentajeVenta: "",
-            proyectoCuentaId: cuentaDagoberto ? cuentaDagoberto.id : "",
+            proyectoCuentaId: "",
+            proyectoNuevoNombre: "",
             porcentajeProyecto: "",
             notas: ""
           });
         }
       });
       setIsCreatingNewVendedor(false);
+      setIsCreatingNewProyecto(false);
       setErrors({});
     }
   }, [isOpen]);
@@ -1287,9 +1290,15 @@ const CrearComisionDesdeCuentaModal = ({ isOpen, onClose, onSave, cuentaId, mont
     if (!isCreatingNewVendedor && !formData.vendedorCuentaId) {
       newErrors.vendedorCuentaId = "Seleccione vendedor";
     }
-
     if (isCreatingNewVendedor && !formData.vendedorNuevoNombre.trim()) {
       newErrors.vendedorNuevoNombre = "Ingrese nombre";
+    }
+
+    if (!isCreatingNewProyecto && !formData.proyectoCuentaId) {
+      newErrors.proyectoCuentaId = "Seleccione responsable";
+    }
+    if (isCreatingNewProyecto && !formData.proyectoNuevoNombre.trim()) {
+      newErrors.proyectoNuevoNombre = "Ingrese nombre";
     }
 
     if (!formData.porcentajeVenta || parseFloat(formData.porcentajeVenta) < 0 || parseFloat(formData.porcentajeVenta) > 100) {
@@ -1310,6 +1319,8 @@ const CrearComisionDesdeCuentaModal = ({ isOpen, onClose, onSave, cuentaId, mont
       const dataToSend = {
         vendedorCuentaId: isCreatingNewVendedor ? null : parseInt(formData.vendedorCuentaId),
         vendedorNuevoNombre: isCreatingNewVendedor ? formData.vendedorNuevoNombre : null,
+        proyectoCuentaId: isCreatingNewProyecto ? null : parseInt(formData.proyectoCuentaId),
+        proyectoNuevoNombre: isCreatingNewProyecto ? formData.proyectoNuevoNombre : null,
         porcentajeVenta: parseFloat(formData.porcentajeVenta),
         porcentajeProyecto: parseFloat(formData.porcentajeProyecto),
         notas: formData.notas
@@ -1323,13 +1334,7 @@ const CrearComisionDesdeCuentaModal = ({ isOpen, onClose, onSave, cuentaId, mont
   };
 
   return (
-    <Modal
-      isOpen={isOpen}
-      onClose={onClose}
-      title="Crear Comisión"
-      size="md"
-      closeOnOverlayClick={false}
-    >
+    <Modal isOpen={isOpen} onClose={onClose} title="Crear Comisión" size="md" closeOnOverlayClick={false}>
       <form onSubmit={handleSubmit} className="cuentascobrar-form" style={{ gap: '15px' }}>
 
         <div className="cuentascobrar-info-section cuentascobrar-info-compact">
@@ -1421,16 +1426,52 @@ const CrearComisionDesdeCuentaModal = ({ isOpen, onClose, onSave, cuentaId, mont
           </div>
         </div>
 
-        <div className="cuentascobrar-form-group">
-          <label>Comisión de Proyecto (Automático)</label>
-          <input
-            type="text"
-            value="Dagoberto Emmanuel Nieto González"
-            disabled
-            className="cuentascobrar-form-control"
-            style={{ backgroundColor: '#f0f0f0', color: '#666', fontSize: '0.85rem' }}
-          />
+        <hr style={{ border: '0', borderTop: '1px solid #e0e0e0', margin: '10px 0' }} />
+
+        <div className="cuentascobrar-form-group" style={{ gap: '5px' }}>
+          <label>
+            <input
+              type="checkbox"
+              checked={isCreatingNewProyecto}
+              onChange={(e) => {
+                setIsCreatingNewProyecto(e.target.checked);
+                setFormData(prev => ({ ...prev, proyectoCuentaId: "", proyectoNuevoNombre: "" }));
+              }}
+            />
+            {' '}Crear nuevo responsable de proyecto
+          </label>
         </div>
+
+        {!isCreatingNewProyecto ? (
+          <div className="cuentascobrar-form-group">
+            <label htmlFor="proyectoCuentaId">Responsable de Proyecto <span className="required">*</span></label>
+            <select
+              id="proyectoCuentaId"
+              value={formData.proyectoCuentaId}
+              onChange={(e) => handleInputChange("proyectoCuentaId", e.target.value)}
+              className={`cuentascobrar-form-control ${errors.proyectoCuentaId ? "error" : ""}`}
+            >
+              <option value="">Seleccione un responsable</option>
+              {cuentasComisiones.map((cuenta) => (
+                <option key={cuenta.id} value={cuenta.id}>{cuenta.nombre}</option>
+              ))}
+            </select>
+            {errors.proyectoCuentaId && <span className="cuentascobrar-error-message">{errors.proyectoCuentaId}</span>}
+          </div>
+        ) : (
+          <div className="cuentascobrar-form-group">
+            <label htmlFor="proyectoNuevoNombre">Nombre del responsable <span className="required">*</span></label>
+            <input
+              type="text"
+              id="proyectoNuevoNombre"
+              value={formData.proyectoNuevoNombre}
+              onChange={(e) => handleInputChange("proyectoNuevoNombre", e.target.value)}
+              className={`cuentascobrar-form-control ${errors.proyectoNuevoNombre ? "error" : ""}`}
+              placeholder="Ingrese el nombre"
+            />
+            {errors.proyectoNuevoNombre && <span className="cuentascobrar-error-message">{errors.proyectoNuevoNombre}</span>}
+          </div>
+        )}
 
         <div className="cuentascobrar-form-row">
           <div className="cuentascobrar-form-group" style={{ flex: 1 }}>
@@ -1467,6 +1508,7 @@ const CrearComisionDesdeCuentaModal = ({ isOpen, onClose, onSave, cuentaId, mont
           </div>
         </div>
 
+        {/* --- NOTAS --- */}
         <div className="cuentascobrar-form-group">
           <label htmlFor="notas">Notas</label>
           <textarea
@@ -1722,25 +1764,8 @@ const AdminCuentasCobrar = () => {
     }
   };
 
-  const handleCheckMarcarCompletada = async (cuenta) => {
-    try {
-      const response = await fetchWithToken(`${API_BASE_URL}/cuentas-por-cobrar/${cuenta.id}/check-vinculada`);
-      if (!response.vinculada) {
-        Swal.fire({
-          icon: "error",
-          title: "Error",
-          text: "La cuenta por cobrar no está vinculada a una solicitud de factura. No se puede marcar como completada.",
-        });
-        return;
-      }
-      openModal("comprobante", { cuenta });
-    } catch (error) {
-      Swal.fire({
-        icon: "error",
-        title: "Error",
-        text: "No se pudo verificar la vinculación: " + error.message,
-      });
-    }
+  const handleCheckMarcarCompletada = (cuenta) => {
+    openModal("comprobante", { cuenta });
   };
 
   const handleVerDetalles = async (cuenta) => {
