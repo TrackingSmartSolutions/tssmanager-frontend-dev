@@ -1588,23 +1588,36 @@ const AdminCuentasCobrar = () => {
           fetchWithToken(`${API_BASE_URL}/cuentas-por-cobrar/categorias-ingreso`),
         ]);
 
-        let emisoresData = [];
-        if (modulosActivos.facturacion) {
-          try {
-            emisoresData = await fetchWithToken(`${API_BASE_URL}/solicitudes-factura-nota/emisores`);
-          } catch (e) {
-            console.warn("Módulo de facturación inactivo o sin emisores");
-          }
-        }
-
         setClientes(clientesData);
         setCuentasPorCobrar(cuentasData);
-        setEmisores(emisoresData);
         setCategoriasIngreso(categoriasIngresoData);
 
-        const vinculacionesData = await fetchWithToken(`${API_BASE_URL}/cuentas-por-cobrar/vinculaciones`);
-        const cuentasVinculadasIds = new Set(vinculacionesData.idsVinculadas);
-        setCuentasVinculadas(cuentasVinculadasIds);
+        if (modulosActivos.facturacion) {
+          try {
+            const emisoresData = await fetchWithToken(`${API_BASE_URL}/solicitudes-factura-nota/emisores`);
+            setEmisores(emisoresData);
+
+            const solicitudesData = await fetchWithToken(`${API_BASE_URL}/solicitudes-factura-nota`);
+            setSolicitudes(solicitudesData);
+
+            const idsConSolicitud = new Set(
+              solicitudesData
+                .map(s => s.cuentaPorCobrar?.id || s.cuentaPorCobrarId)
+                .filter(Boolean)
+            );
+            setCuentasVinculadas(idsConSolicitud);
+
+          } catch (e) {
+            console.warn("Módulo de facturación inactivo o falló la carga");
+            setEmisores([]);
+            setCuentasVinculadas(new Set());
+          }
+        } else {
+          setEmisores([]);
+          setCuentasVinculadas(new Set());
+        }
+
+
 
       } catch (error) {
         Swal.fire({ icon: "error", title: "Error", text: "No se pudieron cargar los datos" });
@@ -1613,7 +1626,7 @@ const AdminCuentasCobrar = () => {
       }
     };
     fetchData();
-  }, [filtroEstatus]);
+  }, [filtroEstatus, modulosActivos.facturacion]);
 
   useEffect(() => {
     if (location.state && location.state.filtroFolio) {
